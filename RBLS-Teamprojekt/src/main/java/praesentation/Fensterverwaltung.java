@@ -13,7 +13,7 @@ public class Fensterverwaltung {
 		init();
 	}
 	
-	private void init() {
+	public void init() {
 		strg = new Hauptsteuerung();
 		aktivesFenster = new Hauptmenue(this);
 	    aktivesFenster.setTitle("RBLS");

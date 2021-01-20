@@ -31,8 +31,7 @@ public class Raetselwahl extends javax.swing.JFrame {
         	buttons[j] = new JButton();
         	buttons[j].setText("Rätsel " + (j+1)); //Platzhalter Rätselname
         	buttons[j].addActionListener(new ActionListener() {
-            	@Override
-                public void actionPerformed(ActionEvent e) {
+            	public void actionPerformed(ActionEvent e) {
             		fw.starteRaetsel(e.getActionCommand());
                 }
             });
