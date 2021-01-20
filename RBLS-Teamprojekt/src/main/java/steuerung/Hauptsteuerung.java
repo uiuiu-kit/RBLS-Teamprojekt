@@ -12,8 +12,10 @@ public class Hauptsteuerung {
 
   public void init() {
     praesentation.Fensterverwaltung fv = new praesentation.Fensterverwaltung(this);
+    /*//Zu Testzwecken auskommentiert, kann wieder rückgängig gemacht werden...
     modell.Fassade fs = new modell.Fassade(this);
     fs.init();
+    */
     fv.init();
   }
 }
