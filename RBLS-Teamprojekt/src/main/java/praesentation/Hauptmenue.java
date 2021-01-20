@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Nick Terzer
+ *
+ */
 public class Hauptmenue extends javax.swing.JFrame{
 	private Fensterverwaltung fw;
 
@@ -22,6 +27,9 @@ public class Hauptmenue extends javax.swing.JFrame{
 		this.fw = fw;
 		init();}
     
+	/**
+	 * initialiert GUI und Buttonaktionen
+	 */
 	private void init() {
         Stufe1 = new javax.swing.JButton();
         Stufe2 = new javax.swing.JButton();
@@ -39,13 +47,13 @@ public class Hauptmenue extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        //c.fill = GridBagConstraints.HORIZONTAL;
         getContentPane().setBackground(Color.WHITE);
         
+        //Stufenbuttons//
         Stufe1.setText("Stufe 1");
         Stufe1.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		fw.oeffneRaetselwahl(1);
+            public void actionPerformed(ActionEvent e) {
+        		klickeStart(1);
             }
         });
         Stufe1.setBackground(Color.WHITE);
@@ -54,8 +62,8 @@ public class Hauptmenue extends javax.swing.JFrame{
         
         Stufe2.setText("Stufe 2");
         Stufe2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		fw.oeffneRaetselwahl(2);
+            public void actionPerformed(ActionEvent e) {
+        		klickeStart(2);
             }
         });
         Stufe2.setBackground(Color.LIGHT_GRAY);
@@ -64,8 +72,8 @@ public class Hauptmenue extends javax.swing.JFrame{
         
         Stufe3.setText("Stufe 3");
         Stufe3.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		fw.oeffneRaetselwahl(3);
+            public void actionPerformed(ActionEvent e) {
+        		klickeStart(3);
             }
         });
         Stufe3.setBackground(Color.LIGHT_GRAY);
@@ -74,8 +82,8 @@ public class Hauptmenue extends javax.swing.JFrame{
         
         Stufe4.setText("Stufe 4");
         Stufe4.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		fw.oeffneRaetselwahl(4);
+            public void actionPerformed(ActionEvent e) {
+        		klickeStart(4);
             }
         });
         Stufe4.setBackground(Color.LIGHT_GRAY);
@@ -85,11 +93,21 @@ public class Hauptmenue extends javax.swing.JFrame{
         c.weightx = 0.5;
         c.gridx = 3;
         c.gridy = 1;
-        //c.fill = GridBagConstraints.HORIZONTAL;
         getContentPane().add(mitte, c);
         
+        //weitere Buttons//
         freierModus.setText("FREIER MODUS");
+        freierModus.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+        		klickeFreienModus();
+            }
+        });
         beenden.setText("BEENDEN");
+        beenden.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+        		klickeBeenden();
+            }
+        });
         freierModus.setBackground(new Color(255,102,0));
         freierModus.setForeground(Color.WHITE);
         beenden.setBackground(new Color(255,102,0));
@@ -104,8 +122,28 @@ public class Hauptmenue extends javax.swing.JFrame{
         c.gridy = 1;
         getContentPane().add(freierModus, c);
         
-
-        
         pack();
     }
+	
+	/**
+	 * stoesst Oeffnen von Raetselwahl an
+	 * @param stufe Stufe der Raetsel
+	 */
+	private void klickeStart(int stufe) {
+		fw.oeffneRaetselwahl(stufe);
+	}
+	
+	/**
+	 * stoesst Beenden an
+	 */
+	private void klickeBeenden() {
+		fw.beende();
+	}
+	
+	/**
+	 * stoesst Starten des freien Modus an
+	 */
+	private void klickeFreienModus() {
+		fw.starteFreienModus();
+	}
 }
