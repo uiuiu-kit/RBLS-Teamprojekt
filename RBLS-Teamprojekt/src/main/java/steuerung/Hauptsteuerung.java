@@ -11,8 +11,8 @@ public class Hauptsteuerung {
    */
 
   public void init() {
-    Fensterverwaltung fv = new Fensterverwaltung(this);
-    Fassade fs = new Fassade(this);
+    praesentation.Fensterverwaltung fv = new praesentation.Fensterverwaltung(this);
+    modell.Fassade fs = new modell.Fassade(this);
     fs.init();
     fv.init();
   }
