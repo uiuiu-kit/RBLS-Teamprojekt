@@ -5,7 +5,7 @@ import steuerung.Hauptsteuerung;
 
 /**
  * 
- * @author Nick Terzer
+ * Verwaltet Fenster
  *
  */
 public class Fensterverwaltung {
@@ -15,7 +15,6 @@ public class Fensterverwaltung {
 
   public Fensterverwaltung(Hauptsteuerung strg) {	//braucht Fassade
     this.strg = strg;
-    init();
   }
 	
   /**
@@ -43,7 +42,7 @@ public class Fensterverwaltung {
     aktivesFenster.setLocation(50, 50);
     aktivesFenster.setVisible(true);
   }
-	
+
   /**
    * wechselt zu Raetselwahlfenster
    * @param stufe Stufe der Raetsel

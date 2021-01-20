@@ -1,18 +1,21 @@
 package praesentation;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * 
- * @author Nick Terzer
+ * GUI Hauptmenue
  *
  */
-public class Hauptmenue extends javax.swing.JFrame{
+public class Hauptmenue extends javax.swing.JFrame {
   private Fensterverwaltung fw;
 
   private JButton Stufe1;
@@ -24,7 +27,8 @@ public class Hauptmenue extends javax.swing.JFrame{
 
   public Hauptmenue(Fensterverwaltung fw) {	//Fassade fehlt
     this.fw = fw;
-    init();}
+    init();
+  }
     
   /**
    * initialiert GUI und Buttonaktionen
@@ -41,7 +45,8 @@ public class Hauptmenue extends javax.swing.JFrame{
     JPanel mitte = new JPanel(new java.awt.BorderLayout());
     mitte.setBackground(Color.WHITE);
     mitte.add(startFeld, java.awt.BorderLayout.SOUTH);
-    mitte.add(new javax.swing.JLabel("Start"), java.awt.BorderLayout.NORTH);
+    JLabel starttext = new javax.swing.JLabel("Start", SwingConstants.CENTER);
+    mitte.add(starttext, java.awt.BorderLayout.NORTH);
  
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     getContentPane().setLayout(new java.awt.GridBagLayout());

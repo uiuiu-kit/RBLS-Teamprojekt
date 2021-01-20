@@ -1,6 +1,7 @@
 package praesentation;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,20 +9,21 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * 
- * @author Nick Terzer
+ * GUI Abschlussfenster
  *
  */
-public class Abschlussfenster extends javax.swing.JFrame{
+public class Abschlussfenster extends javax.swing.JFrame {
 
   private Fensterverwaltung fw;
   private JButton naechstesRaetsel;
   private JButton menue;
   private JLabel textLabel;
   private String[] texte = new String[] {
-    "Rätsel gelöst", "Geschafft", "[GENERISCHER ABSCHLUSSTEXT]"};
+    "Rätsel gelöst!", "Geschafft!", "[GENERISCHER ABSCHLUSSTEXT]", "du hast das Rätsel gelöst. Klasse.", "Richtig gelöst!"};
 	
   public Abschlussfenster(Fensterverwaltung fw) {
     this.fw = fw;
@@ -40,15 +42,17 @@ public class Abschlussfenster extends javax.swing.JFrame{
     });
     JPanel buttons = new JPanel(new java.awt.BorderLayout());
     buttons.setBackground(Color.WHITE);
+    naechstesRaetsel.setPreferredSize(new Dimension(200,100));
     buttons.add(naechstesRaetsel, java.awt.BorderLayout.EAST);
+    menue.setPreferredSize(new Dimension(200,100));
     buttons.add(menue, java.awt.BorderLayout.WEST);
         
-    textLabel = new JLabel(texte[new Random().nextInt(texte.length)]);
+    textLabel = new JLabel(texte[new Random().nextInt(texte.length)], SwingConstants.CENTER);
  
     getContentPane().setLayout(new java.awt.BorderLayout());
     getContentPane().setBackground(Color.WHITE);
     getContentPane().add(buttons, java.awt.BorderLayout.SOUTH);
-    getContentPane().add(textLabel, java.awt.BorderLayout.NORTH);
+    getContentPane().add(textLabel, java.awt.BorderLayout.CENTER);
   }
 	
   /**

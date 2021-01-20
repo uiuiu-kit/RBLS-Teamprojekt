@@ -1,14 +1,20 @@
 package praesentation;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 /**
  * 
- * @author Nick Terzer
+ * GUI Raetselwahl
  *
  */
 public class Raetselwahl extends javax.swing.JFrame {
@@ -31,11 +37,13 @@ public class Raetselwahl extends javax.swing.JFrame {
    * initialisiert GUI und Buttonaktionen
    */
   private void init() {
-
+    
     buttons = new JButton[raetselAnzahl];	//Platzhalter, stattdessen Liste
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    getContentPane().setLayout(new java.awt.FlowLayout());
-    getContentPane().setBackground(new Color(255,102,0));
+    JPanel buttonPanel = new JPanel();
+    buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+    buttonPanel.setBackground(new Color(255,102,0));
+    buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
       buttons[j] = new JButton();
       buttons[j].setText("Rätsel " + (j + 1)); //Platzhalter Rätselname
@@ -44,9 +52,16 @@ public class Raetselwahl extends javax.swing.JFrame {
           waehleAus(e.getActionCommand());
         }
       });
-      getContentPane().add(buttons[j]);
+      buttons[j].setMaximumSize(new Dimension(Integer.MAX_VALUE, buttons[j].getMinimumSize().height*2));
+      buttons[j].setBackground(Color.WHITE);
+      buttons[j].setForeground(new Color(255,102,0));
+      buttonPanel.add(buttons[j], j);
+      buttonPanel.setBackground(new Color(255,102,0));
     }
-        
+    
+    getContentPane().setLayout(new BorderLayout());
+    getContentPane().add(buttonPanel, BorderLayout.CENTER);
+    
     zurueck = new JButton();
     zurueck.setText("ZUM MENÜ");
     zurueck.addActionListener(new ActionListener() {
@@ -56,7 +71,7 @@ public class Raetselwahl extends javax.swing.JFrame {
     });
     zurueck.setBackground(Color.LIGHT_GRAY);
     zurueck.setForeground(Color.DARK_GRAY);
-    getContentPane().add(zurueck);
+    getContentPane().add(zurueck, BorderLayout.WEST);
 
     //kommt wieder raus (!)
     debugAbschluss.addActionListener(new ActionListener() {
@@ -64,7 +79,7 @@ public class Raetselwahl extends javax.swing.JFrame {
         fw.oeffneAbschlussFenster();
       }
     });
-    getContentPane().add(debugAbschluss);
+    getContentPane().add(debugAbschluss, BorderLayout.SOUTH);
         
     pack();
   }
