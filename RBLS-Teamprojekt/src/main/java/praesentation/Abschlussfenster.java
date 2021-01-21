@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -23,8 +22,8 @@ public class Abschlussfenster extends javax.swing.JFrame {
    */
   private static final long serialVersionUID = 6076675565632852903L;
   private Fensterverwaltung fw;
-  private JButton naechstesRaetsel;
-  private JButton menue;
+  private Schaltflaeche naechstesRaetsel;
+  private Schaltflaeche menue;
   private JLabel textLabel;
   private String[] texte = new String[] {
     "Rätsel gelöst!", "Geschafft!", "[GENERISCHER ABSCHLUSSTEXT]", 
@@ -37,13 +36,13 @@ public class Abschlussfenster extends javax.swing.JFrame {
   public Abschlussfenster(Fensterverwaltung fw) {
     this.fw = fw;
 
-    naechstesRaetsel = new javax.swing.JButton("nächstes Rätsel");
+    naechstesRaetsel = new Schaltflaeche("nächstes Rätsel", 3);
     naechstesRaetsel.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeNaechstesRaetsel();
       }
     });
-    menue = new javax.swing.JButton("zum Menü");
+    menue = new Schaltflaeche("zum Menü", 3);
     menue.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeMenue();
@@ -52,12 +51,8 @@ public class Abschlussfenster extends javax.swing.JFrame {
     JPanel buttons = new JPanel(new java.awt.BorderLayout());
     buttons.setBackground(new Color(255,102,0));
     naechstesRaetsel.setPreferredSize(new Dimension(200,100));
-    naechstesRaetsel.setBackground(Color.WHITE);
-    naechstesRaetsel.setForeground(new Color(255,102,0));
     buttons.add(naechstesRaetsel, java.awt.BorderLayout.EAST);
     menue.setPreferredSize(new Dimension(200,100));
-    menue.setBackground(Color.WHITE);
-    menue.setForeground(new Color(255,102,0));
     buttons.add(menue, java.awt.BorderLayout.WEST);
         
     textLabel = new JLabel(texte[new Random().nextInt(texte.length)], SwingConstants.CENTER);

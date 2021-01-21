@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -21,12 +20,12 @@ public class Raetselwahl extends javax.swing.JFrame {
    */
   private static final long serialVersionUID = -1514024121223846041L;
   private Fensterverwaltung fw;
-  private JButton zurueck;
-  private JButton[] buttons;
+  private Schaltflaeche zurueck;
+  private Schaltflaeche[] buttons;
   private int stufe = 1; //Platzhalter Stufe
   private int raetselAnzahl = 5; //Platzhalter
   
-  private JButton debugAbschluss = new JButton("[Test Abschlussfenster]"); //MUSS WEG
+  private Schaltflaeche debugAbschluss = new Schaltflaeche("[Test Abschlussfenster]", 4); //MUSS WEG
   
   /**
    * Konstruktor.
@@ -43,15 +42,14 @@ public class Raetselwahl extends javax.swing.JFrame {
    * initialisiert GUI und Buttonaktionen.
    */
   private void init() {
-    buttons = new JButton[raetselAnzahl]; //Platzhalter, stattdessen Liste
+    buttons = new Schaltflaeche[raetselAnzahl]; //Platzhalter, stattdessen Liste
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
     buttonPanel.setBackground(new Color(255,102,0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
-      buttons[j] = new JButton();
-      buttons[j].setText("Rätsel " + (j + 1)); //Platzhalter Rätselname
+      buttons[j] = new Schaltflaeche("Rätsel " + (j + 1), 3); //Platzhalter Rätselname
       buttons[j].addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           waehleAus(e.getActionCommand());
@@ -59,8 +57,6 @@ public class Raetselwahl extends javax.swing.JFrame {
       });
       buttons[j].setMaximumSize(new Dimension(Integer.MAX_VALUE, 
           buttons[j].getMinimumSize().height * 2));
-      buttons[j].setBackground(Color.WHITE);
-      buttons[j].setForeground(new Color(255,102,0));
       buttonPanel.add(buttons[j], j);
       buttonPanel.setBackground(new Color(255,102,0));
     }
@@ -68,15 +64,12 @@ public class Raetselwahl extends javax.swing.JFrame {
     getContentPane().setLayout(new BorderLayout());
     getContentPane().add(buttonPanel, BorderLayout.CENTER);
     
-    zurueck = new JButton();
-    zurueck.setText("ZUM MENÜ");
+    zurueck = new Schaltflaeche("ZUM MENÜ", 2);
     zurueck.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeZurueck();
       }
     });
-    zurueck.setBackground(Color.LIGHT_GRAY);
-    zurueck.setForeground(Color.DARK_GRAY);
     getContentPane().add(zurueck, BorderLayout.WEST);
 
     //kommt wieder raus (!)
@@ -86,8 +79,6 @@ public class Raetselwahl extends javax.swing.JFrame {
       }
     });
     getContentPane().add(debugAbschluss, BorderLayout.SOUTH);
-    debugAbschluss.setBackground(new Color(255,102,0));
-    debugAbschluss.setForeground(Color.WHITE);
     
     pack();
   }

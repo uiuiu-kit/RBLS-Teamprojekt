@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -24,12 +23,12 @@ public class Hauptmenue extends javax.swing.JFrame {
 
   private Fensterverwaltung fw;
 
-  private JButton stufe1;
-  private JButton stufe2;
-  private JButton stufe3;
-  private JButton stufe4;
-  private JButton freierModus;
-  private JButton beenden;
+  private Schaltflaeche stufe1;
+  private Schaltflaeche stufe2;
+  private Schaltflaeche stufe3;
+  private Schaltflaeche stufe4;
+  private Schaltflaeche freierModus;
+  private Schaltflaeche beenden;
 
   public Hauptmenue(Fensterverwaltung fw) { //Fassade fehlt
     this.fw = fw;
@@ -40,12 +39,12 @@ public class Hauptmenue extends javax.swing.JFrame {
    * initialiert GUI und Buttonaktionen.
    */
   private void init() {
-    stufe1 = new javax.swing.JButton();
-    stufe2 = new javax.swing.JButton();
-    stufe3 = new javax.swing.JButton();
-    stufe4 = new javax.swing.JButton();
-    freierModus = new javax.swing.JButton();
-    beenden = new javax.swing.JButton();
+    stufe1 = new Schaltflaeche(3);
+    stufe2 = new Schaltflaeche(2);
+    stufe3 = new Schaltflaeche(2);
+    stufe4 = new Schaltflaeche(2);
+    freierModus = new Schaltflaeche("FREIER MODUS");
+    beenden = new Schaltflaeche("BEENDEN");
     JPanel startFeld = new JPanel(new java.awt.FlowLayout());
     startFeld.setBackground(Color.WHITE);
     JPanel mitte = new JPanel(new java.awt.BorderLayout());
@@ -65,8 +64,6 @@ public class Hauptmenue extends javax.swing.JFrame {
         klickeStart(1);
       }
     });
-    stufe1.setBackground(Color.WHITE);
-    stufe1.setForeground(new Color(255,102,0));
     startFeld.add(stufe1);
         
     stufe2.setText("Stufe 2");
@@ -75,8 +72,6 @@ public class Hauptmenue extends javax.swing.JFrame {
         klickeStart(2);
       }
     });
-    stufe2.setBackground(Color.LIGHT_GRAY);
-    stufe2.setForeground(Color.DARK_GRAY);
     startFeld.add(stufe2);
         
     stufe3.setText("Stufe 3");
@@ -85,8 +80,6 @@ public class Hauptmenue extends javax.swing.JFrame {
         klickeStart(3);
       }
     });
-    stufe3.setBackground(Color.LIGHT_GRAY);
-    stufe3.setForeground(Color.DARK_GRAY);
     startFeld.add(stufe3);
         
     stufe4.setText("Stufe 4");
@@ -95,8 +88,6 @@ public class Hauptmenue extends javax.swing.JFrame {
         klickeStart(4);
       }
     });
-    stufe4.setBackground(Color.LIGHT_GRAY);
-    stufe4.setForeground(Color.DARK_GRAY);
     startFeld.add(stufe4);
         
     GridBagConstraints c = new GridBagConstraints();
@@ -106,22 +97,16 @@ public class Hauptmenue extends javax.swing.JFrame {
     getContentPane().add(mitte, c);
         
     //weitere Buttons//
-    freierModus.setText("FREIER MODUS");
     freierModus.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeFreienModus();
       }
     });
-    beenden.setText("BEENDEN");
     beenden.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeBeenden();
       }
     });
-    freierModus.setBackground(new Color(255,102,0));
-    freierModus.setForeground(Color.WHITE);
-    beenden.setBackground(new Color(255,102,0));
-    beenden.setForeground(Color.WHITE);
     c.weightx = 0.5;
     c.gridx = 0;
     c.gridy = 1;
