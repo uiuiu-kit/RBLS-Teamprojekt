@@ -1,7 +1,6 @@
 package praesentation;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,33 +10,40 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
+ * Grafische Ansicht des Hauptmenüs.
+ * Stößt bei Mausklick eines Buttons das Öffnen des Rätselwahl-Bildschirms oder des freien Modus
+ * bzw. das Beenden des Programms über die Fensterverwaltung an.
  * 
- * GUI Hauptmenue
- *
  */
 public class Hauptmenue extends javax.swing.JFrame {
+
+  /**
+   * auto-generierte ID.
+   */
+  private static final long serialVersionUID = -1940385720982920614L;
+
   private Fensterverwaltung fw;
 
-  private JButton Stufe1;
-  private JButton Stufe2;
-  private JButton Stufe3;
-  private JButton Stufe4;
+  private JButton stufe1;
+  private JButton stufe2;
+  private JButton stufe3;
+  private JButton stufe4;
   private JButton freierModus;
   private JButton beenden;
 
-  public Hauptmenue(Fensterverwaltung fw) {	//Fassade fehlt
+  public Hauptmenue(Fensterverwaltung fw) { //Fassade fehlt
     this.fw = fw;
     init();
   }
     
   /**
-   * initialiert GUI und Buttonaktionen
+   * initialiert GUI und Buttonaktionen.
    */
   private void init() {
-    Stufe1 = new javax.swing.JButton();
-    Stufe2 = new javax.swing.JButton();
-    Stufe3 = new javax.swing.JButton();
-    Stufe4 = new javax.swing.JButton();
+    stufe1 = new javax.swing.JButton();
+    stufe2 = new javax.swing.JButton();
+    stufe3 = new javax.swing.JButton();
+    stufe4 = new javax.swing.JButton();
     freierModus = new javax.swing.JButton();
     beenden = new javax.swing.JButton();
     JPanel startFeld = new JPanel(new java.awt.FlowLayout());
@@ -50,50 +56,50 @@ public class Hauptmenue extends javax.swing.JFrame {
  
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     getContentPane().setLayout(new java.awt.GridBagLayout());
-    GridBagConstraints c = new GridBagConstraints();
     getContentPane().setBackground(Color.WHITE);
         
     //Stufenbuttons//
-    Stufe1.setText("Stufe 1");
-    Stufe1.addActionListener(new ActionListener() {
+    stufe1.setText("Stufe 1");
+    stufe1.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeStart(1);
       }
     });
-    Stufe1.setBackground(Color.WHITE);
-    Stufe1.setForeground(new Color(255,102,0));
-    startFeld.add(Stufe1);
+    stufe1.setBackground(Color.WHITE);
+    stufe1.setForeground(new Color(255,102,0));
+    startFeld.add(stufe1);
         
-    Stufe2.setText("Stufe 2");
-    Stufe2.addActionListener(new ActionListener() {
+    stufe2.setText("Stufe 2");
+    stufe2.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeStart(2);
       }
     });
-    Stufe2.setBackground(Color.LIGHT_GRAY);
-    Stufe2.setForeground(Color.DARK_GRAY);
-    startFeld.add(Stufe2);
+    stufe2.setBackground(Color.LIGHT_GRAY);
+    stufe2.setForeground(Color.DARK_GRAY);
+    startFeld.add(stufe2);
         
-    Stufe3.setText("Stufe 3");
-    Stufe3.addActionListener(new ActionListener() {
+    stufe3.setText("Stufe 3");
+    stufe3.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeStart(3);
       }
     });
-    Stufe3.setBackground(Color.LIGHT_GRAY);
-    Stufe3.setForeground(Color.DARK_GRAY);
-    startFeld.add(Stufe3);
+    stufe3.setBackground(Color.LIGHT_GRAY);
+    stufe3.setForeground(Color.DARK_GRAY);
+    startFeld.add(stufe3);
         
-    Stufe4.setText("Stufe 4");
-    Stufe4.addActionListener(new ActionListener() {
+    stufe4.setText("Stufe 4");
+    stufe4.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeStart(4);
       }
     });
-    Stufe4.setBackground(Color.LIGHT_GRAY);
-    Stufe4.setForeground(Color.DARK_GRAY);
-    startFeld.add(Stufe4);
+    stufe4.setBackground(Color.LIGHT_GRAY);
+    stufe4.setForeground(Color.DARK_GRAY);
+    startFeld.add(stufe4);
         
+    GridBagConstraints c = new GridBagConstraints();
     c.weightx = 0.5;
     c.gridx = 3;
     c.gridy = 1;
@@ -130,7 +136,7 @@ public class Hauptmenue extends javax.swing.JFrame {
   }
 
   /**
-   * stoesst Oeffnen von Raetselwahl an
+   * stoesst Oeffnen von Raetselwahl an.
    * @param stufe Stufe der Raetsel
    */
   private void klickeStart(int stufe) {
@@ -138,14 +144,14 @@ public class Hauptmenue extends javax.swing.JFrame {
   }
 
   /**
-   * stoesst Beenden an
+   * stoesst Beenden an.
    */
   private void klickeBeenden() {
     fw.beende();
   }
 
   /**
-   * stoesst Starten des freien Modus an
+   * stoesst Starten des freien Modus an.
    */
   private void klickeFreienModus() {
     fw.starteFreienModus();

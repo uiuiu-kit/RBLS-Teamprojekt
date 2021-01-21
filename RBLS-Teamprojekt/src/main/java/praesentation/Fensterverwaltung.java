@@ -3,22 +3,20 @@ package praesentation;
 import javax.swing.JFrame;
 import steuerung.Hauptsteuerung;
 
-/**
- * 
- * Verwaltet Fenster
- *
+/**Startet zu Beginn das Hauptmenü, wechselt die sichtbare Ansicht
+ * und stößt das Beenden des Programms durch die Hauptsteuerung an.
  */
 public class Fensterverwaltung {
 
   private Hauptsteuerung strg;
   private JFrame aktivesFenster;
 
-  public Fensterverwaltung(Hauptsteuerung strg) {	//braucht Fassade
+  public Fensterverwaltung(Hauptsteuerung strg) { //braucht Fassade
     this.strg = strg;
   }
-	
+
   /**
-   * erstellt Hauptmenue und setzt Variablen
+   * erstellt Hauptmenue und setzt Variablen.
    */
   public void init() {
     strg = new Hauptsteuerung();
@@ -31,7 +29,7 @@ public class Fensterverwaltung {
   }
 
   /**
-   * wechselt zu Hauptmenue
+   * wechselt zu Hauptmenue.
    */
   public void oeffneMenue() {
     aktivesFenster.setVisible(false);
@@ -44,12 +42,12 @@ public class Fensterverwaltung {
   }
 
   /**
-   * wechselt zu Raetselwahlfenster
+   * wechselt zu Raetselwahlfenster.
    * @param stufe Stufe der Raetsel
    */
   public void oeffneRaetselwahl(int stufe) {
     aktivesFenster.setVisible(false);
-    aktivesFenster = new Raetselwahl(this, stufe);	//Rätselliste aus Modell statt Stufe
+    aktivesFenster = new Raetselwahl(this, stufe); //Rätselliste aus Modell statt Stufe
     aktivesFenster.setTitle("Rätselwahl");
     aktivesFenster.setSize(1000, 620);
     aktivesFenster.setResizable(true);
@@ -58,7 +56,7 @@ public class Fensterverwaltung {
   }
 
   /**
-   * wechselt zu Abschlussfenster
+   * wechselt zu Abschlussfenster.
    */
   public void oeffneAbschlussFenster() {
     aktivesFenster.setVisible(false);
@@ -71,7 +69,7 @@ public class Fensterverwaltung {
   }
 
   /**
-   * startet Raetsel
+   * startet Raetsel.
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {
@@ -79,21 +77,21 @@ public class Fensterverwaltung {
   }
 
   /**
-   * startet zufaelliges Raetsel aktueller Stufe
+   * startet zufaelliges Raetsel aktueller Stufe.
    */
   public void starteZufaelligesRaetsel() {
     
   }
 
   /**
-   * startet Freien Modus
+   * startet Freien Modus.
    */
   public void starteFreienModus() {
     
   }
 
   /**
-   * stoeßt Beenden an
+   * stoeßt Beenden an.
    */
   public void beende() {
     

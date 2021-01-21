@@ -6,39 +6,44 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * 
- * GUI Raetselwahl
- *
+ * Grafische Ansicht des Rätselauswahlbildschirms einer Stufe.
  */
 public class Raetselwahl extends javax.swing.JFrame {
-	
+
+  /**
+   * auto-generierte ID.
+   */
+  private static final long serialVersionUID = -1514024121223846041L;
   private Fensterverwaltung fw;
   private JButton zurueck;
   private JButton[] buttons;
   private int stufe = 1; //Platzhalter Stufe
   private int raetselAnzahl = 5; //Platzhalter
   
-  private JButton debugAbschluss = new JButton("debug Test Abschlussfenster"); //MUSS WEG
-	
-  public Raetselwahl(Fensterverwaltung fstr, int stufe) {	//stattdessen Rätselnamenliste
+  private JButton debugAbschluss = new JButton("[Test Abschlussfenster]"); //MUSS WEG
+  
+  /**
+   * Konstruktor.
+   * @param fstr Fensterverwaltung zum Wechseln der Ansicht
+   * @param stufe Stufe der anzuzeigenden Rätsel
+   */
+  public Raetselwahl(Fensterverwaltung fstr, int stufe) { //stattdessen Rätselnamenliste
     this.fw = fstr;
     this.stufe = stufe;
     init();
   }
-	
+
   /**
-   * initialisiert GUI und Buttonaktionen
+   * initialisiert GUI und Buttonaktionen.
    */
   private void init() {
-    
-    buttons = new JButton[raetselAnzahl];	//Platzhalter, stattdessen Liste
+    buttons = new JButton[raetselAnzahl]; //Platzhalter, stattdessen Liste
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
@@ -52,7 +57,8 @@ public class Raetselwahl extends javax.swing.JFrame {
           waehleAus(e.getActionCommand());
         }
       });
-      buttons[j].setMaximumSize(new Dimension(Integer.MAX_VALUE, buttons[j].getMinimumSize().height*2));
+      buttons[j].setMaximumSize(new Dimension(Integer.MAX_VALUE, 
+          buttons[j].getMinimumSize().height * 2));
       buttons[j].setBackground(Color.WHITE);
       buttons[j].setForeground(new Color(255,102,0));
       buttonPanel.add(buttons[j], j);
@@ -80,24 +86,26 @@ public class Raetselwahl extends javax.swing.JFrame {
       }
     });
     getContentPane().add(debugAbschluss, BorderLayout.SOUTH);
-        
+    debugAbschluss.setBackground(new Color(255,102,0));
+    debugAbschluss.setForeground(Color.WHITE);
+    
     pack();
   }
-	
+
   /**
-  * stoesst Starten eines Raetsels an
+  * stoesst Starten eines Raetsels an.
   * @param name Raetselname
   */
   private void waehleAus(String name) {
     fw.starteRaetsel(name);
   }
-	
+
   /**
-   * fuehrt zurueck zum Hauptmenue
+   * fuehrt zurueck zum Hauptmenue.
    */
   private void klickeZurueck() {
     fw.oeffneMenue();
   }
-	
+
 }
 
