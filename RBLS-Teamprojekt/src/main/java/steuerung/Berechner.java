@@ -28,6 +28,7 @@ public class Berechner {
   }
 
   /**
+   * Prüft zwei Formel aus Äquivalenz.
    * 
    * @param formel1 erste Formel
    * @param formel2 zweite Formel
@@ -38,7 +39,7 @@ public class Berechner {
     boolean[][] faelle = new boolean[(int) (Math.pow(2, anzAtom))][anzAtom];
     faelle = faelleBerechnen(anzAtom, faelle, 0);
     for (int i = 0; i < faelle.length; i++) {
-      if(formel1.auswerten(faelle[i]) != formel2.auswerten(faelle[i])) {
+      if (formel1.auswerten(faelle[i]) != formel2.auswerten(faelle[i])) {
         equal = false;
       }
     }
