@@ -25,8 +25,6 @@ public class Raetselwahl extends javax.swing.JFrame {
   private int stufe = 1; //Platzhalter Stufe
   private int raetselAnzahl = 5; //Platzhalter
   
-  private Schaltflaeche debugAbschluss = new Schaltflaeche("[Test Abschlussfenster]", 4); //MUSS WEG
-  
   /**
    * Konstruktor.
    * @param fstr Fensterverwaltung zum Wechseln der Ansicht
@@ -71,14 +69,6 @@ public class Raetselwahl extends javax.swing.JFrame {
       }
     });
     getContentPane().add(zurueck, BorderLayout.WEST);
-
-    //kommt wieder raus (!)
-    debugAbschluss.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        fw.oeffneAbschlussFenster();
-      }
-    });
-    getContentPane().add(debugAbschluss, BorderLayout.SOUTH);
     
     pack();
   }
