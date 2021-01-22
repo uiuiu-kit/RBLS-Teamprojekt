@@ -2,10 +2,9 @@ package modell.formel;
 
 public abstract class Formel {
     
-  private String repreasentation = null;
+  protected String rep;
+  
+  public abstract boolean auswerten(boolean[] werte);
     
-  public String gibStringRep() {
-    return repreasentation;
-        
-  }
+  public abstract String gibStringRep();
 }
