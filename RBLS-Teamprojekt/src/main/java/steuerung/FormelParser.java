@@ -55,15 +55,29 @@ public class FormelParser {
     return formelF;
   }
 
-  private void klammerAusdrueckeErsetzen(String formelS) {
+  /**
+   * Ersetzt Klammerausdrücke.
+   * 
+   * @param formelS Formel in der Klammernasudrücke durch k(Index) ersetzt werden.
+   * @return Formel mit Ersetzungen
+   */
+  private String klammerAusdrueckeErsetzen(String formelS) {
     int i = 0;
     while (formelS.matches("...\\(...\\)...")) {
       i++;
       klammerAusdruecke.add((formelS.substring(formelS.indexOf("("), formelS.indexOf(")"))));
       formelS.replaceFirst("\\(...\\)", "k" + i);
     }
+    return formelS;
   }
 
+  /**
+   * Stellt Klammerausdrücke wieder her.
+   * 
+   * @param formelS Formel in der k(Index) durch Klammerausdrücke zurück ersetzt
+   *                werden.
+   * @return Formel mit Rückersetzungen.
+   */
   private String klammerAusdrueckeWiederherstellen(String formelS) {
     int i = 0;
     while (formelS.matches("k.")) {
