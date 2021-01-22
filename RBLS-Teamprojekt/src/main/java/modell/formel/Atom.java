@@ -6,7 +6,7 @@ public class Atom extends Formel {
   private String rep;
   private int nummer;
     
-  /** Konstruktor. Setzt nur seine Wertte, die er übergeben bekommt.
+  /** Konstruktor. Setzt nur seine Werte, die er übergeben bekommt.
    * @param aussage Entspricht dem vollen Namen des Atoms (zB Herbert).
    * @param repraesentation Großbuchstabe, der das Atom in der Formel repräsentiert.
    * @param nummer Position im Werte-Array.
