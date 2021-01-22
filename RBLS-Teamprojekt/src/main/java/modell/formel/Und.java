@@ -1,5 +1,5 @@
 package modell.formel;
 
-public class Und {
+public class Und extends BiKonnektor{
 
 }

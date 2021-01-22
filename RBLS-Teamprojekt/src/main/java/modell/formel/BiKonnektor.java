@@ -1,5 +1,5 @@
 package modell.formel;
 
-public abstract class BiKonnektor {
+public abstract class BiKonnektor extends Konnektor{
 
 }

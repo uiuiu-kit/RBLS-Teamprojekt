@@ -1,6 +1,6 @@
 package modell.formel;
 
-public class Atom {
+public class Atom extends Formel{
 
   private String aussage;
     

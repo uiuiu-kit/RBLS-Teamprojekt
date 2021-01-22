@@ -1,5 +1,5 @@
 package modell.formel;
 
-public class Implikation {
+public class Implikation extends BiKonnektor{
 
 }
