@@ -12,8 +12,10 @@ class Schaltflaeche extends javax.swing.JButton {
   public final int GRAU = 2;
   public final int WEISS = 3;
   public final int WEISS_ALT = 4;
+  public final int GRAU_ALT = 5;
 
   public Schaltflaeche() {
+    this.setBorderPainted(false);
     this.setBackground(new Color(255,102,0));
     this.setForeground(Color.WHITE);
   }
@@ -23,6 +25,7 @@ class Schaltflaeche extends javax.swing.JButton {
   }
   
   public Schaltflaeche(String text) {
+    this.setBorderPainted(false);
     this.setBackground(new Color(255,102,0));
     this.setForeground(Color.WHITE);
     this.setText(text);
@@ -38,10 +41,12 @@ class Schaltflaeche extends javax.swing.JButton {
       case 1:
         this.setBackground(new Color(255,102,0));
         this.setForeground(Color.WHITE);
+        this.setBorderPainted(false);
         break;
       case 2:
         this.setBackground(Color.LIGHT_GRAY);
         this.setForeground(Color.DARK_GRAY);
+        this.setBorderPainted(false);
         break;
       case 3:
         this.setBackground(Color.WHITE);
@@ -49,6 +54,10 @@ class Schaltflaeche extends javax.swing.JButton {
         break;
       case 4:
         this.setBackground(Color.WHITE);
+        break;
+      case 5:
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setForeground(new Color(255,102,0));
         break;
       default:
         this.setBackground(Color.WHITE);
