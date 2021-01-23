@@ -1,4 +1,4 @@
-package modell;
+package modell.tabelle;
 
 import java.util.List;
 
@@ -31,5 +31,7 @@ public class Tabelle {
   }
   
   public int gibSpaltenAnz() {
+    
+  }
   
 }
