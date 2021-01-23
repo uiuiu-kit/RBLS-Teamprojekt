@@ -1,4 +1,4 @@
-package modell;
+package modell.raetsel;
 
 import java.util.List;
 import modell.formel.Atom;
