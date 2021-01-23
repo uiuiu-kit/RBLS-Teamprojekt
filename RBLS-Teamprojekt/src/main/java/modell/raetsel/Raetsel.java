@@ -18,32 +18,30 @@ public class Raetsel {
   }
   
   public String gibRaetselText() {
-
     return raetselText;
   }
   
   public int gibStufe() {
-    
     return stufe;
   }
   
   public List<String> gibAtomareAussage() {
-    
+    //TODO
+    return null;
   }
   
   public String gibAntworttext() {
-    
     return antworttext;
   }
   
   public List<String> gibAntwort() {
-    
     return antworten;
   }
   
   //Formel.gibStringRep gibt nur einen String und keine Liste zurueck
   public List<String> gibFormel() {
-    
-    return Formel.gibStringRep();
+    //TODO
+    //return Formel.gibStringRep();
+    return null;
   }
 }

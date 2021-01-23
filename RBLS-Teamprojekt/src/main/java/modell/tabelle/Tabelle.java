@@ -2,8 +2,11 @@ package modell.tabelle;
 
 import java.util.List;
 
-public class Tabelle {
+import modell.formel.Formel;
 
+public class Tabelle {
+  
+  private Zelle zelle;
   private List<List<Zelle>> tabelle;
   private int zeile;
   private int spalte;
@@ -21,17 +24,54 @@ public class Tabelle {
     this.atomAnz = atomAnz;
   }
   
-  public void setzeZelle(int[] zelle, boolean ww) {
-    Zelle.setzeZelle();
+  public void setzeZelle(int[] z, boolean ww) {
+    zelle.setzeZelle(ww);
   }
   
-  public boolean gibZellenWert(int[] zelle) {
-    
-    return Zelle.gibZustand();
+  public boolean gibZellenWert(int[] z) {
+    //TODO
+    return false;
+  }
+  
+  public Formel gibAussagenlogischeFormel(int[] z) {
+    //TODO
+    return null;
   }
   
   public int gibSpaltenAnz() {
-    
+    return this.spalte;
   }
   
+  public int gibZeilenAnz() {
+    return this.zeile;
+  }
+  
+  public void spalteHinzufuegen() {
+    //TODO
+  }
+  
+  public void spalteEntfernen(int spalte) {
+    /* if ((this.spalte - spalte) < 1) {
+     * return;
+     * } else {
+     * this.spalte - spalte;
+     * } 
+     */
+  }
+  
+  public String gibAtomareAussage(int[] z) {
+    //TODO
+    return null;
+  }
+  
+  public boolean gibZeileFall(int z) {
+    //TODO
+    return false;
+  }
+  
+  public Formel gibFormel(int s) {
+    //TODO
+    return null;
+  }
+
 }
