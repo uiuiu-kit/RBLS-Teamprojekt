@@ -6,9 +6,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+
+import modell.raetsel.RaetselZustand;
 
 /**
  * Grafische Ansicht des Rätselauswahlbildschirms einer Stufe.
@@ -22,17 +26,16 @@ public class Raetselwahl extends javax.swing.JFrame {
   private Fensterverwaltung fw;
   private Schaltflaeche zurueck;
   private Schaltflaeche[] buttons;
-  private int stufe = 1; //Platzhalter Stufe
-  private int raetselAnzahl = 5; //Platzhalter
+  private List<RaetselZustand> raetsel;
   
   /**
    * Konstruktor.
    * @param fstr Fensterverwaltung zum Wechseln der Ansicht
-   * @param stufe Stufe der anzuzeigenden Rätsel
+   * @param liste Stufe der anzuzeigenden Rätsel
    */
-  public Raetselwahl(Fensterverwaltung fstr, int stufe) { //stattdessen Rätselnamenliste
+  public Raetselwahl(Fensterverwaltung fstr, List<RaetselZustand> liste) {
     this.fw = fstr;
-    this.stufe = stufe;
+    this.raetsel = liste;
     init();
   }
 
@@ -40,14 +43,18 @@ public class Raetselwahl extends javax.swing.JFrame {
    * initialisiert GUI und Buttonaktionen.
    */
   private void init() {
-    buttons = new Schaltflaeche[raetselAnzahl]; //Platzhalter, stattdessen Liste
+    buttons = new Schaltflaeche[raetsel.size()];
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
     buttonPanel.setBackground(new Color(255,102,0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
-      buttons[j] = new Schaltflaeche("Rätsel " + (j + 1), 3); //Platzhalter Rätselname
+      if (raetsel.get(j).geloest) {
+        buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 5);
+      } else {
+        buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 3);
+      }
       buttons[j].addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           waehleAus(e.getActionCommand());

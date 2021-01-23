@@ -1,0 +1,32 @@
+﻿FRAGEN:
+	Was macht beenden? Was macht raetselGelöst?
+	Kontorllfluss und Buttens
+	Wie wird der freie Modus gestartet?
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ÄNDERUNGEN:
+
+SteuerungFassade:
+	setzeAktRaetsel(String raetselname) //hinzugefügt für Hauptsteuerung
+
+Formel
+	ausswerten(boolean[])		//hinzugefügt
+
+Atom
+	repraesentation			//hinzugefügt
+
+WahrheitstabellenSteuerung
+	befehl() 			//Befehl parameter zu typ String, model in Konstruktor übergeben
+
+AufbauTabelle
+	atomareAussagen:List<Atom> 	//schon in der abstrakten Klasse nicht in jeder Kindklasse
+
+Berechner
+	berechneWW(...)			//entfällt wegen auswerten(boolean[]) in Formel
+	faelleBerechnen(...)		//hinzugefügt für AufbauTabelle
+	vergleicheFormel(Formel formel1, Formel formel2, int anzAtom)		//Parameter anzAtom hinzugefügt
+
+Schaltflaeche				//hinzugefügt um nicht jeden Button einzeln färben zu müssen etc.
+
+Fensterverwaltung
+	erledigeRaetsel()		//hinzugefügt als Kommunikation von RaetselFenster zu Hauptsteuerung
