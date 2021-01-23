@@ -1,12 +1,14 @@
 package praesentation;
 
+import modell.PraesentationFassade;
 import org.junit.Test;
 import steuerung.Hauptsteuerung;
 
 public class AbschlussfensterTest {
   @Test
   public void guiTest() {
-    praesentation.Fensterverwaltung fv = new praesentation.Fensterverwaltung(new Hauptsteuerung());
+    praesentation.Fensterverwaltung fv = 
+        new praesentation.Fensterverwaltung(new Hauptsteuerung(), null);
     fv.init();
     fv.oeffneAbschlussFenster();
     try {

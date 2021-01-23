@@ -52,7 +52,7 @@ public class PraesentationFassade {
     return raetsel.gibAntwort();
   }
   
-  public void gibAktuelleStufe() {
+  public int gibAktuelleStufe() {
     
   }
   
