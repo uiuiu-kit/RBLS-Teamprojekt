@@ -2,7 +2,15 @@ package modell;
 
 import java.util.List;
 
+import modell.raetsel.Raetsel;
+import modell.raetsel.RaetselZustand;
+import modell.tabelle.Tabelle;
+
 public class PraesentationFassade {
+  
+  private RaetselZustand rZustand = new RaetselZustand();
+  private Raetsel raetsel = new Raetsel();
+  private Tabelle tabelle = new Tabelle(raetsel.zeilenAnz, raetsel.spaltenAnz, raetsel.atomAnz);
 
   public void setzeRaetsel(String s) {
 
@@ -20,28 +28,28 @@ public class PraesentationFassade {
   
   public String gibAktivenRaetselnamen() {
     
-    String aktiverRaetselname = RaetselZustand.raetselname;
+    String aktiverRaetselname = rZustand.raetselname;
     return aktiverRaetselname;
   }
   
   public String gibFragestellung() {
     
-    return Raetsel.raetselText();
+    return raetsel.raetselText();
   }
   
   public String gibAntwortText() {
     
-    return Raetsel.gibAntworttext();
+    return raetsel.gibAntworttext();
   }
 
   public List<String> gibAntwortmoeglichkeiten() {
     
-    return Raetsel.gibAntwort();
+    return raetsel.gibAntwort();
   }
   
   public String gibLoesung() {
     
-    return Raetsel.gibAntwort();
+    return raetsel.gibAntwort();
   }
   
   public void gibAktuelleStufe() {
@@ -50,12 +58,12 @@ public class PraesentationFassade {
   
   public String gibZelle(int[] zelle) {
     
-    return Tabelle.gibAtomareAussage(zelle);
+    return tabelle.gibAtomareAussage(zelle);
   }
   
   public boolean gibZellenWert(int[] zelle) {
     
-    return Tabelle.gibZellenWert(zelle);
+    return tabelle.gibZellenWert(zelle);
   }
   
   public void erstelleRaetsel(List<String> atome) {
@@ -64,12 +72,12 @@ public class PraesentationFassade {
   
   public int gibZeilenAnz() {
     
-    return Tabelle.gibZeilenAnz();
+    return tabelle.gibZeilenAnz();
   }
   
   public int gibSpaltenAnz() {
     
-    return Tabelle.gibSpaltenAnz();
+    return tabelle.gibSpaltenAnz();
   }
   
   public String gibFormelText(int spalte) {
