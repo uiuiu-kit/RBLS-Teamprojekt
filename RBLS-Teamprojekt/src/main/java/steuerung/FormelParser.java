@@ -2,7 +2,7 @@ package steuerung;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import modell.SteuerungFassade;
 import modell.formel.*;
 
 public class FormelParser {
@@ -15,37 +15,43 @@ public class FormelParser {
    * @param formelS die gegebene Formel als String
    * @return Das Wurzelelement der Formel
    */
-  public Formel pars(String formelS) {
-    String[] formleSplit;
+  public Formel pars(String formelS, SteuerungFassade fassade) {
     Formel formelF = null;
+    if (formelS.length() < 2) {
+      int num = Integer.parseInt(formelS);
+      String aussage = fassade.gibAtomaeAussage().get(num);
+      String repraesentation = aussage.substring(0, 0);
+      formelF = new Atom(aussage, repraesentation, num);
+    }
+    String[] formleSplit;
     klammerAusdrueckeErsetzen(formelS);
     formleSplit = formelS.split("f", 2);
     if (formleSplit.length > 1) {
-      Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]));
-      Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]));
+      Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]), fassade);
+      Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]), fassade);
       formelF = new Implikation(rechts, links);
     } else {
       formleSplit = formelS.split("x", 2);
       if (formleSplit.length > 1) {
-        Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]));
-        Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]));
+        Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]), fassade);
+        Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]), fassade);
         formelF = new Oder(rechts, links);
       } else {
         formleSplit = formelS.split("o", 2);
         if (formleSplit.length > 1) {
-          Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]));
-          Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]));
+          Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]), fassade);
+          Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]), fassade);
           formelF = new Oder(rechts, links);
         } else {
           formleSplit = formelS.split("u", 2);
           if (formleSplit.length > 1) {
-            Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]));
-            Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]));
+            Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]), fassade);
+            Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1]), fassade);
             formelF = new Und(rechts, links);
           } else {
             formleSplit = formelS.split("n", 1);
             if (formleSplit.length > 1) {
-              Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]));
+              Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0]), fassade);
               formelF = new Nicht(rechts);
             }
           }
