@@ -1,9 +1,12 @@
 package praesentation;
 
+import java.awt.Font;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+
 import modell.PraesentationFassade;
 import modell.raetsel.RaetselZustand;
 import steuerung.Hauptsteuerung;
@@ -26,6 +29,9 @@ public class Fensterverwaltung {
    * erstellt Hauptmenue und setzt Variablen.
    */
   public void init() {
+    UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,20));
+    UIManager.put("Label.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,40));
+	
     strg = new Hauptsteuerung();
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");

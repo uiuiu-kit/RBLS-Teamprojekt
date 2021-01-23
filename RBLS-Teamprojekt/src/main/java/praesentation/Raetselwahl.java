@@ -51,7 +51,7 @@ public class Raetselwahl extends javax.swing.JFrame {
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
       if (raetsel.get(j).geloest) {
-        buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 2);
+        buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 5);
       } else {
         buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 3);
       }
