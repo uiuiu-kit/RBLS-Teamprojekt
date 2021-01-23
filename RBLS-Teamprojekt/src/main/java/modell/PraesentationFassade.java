@@ -13,75 +13,68 @@ public class PraesentationFassade {
   private Tabelle tabelle = new Tabelle(raetsel.zeilenAnz, raetsel.spaltenAnz, raetsel.atomAnz);
 
   public void setzeRaetsel(String s) {
-
+    //TODO
   }
   
   public List<RaetselZustand> gibRaetselListe(int i) {
-    List<RaetselZustand> zustand;
-    return zustand;
+    //TODO;
+    return null;
   }
 
   public List<String> gibRaetselnamen() {
-    List<String> namen;
-    return namen;
+    //TODO;
+    return null;
   }
   
   public String gibAktivenRaetselnamen() {
-    
-    String aktiverRaetselname = rZustand.raetselname;
-    return aktiverRaetselname;
+    return rZustand.raetselname;
   }
   
   public String gibFragestellung() {
-    
-    return raetsel.raetselText();
+    return raetsel.gibRaetselText();
   }
   
   public String gibAntwortText() {
-    
     return raetsel.gibAntworttext();
   }
 
   public List<String> gibAntwortmoeglichkeiten() {
-    
     return raetsel.gibAntwort();
   }
   
   public String gibLoesung() {
-    
-    return raetsel.gibAntwort();
+    //TODO
+    return null;
   }
   
-  public void gibAktuelleStufe() {
-    
+  public int gibAktuelleStufe() {
+    return raetsel.gibStufe();
   }
   
   public String gibZelle(int[] zelle) {
-    
-    return tabelle.gibAtomareAussage(zelle);
+    //TODO
+    //return tabelle.gibAtomareAussage(zelle);
+    return null;
   }
   
   public boolean gibZellenWert(int[] zelle) {
-    
     return tabelle.gibZellenWert(zelle);
   }
   
   public void erstelleRaetsel(List<String> atome) {
-    
+    //TODO
   }
   
   public int gibZeilenAnz() {
-    
     return tabelle.gibZeilenAnz();
   }
   
   public int gibSpaltenAnz() {
-    
     return tabelle.gibSpaltenAnz();
   }
   
   public String gibFormelText(int spalte) {
-    
-    return String s;
+    //TODO
+    return null;
   }
 }
