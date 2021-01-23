@@ -2,7 +2,7 @@ package steuerung;
 
 public class Hauptsteuerung {
   public Hauptsteuerung() {
-    // TODO Auto-generated constructor stub
+   
   }
 
   /**
@@ -11,9 +11,10 @@ public class Hauptsteuerung {
    */
 
   public void init() {
-    praesentation.Fensterverwaltung fv = new praesentation.Fensterverwaltung(this);
-    modell.SteuerungFassade fs = new modell.SteuerungFassade(this);
-    fs.init();
+    modell.SteuerungFassade sf = new modell.SteuerungFassade(this);
+    modell.PraesentationFassade pf = new modell.PraesentationFassade(); 
+    praesentation.Fensterverwaltung fv = new praesentation.Fensterverwaltung(this, pf);
+    sf.init();
     fv.init();
   }
 }
