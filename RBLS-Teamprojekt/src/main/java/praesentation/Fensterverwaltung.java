@@ -130,8 +130,15 @@ public class Fensterverwaltung {
    */
   public void beende() {
     aktivesFenster.setVisible(false);
-    //strg.beende();
+    strg.beende();
     System.exit(0);
+  }
+  
+  /**
+   * teilt Hauptsteuerung das Lösen des aktiven Raetsels mit.
+   */
+  public void erledigeRaetsel() {
+    strg.raetselGeloest();
   }
   
 }
