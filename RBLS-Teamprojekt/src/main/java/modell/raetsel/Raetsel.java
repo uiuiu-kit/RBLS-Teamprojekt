@@ -38,10 +38,29 @@ public class Raetsel {
     return antworten;
   }
   
+  public String gibLoesung() {
+    //TODO
+    return null;
+  }
+  
   //Formel.gibStringRep gibt nur einen String und keine Liste zurueck
   public List<String> gibFormel() {
     //TODO
     //return Formel.gibStringRep();
     return null;
+  }
+  
+  public int gibSpaltenAnz() {
+    //TODO
+    return 0;
+  }
+  
+  public int gibZeilenAnz() {
+    //TODO
+    return 0;
+  }
+  
+  public int gibAtomAnz() {
+    return atom.size();
   }
 }

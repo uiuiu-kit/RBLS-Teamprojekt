@@ -25,12 +25,28 @@ public class Tabelle {
   }
   
   public void setzeZelle(int[] z, boolean ww) {
+    //TODO
     zelle.setzeZelle(ww);
+  }
+  
+  public void setzeFormel(Formel f, int spalte) {
+    //TODO
+    zelle.setzeZelle(f);
   }
   
   public boolean gibZellenWert(int[] z) {
     //TODO
     return false;
+  }
+  
+  /**
+   * Gibt die String-Repraesentation von Wahrheitswertzelle oder Formelzelle wieder.
+   * @param i Array der Laenge 2, welches die Zelle definiert.
+   * @return String-Repraesentation der ausgewaehlten Zelle.
+   */
+  public String gibZelle(int[] i) {
+    //TODO
+    return null;
   }
   
   public Formel gibAussagenlogischeFormel(int[] z) {
@@ -48,6 +64,8 @@ public class Tabelle {
   
   public void spalteHinzufuegen() {
     //TODO
+    //if (this.spalte < spalteMax)
+    this.spalte += 1;
   }
   
   public void spalteEntfernen(int spalte) {
@@ -57,6 +75,7 @@ public class Tabelle {
      * this.spalte - spalte;
      * } 
      */
+    //TODO
   }
   
   public String gibAtomareAussage(int[] z) {
@@ -71,6 +90,13 @@ public class Tabelle {
   
   public Formel gibFormel(int s) {
     //TODO
+    return null;
+  }
+  
+  //oder soll es auch die WWZelle wiedergeben koennen?
+  public String gibFormelText(int s) {
+    //TODO
+    //Formelzelle.toString()
     return null;
   }
 
