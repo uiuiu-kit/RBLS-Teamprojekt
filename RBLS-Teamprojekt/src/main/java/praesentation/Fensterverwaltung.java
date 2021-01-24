@@ -3,10 +3,8 @@ package praesentation;
 import java.awt.Font;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-
 import modell.PraesentationFassade;
 import modell.raetsel.RaetselZustand;
 import steuerung.Hauptsteuerung;
@@ -31,7 +29,7 @@ public class Fensterverwaltung {
   public void init() {
     UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,20));
     UIManager.put("Label.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,40));
-	
+
     strg = new Hauptsteuerung();
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
@@ -73,7 +71,7 @@ public class Fensterverwaltung {
    */
   public void oeffneAbschlussFenster() {
     aktivesFenster.setVisible(false);
-    aktivesFenster = new Abschlussfenster(this);  // + Stufe (?!)
+    aktivesFenster = new Abschlussfenster(this);
     aktivesFenster.setTitle("Abschlussfenster");
     aktivesFenster.setSize(1000, 620);
     aktivesFenster.setResizable(true);
@@ -115,9 +113,9 @@ public class Fensterverwaltung {
    * startet Freien Modus.
    */
   public void starteFreienModus() {
-    strg.raetselFensterInit("").ansicht;
+    strg.raetselFensterInit("");
     aktivesFenster.setVisible(false);
-    aktivesFenster = new FreiesRaetselFenster(this, modell);
+    aktivesFenster = new FreiesRaetselFenster(this, modell).ansicht;
     aktivesFenster.setTitle("RBLS");
     aktivesFenster.setSize(1000, 620);
     aktivesFenster.setResizable(true);

@@ -38,7 +38,7 @@ public class Hauptsteuerung {
   /**
    * beendet das Rätsel und setst das Rätsel auf gelöst.
    */
-  public void reatselGeloest() {
+  public void raetselGeloest() {
     // ToDo
   }
 
