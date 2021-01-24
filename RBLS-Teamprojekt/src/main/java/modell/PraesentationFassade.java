@@ -1,33 +1,36 @@
 package modell;
 
 import java.util.List;
-
 import modell.raetsel.Raetsel;
 import modell.raetsel.RaetselZustand;
+import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
 public class PraesentationFassade {
   
-  private RaetselZustand rZustand = new RaetselZustand();
-  private Raetsel raetsel = new Raetsel();
-  private Tabelle tabelle = new Tabelle(raetsel.zeilenAnz, raetsel.spaltenAnz, raetsel.atomAnz);
+  private Raetselinterpret interpret;
+  private RaetselZustand raetselZustand = new RaetselZustand();
+  private Raetsel raetsel;
+  private Tabelle tabelle;
 
-  public void setzeRaetsel(String s) {
-    //TODO
+  public void setzeRaetsel(Raetsel r, Tabelle t, Raetselinterpret i) {
+    this.interpret = i;
+    this.raetsel = r;
+    this.tabelle = t;
   }
   
-  public List<RaetselZustand> gibRaetselListe(int i) {
-    //TODO;
-    return null;
+  //laut Sequenzdiagramm so, aber im uml anders
+  public List<String> gibRaetselListe(int i) {
+    return interpret.liesOrdner(i);
   }
 
   public List<String> gibRaetselnamen() {
-    //TODO;
+    //TODO
     return null;
   }
   
   public String gibAktivenRaetselnamen() {
-    return rZustand.raetselname;
+    return raetselZustand.raetselname;
   }
   
   public String gibFragestellung() {
@@ -43,8 +46,7 @@ public class PraesentationFassade {
   }
   
   public String gibLoesung() {
-    //TODO
-    return null;
+    return raetsel.gibLoesung();
   }
   
   public int gibAktuelleStufe() {
@@ -52,9 +54,7 @@ public class PraesentationFassade {
   }
   
   public String gibZelle(int[] zelle) {
-    //TODO
-    //return tabelle.gibAtomareAussage(zelle);
-    return null;
+    return tabelle.gibZelle(zelle);
   }
   
   public boolean gibZellenWert(int[] zelle) {
@@ -74,7 +74,6 @@ public class PraesentationFassade {
   }
   
   public String gibFormelText(int spalte) {
-    //TODO
-    return null;
+    return tabelle.gibFormelText(spalte);
   }
 }
