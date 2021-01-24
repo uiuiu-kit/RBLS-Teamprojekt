@@ -3,14 +3,21 @@ package modell;
 import java.util.List;
 import modell.formel.Atom;
 import modell.formel.Formel;
+import modell.raetsel.Memento;
+import modell.raetsel.Raetsel;
+import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
 public class SteuerungFassade {
   
-  private Tabelle tabelle = new Tabelle(0, 0, 0);
+  private Raetselinterpret interpret;
+  private Memento memento = new Memento();
+  private Raetsel raetsel;
+  private Tabelle tabelle;
 
   public void init() {
-    //TODO
+    this.interpret = new Raetselinterpret();
+    interpret.erstelleRaetsel();
   }
   
   public List<Atom> gibAtomareAussage() {
@@ -27,8 +34,8 @@ public class SteuerungFassade {
     return tabelle.gibZellenWert(i);
   }
   
-  public void setzeZelleWW(int[] i) {
-    //TODO
+  public void setzeZelleWW(int[] i, boolean ww) {
+    tabelle.setzeZelle(i, ww);
   }
   
   public int gibZeilenAnz() {
@@ -51,8 +58,8 @@ public class SteuerungFassade {
     tabelle.spalteEntfernen(spalte);
   }
   
-  public void fuehreSicherungAus() {
-    //TODO
+  public void fuehreSicherungAus(Raetsel r) {
+    memento.sichern(r);
   }
   
   public Formel gibFormel(int spalte) {
@@ -60,15 +67,18 @@ public class SteuerungFassade {
   }
   
   public void setzeFormel(Formel f, int spalte) {
-    //TODO
+    tabelle.setzeFormel(f, spalte);
   }
   
   public String gibFormelText(int spalte) {
-    //TODO
-    return null;
+    return tabelle.gibFormelText(spalte);
   }
   
   public void setzeAktRaetsel(String raetselname) {
-    //TODO
+    this.raetsel = this.interpret.liesRaetsel(raetselname);
+    this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
+        raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
+    PraesentationFassade praesFassade = new PraesentationFassade();
+    praesFassade.setzeRaetsel(raetsel, tabelle, interpret);
   }
 }
