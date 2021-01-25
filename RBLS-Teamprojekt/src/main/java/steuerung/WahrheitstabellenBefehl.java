@@ -3,7 +3,7 @@ package steuerung;
 import modell.SteuerungFassade;
 
 public abstract class WahrheitstabellenBefehl {
-  SteuerungFassade model;
+  private SteuerungFassade model;
 
   /**
    * Konstruktor für WahrheitstabellenBefehl.

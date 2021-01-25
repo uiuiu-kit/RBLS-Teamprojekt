@@ -2,10 +2,10 @@ package steuerung;
 
 public class Hauptsteuerung {
 
-  modell.SteuerungFassade sf;
-  modell.PraesentationFassade pf;
-  praesentation.Fensterverwaltung fv;
-  WahrheitstabellenSteuerungen ws;
+  private modell.SteuerungFassade sf;
+  private modell.PraesentationFassade pf;
+  private praesentation.Fensterverwaltung fv;
+  private WahrheitstabellenSteuerungen ws;
 
   public Hauptsteuerung() {
 
