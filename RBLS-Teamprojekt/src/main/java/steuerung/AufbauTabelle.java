@@ -16,6 +16,7 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
    */
   public AufbauTabelle(SteuerungFassade model) {
     super(model);
+    holeDaten();
   }
 
   /**
@@ -23,6 +24,6 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
    * AufbauTabelle verwendet werden.
    */
   private void holeDaten() {
-    atomareAussagen = model.gibAtomareAussagen();
+    atomareAussagen = model.gibAtomareAussage();
   }
 }

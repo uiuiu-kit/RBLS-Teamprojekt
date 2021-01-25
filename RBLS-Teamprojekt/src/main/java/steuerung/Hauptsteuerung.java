@@ -17,7 +17,7 @@ public class Hauptsteuerung {
    */
 
   public void init() {
-    sf = new modell.SteuerungFassade(this);
+    sf = new modell.SteuerungFassade();
     pf = new modell.PraesentationFassade();
     fv = new praesentation.Fensterverwaltung(this, pf);
     sf.init();
@@ -30,7 +30,7 @@ public class Hauptsteuerung {
    * @param raetselname der Name des Rätsel das gestartet werden soll.
    */
   public void raetselFensterInit(String raetselname) {
-    sf.setzeRaetsel(raetselname);
+    sf.setzeAktRaetsel(raetselname);
     ws = new WahrheitstabellenSteuerungen(sf);
     ws.befehl("AufbauTabelle");
   }
@@ -46,6 +46,6 @@ public class Hauptsteuerung {
    * stößt die Erstellung der Sicherungsdatei und beendet das Programm.
    */
   public void beenden() {
-    // ToDo
+    System.exit(0);
   }
 }

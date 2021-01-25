@@ -19,7 +19,7 @@ public class FormelParser {
     Formel formelF = null;
     if (formelS.length() < 2) {
       int num = Integer.parseInt(formelS);
-      String aussage = fassade.gibAtomaeAussage().get(num);
+      String aussage = fassade.gibAtomareAussage().get(num).getAussage();
       String repraesentation = aussage.substring(0, 0);
       formelF = new Atom(aussage, repraesentation, num);
     }
