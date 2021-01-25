@@ -12,6 +12,11 @@ import java.util.List;
  */
 public class Raetselinterpret {
 
+  /**Lisstet alle verfügbaren Raetselnamen auf, die im Ordner 
+   * src,main,resources,Raetsel unter der jeweiligen Stufe hinterlegt sind.
+   * @param i Raetselstufe, nach deren Raetsel gesucht wird.
+   * @return Liste aller Raetselnamen, die die genannte Stufe erfüllen.
+   */
   public List<String> liesOrdner(int i) {
     //TODO
     return null;

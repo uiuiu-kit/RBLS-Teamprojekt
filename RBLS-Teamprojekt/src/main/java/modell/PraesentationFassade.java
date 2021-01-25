@@ -13,10 +13,14 @@ public class PraesentationFassade {
   private Raetsel raetsel;
   private Tabelle tabelle;
 
-  public void setzeRaetsel(Raetsel r, Tabelle t, Raetselinterpret i) {
-    this.interpret = i;
-    this.raetsel = r;
-    this.tabelle = t;
+  
+  public PraesentationFassade(Raetselinterpret interpret) {
+    this.interpret = interpret;
+  }
+
+  public void setzeRaetsel(Raetsel raetsel, Tabelle tabelle) {
+    this.raetsel = raetsel;
+    this.tabelle = tabelle;
   }
   
   //laut Sequenzdiagramm so, aber im uml anders

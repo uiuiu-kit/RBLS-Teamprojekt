@@ -14,10 +14,12 @@ public class SteuerungFassade {
   private Memento memento = new Memento();
   private Raetsel raetsel;
   private Tabelle tabelle;
+  PraesentationFassade praesFassade;
 
   public void init() {
     this.interpret = new Raetselinterpret();
-    interpret.erstelleRaetsel();
+    praesFassade = new PraesentationFassade(interpret);
+    // interpret.liesRaetsel(); hier kann noch kein Raetsel erstellt werden. In der Initphase ist noch nicht bekannt, welches Reatsel ausgewählt wurde.
   }
   
   public List<Atom> gibAtomareAussage() {
@@ -81,7 +83,6 @@ public class SteuerungFassade {
     this.raetsel = this.interpret.liesRaetsel(raetselname);
     this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
         raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
-    PraesentationFassade praesFassade = new PraesentationFassade();
-    praesFassade.setzeRaetsel(raetsel, tabelle, interpret);
+    praesFassade.setzeRaetsel(raetsel, tabelle);
   }
 }
