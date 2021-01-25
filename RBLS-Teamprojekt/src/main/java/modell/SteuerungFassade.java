@@ -10,11 +10,23 @@ import modell.tabelle.Tabelle;
 
 public class SteuerungFassade {
   
+  private static SteuerungFassade steuFa = null;
   private Raetselinterpret interpret;
   private Memento memento = new Memento();
   private Raetsel raetsel;
   private Tabelle tabelle;
   PraesentationFassade praesFassade;
+  
+  /**Einzelstückmethode, die dafür sorgt, dass die Klasse nur einmaql erstellt, 
+   * aber jederzeit von allen Klassen genutzt werden kann.
+   * @return Objekt der Klasse SteuerungFassade.
+   */
+  public static SteuerungFassade gibSteuFa() {
+    if (steuFa == null) {
+      steuFa  = new SteuerungFassade();
+    }
+    return steuFa;
+  }
 
   /** Initialisiert die Erstellung aller Modell-Objekte zu Beginn des Programms, 
    * die ohne weitere Eingaben des Benutzers erstellt werden können
@@ -86,15 +98,5 @@ public class SteuerungFassade {
   
   public String gibFormelText(int spalte) {
     return tabelle.gibFormelText(spalte);
-  }
-  
-  /** 
-   * @param raetselname
-   */
-  public void setzeAktRaetsel(String raetselname) {
-    this.raetsel = this.interpret.liesRaetsel(raetselname);
-    this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
-        raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
-    praesFassade.setzeRaetsel(raetsel, tabelle);
   }
 }

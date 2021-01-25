@@ -7,20 +7,30 @@ import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
 public class PraesentationFassade {
+  private static PraesentationFassade praFa = null;
   
   private Raetselinterpret interpret;
   private RaetselZustand raetselZustand = new RaetselZustand();
   private Raetsel raetsel;
   private Tabelle tabelle;
 
+  public static PraesentationFassade gibPraFa() {
+    return praFa;
+  }
   
-  public PraesentationFassade(Raetselinterpret interpret) {
+  public  PraesentationFassade(Raetselinterpret interpret) {
     this.interpret = interpret;
   }
-
-  public void setzeRaetsel(Raetsel raetsel, Tabelle tabelle) {
-    this.raetsel = raetsel;
-    this.tabelle = tabelle;
+  
+  /**Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem RInterpreten übergibt, 
+   * der ein neues Raetselobjekt zurückgibt. Dieses wird hier gesetzt 
+   * und daraus eine neue Tabelle erzeugt.
+   * @param raetselname Name des neuen Raetsels
+   */
+  public void setzeRaetsel(String raetselname) {
+    this.raetsel = this.interpret.liesRaetsel(raetselname);
+    this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
+        raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
   }
   
   /** Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.
@@ -31,12 +41,6 @@ public class PraesentationFassade {
     return interpret.liesOrdner(i);
   }
 
-  /* wadde was? ist das nicht das selbe wie die Methode gibRaetselliste?
-  public List<String> gibRaetselnamen() {
-    //TODO
-    return null;
-  }*/
-  
   public String gibAktivenRaetselnamen() {
     return raetselZustand.raetselname;
   }
