@@ -17,6 +17,7 @@ public class Fensterverwaltung {
   private Hauptsteuerung strg;
   private JFrame aktivesFenster;
   private PraesentationFassade modell;
+  private int[] fensterMass = new int[]{1000, 620};
 
   public Fensterverwaltung(Hauptsteuerung strg, PraesentationFassade fsd) {
     this.strg = strg;
@@ -33,7 +34,7 @@ public class Fensterverwaltung {
     strg = new Hauptsteuerung();
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
-    aktivesFenster.setSize(1000, 620);
+    aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
     aktivesFenster.setVisible(true);
@@ -43,13 +44,7 @@ public class Fensterverwaltung {
    * wechselt zu Hauptmenue.
    */
   public void oeffneMenue() {
-    aktivesFenster.setVisible(false);
-    aktivesFenster = new Hauptmenue(this);
-    aktivesFenster.setTitle("RBLS");
-    aktivesFenster.setSize(1000, 620);
-    aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
-    aktivesFenster.setVisible(true);
+    wechseleFenster(new Hauptmenue(this), "RBLS");
   }
 
   /**
@@ -57,26 +52,14 @@ public class Fensterverwaltung {
    * @param stufe Stufe der Raetsel
    */
   public void oeffneRaetselwahl(int stufe) {
-    aktivesFenster.setVisible(false);
-    aktivesFenster = new Raetselwahl(this, modell.gibRaetselListe(stufe));
-    aktivesFenster.setTitle("Rätselwahl");
-    aktivesFenster.setSize(1000, 620);
-    aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
-    aktivesFenster.setVisible(true);
+    wechseleFenster(new Raetselwahl(this, modell.gibRaetselListe(stufe)), "Rätselwahl");
   }
 
   /**
    * wechselt zu Abschlussfenster.
    */
   public void oeffneAbschlussFenster() {
-    aktivesFenster.setVisible(false);
-    aktivesFenster = new Abschlussfenster(this);
-    aktivesFenster.setTitle("Abschlussfenster");
-    aktivesFenster.setSize(1000, 620);
-    aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
-    aktivesFenster.setVisible(true);
+    wechseleFenster(new Abschlussfenster(this), "Abschlussfenster");
   }
 
   /**
@@ -85,14 +68,7 @@ public class Fensterverwaltung {
    */
   public void starteRaetsel(String name) {
     strg.raetselFensterInit(name);
-    aktivesFenster.setVisible(false);
-    aktivesFenster = new StufenRaetselFenster(this, modell).ansicht;
-    aktivesFenster.setTitle("RBLS");
-    aktivesFenster.setSize(1000, 620);
-    aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
-    aktivesFenster.setVisible(true);
-    
+    wechseleFenster(new StufenRaetselFenster(this, modell).ansicht, "RBLS");    
   }
 
   /**
@@ -114,13 +90,7 @@ public class Fensterverwaltung {
    */
   public void starteFreienModus() {
     strg.raetselFensterInit("");
-    aktivesFenster.setVisible(false);
-    aktivesFenster = new FreiesRaetselFenster(this, modell).ansicht;
-    aktivesFenster.setTitle("RBLS");
-    aktivesFenster.setSize(1000, 620);
-    aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
-    aktivesFenster.setVisible(true);
+    wechseleFenster(new FreiesRaetselFenster(this, modell).ansicht, "RBLS");
   }
 
   /**
@@ -139,4 +109,13 @@ public class Fensterverwaltung {
     strg.raetselGeloest();
   }
   
+  private void wechseleFenster(JFrame fenster, String titel) {
+    aktivesFenster.setVisible(false);
+    aktivesFenster = fenster;
+    aktivesFenster.setTitle("titel");
+    aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
+    aktivesFenster.setResizable(true);
+    aktivesFenster.setLocation(50, 50);
+    aktivesFenster.setVisible(true);
+  }
 }
