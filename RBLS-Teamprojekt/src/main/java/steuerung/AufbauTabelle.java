@@ -6,7 +6,7 @@ import modell.formel.Atom;
 
 public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
 
-  private List<Atom> atomareAussagen;
+  protected List<Atom> atomareAussagen;
 
   /**
    * Konstruktor für den Befehle vom Typ AufbauTabelle.
