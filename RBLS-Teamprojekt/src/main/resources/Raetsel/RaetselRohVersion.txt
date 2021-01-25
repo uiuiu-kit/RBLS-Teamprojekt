@@ -1,0 +1,25 @@
+Titel
+
+##
+
+Beschreibung(Text)
+
+##
+
+$Text der Antwortbox$
+
+##
+
+Taeter mit Komma getrennt
+
+##
+
+Zuordnung der Taeter mit (Zahl)Taeter
+
+##
+
+Aussagenlogische Formel mit Schema Atom = Großbuchstabe, UND = u, ODER = o, NICHT = n, XOR = x, Implikation = f 
+##
+
+Raetselstufe
+

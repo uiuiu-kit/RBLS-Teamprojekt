@@ -8,7 +8,7 @@ public class Wahrheitswertzelle extends Zelle {
     wahrheitswert = w;    
   }
   
-  @Override
+  
   public boolean gibZustand() {
     return wahrheitswert;
   }

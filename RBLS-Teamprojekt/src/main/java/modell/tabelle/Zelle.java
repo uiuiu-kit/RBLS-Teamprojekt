@@ -11,8 +11,6 @@ public abstract class Zelle {
   }
   
   public abstract String toString();
-  
-  public abstract boolean gibZustand();
 
   public void setzeZelle(boolean w) {
   }

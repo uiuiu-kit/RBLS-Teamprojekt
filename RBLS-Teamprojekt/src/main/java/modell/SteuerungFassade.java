@@ -74,6 +74,9 @@ public class SteuerungFassade {
     return tabelle.gibFormelText(spalte);
   }
   
+  /**
+   * @param raetselname
+   */
   public void setzeAktRaetsel(String raetselname) {
     this.raetsel = this.interpret.liesRaetsel(raetselname);
     this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
