@@ -18,14 +18,10 @@ public abstract class WahrheitstabellenBefehl {
   /**
    * hohlt alle Daten die für den Befehl benötigt werden von der Fassade.
    */
-  public void hohleDaten() {
-
-  }
+  public abstract void hohleDaten();
 
   /**
    * Stezt in der Fassade alle Daten die der Befehl verändert hat.
    */
-  public void setzeDaten() {
-
-  }
+  public abstract void setzeDaten();
 }
