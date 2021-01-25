@@ -16,20 +16,32 @@ public class SteuerungFassade {
   private Tabelle tabelle;
   PraesentationFassade praesFassade;
 
+  /** Initialisiert die Erstellung aller Modell-Objekte zu Beginn des Programms, 
+   * die ohne weitere Eingaben des Benutzers erstellt werden können
+   * Diese sind der Raetselinterpret, Memento und die Praesentationsfassade.
+   * 
+   */
   public void init() {
     this.interpret = new Raetselinterpret();
     praesFassade = new PraesentationFassade(interpret);
-    // interpret.liesRaetsel(); hier kann noch kein Raetsel erstellt werden. In der Initphase ist noch nicht bekannt, welches Reatsel ausgewählt wurde.
+    /* interpret.liesRaetsel(); hier kann noch kein Raetsel erstellt werden. 
+    In der Initphase ist noch nicht bekannt, welches Reatsel ausgewählt wurde.
+    Bitte nach dem Lesen diesen Kommentar löschen
+    */
   }
   
+  /** Gibt eine Liste aller im Raetsel verwendeter Atome aus.
+   * @return Liste der Atomobjekte.
+   */
   public List<Atom> gibAtomareAussage() {
-    //TODO
-    return null;
+    return this.raetsel.gibAtomareAussage();
   }
   
+  /** Gibt eine Liste aller Formeln zurück, die in der Tabelle verwendung finden.
+   * @return
+   */
   public List<String> gibNoetigeFormel() {
-    //TODO
-    return null;
+    return this.raetsel.gibFormeln();
   }
   
   public boolean gibZelleWW(int[] i) {
@@ -76,7 +88,7 @@ public class SteuerungFassade {
     return tabelle.gibFormelText(spalte);
   }
   
-  /**
+  /** 
    * @param raetselname
    */
   public void setzeAktRaetsel(String raetselname) {

@@ -1,9 +1,16 @@
 package modell.raetsel;
 
+import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Atom;
 import modell.formel.Formel;
 
+/**Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei 
+ * dem Rest des Programms zur Verfügung zu stellen.
+ * Es wird daher vom Raetselinterpreten erstellt und der Fassade übergeben.
+ * @author Flo
+ *
+ */
 public class Raetsel {
   
   private String raetselText;
@@ -12,9 +19,18 @@ public class Raetsel {
   private String antworttext;
   private List<String> antworten;
   private List<Formel> formeln;
+  private int spaltenAnz;
+  private int zeilenAnz;
+  private String loesung;
 
-  public Raetsel() {
-    
+  /**Konstruktor des Raetsels. Soll durch RInterpret erstellt werden
+   * 
+   */
+  public Raetsel(int zeilenAnz, int spaltenAnz, List<Atom> atom, String loesung) {
+    this.spaltenAnz = spaltenAnz;
+    this.zeilenAnz = zeilenAnz;
+    this.atom = atom;
+    this.loesung = loesung;
   }
   
   public String gibRaetselText() {
@@ -25,9 +41,20 @@ public class Raetsel {
     return stufe;
   }
   
-  public List<String> gibAtomareAussage() {
-    //TODO
-    return null;
+  /**Wandelt die Liste der Atome in eine Liste der entsprechenden Namen der Atome um 
+   * und gibt diese zurück.
+   * @return Liste der Atomnamen.
+   */
+  public List<String> gibAtomNamen() {
+    List<String> temp = new ArrayList<String>();
+    for (int i = 0; i < this.atom.size(); i++) {
+      temp.add(atom.get(i).gibStringRep());
+    }
+    return temp;
+  }
+  
+  public List<Atom> gibAtomareAussage() {
+    return atom;
   }
   
   public String gibAntworttext() {
@@ -39,25 +66,27 @@ public class Raetsel {
   }
   
   public String gibLoesung() {
-    //TODO
-    return null;
+    return this.loesung;
   }
   
-  //Formel.gibStringRep gibt nur einen String und keine Liste zurueck
-  public List<String> gibFormel() {
-    //TODO
-    //return Formel.gibStringRep();
-    return null;
+  /**Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der Formeln um 
+   * und gibt diese zurück.
+   * @return Liste der benbötigten Formelnamen, die zur Lösung des Raetsels benötigt werden.
+   */
+  public List<String> gibFormeln() {
+    List<String> temp = new ArrayList<String>();
+    for (int i = 0; i < this.formeln.size(); i++) {
+      temp.add(formeln.get(i).gibStringRep());
+    }
+    return temp;
   }
   
   public int gibSpaltenAnz() {
-    //TODO
-    return 0;
+    return this.spaltenAnz;
   }
   
   public int gibZeilenAnz() {
-    //TODO
-    return 0;
+    return this.zeilenAnz;
   }
   
   public int gibAtomAnz() {

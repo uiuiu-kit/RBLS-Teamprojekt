@@ -1,6 +1,8 @@
 package modell.raetsel;
 
 import java.util.List;
+import modell.formel.Atom;
+
 
 /** Der Raetselinterpret liest die Ordnerstruktur aus 
  * und liefert darauf basierend Raetselnamen zurück. 
@@ -28,14 +30,16 @@ public class Raetselinterpret {
    * @return neues Raetselobjekt.
    */
   public Raetsel liesRaetsel(String name) {
+    String loesung = null;;
     int zeilen = 0;
     int spalten = 0;
-    int atome = 0;
+    List<Atom> atome = null;
     //TODO
     //lesen der Textdatei, zwischenspeichern in lokaler Variable 
     //und dann mit Konstruktor Raetsel erstellen.
     
-    return new Raetsel(zeilen, spalten, atome/*Parameter bei Ausimplementieren aktuallisieren*/);
+    return new Raetsel(zeilen, spalten, atome, loesung
+        /*Parameter bei Ausimplementieren aktuallisieren*/);
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.

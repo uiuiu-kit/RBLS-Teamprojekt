@@ -23,15 +23,19 @@ public class PraesentationFassade {
     this.tabelle = tabelle;
   }
   
-  //laut Sequenzdiagramm so, aber im uml anders
+  /** Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.
+   * @param i Raetselstufe, nach der gesucht wird.
+   * @return Liste der Raetselnamen der entsprechenden Stufe.
+   */
   public List<String> gibRaetselListe(int i) {
     return interpret.liesOrdner(i);
   }
 
+  /* wadde was? ist das nicht das selbe wie die Methode gibRaetselliste?
   public List<String> gibRaetselnamen() {
     //TODO
     return null;
-  }
+  }*/
   
   public String gibAktivenRaetselnamen() {
     return raetselZustand.raetselname;
@@ -66,7 +70,7 @@ public class PraesentationFassade {
   }
   
   public void erstelleRaetsel(List<String> atome) {
-    //TODO
+    this.interpret.erstelleFR(atome);
   }
   
   public int gibZeilenAnz() {
