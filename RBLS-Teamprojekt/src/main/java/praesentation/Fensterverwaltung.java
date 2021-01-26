@@ -105,6 +105,7 @@ public class Fensterverwaltung {
    */
   public void erledigeRaetsel() {
     strg.raetselGeloest();
+    oeffneAbschlussFenster();
   }
   
   private void wechseleFenster(JFrame fenster, String titel) {
