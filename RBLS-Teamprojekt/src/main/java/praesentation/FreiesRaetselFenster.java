@@ -4,9 +4,9 @@ import javax.swing.JFrame;
 
 import modell.PraesentationFassade;
 
-public class FreiesRaetselFenster {
+public class FreiesRaetselFenster extends RaetselFenster {
 
-	public JFrame ansicht;
+
 
 	public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell) {
 		// TODO Auto-generated constructor stub

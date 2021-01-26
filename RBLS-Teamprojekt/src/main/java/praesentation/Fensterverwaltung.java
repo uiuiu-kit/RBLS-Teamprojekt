@@ -31,7 +31,6 @@ public class Fensterverwaltung {
     UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,20));
     UIManager.put("Label.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,40));
 
-    strg = new Hauptsteuerung();
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
@@ -89,7 +88,6 @@ public class Fensterverwaltung {
    * startet Freien Modus.
    */
   public void starteFreienModus() {
-    strg.raetselFensterInit("");
     wechseleFenster(new FreiesRaetselFenster(this, modell).ansicht, "RBLS");
   }
 
@@ -112,7 +110,7 @@ public class Fensterverwaltung {
   private void wechseleFenster(JFrame fenster, String titel) {
     aktivesFenster.setVisible(false);
     aktivesFenster = fenster;
-    aktivesFenster.setTitle("titel");
+    aktivesFenster.setTitle(titel);
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
