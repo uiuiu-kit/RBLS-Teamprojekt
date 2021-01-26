@@ -1,5 +1,11 @@
 package modell.formel;
 
+/**Unterklasse des Bikonnektors.
+ * Verknüft seinen linken und rechten Formelnachbarn mit einem logischen EXOR beim Auzswerten.
+ * Seine String Repräsentation ist "x".
+ * @author Flo
+ *
+ */
 public class ExklusivOder extends BiKonnektor {
 
   /** Kostruktor. Setzt übergebene Werte und seine String Rep.

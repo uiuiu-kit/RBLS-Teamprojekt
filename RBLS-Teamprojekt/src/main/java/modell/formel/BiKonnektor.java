@@ -1,5 +1,9 @@
 package modell.formel;
 
+/** Abstrakte Unterklasse des Konnektors, von ihr erben UND, ODER, EXOR und ImplikatorBokonnektor.
+ * @author Flo
+ *
+ */
 public abstract class BiKonnektor extends Konnektor {
   
   protected Formel rechts;
