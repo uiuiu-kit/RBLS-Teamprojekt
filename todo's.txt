@@ -5,6 +5,10 @@
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ÄNDERUNGEN:
 
+PraesentationFassade
+	gibGeeloest(String Raetselname) //hinzugefügt
+
+
 Formel
 	ausswerten(boolean[])		//hinzugefügt
 
