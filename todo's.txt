@@ -1,13 +1,9 @@
 ﻿FRAGEN:
-	Was macht beenden? Was macht raetselGelöst?
 	Kontorllfluss und Buttens
 	Wie wird der freie Modus gestartet?
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ÄNDERUNGEN:
-
-SteuerungFassade:
-	setzeAktRaetsel(String raetselname) //hinzugefügt für Hauptsteuerung
 
 Formel
 	ausswerten(boolean[])		//hinzugefügt
