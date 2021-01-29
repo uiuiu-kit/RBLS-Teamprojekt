@@ -6,22 +6,19 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-
 import modell.PraesentationFassade;
 
 public class StufenRaetselFenster extends RaetselFenster {
 
-  private String frage = "Rätsel #24: \n"  //Standardtext zu Testzwecken
-      + "Lorem ipsum dolor sit amet, consetetur sadipscing "
+  private String name = "Raetsel #27";
+  private String frage = "Lorem ipsum dolor sit amet, consetetur sadipscing "
       + "elitr, sed diam nonumy eirmod tempor"
       + " invidunt ut labore et dolore magna aliquyam "
       + "erat, sed diam voluptua. At vero eos et accusam et"
@@ -31,9 +28,7 @@ public class StufenRaetselFenster extends RaetselFenster {
       + "sit amet, consetetur sadipscing elitr, sed diam nonumy "
       + "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
       + "At vero eos et accusam et justo duo dolores et ea rebum. "
-      + "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
-      + "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor"
-      + " invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.";
+      + "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ";
   
   private JTextArea frageFeld;
   private JPanel antwortAnsicht;
@@ -45,16 +40,18 @@ public class StufenRaetselFenster extends RaetselFenster {
   public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell) {
     this.fv = fensterverwaltung;
     this.modell = modell;
+    this.tabelle = new KonkreteTabellenAnsicht(modell);
     
+    /* BRAUCHT MODELL UND STEUERUNG
+    this.name = modell.gibAktivenRaetselnamen();
+    this.frage = modell.gibFragestellung();
+    */
     ansicht = new JFrame();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
     ansicht.getContentPane().setBackground(Color.WHITE);
     
-    JPanel fragePanel = new JPanel();
-    JPanel tabellenPanel = new JPanel();
-    JPanel antwortPanel = new JPanel();
-    
     //FragePanel//
+    JPanel fragePanel = new JPanel();
     fragePanel.setLayout(new BorderLayout());
     fragePanel.setBackground(Color.WHITE);
     
@@ -88,22 +85,29 @@ public class StufenRaetselFenster extends RaetselFenster {
     JPanel frageFeldPanel = new JPanel();
     frageFeldPanel.setLayout(new BoxLayout(frageFeldPanel,BoxLayout.X_AXIS));
     frageFeldPanel.add(frageFeld);
-    JPanel frageRahmen = erzeugeRahmenPanel(frageFeldPanel);
+    JPanel frageRahmen = erzeugeRahmenPanel(frageFeldPanel, this.name);
     
     fragePanel.add(menuePanel, BorderLayout.WEST);
     fragePanel.add(frageRahmen, BorderLayout.CENTER);
     fragePanel.add(tippPanel, BorderLayout.EAST);
     
     //WahrheitstabellenPanel//
+    JPanel tabellenPanel = new JPanel();
     tabellenPanel.setLayout(new BorderLayout());
     tabellenPanel.setBackground(Color.DARK_GRAY);
     tabellenPanel.add(new javax.swing.JLabel("TABELLE", SwingConstants.CENTER));
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
     
     //AntwortfeldPanel//
-    antwortAnsicht = new AntwortFeld(null,null,null).gibAnsicht();////Platzhalter, und Argumente fehlen noch!!
+    JPanel antwortPanel = new JPanel();
+    antwortAnsicht = new AntwortFeld(null,null,null).gibAnsicht();////Platzhalter, bis Programm ausführbar!!
+    //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),modell.gibAntwortText(),modell.gibLoesung()).gibAnsicht();
+    JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
-    antwortPanel.add(antwortAnsicht, BorderLayout.CENTER);
+    Border antwortBorder = BorderFactory.createEmptyBorder(10, 50, 10, 50);
+    antwortPanel.setBorder(antwortBorder);
+    antwortPanel.setBackground(Color.WHITE);
+    antwortPanel.add(antwortRahmen, BorderLayout.CENTER);
     
     //Ansicht zusammenfügen//
     ansicht.getContentPane().add(fragePanel, 0);
@@ -111,7 +115,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     ansicht.getContentPane().add(antwortPanel, 2);
   }
   
-  private JPanel erzeugeRahmenPanel(JPanel innen) {
+  private JPanel erzeugeRahmenPanel(JPanel innen, String titel) {
     JPanel panel1 = new JPanel();
     panel1.setLayout(new BoxLayout(panel1,BoxLayout.X_AXIS));
     Border border1 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -121,11 +125,11 @@ public class StufenRaetselFenster extends RaetselFenster {
     
     JPanel panel2 = new JPanel();
     panel2.setLayout(new BoxLayout(panel2,BoxLayout.X_AXIS));
-    Border border2 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+    Border border2 = BorderFactory.createEmptyBorder(1,1,1,1);
+    border2 = BorderFactory.createTitledBorder(border2, titel);
     panel2.setBorder(border2);
     panel2.add(panel1);
     panel2.setBackground(new Color(255,102,0));
-    
     JPanel panel3 = new JPanel();
     panel3.setLayout(new BoxLayout(panel3,BoxLayout.X_AXIS));
     Border border3 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -137,12 +141,12 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
 
   private void zeigeTippAn() {
-    
+    tabelle.zeigeTippAn();
   }
 
   private void geheZuRaetselwahlMenue() {
     //fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
-    fv.oeffneMenue();
+    fv.oeffneMenue();  //Platzhalter , bis Programm ausführbar ist
   }
 
   public void schliesseRaetselAb() {

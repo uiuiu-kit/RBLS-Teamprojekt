@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 
 import modell.PraesentationFassade;
 import modell.raetsel.RaetselZustand;
+import modell.raetsel.Raetselinterpret;
+
 import org.junit.Test;
 import steuerung.Hauptsteuerung;
 
@@ -14,7 +16,7 @@ public class RaetselwahlTest {
   @Test
   public void guiTest() {
     praesentation.Fensterverwaltung fv = 
-        new praesentation.Fensterverwaltung(new Hauptsteuerung(), null);
+        new praesentation.Fensterverwaltung(new Hauptsteuerung(), new PraesentationFassade(new Raetselinterpret()));
     fv.init();
     List<RaetselZustand> raetsel = new ArrayList<RaetselZustand>();
     
