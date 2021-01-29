@@ -3,6 +3,8 @@ package praesentation;
 import java.awt.Font;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import modell.PraesentationFassade;
@@ -18,6 +20,7 @@ public class Fensterverwaltung {
   private JFrame aktivesFenster;
   private PraesentationFassade modell;
   private int[] fensterMass = new int[]{1000, 620};
+  ImageIcon img = new ImageIcon(getClass().getResource("/Icon/testIcon.png"));
 
   public Fensterverwaltung(Hauptsteuerung strg, PraesentationFassade fsd) {
     this.strg = strg;
@@ -38,6 +41,7 @@ public class Fensterverwaltung {
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
     aktivesFenster.setVisible(true);
+    aktivesFenster.setIconImage(img.getImage());
   }
 
   /**
@@ -116,6 +120,7 @@ public class Fensterverwaltung {
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
+    aktivesFenster.setIconImage(img.getImage());
     aktivesFenster.setVisible(true);
   }
 }
