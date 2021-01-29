@@ -8,11 +8,11 @@ class Schaltflaeche extends javax.swing.JButton {
    * auto-generierte ID.
    */
   private static final long serialVersionUID = -6196848668908499618L;
-  public final int ORANGE = 1;
-  public final int GRAU = 2;
-  public final int WEISS = 3;
-  public final int WEISS_ALT = 4;
-  public final int GRAU_ALT = 5;
+  public static final int ORANGE = 1;
+  public static final int GRAU = 2;
+  public static final int WEISS = 3;
+  public static final int WEISS_ALT = 4;
+  public static final int GRAU_ALT = 5;
 
   public Schaltflaeche() {
     this.setBorderPainted(false);
