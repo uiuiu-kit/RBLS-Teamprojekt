@@ -33,6 +33,7 @@ public class StufenRaetselFenster extends RaetselFenster {
   private JTextArea frageFeld;
   private JPanel antwortAnsicht;
   private Schaltflaeche tipp;
+  private Schaltflaeche weiter;
   
   private Fensterverwaltung fv;
   private PraesentationFassade modell;
@@ -100,7 +101,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     
     //AntwortfeldPanel//
     JPanel antwortPanel = new JPanel();
-    antwortAnsicht = new AntwortFeld(null,null,null).gibAnsicht();////Platzhalter, bis Programm ausführbar!!
+    antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();////Platzhalter, bis Programm ausführbar!!
     //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),modell.gibAntwortText(),modell.gibLoesung()).gibAnsicht();
     JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
@@ -108,6 +109,15 @@ public class StufenRaetselFenster extends RaetselFenster {
     antwortPanel.setBorder(antwortBorder);
     antwortPanel.setBackground(Color.WHITE);
     antwortPanel.add(antwortRahmen, BorderLayout.CENTER);
+    
+    weiter = new Schaltflaeche("WEITER");
+    weiter.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          fv.erledigeRaetsel();
+        }
+      });
+    antwortPanel.add(weiter, BorderLayout.EAST);
+    weiter.setVisible(false);
     
     //Ansicht zusammenfügen//
     ansicht.getContentPane().add(fragePanel, 0);
@@ -148,9 +158,10 @@ public class StufenRaetselFenster extends RaetselFenster {
     //fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
     fv.oeffneMenue();  //Platzhalter , bis Programm ausführbar ist
   }
-
+  
   public void schliesseRaetselAb() {
-    fv.erledigeRaetsel();
+    //TODO NUR falls Tabelle stimmt
+    weiter.setVisible(true);
   }
 
 }

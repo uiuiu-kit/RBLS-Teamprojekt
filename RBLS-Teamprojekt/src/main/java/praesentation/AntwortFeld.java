@@ -19,12 +19,13 @@ public class AntwortFeld {
   private JPanel ansicht;
   private Schaltflaeche pruefeKnopf;
   private JComboBox antwortWahl;
+  private StufenRaetselFenster fenster;
 
   private List<String> antwortMoeglichkeiten;
   private String text = "[Hier könnte Ihre Antwort stehen]";
   private String loesung;
 
-  public AntwortFeld(List<String> antworten, String text, String loesung) {
+  public AntwortFeld(List<String> antworten, String text, String loesung, StufenRaetselFenster fenster) {
     
     /*Kommt wieder rein, sobald Programm ausführbar////////////
     this.text = text;  
@@ -36,6 +37,7 @@ public class AntwortFeld {
     this.antwortMoeglichkeiten = Arrays.asList("foo", "bar");
     this.loesung = "bar";
     
+    this.fenster = fenster;
     JPanel p = new JPanel();
     p.setLayout(new FlowLayout());
     p.setBackground(Color.WHITE);
@@ -67,17 +69,18 @@ public class AntwortFeld {
     ansicht.setLayout(new BorderLayout());
     ansicht.add(p, BorderLayout.CENTER);
     ansicht.add(p2, BorderLayout.EAST);
-    
-    
-    
-    
   }
 
   public JPanel gibAnsicht() {
     return ansicht;
   }
-
-  public boolean pruefeAntwort() {
-    return true;  //Platzhalter!!
+  
+  private void pruefeAntwort() {
+    if (antwortWahl.getSelectedItem().equals(loesung)) {
+      fenster.schliesseRaetselAb();
+      antwortWahl.setEnabled(false);
+    } else {
+      //TODO Dialogfenster oder so (?)
+    }
   }
 }
