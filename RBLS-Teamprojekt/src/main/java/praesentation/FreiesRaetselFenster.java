@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
 import modell.PraesentationFassade;
@@ -113,6 +114,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     atomareAussagen.setModal(true);
     atomareAussagen.setModalityType(ModalityType.APPLICATION_MODAL);
     atomareAussagen.getContentPane().setBackground(new Color(255,102,0));
+    atomareAussagen.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     atomareAussagen.setVisible(true);
   }
 
