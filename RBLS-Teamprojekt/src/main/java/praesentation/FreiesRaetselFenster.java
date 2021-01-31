@@ -80,9 +80,6 @@ public class FreiesRaetselFenster extends RaetselFenster {
     tabellenPanel.add(new javax.swing.JLabel("TABELLE", SwingConstants.CENTER));
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
     
-    //evtl AussagenPanel(?)//
-    //TODO
-    
     //Ansicht zusammenfügen//
     ansicht.getContentPane().add(oben, 0);
     ansicht.getContentPane().add(tabellenPanel, 1);
@@ -109,11 +106,13 @@ public class FreiesRaetselFenster extends RaetselFenster {
         public void actionPerformed(ActionEvent e) {
           for (int j = 0; j < aussagen.length; j++) {
             if (!aussagen[j].getText().equals("")) {
-              aussagenListe.add(aussagen[j].getText());    //TODO Was wenn nichts eingegeben (?)
+              aussagenListe.add(aussagen[j].getText());
             }
+          }
+          if (!aussagenListe.isEmpty()) {
             initTabelle();
             atomareAussagen.dispose();
-          }
+          }    
         }
       });
     atomareAussagen.add(okButton);
@@ -130,7 +129,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
   }
 
   private void initTabelle() {
-    //TODO// Tabelle integrieren!!
+    //TODO// Tabelle initialisieren!!
     //modell.erstelleRaetsel(aussagenListe);    Verfügbar wenn ausführbar!!
   }
 
