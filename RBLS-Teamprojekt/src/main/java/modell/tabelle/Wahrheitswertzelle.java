@@ -5,18 +5,26 @@ public class Wahrheitswertzelle extends Zelle {
   private boolean wahrheitswert;
 
   public void setzeZelle(boolean w) {
-    wahrheitswert = w;    
+    this.wahrheitswert = w;    
   }
   
-  
+  /**
+   * Gibt den momentanen Wahrheitswert der Zelle zurueck.
+   * @return true, wenn die Zelle den Wahrheitswert "true" enthaelt, sonst false.
+   */
   public boolean gibZustand() {
     return wahrheitswert;
   }
 
   @Override
   public String toString() {
-    // TODO Auto-generated method stub
-    return null;
+    String temp;
+    if (wahrheitswert == true) {
+      temp = "true";
+    } else {
+      temp = "false";
+    }
+    return temp;
   }
 
 }
