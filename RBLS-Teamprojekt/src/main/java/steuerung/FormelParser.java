@@ -38,7 +38,7 @@ public class FormelParser {
           fassade);
       formelF = new Implikation(rechts, links);
     } else {
-      formleSplit = formelS.split("x", 2);
+      formleSplit = formelS.split("o", 2);
       if (formleSplit.length > 1) {
         Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke),
             fassade);
@@ -46,7 +46,7 @@ public class FormelParser {
             fassade);
         formelF = new ExklusivOder(rechts, links);
       } else {
-        formleSplit = formelS.split("o", 2);
+        formleSplit = formelS.split("x", 2);
         if (formleSplit.length > 1) {
           Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke),
               fassade);
@@ -85,9 +85,10 @@ public class FormelParser {
     List<String> klammerAusdruecke = new ArrayList<String>();
     int i = 0;
     while (formelS.matches("...\\(...\\)...")) {
+      klammerAusdruecke.add((formelS.substring(formelS.lastIndexOf("("),
+          formelS.indexOf(")", formelS.lastIndexOf("(")))));
+      formelS.replace("\\([a-z,0-3]*\\)", "k" + i);
       i++;
-      klammerAusdruecke.add((formelS.substring(formelS.indexOf("("), formelS.indexOf(")"))));
-      formelS.replaceFirst("\\(...\\)", "k" + i);
     }
     klammerAusdruecke.add(formelS);
     return klammerAusdruecke;
@@ -103,9 +104,9 @@ public class FormelParser {
   private static String klammerAusdrueckeWiederherstellen(String formelS,
       List<String> klammerAusdruecke) {
     int i = 0;
-    while (formelS.matches("k.")) {
+    while (formelS.matches("k" + i)) {
+      formelS.replaceFirst("k" + i, klammerAusdruecke.get(i));
       i++;
-      formelS.replaceFirst("k.", klammerAusdruecke.get(i));
     }
     return formelS;
   }
