@@ -13,7 +13,7 @@ import javax.swing.SwingConstants;
  * Zeigt zwei Buttons an, durch die das Wechseln zum Hauptmenü
  * bzw. zu einem zufälligen ungelösten Rätsel derselben Stufe
  * über die Fensterverwaltung angestoßen wird.
- *
+ * @author Nick
  */
 public class Abschlussfenster extends javax.swing.JFrame {
 
@@ -77,4 +77,5 @@ public class Abschlussfenster extends javax.swing.JFrame {
   private void klickeNaechstesRaetsel() {
     fw.starteZufaelligesRaetsel();
   }
+  
 }

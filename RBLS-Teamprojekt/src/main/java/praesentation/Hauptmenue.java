@@ -12,7 +12,7 @@ import javax.swing.SwingConstants;
  * Grafische Ansicht des Hauptmenüs.
  * Stößt bei Mausklick eines Buttons das Öffnen des Rätselwahl-Bildschirms oder des freien Modus
  * bzw. das Beenden des Programms über die Fensterverwaltung an.
- * 
+ * @author Nick
  */
 public class Hauptmenue extends javax.swing.JFrame {
 
@@ -141,4 +141,5 @@ public class Hauptmenue extends javax.swing.JFrame {
   private void klickeFreienModus() {
     fw.starteFreienModus();
   }
+  
 }

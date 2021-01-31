@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
@@ -18,14 +17,17 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.border.Border;
-
 import modell.PraesentationFassade;
 
+/**
+ * Grafische Ansicht des freien Modus. Zeigt eine
+ * Wahrheitstabelle an und stößt beim Klicken des Menü-Buttons den Wechsel der
+ * Ansicht zum Hauptmenü an.
+ * @author Nick
+ */
 public class FreiesRaetselFenster extends RaetselFenster {
 
   private List<String> aussagenListe = new ArrayList<String>();
@@ -35,6 +37,12 @@ public class FreiesRaetselFenster extends RaetselFenster {
   private Fensterverwaltung fv;
   private PraesentationFassade modell;
 
+  /**
+   * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit nötigen Buttons und Tabelle.
+   * @param fensterverwaltung Fensterverwaltung zum Wechseln des Fensters
+   * @param modell Praesentationsfassade
+   *     zum Setzen und Erhalten von Informationen über atomare Aussagen und Status
+   */
   public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell) {
     this.fv = fensterverwaltung;
     this.modell = modell;
@@ -73,18 +81,21 @@ public class FreiesRaetselFenster extends RaetselFenster {
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
     
     //evtl AussagenPanel(?)//
-
+    //TODO
+    
     //Ansicht zusammenfügen//
     ansicht.getContentPane().add(oben, 0);
     ansicht.getContentPane().add(tabellenPanel, 1);
     
     //Dialogfenster//
     atomareAussagen = new JDialog();
-    atomareAussagen.getContentPane().setLayout(new BoxLayout(atomareAussagen.getContentPane(), BoxLayout.Y_AXIS));
+    atomareAussagen.getContentPane().setLayout(
+        new BoxLayout(atomareAussagen.getContentPane(), BoxLayout.Y_AXIS));
     atomareAussagen.getContentPane().setBackground(Color.WHITE);
     
     aussagen = new JTextField[5];
-    ((JComponent) atomareAussagen.getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    ((JComponent) atomareAussagen.getContentPane()).setBorder(
+        BorderFactory.createEmptyBorder(10, 10, 10, 10));
     JLabel aussagenHinweis = new JLabel("Wähle die Namen für bis zu 5 atomare Aussagen:");
     aussagenHinweis.setFont(new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,18));
     aussagenHinweis.setForeground(Color.WHITE);
@@ -98,7 +109,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
         public void actionPerformed(ActionEvent e) {
           for (int j = 0; j < aussagen.length; j++) {
             if (!aussagen[j].getText().equals("")) {
-              aussagenListe.add(aussagen[j].getText());    //Was wenn nichts eingegeben (?)
+              aussagenListe.add(aussagen[j].getText());    //TODO Was wenn nichts eingegeben (?)
             }
             initTabelle();
             atomareAussagen.dispose();

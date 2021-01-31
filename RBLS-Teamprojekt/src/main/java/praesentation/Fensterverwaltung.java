@@ -3,7 +3,6 @@ package praesentation;
 import java.awt.Font;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
@@ -13,6 +12,7 @@ import steuerung.Hauptsteuerung;
 
 /**Startet zu Beginn das Hauptmenü, wechselt die sichtbare Ansicht
  * und stößt das Beenden des Programms durch die Hauptsteuerung an.
+ * @author Nick
  */
 public class Fensterverwaltung {
 
@@ -28,7 +28,7 @@ public class Fensterverwaltung {
   }
 
   /**
-   * erstellt Hauptmenue und setzt Variablen.
+   * Erstellt ein Hauptmenue und setzt Variablen.
    */
   public void init() {
     UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,20));
@@ -45,14 +45,14 @@ public class Fensterverwaltung {
   }
 
   /**
-   * wechselt zu Hauptmenue.
+   * Wechselt zum Hauptmenue.
    */
   public void oeffneMenue() {
     wechseleFenster(new Hauptmenue(this), "RBLS");
   }
 
   /**
-   * wechselt zu Raetselwahlfenster.
+   * Wechselt zum Raetselwahlfenster.
    * @param stufe Stufe der Raetsel
    */
   public void oeffneRaetselwahl(int stufe) {
@@ -60,24 +60,24 @@ public class Fensterverwaltung {
   }
 
   /**
-   * wechselt zu Abschlussfenster.
+   * Wechselt zum Abschlussfenster.
    */
   public void oeffneAbschlussFenster() {
     wechseleFenster(new Abschlussfenster(this), "Abschlussfenster");
   }
 
   /**
-   * startet Raetsel.
+   * Startet ein Raetsel.
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {
     strg.raetselFensterInit(name);
-    //modell.setzeRaetsel(name);    braucht fertigen Raetselinterpreten
+    //modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
     wechseleFenster(new StufenRaetselFenster(this, modell).ansicht, "RBLS");    
   }
 
   /**
-   * startet zufaelliges Raetsel aktueller Stufe.
+   * Startet ein zufaelliges Raetsel der aktuellen Stufe.
    */
   public void starteZufaelligesRaetsel() {
     List<RaetselZustand> liste = modell.gibRaetselListe(modell.gibAktuelleStufe());
@@ -91,14 +91,14 @@ public class Fensterverwaltung {
   }
 
   /**
-   * startet Freien Modus.
+   * Startet den Freien Modus.
    */
   public void starteFreienModus() {
     wechseleFenster(new FreiesRaetselFenster(this, modell).ansicht, "RBLS");
   }
 
   /**
-   * stoeßt Beenden an.
+   * Stoesst das Beenden an.
    */
   public void beende() {
     aktivesFenster.setVisible(false);
@@ -107,7 +107,7 @@ public class Fensterverwaltung {
   }
   
   /**
-   * teilt Hauptsteuerung das Lösen des aktiven Raetsels mit.
+   * Teilt der Hauptsteuerung das Loesen des aktiven Raetsels mit und oeffnet ein Abschlussfenster.
    */
   public void erledigeRaetsel() {
     strg.raetselGeloest();
@@ -124,4 +124,5 @@ public class Fensterverwaltung {
     aktivesFenster.setIconImage(img.getImage());
     aktivesFenster.setVisible(true);
   }
+  
 }

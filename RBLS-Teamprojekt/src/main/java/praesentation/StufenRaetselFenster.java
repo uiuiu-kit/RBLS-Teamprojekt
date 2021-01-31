@@ -15,6 +15,12 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import modell.PraesentationFassade;
 
+/**
+ * Grafische Ansicht eines Rätsels. Zeigt eine Wahrheitstabelle
+ * an und stößt beim Klicken des Menü-Buttons den Wechsel der Ansicht zum
+ * Rätselauswahlmenü an.
+ * @author Nick
+ */
 public class StufenRaetselFenster extends RaetselFenster {
 
   private String name = "Raetsel #27";
@@ -38,12 +44,17 @@ public class StufenRaetselFenster extends RaetselFenster {
   private Fensterverwaltung fv;
   private PraesentationFassade modell;
 
+  /**
+   * Erstellt die grafische Ansicht eines Stufenraetselfenster und initialisiert die Schaltflaechen.
+   * @param fensterverwaltung Fensterverwaltung zum Wechseln des aktiven Fensters
+   * @param modell Praesentationsfassade zum Erhalten von Informationen des aktiven Raetsels
+   */
   public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell) {
     this.fv = fensterverwaltung;
     this.modell = modell;
     this.tabelle = new KonkreteTabellenAnsicht(modell);
     
-    /* BRAUCHT MODELL UND STEUERUNG
+    /* TODO BRAUCHT MODELL UND STEUERUNG
     this.name = modell.gibAktivenRaetselnamen();
     this.frage = modell.gibFragestellung();
     */
@@ -101,8 +112,12 @@ public class StufenRaetselFenster extends RaetselFenster {
     
     //AntwortfeldPanel//
     JPanel antwortPanel = new JPanel();
-    antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();////Platzhalter, bis Programm ausführbar!!
-    //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),modell.gibAntwortText(),modell.gibLoesung()).gibAnsicht();
+    
+    ////TODO Platzhalter, bis Programm ausführbar!!
+    antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();
+    //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
+    //    modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
+    
     JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
     Border antwortBorder = BorderFactory.createEmptyBorder(10, 50, 10, 50);
@@ -156,7 +171,7 @@ public class StufenRaetselFenster extends RaetselFenster {
 
   private void geheZuRaetselwahlMenue() {
     //fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
-    fv.oeffneMenue();  //Platzhalter , bis Programm ausführbar ist
+    fv.oeffneMenue();  //TODO Platzhalter, bis Programm ausführbar ist
   }
   
   public void schliesseRaetselAb() {

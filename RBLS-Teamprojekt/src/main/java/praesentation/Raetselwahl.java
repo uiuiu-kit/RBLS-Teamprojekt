@@ -1,6 +1,5 @@
 package praesentation;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +13,7 @@ import modell.raetsel.RaetselZustand;
 
 /**
  * Grafische Ansicht des Rätselauswahlbildschirms einer Stufe.
+ * @author Nick
  */
 public class Raetselwahl extends javax.swing.JFrame {
 
@@ -94,4 +94,3 @@ public class Raetselwahl extends javax.swing.JFrame {
   }
 
 }
-

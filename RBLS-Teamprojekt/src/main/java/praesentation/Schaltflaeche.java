@@ -2,6 +2,10 @@ package praesentation;
 
 import java.awt.Color;
 
+/**
+ * Design der Buttons ausgelagert in eine Unterklasse von JButton.
+ * @author Nick
+ */
 class Schaltflaeche extends javax.swing.JButton {
 
   /**
@@ -64,4 +68,5 @@ class Schaltflaeche extends javax.swing.JButton {
         break;
     }
   }
+  
 }
