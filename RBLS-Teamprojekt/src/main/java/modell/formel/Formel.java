@@ -17,5 +17,8 @@ public abstract class Formel {
    */
   public abstract boolean auswerten(boolean[] werte);
     
-  public abstract String gibStringRep();
+  public static String gibStringRep() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }
