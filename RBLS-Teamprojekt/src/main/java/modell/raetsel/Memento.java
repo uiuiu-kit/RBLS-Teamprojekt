@@ -1,5 +1,11 @@
 package modell.raetsel;
 
+/**
+ * Diese Klasse symbolisiert ein Memento. Sie verwaltet die Speicherung und das Abrufen der Raetsel
+ * sowie deren Zustaende.
+ * @author janne
+ *
+ */
 public class Memento {
 
   public void sichern(Raetsel r) {

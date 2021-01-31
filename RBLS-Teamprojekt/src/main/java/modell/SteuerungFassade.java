@@ -8,6 +8,12 @@ import modell.raetsel.Raetsel;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
+/**
+ * Dies ist die Klasse fuer die Fassade, die mit der Steuerung zusammenarbeitet. Ueber sie werden
+ * die Anfragen der Steuerung im Modell verwaltet.
+ * @author janne
+ *
+ */
 public class SteuerungFassade {
   
   private static SteuerungFassade steuFa = null;

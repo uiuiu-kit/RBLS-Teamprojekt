@@ -6,6 +6,12 @@ import modell.raetsel.RaetselZustand;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
+/**
+ * Dies ist die Klasse fuer die Fassade, die mit der Praesentation zusammenarbeitet. Ueber sie
+ * wird zwischen Modell und Praesentation vermittelt.
+ * @author janne
+ *
+ */
 public class PraesentationFassade {
   private static PraesentationFassade praFa = null;
   

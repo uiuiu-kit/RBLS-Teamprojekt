@@ -4,6 +4,13 @@ import java.util.List;
 
 import modell.formel.Formel;
 
+/**
+ * Diese Klasse symbolisiert ein Tabellenobjekt.
+ * Die Zeilen- und Spaltenanzahl ist abhaengig vom Raetsel. Sie enthaelt auﬂerdem Zellenobjekte vom
+ * speziellen Typ Wahrheitswert- oder Formelzelle.
+ * @author janne
+ *
+ */
 public class Tabelle {
   
   private Zelle zelle;

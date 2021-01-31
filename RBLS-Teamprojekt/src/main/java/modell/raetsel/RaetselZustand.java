@@ -1,11 +1,9 @@
 package modell.raetsel;
 
 /**
- * 
- * @author Janne Wagner
- * @version 1.0
- * 
- * Diese Klasse beinhaltet den Zustand des bestimmten Raetsels sowie seinen Namen.
+ * Diese Klasse gehoert zum Memento und beinhaltet den Zustand des konkreten Raetsels
+ * sowie dessen Namen.
+ * @author janne
  *
  */
 public class RaetselZustand {
