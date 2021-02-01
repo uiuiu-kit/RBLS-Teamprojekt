@@ -71,7 +71,15 @@ public class PraesentationFassade {
     return raetsel.gibStufe();
   }
   
+  /**
+   * Holt die String-Repraesentation der Zelle und aktualisiert die konkrete Tabellenansicht.
+   * @param zelle Die Zelle, zurueckgegeben werden soll.
+   * @return Die String-Repraesentation der Zelle.
+   */
   public String gibZelle(int[] zelle) {
+    /*String temp = tabelle.gibZelle(zelle);
+     * KonkreteTabellenAnsicht.aktualisiere();
+     */
     return tabelle.gibZelle(zelle);
   }
   
