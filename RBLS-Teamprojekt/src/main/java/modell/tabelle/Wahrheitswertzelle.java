@@ -18,15 +18,7 @@ public class Wahrheitswertzelle extends Zelle {
 
   @Override
   public String toString() {
-    String temp;
-    if (wahrheitswert == true) {
-      temp = "true";
-    } else {
-      temp = "false";
-    }
-    return temp;
-    
-    //Alternativ: return (wahrheitswert) ? "true": "false";
+    return (wahrheitswert) ? "true" : "false";
   }
 
 }
