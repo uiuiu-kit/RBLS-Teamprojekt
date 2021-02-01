@@ -25,6 +25,8 @@ public class Wahrheitswertzelle extends Zelle {
       temp = "false";
     }
     return temp;
+    
+    //Alternativ: return (wahrheitswert) ? "true": "false";
   }
 
 }
