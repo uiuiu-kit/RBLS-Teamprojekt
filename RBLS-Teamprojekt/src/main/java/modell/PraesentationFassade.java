@@ -20,8 +20,10 @@ public class PraesentationFassade {
   private Raetsel raetsel;
   private Tabelle tabelle;
   
+  @SuppressWarnings("static-access")
   private PraesentationFassade(Raetselinterpret interpret) {
     this.interpret = interpret;
+    this.praFa = this;
   }
   
   /**
@@ -29,10 +31,7 @@ public class PraesentationFassade {
    * wird es erzeugt.
    * @return Das Einzelstueckobjekt PraesentationFassade.
    */
-  public static PraesentationFassade gibPraFa(Raetselinterpret interpret) {
-    if (praFa == null) {
-      praFa = new PraesentationFassade(interpret);
-    }
+  public static PraesentationFassade gibPraFa() {
     return praFa;
   }
   

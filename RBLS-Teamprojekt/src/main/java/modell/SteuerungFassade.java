@@ -78,7 +78,7 @@ public class SteuerungFassade {
     return tabelle.gibSpaltenAnz();
   }
   
-  public boolean gibZeileFall(int zeile) {
+  public boolean[] gibZeileFall(int zeile) {
     return tabelle.gibZeileFall(zeile);
   }
   

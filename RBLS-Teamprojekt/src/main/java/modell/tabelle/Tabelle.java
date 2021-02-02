@@ -142,15 +142,20 @@ public class Tabelle {
     return out;
   }
   
-  /*unnötig, da in oberer Methode schon enthalten
-   * public Formel gibFormel(int s) {
-    if (z[0] == 0) {
-      Formelzelle temp = (Formelzelle) gibZ(z);
+  
+  /** Gibt der Fassade die Formel der entsprechenden Zelle zurück.
+   * @param s Spalte der Formelzelle.
+   * @return Formel der Zelle
+   */
+  public Formel gibFormel(int s) {
+    int[] box = {0, s};
+    if (s == 0) {
+      Formelzelle temp = (Formelzelle) gibZ(box);
       return temp.gibZustand();
     }
     return null;
   }
-  */
+  
   
   
   /** Gibt die Formel als Text wieder.
