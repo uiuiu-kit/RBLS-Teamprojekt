@@ -19,14 +19,24 @@ public class PraesentationFassade {
   private RaetselZustand raetselZustand = new RaetselZustand();
   private Raetsel raetsel;
   private Tabelle tabelle;
-
-  public static PraesentationFassade gibPraFa() {
+  
+  private PraesentationFassade(Raetselinterpret interpret) {
+    this.interpret = interpret;
+  }
+  
+  /**
+   * Gibt das Objekt PraesentationFassade als Einzelstueck zurueck. Wenn es noch nicht existiert,
+   * wird es erzeugt.
+   * @return Das Einzelstueckobjekt PraesentationFassade.
+   */
+  public static PraesentationFassade gibPraFa(Raetselinterpret interpret) {
+    if (praFa == null) {
+      praFa = new PraesentationFassade(interpret);
+    }
     return praFa;
   }
   
-  public  PraesentationFassade(Raetselinterpret interpret) {
-    this.interpret = interpret;
-  }
+
   
   /**Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem RInterpreten übergibt, 
    * der ein neues Raetselobjekt zurückgibt. Dieses wird hier gesetzt 
