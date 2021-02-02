@@ -20,7 +20,7 @@ public class Formelzelle extends Zelle {
 
   @Override
   public String toString() {
-    return Formel.gibStringRep();
+    return aussagenlogischeFormel.gibStringRep();
   }
 
 }
