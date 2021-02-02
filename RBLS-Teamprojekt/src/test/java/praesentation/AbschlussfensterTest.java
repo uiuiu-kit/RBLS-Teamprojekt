@@ -1,6 +1,5 @@
 package praesentation;
 
-import modell.PraesentationFassade;
 import org.junit.Test;
 import steuerung.Hauptsteuerung;
 
