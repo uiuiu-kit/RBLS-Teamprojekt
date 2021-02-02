@@ -9,7 +9,6 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import modell.raetsel.RaetselZustand;
 
 /**
  * Grafische Ansicht des Rätselauswahlbildschirms einer Stufe.
@@ -24,16 +23,16 @@ public class Raetselwahl extends javax.swing.JFrame {
   private Fensterverwaltung fw;
   private Schaltflaeche zurueck;
   private Schaltflaeche[] buttons;
-  private List<RaetselZustand> raetsel;
+  private List<String> raetsel;
   
   /**
    * Konstruktor.
    * @param fstr Fensterverwaltung zum Wechseln der Ansicht
-   * @param liste Stufe der anzuzeigenden Rätsel
+   * @param list Stufe der anzuzeigenden Rätsel
    */
-  public Raetselwahl(Fensterverwaltung fstr, List<RaetselZustand> liste) {
+  public Raetselwahl(Fensterverwaltung fstr, List<String> list) {
     this.fw = fstr;
-    this.raetsel = liste;
+    this.raetsel = list;
     init();
   }
 
@@ -48,11 +47,11 @@ public class Raetselwahl extends javax.swing.JFrame {
     buttonPanel.setBackground(new Color(255,102,0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
-      if (raetsel.get(j).geloest) {
-        buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 5);
-      } else {
-        buttons[j] = new Schaltflaeche(raetsel.get(j).raetselname, 3);
-      }
+      //if (raetsel.get(j).geloest) {
+      //buttons[j] = new Schaltflaeche(raetsel.get(j), 5);
+      //} else {
+      buttons[j] = new Schaltflaeche(raetsel.get(j), 3);
+      //}
       buttons[j].addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           waehleAus(e.getActionCommand());

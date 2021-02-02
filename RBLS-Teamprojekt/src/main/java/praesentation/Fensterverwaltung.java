@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import modell.PraesentationFassade;
-import modell.raetsel.RaetselZustand;
 import steuerung.Hauptsteuerung;
 
 /**Startet zu Beginn das Hauptmenü, wechselt die sichtbare Ansicht
@@ -80,13 +79,11 @@ public class Fensterverwaltung {
    * Startet ein zufaelliges Raetsel der aktuellen Stufe.
    */
   public void starteZufaelligesRaetsel() {
-    List<RaetselZustand> liste = modell.gibRaetselListe(modell.gibAktuelleStufe());
-    for (Iterator<RaetselZustand> i = liste.iterator(); i.hasNext(); ) {
-      RaetselZustand raetsel = i.next();
-      if (raetsel.geloest == false) {
-        starteRaetsel(raetsel.raetselname);
-        return;
-      }
+    List<String> liste = modell.gibRaetselListe(modell.gibAktuelleStufe());
+    for (Iterator<String> i = liste.iterator(); i.hasNext(); ) {
+      String raetsel = i.next();
+      starteRaetsel(raetsel);
+      return;
     }
   }
 
