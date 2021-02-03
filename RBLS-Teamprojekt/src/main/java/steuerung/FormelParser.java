@@ -21,14 +21,14 @@ public class FormelParser {
    */
   public static Formel pars(String formelS, SteuerungFassade fassade) {
     Formel formelF = null;
+    List<String> klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
+    formelS = klammerAusdruecke.get(klammerAusdruecke.size() - 1);
     if (formelS.length() < 2) {
       int num = Integer.parseInt(formelS);
       String aussage = fassade.gibAtomareAussage().get(num).getAussage();
-      String repraesentation = aussage.substring(0, 0);
+      String repraesentation = aussage.substring(0, 1);
       formelF = new Atom(aussage, repraesentation, num);
     }
-    List<String> klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
-    formelS = klammerAusdruecke.get(klammerAusdruecke.size());
     String[] formleSplit;
     formleSplit = formelS.split("f", 2);
     if (formleSplit.length > 1) {
@@ -44,7 +44,7 @@ public class FormelParser {
             fassade);
         Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke),
             fassade);
-        formelF = new ExklusivOder(rechts, links);
+        formelF = new Oder(rechts, links);
       } else {
         formleSplit = formelS.split("x", 2);
         if (formleSplit.length > 1) {
@@ -52,7 +52,7 @@ public class FormelParser {
               fassade);
           Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke),
               fassade);
-          formelF = new Oder(rechts, links);
+          formelF = new ExklusivOder(rechts, links);
         } else {
           formleSplit = formelS.split("u", 2);
           if (formleSplit.length > 1) {
