@@ -7,10 +7,7 @@ import java.util.List;
 import modell.SteuerungFassade;
 import modell.formel.Atom;
 import modell.formel.Formel;
-import modell.formel.Und;
-
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -36,7 +33,7 @@ public class FormelParserTest {
     Formel formel = FormelParser.pars("0", sfMock);
     assertEquals("C", formel.gibStringRep());
   }
-  
+
   @Test
   public void testZweiAtome() {
     Formel formel = FormelParser.pars("1u2", sfMock);
