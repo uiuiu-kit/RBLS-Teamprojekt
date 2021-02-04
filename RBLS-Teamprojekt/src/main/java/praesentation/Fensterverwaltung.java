@@ -73,8 +73,8 @@ public class Fensterverwaltung {
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {
-    //strg.raetselFensterInit(name);
     modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
+    strg.raetselFensterInit();
     wechseleFenster(new StufenRaetselFenster(this, modell).ansicht, "RBLS");    
   }
 
