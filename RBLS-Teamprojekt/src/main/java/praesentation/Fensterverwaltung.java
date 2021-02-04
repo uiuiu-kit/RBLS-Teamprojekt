@@ -30,9 +30,9 @@ public class Fensterverwaltung {
    * Erstellt ein Hauptmenue und setzt Variablen.
    */
   public void init() {
-    UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,20));
-    UIManager.put("Label.font", new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,40));
-    UIManager.put("TextArea.font", new javax.swing.plaf.FontUIResource("Arial",Font.PLAIN,18));
+    UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,20));
+    UIManager.put("Label.font", new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,40));
+    UIManager.put("TextArea.font", new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.PLAIN,18));
 
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
