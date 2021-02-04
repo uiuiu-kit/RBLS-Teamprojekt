@@ -14,7 +14,7 @@ public class RaetselwahlTest {
   public void guiTest() {
     praesentation.Fensterverwaltung fv = 
         new praesentation.Fensterverwaltung(new Hauptsteuerung(), 
-            new PraesentationFassade(new Raetselinterpret()));
+            PraesentationFassade.gibPraFa());
     fv.init();
     List<String> raetsel = new ArrayList<String>();
     

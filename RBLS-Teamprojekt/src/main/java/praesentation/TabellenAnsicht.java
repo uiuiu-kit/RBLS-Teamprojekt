@@ -1,13 +1,17 @@
 package praesentation;
 
+import javax.swing.JTable;
+
 /**
  * Vorlage für die Ansicht einer Wahrheitstabelle.
  * @author Nick
  */
-public class TabellenAnsicht {
+public abstract class TabellenAnsicht {
 
-  public void zeigeTippAn() {
-    // TODO Auto-generated method stub
-  }
+  protected JTable tabelle;
+  
+  public abstract void zeigeTippAn();
 
+  public abstract void aktualisiere(int[] zelle);
+  
 }
