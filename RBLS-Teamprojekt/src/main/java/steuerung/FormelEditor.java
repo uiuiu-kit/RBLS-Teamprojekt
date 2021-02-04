@@ -17,7 +17,7 @@ public class FormelEditor {
   /**
    * Konstruktor für den FormelEditor.
    * 
-   * @param atomareAussagen die atomaren Aussagen die in den Aussagenlogischen
+   * @param atomareAussagen die atomaren Aussagen die in den aussagenlogischen
    *                        Formel vorkommen kommen.
    */
   public FormelEditor(List<Atom> atomareAussagen) {
@@ -25,8 +25,8 @@ public class FormelEditor {
   }
 
   /**
-   * Übergibt eine Formel zu der die FormelAnsicht zur Bearbeitung geöffnet wird.
-   * Sobald die Formel bestätigt oder abgeleht wurden wird die Formel zurück
+   * Übergibt eine Formel zu der die FormelAnsicht, zur Bearbeitung, geöffnet
+   * wird. Sobald die Formel bestätigt oder abgeleht wurden wird die Formel zurück
    * gegeben.
    * 
    * @param formel_alt die Formel die bearbeitet werden soll und zurück gegeben
@@ -41,11 +41,11 @@ public class FormelEditor {
   }
 
   /**
-   * Wandelt die Atom Liste in ein String Liste um, sodass sie vom Formeleditor
-   * verarbeitet werden kann.
+   * Wandelt die Atom-Liste in ein String-Liste um, sodass sie von der
+   * FormelAnsicht verarbeitet werden kann.
    * 
    * @param atomareAussageA.
-   * @return die Aussagen der Atome.
+   * @return die Aussagen der Atome als String-Liste.
    */
   private List<String> atomZuString(List<Atom> atomareAussageA) {
     List<String> atomareAussageS = new ArrayList<String>();
@@ -56,7 +56,7 @@ public class FormelEditor {
   }
 
   /**
-   * setzt ein weiteres Zeichen an das Ende der aktuellen Formel
+   * setzt ein weiteres Zeichen an das Ende der aktuellen Formel.
    * 
    * @param zeichen das zu setzende Zeichen
    */
@@ -81,8 +81,8 @@ public class FormelEditor {
   }
 
   /**
-   * gibt zurück ob diese Formel bestätig ist. Das heißt keine Klammern mehr offen
-   * und es nicht auf einen offenen Konnektor endet.
+   * gibt zurück ob diese Formel gültig ist, das heißt, das keine Klammern mehr
+   * offen ist und die Formel nicht mit einen Konnektor endet.
    */
   public boolean bestätige() {
     char letzerCh = formel.charAt(formel.length());
@@ -125,7 +125,7 @@ public class FormelEditor {
   /**
    * gibt zurück ob es in der aktuelle Formel noch offene Klammern gibt.
    * 
-   * @return gibt es noch offene Klammern?
+   * @return ob es noch offene Klammern gibt
    */
   private boolean klammerOffen() {
     int i = 0;

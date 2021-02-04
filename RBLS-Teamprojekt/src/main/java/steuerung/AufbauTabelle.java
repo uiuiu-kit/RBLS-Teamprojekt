@@ -9,7 +9,7 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
   protected List<Atom> atomareAussagen;
 
   /**
-   * Konstruktor für den Befehle vom Typ AufbauTabelle.
+   * AufbauTabelle ist der Konstruktor für den Befehle vom Typ AufbauTabelle.
    * 
    * @param model die Fassde von der Daten geholt und bei der Daten gesetzt
    *              werden.
@@ -20,7 +20,7 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
   }
 
   /**
-   * Holt die Atomaren Aussagen von der Fassade da sie in jedem Befehl vom Typ
+   * Holt die atomaren Aussagen von der Fassade, da sie in jedem Befehl vom Typ
    * AufbauTabelle verwendet werden.
    */
   private void holeDaten() {

@@ -6,15 +6,15 @@ public class WahrheitstabellenSteuerungen {
   /**
    * Konstruktor für die WahrheitstabellenSteuerungen.
    * 
-   * @param modell die Fassade die in alle Befehelen angesprochen werden soll
+   * @param modell die Fassade die von Befehlen angesprochen werden soll
    */
   public WahrheitstabellenSteuerungen(SteuerungFassade modell) {
     // TODO Auto-generated constructor stub
   }
 
   /**
-   * löst Befehl von der Präsentation auf Konstruiert passenden Befehl und stößt
-   * damit die Ausführung an.
+   * löst Befehl von der Präsentation auf und konstruiert das passenden
+   * Befehls-Objekt und stößt damit dessen Ausführung an.
    * 
    * @param befehl der auszuführende Befehl
    */

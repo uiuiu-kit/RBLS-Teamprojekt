@@ -14,7 +14,7 @@ import modell.formel.Und;
 public class FormelParser {
 
   /**
-   * Baut eine Formel die als String vorliegt in eine Baumstruktur um.
+   * Baut eine Formel, die als String vorliegt, in die Formel-Baumstruktur um.
    * 
    * @param formelS die gegebene Formel als String
    * @return Das Wurzelelement der Formel
@@ -78,13 +78,13 @@ public class FormelParser {
   /**
    * Ersetzt Klammerausdrücke.
    * 
-   * @param formelS Formel in der Klammernasudrücke durch k(Index) ersetzt werden.
-   * @return Formel mit Ersetzungen
+   * @param formelS Formel in der Klammerausdrücke jeweils durch k(Index) ersetzt werden.
+   * @return Formel mit ersetzten Klammerausdrücke
    */
   private static List<String> klammerAusdrueckeErsetzen(String formelS) {
     List<String> klammerAusdruecke = new ArrayList<String>();
     int i = 0;
-    while (formelS.matches("...\\(...\\)...")) {
+    while (formelS.matches(".*\\(.*\\).*")) {
       klammerAusdruecke.add((formelS.substring(formelS.lastIndexOf("("),
           formelS.indexOf(")", formelS.lastIndexOf("(")))));
       formelS.replace("\\([a-z,0-3]*\\)", "k" + i);
@@ -98,7 +98,7 @@ public class FormelParser {
    * Stellt Klammerausdrücke wieder her.
    * 
    * @param formelS Formel in der k(Index) durch Klammerausdrücke zurück ersetzt
-   *                werden.
+   *                werden sollen.
    * @return Formel mit Rückersetzungen.
    */
   private static String klammerAusdrueckeWiederherstellen(String formelS,

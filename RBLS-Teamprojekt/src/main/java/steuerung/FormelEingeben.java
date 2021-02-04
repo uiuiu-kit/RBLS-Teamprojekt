@@ -12,10 +12,10 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
   private List<Atom> atomareAussagen;
 
   /**
-   * Der Konstruktor für die Befehl der den Befehl auch direkt ausführt.
+   * Der Konstruktor, für die Befehl, der den Befehl auch direkt ausführt.
    * 
-   * @param model             die Fassade auf die der Befehl zugreif.
-   * @param zellenKoordinaten die Koordinaten der Zelle dessen Formel geädnert
+   * @param model             die Fassade auf die der Befehl zugreift.
+   * @param zellenKoordinaten die Koordinaten der Zelle dessen Formel geändert
    *                          werden soll.
    */
   public FormelEingeben(SteuerungFassade model, int[] zellenKoordinaten) {
@@ -26,7 +26,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
   }
 
   /**
-   * hohlt die alte Formel udn die atomaren Aussagen von der Fasssade.
+   * hohlt die alte Formel und die atomaren Aussagen von der Fasssade.
    */
   public void hohleDaten() {
     alteFromel = model.gibFormelText(zellenKoordinaten[0]);
@@ -34,8 +34,8 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
   }
 
   /**
-   * Ruf das Dialogfenster auf in dem man die Formel editieren kann und überträgt
-   * die neue Formel über die Fassade zum Modell.
+   * Ruf das Dialogfenster auf, in dem man die Formel editieren kann, und überträgt
+   * die neue Formel, über die Fassade, zum Modell.
    */
   public void setzeDaten() {
     FormelEditor fe = new FormelEditor(atomareAussagen);

@@ -12,8 +12,8 @@ public class Hauptsteuerung {
   }
 
   /**
-   * initialisiert die Hauptsteuerung. Erstellt Kopfobjekte für die andere Teile
-   * und stößt Initialisierung an
+   * initialisiert die Hauptsteuerung. Erstellt Kopfobjekte für Modell und
+   * Präsentation und stößt deren Initialisierung an.
    */
 
   public void init() {
@@ -25,24 +25,23 @@ public class Hauptsteuerung {
   }
 
   /**
-   * erstellt Objekte die für das Rätselfenster nötig sind.
+   * erstellt die WahrheitstabellenSteuerungen die für das Rätselfenster.
    * 
-   * @param raetselname der Name des Rätsel das gestartet werden soll.
    */
-  public void raetselFensterInit(String raetselname) {
+  public void raetselFensterInit() {
     ws = new WahrheitstabellenSteuerungen(sf);
     ws.befehl("AufbauTabelle");
   }
 
   /**
-   * beendet das Rätsel und setst das Rätsel auf gelöst.
+   * beendet das Rätsel und setzt das Rätsel auf gelöst.
    */
   public void raetselGeloest() {
-    // ToDo
+    //ToDO
   }
 
   /**
-   * stößt die Erstellung der Sicherungsdatei und beendet das Programm.
+   * stößt die Erstellung der Sicherungsdatei an und beendet das Programm.
    */
   public void beenden() {
     System.exit(0);
