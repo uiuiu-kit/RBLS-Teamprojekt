@@ -1,6 +1,8 @@
 package praesentation;
 
 import org.junit.Test;
+
+import steuerung.FormelEditor;
 import steuerung.Hauptsteuerung;
 
 public class FormelAnsichtTest {
@@ -9,7 +11,7 @@ public class FormelAnsichtTest {
     praesentation.Fensterverwaltung fv = 
         new praesentation.Fensterverwaltung(new Hauptsteuerung(), null);
     fv.init();
-    new FormelAnsicht(new String[] {"A", "Be", "Ce", "De"}, null);
+    new FormelAnsicht(new String[] {"Alfred", "Berta", "Collin", "Diesel"}, new FormelEditor(null));
     try {
       Thread.sleep(100000);
     } catch (InterruptedException e) {

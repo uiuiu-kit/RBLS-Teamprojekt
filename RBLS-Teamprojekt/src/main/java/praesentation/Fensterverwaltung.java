@@ -30,9 +30,12 @@ public class Fensterverwaltung {
    * Erstellt ein Hauptmenue und setzt Variablen.
    */
   public void init() {
-    UIManager.put("Button.font", new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,20));
-    UIManager.put("Label.font", new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,40));
-    UIManager.put("TextArea.font", new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.PLAIN,18));
+    UIManager.put("Button.font", 
+        new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,20));
+    UIManager.put("Label.font", 
+        new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,40));
+    UIManager.put("TextArea.font", 
+        new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.PLAIN,18));
 
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
@@ -70,8 +73,8 @@ public class Fensterverwaltung {
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {
-    strg.raetselFensterInit(name);
-    //modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
+    //strg.raetselFensterInit(name);
+    modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
     wechseleFenster(new StufenRaetselFenster(this, modell).ansicht, "RBLS");    
   }
 

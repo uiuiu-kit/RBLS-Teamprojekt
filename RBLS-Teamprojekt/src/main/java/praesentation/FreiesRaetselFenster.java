@@ -130,7 +130,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
 
   private void initTabelle() {
     //TODO// Tabelle initialisieren!!
-    //modell.erstelleRaetsel(aussagenListe);    Verfügbar wenn ausführbar!!
+    modell.erstelleRaetsel(aussagenListe);   // Verfügbar wenn ausführbar!!
   }
 
   private void geheZuMenue() {

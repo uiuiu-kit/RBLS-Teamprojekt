@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
@@ -22,6 +25,11 @@ import steuerung.FormelEditor;
  * @author Nick
  */
 public class FormelAnsicht {
+  
+  public static final String UND = "\u2227";
+  public static final String ODER = "\u2228";
+  //TODO Rest
+
   private FormelEditor strg;
   private JDialog ansicht;
   private JLabel formelAnzeige = new JLabel();
@@ -30,7 +38,8 @@ public class FormelAnsicht {
   private Schaltflaeche entferne = new Schaltflaeche("Entferne", 3);
   
   private String alteFormel;
-  private String formel = "Formel";
+  private String formel = "";
+  private List<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>();
   
   private Schaltflaeche[] atomareAussagen;
   private Schaltflaeche und = new Schaltflaeche("\u2227", 3);
@@ -45,6 +54,15 @@ public class FormelAnsicht {
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {
     this.strg = strg;
     
+    zeichen.add(und);
+    zeichen.add(oder);
+    zeichen.add(nicht);
+    zeichen.add(impliziert);
+    zeichen.add(aequivalent);
+    zeichen.add(xor);
+    zeichen.add(klammerAuf);
+    zeichen.add(klammerZu);
+    
     JPanel aussagenPanel = new JPanel();
     aussagenPanel.setLayout(new FlowLayout());
     atomareAussagen = new Schaltflaeche[aussagen.length];
@@ -52,7 +70,7 @@ public class FormelAnsicht {
       atomareAussagen[j] = new Schaltflaeche(aussagen[j], 3);
       atomareAussagen[j].addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
-            fuegeHinzu(e.getActionCommand());
+            fuegeHinzu(e.getActionCommand().substring(0, 1));
           }
         });
       aussagenPanel.add(atomareAussagen[j]);
@@ -62,26 +80,26 @@ public class FormelAnsicht {
     operatorPanel1.setLayout(new FlowLayout());
     und.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("u");
+          fuegeHinzu(und.getText());
         }
       });
     operatorPanel1.add(und);
     oder.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("o");
+          fuegeHinzu(oder.getText());
         }
       });
     operatorPanel1.add(oder);
     xor.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("x");
+          fuegeHinzu(xor.getText());
         }
       });
     operatorPanel1.add(xor);
 
     nicht.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("n");
+          fuegeHinzu(nicht.getText());
         }
       });
     operatorPanel1.add(nicht);
@@ -90,13 +108,13 @@ public class FormelAnsicht {
     operatorPanel2.setLayout(new FlowLayout());
     impliziert.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("i");
+          fuegeHinzu(impliziert.getText());
         }
       });
     operatorPanel2.add(impliziert);
     aequivalent.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("eq");
+          fuegeHinzu(aequivalent.getText());
         }
       });
     operatorPanel2.add(aequivalent);
@@ -138,17 +156,21 @@ public class FormelAnsicht {
     menuePanel.add(bestaetige);
     
     formelAnzeige = new JLabel(formel, SwingConstants.CENTER);
+    JPanel formelPanel = new JPanel();
+    formelPanel.setLayout(new FlowLayout());
+    formelPanel.add(formelAnzeige);
     
     aussagenPanel.setBackground(Color.WHITE);
     operatorPanel1.setBackground(Color.WHITE);
     operatorPanel2.setBackground(Color.WHITE);
     entfernePanel.setBackground(Color.WHITE);
     menuePanel.setBackground(Color.WHITE);
-    formelAnzeige.setBackground(Color.WHITE);
+    formelPanel.setBackground(Color.LIGHT_GRAY);
+    formelAnzeige.setBackground(Color.LIGHT_GRAY);
     
     ansicht = new JDialog();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
-    ansicht.getContentPane().add(formelAnzeige);
+    ansicht.getContentPane().add(formelPanel);
     ansicht.getContentPane().add(aussagenPanel);
     ansicht.getContentPane().add(operatorPanel1);
     ansicht.getContentPane().add(operatorPanel2);
@@ -156,7 +178,7 @@ public class FormelAnsicht {
     ansicht.getContentPane().add(menuePanel);
     
     ansicht.setTitle("Atomare Aussagen");
-    ansicht.setSize(600, 400);
+    ansicht.setSize(800, 400);
     ansicht.setResizable(true);
     ansicht.setLocation(50, 50);
     ansicht.setAlwaysOnTop(true);
@@ -165,6 +187,8 @@ public class FormelAnsicht {
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
     ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     ansicht.setVisible(true);
+    
+    pruefeErlaubteZeichen();
     
   }
   
@@ -175,21 +199,42 @@ public class FormelAnsicht {
   private void fuegeHinzu(String zeichen) {
     formel = formel + "" + zeichen;
     formelAnzeige.setVisible(false);
-    formelAnzeige = new JLabel(formel, SwingConstants.CENTER);
+    formelAnzeige.setText(formel);
     formelAnzeige.setVisible(true);
-    //strg.setzeZeichen(zeichen); //TODO
+    strg.setzeZeichen(zeichen);
+    pruefeErlaubteZeichen();
   }
   
+  private void pruefeErlaubteZeichen() {
+    for (Iterator<Schaltflaeche> iter = zeichen.iterator(); iter.hasNext(); ) {
+      Schaltflaeche element = iter.next();
+      if (strg.zeichenErlaubt(element.getActionCommand())) {
+        element.setEnabled(true);
+      } else {
+        element.setEnabled(false);
+      }
+    }
+  }
+
   private void loescheZeichen() {
-    
+    formel = formel.substring(0, formel.length() - 1);
+    formelAnzeige.setVisible(false);
+    formelAnzeige.setText(formel);
+    formelAnzeige.setVisible(true);
     strg.entferneletzesZeichen();
+    pruefeErlaubteZeichen();
   }
   
   private void bestaetige() {
-    
+    if (strg.bestätige()) {
+      ansicht.dispose();
+    } else {
+      //TODO evtl Dialogfenster (?)
+    }
   }
   
   private void brecheAb() {
+    strg.brecheAb();
     ansicht.dispose();
   }
 }

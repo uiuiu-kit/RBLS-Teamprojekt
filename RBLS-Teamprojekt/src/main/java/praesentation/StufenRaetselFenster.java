@@ -54,10 +54,10 @@ public class StufenRaetselFenster extends RaetselFenster {
     this.modell = modell;
     this.tabelle = new KonkreteTabellenAnsicht(modell);
     
-    /* TODO BRAUCHT MODELL UND STEUERUNG
+    ///* TODO BRAUCHT MODELL UND STEUERUNG
     this.name = modell.gibAktivenRaetselnamen();
     this.frage = modell.gibFragestellung();
-    */
+    //*/
     ansicht = new JFrame();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
     ansicht.getContentPane().setBackground(Color.WHITE);
@@ -114,9 +114,9 @@ public class StufenRaetselFenster extends RaetselFenster {
     JPanel antwortPanel = new JPanel();
     
     ////TODO Platzhalter, bis Programm ausführbar!!
-    antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();
-    //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
-    //    modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
+    //antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();
+    antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
+        modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
     
     JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
@@ -170,8 +170,8 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
 
   private void geheZuRaetselwahlMenue() {
-    //fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
-    fv.oeffneMenue();  //TODO Platzhalter, bis Programm ausführbar ist
+    fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
+    //fv.oeffneMenue();  //TODO Platzhalter, bis Programm ausführbar ist
   }
   
   public void schliesseRaetselAb() {
