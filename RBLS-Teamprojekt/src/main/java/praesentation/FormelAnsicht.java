@@ -219,6 +219,11 @@ public class FormelAnsicht {
       }
       j++;
     }
+    if (formel.equals("")) {
+        entferne.setEnabled(false);
+      } else {
+        entferne.setEnabled(true);
+      }
   }
 
   private void loescheZeichen() {
