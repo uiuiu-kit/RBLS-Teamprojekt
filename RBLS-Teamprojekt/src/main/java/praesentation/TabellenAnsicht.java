@@ -1,5 +1,7 @@
 package praesentation;
 
+import java.awt.Component;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
 /**
@@ -13,5 +15,7 @@ public abstract class TabellenAnsicht {
   public abstract void zeigeTippAn();
 
   public abstract void aktualisiere(int[] zelle);
+
+  public abstract JPanel gibAnsicht();
   
 }
