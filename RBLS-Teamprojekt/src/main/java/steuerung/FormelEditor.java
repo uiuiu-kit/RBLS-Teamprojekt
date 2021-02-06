@@ -1,13 +1,8 @@
 package steuerung;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.IllegalFormatFlagsException;
 import java.util.List;
-
-import modell.SteuerungFassade;
 import modell.formel.Atom;
-import modell.formel.Formel;
+import praesentation.FormelAnsicht;
 
 public class FormelEditor {
   private List<Atom> atomareAussagenA;
@@ -35,7 +30,7 @@ public class FormelEditor {
    */
   public String gibNeueFormel(String formel_alt) {
     this.formel_alt = formel_alt;
-    FormelAnsicht ansicht = new FormelAnsicht(atomZuString(atomareAussageA));
+    FormelAnsicht ansicht = new FormelAnsicht(atomZuString(atomareAussagenA), this);
     ansicht.getFormel();
     return this.formel;
   }
@@ -47,10 +42,10 @@ public class FormelEditor {
    * @param atomareAussageA.
    * @return die Aussagen der Atome als String-Liste.
    */
-  private List<String> atomZuString(List<Atom> atomareAussageA) {
-    List<String> atomareAussageS = new ArrayList<String>();
+  private String[] atomZuString(List<Atom> atomareAussageA) {
+    String[] atomareAussageS = new String[atomareAussageA.size()];
     for (int i = 0; i < atomareAussageA.size(); i++) {
-      atomareAussageS.add(atomareAussageA.get(i).getAussage());
+      atomareAussageS[i] = (atomareAussageA.get(i).getAussage());
     }
     return atomareAussageS;
   }
