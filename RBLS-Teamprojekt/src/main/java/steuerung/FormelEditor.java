@@ -95,7 +95,7 @@ public class FormelEditor {
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
-    switch (formel.charAt(formel.length()) - 1) {
+    switch (formel.charAt(formel.length() - 1)) {
     case '0':
     case '1':
     case '2':
@@ -112,7 +112,8 @@ public class FormelEditor {
       return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
           || naechsterCh == '2' || naechsterCh == '3';
     default:
-      return false;
+      return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
+      || naechsterCh == '2' || naechsterCh == '3';
     }
 
   }
@@ -129,6 +130,7 @@ public class FormelEditor {
       if (formel.indexOf(')', i) < 0) {
         return true;
       }
+      i++;
     }
     return false;
   }
