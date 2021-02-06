@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
@@ -39,7 +40,6 @@ public class FormelAnsicht {
   
   private String alteFormel;
   private String formel = "";
-  private List<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>();
   
   private Schaltflaeche[] atomareAussagen;
   private Schaltflaeche und = new Schaltflaeche("\u2227", 3);
@@ -50,19 +50,11 @@ public class FormelAnsicht {
   private Schaltflaeche xor = new Schaltflaeche("\u2295", 3);
   private Schaltflaeche klammerAuf = new Schaltflaeche("(", 3);
   private Schaltflaeche klammerZu = new Schaltflaeche(")", 3);
+  private ArrayList<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>(Arrays.asList(new Schaltflaeche[] {und, oder, nicht, impliziert, aequivalent, xor, klammerAuf, klammerZu}));
+  private ArrayList<Character> symbole = new ArrayList<Character>(Arrays.asList(new Character[] {'u', 'o', 'n', 'i', 'a', 'x', '(', ')'}));
   
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {
     this.strg = strg;
-    
-    zeichen.add(und);
-    zeichen.add(oder);
-    zeichen.add(nicht);
-    zeichen.add(impliziert);
-    zeichen.add(aequivalent);
-    zeichen.add(xor);
-    zeichen.add(klammerAuf);
-    zeichen.add(klammerZu);
-    
     JPanel aussagenPanel = new JPanel();
     aussagenPanel.setLayout(new FlowLayout());
     atomareAussagen = new Schaltflaeche[aussagen.length];
@@ -70,9 +62,16 @@ public class FormelAnsicht {
       atomareAussagen[j] = new Schaltflaeche(aussagen[j], 3);
       atomareAussagen[j].addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
-            fuegeHinzu(e.getActionCommand().substring(0, 1));
+            schreibe(e.getActionCommand().substring(0, 1));
+            for (int i = 0; i < atomareAussagen.length; i++) {
+            	if (atomareAussagen[i].getActionCommand() == e.getActionCommand()) {
+            		fuegeHinzu((char) (i + '0'));
+            	}
+            }
           }
         });
+      zeichen.add(atomareAussagen[j]);
+      symbole.add((char) (j + '0'));
       aussagenPanel.add(atomareAussagen[j]);
     }
     
@@ -80,26 +79,30 @@ public class FormelAnsicht {
     operatorPanel1.setLayout(new FlowLayout());
     und.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(und.getText());
+          schreibe(und.getText());
+          fuegeHinzu('u');
         }
       });
     operatorPanel1.add(und);
     oder.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(oder.getText());
+          schreibe(oder.getText());
+          fuegeHinzu('o');
         }
       });
     operatorPanel1.add(oder);
     xor.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(xor.getText());
+          schreibe(xor.getText());
+          fuegeHinzu('x');
         }
       });
     operatorPanel1.add(xor);
 
     nicht.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(nicht.getText());
+          schreibe(nicht.getText());
+          fuegeHinzu('n');
         }
       });
     operatorPanel1.add(nicht);
@@ -108,25 +111,29 @@ public class FormelAnsicht {
     operatorPanel2.setLayout(new FlowLayout());
     impliziert.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(impliziert.getText());
+          schreibe(impliziert.getText());
+          fuegeHinzu('i');
         }
       });
     operatorPanel2.add(impliziert);
     aequivalent.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(aequivalent.getText());
+          schreibe(aequivalent.getText());
+          fuegeHinzu('a');
         }
       });
     operatorPanel2.add(aequivalent);
     klammerAuf.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu("(");
+          schreibe("(");
+          fuegeHinzu('(');
         }
       });
     operatorPanel2.add(klammerAuf);
     klammerZu.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          fuegeHinzu(")");
+          schreibe(")");
+          fuegeHinzu(')');
         }
       });
     operatorPanel2.add(klammerZu);
@@ -196,23 +203,29 @@ public class FormelAnsicht {
     return formel;
   }
   
-  private void fuegeHinzu(String zeichen) {
-    formel = formel + "" + zeichen;
-    formelAnzeige.setVisible(false);
-    formelAnzeige.setText(formel);
-    formelAnzeige.setVisible(true);
+  private void fuegeHinzu(char zeichen) {
     strg.setzeZeichen(zeichen);
     pruefeErlaubteZeichen();
   }
   
+  private void schreibe(String zeichen) {
+    formel = formel + "" + zeichen;
+    formelAnzeige.setVisible(false);
+    formelAnzeige.setText(formel);
+    formelAnzeige.setVisible(true);
+  }
+  
   private void pruefeErlaubteZeichen() {
+    int j = 0;
     for (Iterator<Schaltflaeche> iter = zeichen.iterator(); iter.hasNext(); ) {
       Schaltflaeche element = iter.next();
-      if (strg.zeichenErlaubt(element.getActionCommand())) {
+      System.out.println(symbole.get(j)); //TODO Test
+      if (strg.zeichenErlaubt(symbole.get(j))) {
         element.setEnabled(true);
       } else {
         element.setEnabled(false);
       }
+      j++;
     }
   }
 
