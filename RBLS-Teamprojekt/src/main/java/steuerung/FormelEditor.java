@@ -95,7 +95,7 @@ public class FormelEditor {
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
-    switch (formel.charAt(formel.length())) {
+    switch (formel.charAt(formel.length()) - 1) {
     case '0':
     case '1':
     case '2':
