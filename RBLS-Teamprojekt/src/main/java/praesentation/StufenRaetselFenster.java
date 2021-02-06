@@ -55,8 +55,8 @@ public class StufenRaetselFenster extends RaetselFenster {
     this.tabelle = new KonkreteTabellenAnsicht(modell);
     
     ///* TODO BRAUCHT MODELL UND STEUERUNG
-    this.name = modell.gibAktivenRaetselnamen();
-    this.frage = modell.gibFragestellung();
+    //this.name = modell.gibAktivenRaetselnamen();
+    //this.frage = modell.gibFragestellung();
     //*/
     ansicht = new JFrame();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
@@ -104,19 +104,20 @@ public class StufenRaetselFenster extends RaetselFenster {
     fragePanel.add(tippPanel, BorderLayout.EAST);
     
     //WahrheitstabellenPanel//
-    JPanel tabellenPanel = new JPanel();
-    tabellenPanel.setLayout(new BorderLayout());
-    tabellenPanel.setBackground(Color.DARK_GRAY);
-    tabellenPanel.add(new javax.swing.JLabel("TABELLE", SwingConstants.CENTER));
+    JPanel tabellenPanel = new JPanel();  //TODO Kann weg
+    tabellenPanel = tabelle.gibAnsicht();
+    //tabellenPanel.setLayout(new BorderLayout());  //TODO Kann weg
+    tabellenPanel.setBackground(Color.WHITE);
+    //tabellenPanel.add(new javax.swing.JLabel("TABELLE", SwingConstants.CENTER)); //TODO Platzhalter, kann weg
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
     
     //AntwortfeldPanel//
     JPanel antwortPanel = new JPanel();
     
     ////TODO Platzhalter, bis Programm ausführbar!!
-    //antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();
-    antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
-        modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
+    antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();
+    //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
+        //modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
     
     JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
@@ -170,7 +171,7 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
 
   private void geheZuRaetselwahlMenue() {
-    fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
+    //fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
     //fv.oeffneMenue();  //TODO Platzhalter, bis Programm ausführbar ist
   }
   
