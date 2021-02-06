@@ -5,14 +5,11 @@ import java.awt.FlowLayout;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -26,10 +23,6 @@ import steuerung.FormelEditor;
  * @author Nick
  */
 public class FormelAnsicht {
-  
-  public static final String UND = "\u2227";
-  public static final String ODER = "\u2228";
-  //TODO Rest
 
   private FormelEditor strg;
   private JDialog ansicht;
@@ -219,7 +212,6 @@ public class FormelAnsicht {
     int j = 0;
     for (Iterator<Schaltflaeche> iter = zeichen.iterator(); iter.hasNext(); ) {
       Schaltflaeche element = iter.next();
-      System.out.println(symbole.get(j)); //TODO Test
       if (strg.zeichenErlaubt(symbole.get(j))) {
         element.setEnabled(true);
       } else {
