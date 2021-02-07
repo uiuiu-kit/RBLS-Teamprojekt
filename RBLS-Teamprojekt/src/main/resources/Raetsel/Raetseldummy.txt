@@ -1,8 +1,8 @@
 Testraetsel
 ##
-Hier könnte Ihre werbung stehen
+Hier koennte Ihre werbung stehen
 ##
-$ ist eine süße Katze$
+$ ist eine suesse Katze$
 ##
 Herbert, Norbert, Saskia, Reinhardt
 ##

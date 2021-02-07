@@ -1,5 +1,15 @@
 package modell.raetsel;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Atom;
 
@@ -14,14 +24,76 @@ import modell.formel.Atom;
  */
 public class Raetselinterpret {
 
-  /**Lisstet alle verfügbaren Raetselnamen auf, die im Ordner 
+  public static final String PATH = "/src/main/resources/Raetsel";
+  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Raetsel gefunden";
+  public static final int NUMBER_OF_ROWS = 8;
+  
+  /**Wird von LiesOrdner und liesRaetsel benötigt, 
+   * um den Inhalt der Textdateien in einen String zu wandeln.
+   * Lädt die angegebene Textdatei und wandelt sie in einen String um.
+   * @param datName Name der gesuchten Datei.
+   * @return String mit dem Inhalt der Textdatei.
+   */
+  private String ladeDatei(String datName) {
+    File file = new File(datName);
+    String output = "";
+    if (!file.canRead() || !file.isFile()) {
+      return null;
+    }
+    BufferedReader in = null;
+    try {
+      in = new BufferedReader(new FileReader(datName));
+      String zeile = null;
+      while ((zeile = in.readLine()) != null) {
+        output = output + zeile;
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      if (in != null) {
+        try {
+          in.close();
+        } catch (IOException e) {
+          return null;
+        }
+      }   
+    }
+    return output;
+  }
+  
+  private List<String> liesDateinamen() {
+    try {
+      return Files.readAllLines(FileSystems.getDefault().getPath(PATH), 
+          StandardCharsets.UTF_8);
+    } catch (IOException e) {
+      List<String> output = new ArrayList<String>();
+      output.add(ERROR_NO_FILE_FOUND);
+      return output;
+    } 
+  }
+  
+  private String[] extrahiere(String input) {
+    String[] output = input.split("##");
+    if (output.length == NUMBER_OF_ROWS) {
+      return (output[7].matches("[+-]?\\d*(\\.\\d+)?") ?  output : null);
+    }
+    return null;
+  }
+  
+  /**Listet alle verfügbaren Raetselnamen auf, die im Ordner 
    * src,main,resources,Raetsel unter der jeweiligen Stufe hinterlegt sind.
-   * @param i Raetselstufe, nach deren Raetsel gesucht wird.
+   * @param stufe Raetselstufe, nach deren Raetsel gesucht wird.
    * @return Liste aller Raetselnamen, die die genannte Stufe erfüllen.
    */
-  public List<String> liesOrdner(int i) {
-    //TODO
-    return null;
+  public List<String> liesOrdner(int stufe) {
+    List<String> output = new ArrayList<String>();   
+    for (String name : liesDateinamen()) {
+      String[] test = extrahiere(ladeDatei(name));
+      if (Integer.parseInt(test[7]) == stufe) {
+        output.add(name);
+      }
+    }
+    return output;
   }
   
   /**Sucht die angegebene Textdatei des Reatsels und liest deren Daten aus, 
@@ -46,9 +118,11 @@ public class Raetselinterpret {
    * @param atomA Anzahl und Namen der verfügbaren Atomaren Aussagen, die der Benutzer angeben kann.
    */
   public void erstelleFR(List<String> atomA) {
-    //TODO
+    List<Atom> temp = new ArrayList<Atom>();
   }
   
   
+
+ 
   
 }
