@@ -113,7 +113,7 @@ public class FormelEditor {
           || naechsterCh == '2' || naechsterCh == '3';
     default:
       return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-      || naechsterCh == '2' || naechsterCh == '3';
+          || naechsterCh == '2' || naechsterCh == '3';
     }
 
   }
@@ -124,14 +124,18 @@ public class FormelEditor {
    * @return ob es noch offene Klammern gibt
    */
   private boolean klammerOffen() {
-    int i = 0;
-    while (formel.indexOf('(', i) > 0) {
-      i = formel.indexOf('(', i);
-      if (formel.indexOf(')', i) < 0) {
-        return true;
+    int offene = 0;
+    for (int i = 0; i < formel.length(); i++) {
+      if (formel.charAt(i) == '(') {
+        offene = offene + 1;
       }
-      i++;
+      if (formel.charAt(i) == ')') {
+        offene = offene - 1;
+      }
     }
-    return false;
+    if (offene == 0) {
+      return false;
+    }
+    return true;
   }
 }
