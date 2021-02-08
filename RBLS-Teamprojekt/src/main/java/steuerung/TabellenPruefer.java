@@ -1,12 +1,8 @@
 package steuerung;
 
-import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.swing.text.DefaultEditorKit.BeepAction;
-
 import modell.SteuerungFassade;
 import modell.formel.Formel;
 
