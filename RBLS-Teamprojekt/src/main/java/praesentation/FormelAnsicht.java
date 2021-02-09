@@ -39,12 +39,12 @@ public class FormelAnsicht {
   private Schaltflaeche oder = new Schaltflaeche("\u2228", 3);
   private Schaltflaeche nicht = new Schaltflaeche("\u00AC", 3);
   private Schaltflaeche impliziert = new Schaltflaeche("\u2192", 3);
-  private Schaltflaeche aequivalent = new Schaltflaeche("\u2194", 3);
+  //private Schaltflaeche aequivalent = new Schaltflaeche("\u2194", 3);  //TODO
   private Schaltflaeche xor = new Schaltflaeche("\u2295", 3);
   private Schaltflaeche klammerAuf = new Schaltflaeche("(", 3);
   private Schaltflaeche klammerZu = new Schaltflaeche(")", 3);
-  private ArrayList<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>(Arrays.asList(new Schaltflaeche[] {und, oder, nicht, impliziert, aequivalent, xor, klammerAuf, klammerZu}));
-  private ArrayList<Character> symbole = new ArrayList<Character>(Arrays.asList(new Character[] {'u', 'o', 'n', 'i', 'a', 'x', '(', ')'}));
+  private ArrayList<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>(Arrays.asList(new Schaltflaeche[] {und, oder, nicht, impliziert,/* aequivalent,*/ xor, klammerAuf, klammerZu}));
+  private ArrayList<Character> symbole = new ArrayList<Character>(Arrays.asList(new Character[] {'u', 'o', 'n', 'f',/* 'a',*/ 'x', '(', ')'}));
   
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {
     this.strg = strg;
@@ -109,13 +109,13 @@ public class FormelAnsicht {
         }
       });
     operatorPanel2.add(impliziert);
-    aequivalent.addActionListener(new ActionListener() {
+   /* aequivalent.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           schreibe(aequivalent.getText());
           fuegeHinzu('a');
         }
       });
-    operatorPanel2.add(aequivalent);
+    operatorPanel2.add(aequivalent); */
     klammerAuf.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           schreibe("(");
@@ -186,9 +186,8 @@ public class FormelAnsicht {
     ansicht.setModalityType(ModalityType.APPLICATION_MODAL);
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
     ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    ansicht.setVisible(true);
-    
     pruefeErlaubteZeichen();
+    ansicht.setVisible(true);
     
   }
   
@@ -216,8 +215,8 @@ public class FormelAnsicht {
         element.setEnabled(true);
       } else {
         element.setEnabled(false);
-      }
-      j++;
+      }System.out.println(symbole.get(j));
+      j++; 
     }
     if (formel.equals("")) {
         entferne.setEnabled(false);
