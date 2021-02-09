@@ -23,14 +23,23 @@ public class Raetsel {
   private int zeilenAnz;
   private String loesung;
 
-  /**Konstruktor des Raetsels. Soll durch RInterpret erstellt werden
-   * 
+  
+  /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
+   * @param zeilenAnz
+   * @param spaltenAnz
+   * @param stufe
+   * @param atom
+   * @param raetselText
+   * @param loesung
    */
-  public Raetsel(int zeilenAnz, int spaltenAnz, List<Atom> atom, String loesung) {
+  public Raetsel(int zeilenAnz, int spaltenAnz, int stufe, List<Atom> atom, String raetselText, String[] antwortMöglichkeiten, String loesung, List<Formel> formeln) {
     this.spaltenAnz = spaltenAnz;
     this.zeilenAnz = zeilenAnz;
+    this.stufe = stufe;
     this.atom = atom;
     this.loesung = loesung;
+    this.raetselText = raetselText;
+    this.formeln = formeln;
   }
   
   public String gibRaetselText() {
