@@ -17,6 +17,7 @@ public class FormelEditor {
    */
   public FormelEditor(List<Atom> atomareAussagen) {
     this.atomareAussagenA = atomareAussagen;
+    formel = "";
   }
 
   /**
@@ -95,7 +96,7 @@ public class FormelEditor {
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
-    if (formel == null) {
+    if (formel == "") {
       return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
           || naechsterCh == '2' || naechsterCh == '3';
     }
