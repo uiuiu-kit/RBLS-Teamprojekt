@@ -41,7 +41,7 @@ public class SteuerungFassade {
    */
   public void init() {
     this.interpret = new Raetselinterpret();
-    praesFassade = PraesentationFassade.gibPraFa(interpret);
+    praesFassade = new PraesentationFassade(interpret);
     /* interpret.liesRaetsel(); hier kann noch kein Raetsel erstellt werden. 
     In der Initphase ist noch nicht bekannt, welches Reatsel ausgewählt wurde.
     Bitte nach dem Lesen diesen Kommentar löschen

@@ -21,7 +21,7 @@ public class PraesentationFassade {
   private Tabelle tabelle;
   
   @SuppressWarnings("static-access")
-  private PraesentationFassade(Raetselinterpret interpret) {
+  public PraesentationFassade(Raetselinterpret interpret) {
     this.interpret = interpret;
     this.praFa = this;
   }
