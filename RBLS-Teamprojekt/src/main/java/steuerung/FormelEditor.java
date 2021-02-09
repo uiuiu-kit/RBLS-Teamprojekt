@@ -79,8 +79,8 @@ public class FormelEditor {
    * gibt zurück ob diese Formel gültig ist, das heißt, das keine Klammern mehr
    * offen ist und die Formel nicht mit einen Konnektor endet.
    */
-  public boolean bestätige() {
-    char letzerCh = formel.charAt(formel.length());
+  public boolean bestaetige() {
+    char letzerCh = formel.charAt(formel.length() - 1);
     if (!klammerOffen() || (letzerCh == '0' || letzerCh == '1' || letzerCh == '2' || letzerCh == '3'
         || letzerCh == ')')) {
       return true;
@@ -95,6 +95,10 @@ public class FormelEditor {
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
+    if (formel == null) {
+      return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
+          || naechsterCh == '2' || naechsterCh == '3';
+    }
     switch (formel.charAt(formel.length() - 1)) {
     case '0':
     case '1':
