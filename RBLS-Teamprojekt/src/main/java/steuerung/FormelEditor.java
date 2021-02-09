@@ -6,7 +6,7 @@ import praesentation.FormelAnsicht;
 
 public class FormelEditor {
   private List<Atom> atomareAussagenA;
-  private String formel_alt;
+  private String formelAlt;
   private String formel;
 
   /**
@@ -25,12 +25,12 @@ public class FormelEditor {
    * wird. Sobald die Formel bestätigt oder abgeleht wurden wird die Formel zurück
    * gegeben.
    * 
-   * @param formel_alt die Formel die bearbeitet werden soll und zurück gegeben
-   *                   wird falls abgebrochen wird.
+   * @param formelAlt die Formel die bearbeitet werden soll und zurück gegeben
+   *                  wird falls abgebrochen wird.
    * @return die neue Formel.
    */
-  public String gibNeueFormel(String formel_alt) {
-    this.formel_alt = formel_alt;
+  public String gibNeueFormel(String formelAlt) {
+    this.formelAlt = formelAlt;
     FormelAnsicht ansicht = new FormelAnsicht(atomZuString(atomareAussagenA), this);
     ansicht.getFormel();
     return this.formel;
@@ -40,7 +40,7 @@ public class FormelEditor {
    * Wandelt die Atom-Liste in ein String-Liste um, sodass sie von der
    * FormelAnsicht verarbeitet werden kann.
    * 
-   * @param atomareAussageA.
+   * @param atomareAussageA die Aussagen die als Atom Liste übergeben werden
    * @return die Aussagen der Atome als String-Liste.
    */
   private String[] atomZuString(List<Atom> atomareAussageA) {
@@ -73,7 +73,7 @@ public class FormelEditor {
    * setzt die Formel zurück.
    */
   public void brecheAb() {
-    formel = formel_alt;
+    formel = formelAlt;
   }
 
   /**
