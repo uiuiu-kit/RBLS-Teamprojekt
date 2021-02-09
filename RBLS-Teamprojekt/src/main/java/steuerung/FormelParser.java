@@ -23,6 +23,12 @@ public class FormelParser {
     Formel formelF = null;
     List<String> klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
     formelS = klammerAusdruecke.get(klammerAusdruecke.size() - 1);
+    if (formelS.length() > 1) {
+      if (formelS.charAt(0) == '(' && formelS.charAt(formelS.length() - 1) == ')') {
+        formelS = klammerAusdrueckeWiederherstellen(formelS, klammerAusdruecke);
+        formelS = formelS.substring(1, formelS.length() - 1);
+      }
+    }
     if (formelS.length() < 2) {
       int num = Integer.parseInt(formelS);
       String aussage = fassade.gibAtomareAussage().get(num).getAussage();
@@ -78,16 +84,21 @@ public class FormelParser {
   /**
    * Ersetzt Klammerausdrücke.
    * 
-   * @param formelS Formel in der Klammerausdrücke jeweils durch k(Index) ersetzt werden.
+   * @param formelS Formel in der Klammerausdrücke jeweils durch k(Index) ersetzt
+   *                werden.
    * @return Formel mit ersetzten Klammerausdrücke
    */
   private static List<String> klammerAusdrueckeErsetzen(String formelS) {
     List<String> klammerAusdruecke = new ArrayList<String>();
     int i = 0;
-    while (formelS.matches(".*\\(.*\\).*")) {
-      klammerAusdruecke.add((formelS.substring(formelS.lastIndexOf("("),
-          formelS.indexOf(")", formelS.lastIndexOf("(")))));
-      formelS.replace("\\([a-z,0-3]*\\)", "k" + i);
+    int open;
+    int close;
+    while (formelS.matches(".+\\(.*\\).+")) {
+      open = formelS.lastIndexOf("(");
+      close = formelS.indexOf(")", open);
+      klammerAusdruecke.add((formelS.substring(open, close)));
+      formelS = formelS.substring(0, open) + "k" + i
+          + formelS.substring(close, formelS.length() - 1);
       i++;
     }
     klammerAusdruecke.add(formelS);

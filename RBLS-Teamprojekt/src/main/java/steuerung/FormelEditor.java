@@ -6,7 +6,7 @@ import praesentation.FormelAnsicht;
 
 public class FormelEditor {
   private List<Atom> atomareAussagenA;
-  private String formel_alt;
+  private String formelAlt;
   private String formel;
 
   /**
@@ -17,6 +17,7 @@ public class FormelEditor {
    */
   public FormelEditor(List<Atom> atomareAussagen) {
     this.atomareAussagenA = atomareAussagen;
+    formel = "";
   }
 
   /**
@@ -24,12 +25,12 @@ public class FormelEditor {
    * wird. Sobald die Formel bestätigt oder abgeleht wurden wird die Formel zurück
    * gegeben.
    * 
-   * @param formel_alt die Formel die bearbeitet werden soll und zurück gegeben
-   *                   wird falls abgebrochen wird.
+   * @param formelAlt die Formel die bearbeitet werden soll und zurück gegeben
+   *                  wird falls abgebrochen wird.
    * @return die neue Formel.
    */
-  public String gibNeueFormel(String formel_alt) {
-    this.formel_alt = formel_alt;
+  public String gibNeueFormel(String formelAlt) {
+    this.formelAlt = formelAlt;
     FormelAnsicht ansicht = new FormelAnsicht(atomZuString(atomareAussagenA), this);
     ansicht.getFormel();
     return this.formel;
@@ -39,7 +40,7 @@ public class FormelEditor {
    * Wandelt die Atom-Liste in ein String-Liste um, sodass sie von der
    * FormelAnsicht verarbeitet werden kann.
    * 
-   * @param atomareAussageA.
+   * @param atomareAussageA die Aussagen die als Atom Liste übergeben werden
    * @return die Aussagen der Atome als String-Liste.
    */
   private String[] atomZuString(List<Atom> atomareAussageA) {
@@ -72,15 +73,15 @@ public class FormelEditor {
    * setzt die Formel zurück.
    */
   public void brecheAb() {
-    formel = formel_alt;
+    formel = formelAlt;
   }
 
   /**
    * gibt zurück ob diese Formel gültig ist, das heißt, das keine Klammern mehr
    * offen ist und die Formel nicht mit einen Konnektor endet.
    */
-  public boolean bestätige() {
-    char letzerCh = formel.charAt(formel.length());
+  public boolean bestaetige() {
+    char letzerCh = formel.charAt(formel.length() - 1);
     if (!klammerOffen() || (letzerCh == '0' || letzerCh == '1' || letzerCh == '2' || letzerCh == '3'
         || letzerCh == ')')) {
       return true;
@@ -95,25 +96,29 @@ public class FormelEditor {
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
-    switch (formel.charAt(formel.length() - 1)) {
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case ')':
-      return naechsterCh == 'o' || naechsterCh == 'u' || naechsterCh == 'x' || naechsterCh == 'f'
-          || klammerOffen() && naechsterCh == ')';
-    case 'o':
-    case 'u':
-    case 'x':
-    case 'f':
-    case 'n':
-    case '(':
+    if (formel == "") {
       return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
           || naechsterCh == '2' || naechsterCh == '3';
-    default:
-      return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-      || naechsterCh == '2' || naechsterCh == '3';
+    }
+    switch (formel.charAt(formel.length() - 1)) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case ')':
+        return naechsterCh == 'o' || naechsterCh == 'u' || naechsterCh == 'x' || naechsterCh == 'f'
+            || klammerOffen() && naechsterCh == ')';
+      case 'o':
+      case 'u':
+      case 'x':
+      case 'f':
+      case 'n':
+      case '(':
+        return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
+            || naechsterCh == '2' || naechsterCh == '3';
+      default:
+        return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
+            || naechsterCh == '2' || naechsterCh == '3';
     }
 
   }
@@ -124,14 +129,18 @@ public class FormelEditor {
    * @return ob es noch offene Klammern gibt
    */
   private boolean klammerOffen() {
-    int i = 0;
-    while (formel.indexOf('(', i) > 0) {
-      i = formel.indexOf('(', i);
-      if (formel.indexOf(')', i) < 0) {
-        return true;
+    int offene = 0;
+    for (int i = 0; i < formel.length(); i++) {
+      if (formel.charAt(i) == '(') {
+        offene = offene + 1;
       }
-      i++;
+      if (formel.charAt(i) == ')') {
+        offene = offene - 1;
+      }
     }
-    return false;
+    if (offene == 0) {
+      return false;
+    }
+    return true;
   }
 }

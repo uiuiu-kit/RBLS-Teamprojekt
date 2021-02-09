@@ -1,8 +1,8 @@
 package praesentation;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Dialog.ModalityType;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-
 import steuerung.FormelEditor;
 
 /**
@@ -39,12 +38,15 @@ public class FormelAnsicht {
   private Schaltflaeche oder = new Schaltflaeche("\u2228", 3);
   private Schaltflaeche nicht = new Schaltflaeche("\u00AC", 3);
   private Schaltflaeche impliziert = new Schaltflaeche("\u2192", 3);
-  private Schaltflaeche aequivalent = new Schaltflaeche("\u2194", 3);
+  //private Schaltflaeche aequivalent = new Schaltflaeche("\u2194", 3);  //TODO
   private Schaltflaeche xor = new Schaltflaeche("\u2295", 3);
   private Schaltflaeche klammerAuf = new Schaltflaeche("(", 3);
   private Schaltflaeche klammerZu = new Schaltflaeche(")", 3);
-  private ArrayList<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>(Arrays.asList(new Schaltflaeche[] {und, oder, nicht, impliziert, aequivalent, xor, klammerAuf, klammerZu}));
-  private ArrayList<Character> symbole = new ArrayList<Character>(Arrays.asList(new Character[] {'u', 'o', 'n', 'i', 'a', 'x', '(', ')'}));
+  private ArrayList<Schaltflaeche> zeichen = new ArrayList<Schaltflaeche>(
+      Arrays.asList(new Schaltflaeche[] {und, oder, nicht, impliziert,
+      /* aequivalent,*/ xor, klammerAuf, klammerZu}));
+  private ArrayList<Character> symbole = new ArrayList<Character>(
+      Arrays.asList(new Character[] {'u', 'o', 'n', 'f',/* 'a',*/ 'x', '(', ')'}));
   
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {
     this.strg = strg;
@@ -57,9 +59,9 @@ public class FormelAnsicht {
           public void actionPerformed(ActionEvent e) {
             schreibe(e.getActionCommand().substring(0, 1));
             for (int i = 0; i < atomareAussagen.length; i++) {
-            	if (atomareAussagen[i].getActionCommand() == e.getActionCommand()) {
-            		fuegeHinzu((char) (i + '0'));
-            	}
+              if (atomareAussagen[i].getActionCommand() == e.getActionCommand()) {
+                fuegeHinzu((char) (i + '0'));
+              }
             }
           }
         });
@@ -109,13 +111,13 @@ public class FormelAnsicht {
         }
       });
     operatorPanel2.add(impliziert);
-    aequivalent.addActionListener(new ActionListener() {
+    /* aequivalent.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           schreibe(aequivalent.getText());
           fuegeHinzu('a');
         }
       });
-    operatorPanel2.add(aequivalent);
+    operatorPanel2.add(aequivalent); */
     klammerAuf.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           schreibe("(");
@@ -186,9 +188,8 @@ public class FormelAnsicht {
     ansicht.setModalityType(ModalityType.APPLICATION_MODAL);
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
     ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-    ansicht.setVisible(true);
-    
     pruefeErlaubteZeichen();
+    ansicht.setVisible(true);
     
   }
   
@@ -217,13 +218,13 @@ public class FormelAnsicht {
       } else {
         element.setEnabled(false);
       }
-      j++;
+      j++; 
     }
     if (formel.equals("")) {
-        entferne.setEnabled(false);
-      } else {
-        entferne.setEnabled(true);
-      }
+      entferne.setEnabled(false);
+    } else {
+      entferne.setEnabled(true);
+    }
   }
 
   private void loescheZeichen() {
@@ -236,7 +237,7 @@ public class FormelAnsicht {
   }
   
   private void bestaetige() {
-    if (strg.bestätige()) {
+    if (strg.bestaetige()) {
       ansicht.dispose();
     } else {
       //TODO evtl Dialogfenster (?)

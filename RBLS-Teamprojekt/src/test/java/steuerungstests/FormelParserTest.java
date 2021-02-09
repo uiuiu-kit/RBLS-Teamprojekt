@@ -1,6 +1,6 @@
 package steuerungstests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,9 @@ public class FormelParserTest {
   @Mock
   private SteuerungFassade sfMock;
 
+  /**
+   * initalisiert die SteuerungFassade und die atomaen Aussagen.
+   */
   @Before
   public void setup() {
     List<Atom> atomareAussagenMock = new ArrayList<Atom>();
@@ -50,5 +53,11 @@ public class FormelParserTest {
   public void testNurKlammer() {
     Formel formel = FormelParser.pars("(1)", sfMock);
     assertEquals("D", formel.gibStringRep());
+  }
+
+  @Test
+  public void testKlammerUnd() {
+    Formel formel = FormelParser.pars("(1u2)", sfMock);
+    assertEquals("DuE", formel.gibStringRep());
   }
 }
