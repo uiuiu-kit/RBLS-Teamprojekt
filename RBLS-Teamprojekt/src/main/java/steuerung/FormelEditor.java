@@ -101,24 +101,24 @@ public class FormelEditor {
           || naechsterCh == '2' || naechsterCh == '3';
     }
     switch (formel.charAt(formel.length() - 1)) {
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case ')':
-      return naechsterCh == 'o' || naechsterCh == 'u' || naechsterCh == 'x' || naechsterCh == 'f'
-          || klammerOffen() && naechsterCh == ')';
-    case 'o':
-    case 'u':
-    case 'x':
-    case 'f':
-    case 'n':
-    case '(':
-      return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-          || naechsterCh == '2' || naechsterCh == '3';
-    default:
-      return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-          || naechsterCh == '2' || naechsterCh == '3';
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case ')':
+        return naechsterCh == 'o' || naechsterCh == 'u' || naechsterCh == 'x' || naechsterCh == 'f'
+            || klammerOffen() && naechsterCh == ')';
+      case 'o':
+      case 'u':
+      case 'x':
+      case 'f':
+      case 'n':
+      case '(':
+        return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
+            || naechsterCh == '2' || naechsterCh == '3';
+      default:
+        return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
+            || naechsterCh == '2' || naechsterCh == '3';
     }
 
   }
