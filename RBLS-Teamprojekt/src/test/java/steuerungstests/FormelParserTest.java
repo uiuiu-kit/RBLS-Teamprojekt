@@ -56,8 +56,14 @@ public class FormelParserTest {
   }
 
   @Test
-  public void testKlammerUnd() {
+  public void testKlammerMitKonnektor() {
     Formel formel = FormelParser.pars("(1u2)", sfMock);
+    assertEquals("DuE", formel.gibStringRep());
+  }
+
+  @Test
+  public void testKlammerUndZusatz() {
+    Formel formel = FormelParser.pars("0o(1u2)", sfMock);
     assertEquals("DuE", formel.gibStringRep());
   }
 }
