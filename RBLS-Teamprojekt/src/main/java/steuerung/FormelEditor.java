@@ -96,7 +96,7 @@ public class FormelEditor {
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
-    if (formel == "") {
+    if (formel.equals("")) {
       return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
           || naechsterCh == '2' || naechsterCh == '3';
     }
