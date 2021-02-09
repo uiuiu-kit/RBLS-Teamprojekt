@@ -12,7 +12,7 @@ public class ExklusivOder extends BiKonnektor {
    * @param rechts rechte Formel
    * @param links linke Formel
    */
-  public ExklusivOder(Formel rechts, Formel links) {
+  public ExklusivOder(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
     this.rep = "x";

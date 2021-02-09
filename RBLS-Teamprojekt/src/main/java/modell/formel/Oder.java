@@ -12,7 +12,7 @@ public class Oder extends BiKonnektor {
    * @param rechts rechte Formel
    * @param links linke Formel
    */
-  public Oder(Formel rechts, Formel links) {
+  public Oder(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
     this.rep = "o";

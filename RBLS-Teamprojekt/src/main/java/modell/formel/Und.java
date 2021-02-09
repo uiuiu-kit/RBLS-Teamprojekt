@@ -12,7 +12,7 @@ public class Und extends BiKonnektor {
    * @param rechts rechte Formel
    * @param links linke Formel
    */
-  public Und(Formel rechts, Formel links) {
+  public Und(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
     this.rep = "u";
