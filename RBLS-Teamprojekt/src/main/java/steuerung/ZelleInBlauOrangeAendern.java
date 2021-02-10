@@ -6,9 +6,17 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
   private int[] zellenKoordinaten;
   private boolean zelleWW;
 
-  public ZelleInBlauOrangeAendern(SteuerungFassade model, int[] koordinaten) {
+  /**
+   * Ändert den Wahrheitswert in einer Wahrheitswert Zelle.
+   * 
+   * @param model  die SteuerungFassade auf der der Befehl ausgeführt wird.
+   * @param spalte die Spalte in der der Wert geändert wird
+   * @param zeile  die Zeile in der der Wert geändert wird
+   */
+  public ZelleInBlauOrangeAendern(SteuerungFassade model, int spalte, int zeile) {
     super(model);
-    zellenKoordinaten = koordinaten;
+    zellenKoordinaten[0] = zeile;
+    zellenKoordinaten[1] = spalte;
   }
 
   @Override
