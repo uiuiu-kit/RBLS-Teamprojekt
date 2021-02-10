@@ -105,4 +105,8 @@ public class SteuerungFassade {
   public String gibFormelText(int spalte) {
     return tabelle.gibFormelText(spalte);
   }
+  
+  public int gibStufe() {
+    return this.raetsel.gibStufe();
+  }
 }
