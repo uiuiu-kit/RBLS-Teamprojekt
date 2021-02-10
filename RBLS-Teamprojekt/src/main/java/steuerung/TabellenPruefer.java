@@ -3,16 +3,19 @@ package steuerung;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import modell.SteuerungFassade;
 import modell.formel.Formel;
 
 public class TabellenPruefer {
   private SteuerungFassade model;
   boolean vollstaendig;
-  List<int[]> fehlerhafteWW;
-  List<Integer> fehlerhafteFaelle;
-  List<boolean[]> noetigeFaelle;
-  List<boolean[]> nochNoetigeFaelle;
+  private List<int[]> fehlerhafteWW;
+  private List<Integer> fehlerhafteFaelle;
+  private List<boolean[]> noetigeFaelle;
+  private List<boolean[]> nochNoetigeFaelle;
+  private int stufe;
 
   /**
    * Konstruktor des TabellenPruefers der die Startvoraussetzunge und die globalen
@@ -20,8 +23,9 @@ public class TabellenPruefer {
    * 
    * @param model die Fassade hinter der die Tabelle ist die getestet werden soll.
    */
-  public TabellenPruefer(SteuerungFassade model) {
+  public TabellenPruefer(SteuerungFassade model, int stufe) {
     this.model = model;
+    this.stufe = stufe;
     int anzAtom = model.gibAtomareAussage().size() + 1;
     boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtom)][2];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
@@ -37,18 +41,18 @@ public class TabellenPruefer {
    * nötigen Fälle aktualisiert. Je nachdem ob der Fall nun fehlerhaft ist oder
    * nicht wird auch die Liste der fehlerhaften Fälle aktuallisiert.
    * 
-   * @param koordinaten die Koordinate die geändert wurde
+   * @param koordinate die Koordinate die geändert wurde
    * @return die Liste an fehlerhaften Fällen
    */
-  public List<Integer> ueberpuefeFaelle(int[] koordinaten) {
-    boolean[] akFall = model.gibZeileFall(koordinaten[1]);
+  public List<Integer> ueberpuefeFaelle(int[] koordinate) {
+    boolean[] akFall = model.gibZeileFall(koordinate[1]);
     if (nochNoetigeFaelle.contains(akFall)) {
       nochNoetigeFaelle.remove(akFall);
-      fehlerhafteFaelle.remove(koordinaten[1]);
+      fehlerhafteFaelle.remove(koordinate[1]);
     } else {
-      akFall[koordinaten[1]] = !akFall[koordinaten[1]];
+      akFall[koordinate[1]] = !akFall[koordinate[1]];
       if (noetigeFaelle.contains(akFall)) {
-        fehlerhafteFaelle.add(koordinaten[1]);
+        fehlerhafteFaelle.add(koordinate[1]);
         nochNoetigeFaelle.add(akFall);
       }
     }
@@ -104,5 +108,26 @@ public class TabellenPruefer {
       }
     }
     return fehlerhafteWW;
+  }
+
+  /**
+   * gib die Koordinaten einer fehlerhaften Zelle zurück. Abhänig von der Stufe
+   * wird entweder eine Koordinaten in den Fällen (1), eine Koordinate in den
+   * Wahrheitswerden(3) oder null (2,4) zurück gegegben.
+   * 
+   * @return die Koordinaten einer Fehlerhaften Zelle
+   */
+  public int[] gibFehlerhafteZelle() {
+    int pos;
+    if (stufe == 1) {
+      pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteFaelle.size());
+      int[] koordinaten = { 1, fehlerhafteFaelle.get(pos) };
+      return koordinaten;
+    }
+    if (stufe == 3) {
+      pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteWW.size());
+      return fehlerhafteWW.get(pos);
+    }
+    return null;
   }
 }
