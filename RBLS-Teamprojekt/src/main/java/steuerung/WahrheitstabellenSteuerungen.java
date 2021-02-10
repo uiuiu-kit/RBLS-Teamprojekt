@@ -3,13 +3,20 @@ package steuerung;
 import modell.SteuerungFassade;
 
 public class WahrheitstabellenSteuerungen {
+
+  private SteuerungFassade model;
+  private TabellenPruefer tabellenPruefer;
+  private int stufe;
+
   /**
    * Konstruktor für die WahrheitstabellenSteuerungen.
    * 
-   * @param modell die Fassade die von Befehlen angesprochen werden soll
+   * @param model die Fassade die von Befehlen angesprochen werden soll
    */
-  public WahrheitstabellenSteuerungen(SteuerungFassade modell) {
-    // TODO Auto-generated constructor stub
+  public WahrheitstabellenSteuerungen(SteuerungFassade model) {
+    this.model = model;
+    this.stufe = model.gibStufe();
+    tabellenPruefer = new TabellenPruefer(model, stufe);
   }
 
   /**
@@ -19,7 +26,53 @@ public class WahrheitstabellenSteuerungen {
    * @param befehl der auszuführende Befehl
    */
   public void befehl(String befehl) {
-    ueberpruefeTabelle();
+    String[] split = befehl.split("\\(");
+    String befehlsname = split[0];
+    split[1] = split[1].substring(0, split.length - 1);
+    String[] parameter = split[1].split(",");
+    switch (befehlsname) {
+      case "AufbauTabelle":
+        switch (stufe) {
+          case 1:
+            new AufbauTabelle1(model);
+            break;
+          case 2:
+          case 4:
+            new AufbauTabelle24(model);
+            break;
+          case 3:
+            new AufbauTabelle3(model);
+            break;
+          default:
+            break;
+        }
+        break;
+      case "FormelEingeben":
+        new FormelEingeben(model, Integer.parseInt(parameter[0]));
+        break;
+      case "FuelleTabelle":
+        if ((stufe == 1 || stufe == 2 || stufe == 4)) {
+          new FuelleTabelle(model);
+        }
+        break;
+      case "SpalteEntfernen":
+        new SpalteEntfernen(model, Integer.parseInt(parameter[0]));
+        break;
+      case "SpalteHinzufuegen":
+        new SpalteHinzufuegen(model);
+        break;
+      case "ZelleInBlauOrangeAendern":
+        new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
+            Integer.parseInt(parameter[1]));
+        break;
+      default:
+        break;
+    }
+    ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
+  }
+
+  public int[] gibTip() {
+    return tabellenPruefer.gibFehlerhafteZelle();
   }
 
   /**
@@ -27,7 +80,18 @@ public class WahrheitstabellenSteuerungen {
    * 
    * @return Korrektheit
    */
-  private boolean ueberpruefeTabelle() {
-    return false;
+  private boolean ueberpruefeTabelle(int spalte, int zeile) {
+    int[] koordinate = { spalte, zeile };
+    switch (stufe) {
+      case 1:
+        return tabellenPruefer.ueberpuefeFaelle(koordinate).isEmpty();
+      case 2:
+      case 4:
+        return tabellenPruefer.ueberpuefeFormeln();
+      case 3:
+        return tabellenPruefer.ueberpuefeWW(koordinate).isEmpty();
+      default:
+        return false;
+    }
   }
 }
