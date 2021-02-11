@@ -1,11 +1,10 @@
 package steuerung;
 
 import java.util.List;
-import modell.formel.Atom;
 import praesentation.FormelAnsicht;
 
 public class FormelEditor {
-  private List<String> atomareAussagenA;
+  private List<String> atomareAussagen;
   private String formelAlt;
   private String formel;
 
@@ -16,7 +15,7 @@ public class FormelEditor {
    *                        Formel vorkommen kommen.
    */
   public FormelEditor(List<String> atomareAussagen) {
-    this.atomareAussagenA = atomareAussagen;
+    this.atomareAussagen = atomareAussagen;
     formel = "";
   }
 
@@ -31,7 +30,7 @@ public class FormelEditor {
    */
   public String gibNeueFormel(String formelAlt) {
     this.formelAlt = formelAlt;
-    FormelAnsicht ansicht = new FormelAnsicht(atomareAussagenA, this);
+    FormelAnsicht ansicht = new FormelAnsicht((String[]) atomareAussagen.toArray(), this);
     ansicht.getFormel();
     return this.formel;
   }
