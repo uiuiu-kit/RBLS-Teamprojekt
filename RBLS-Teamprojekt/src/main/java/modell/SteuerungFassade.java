@@ -100,6 +100,7 @@ public class SteuerungFassade {
   
   public void setzeFormel(Formel f, int spalte) {
     tabelle.setzeFormel(f, spalte);
+    this.raetsel.addFormel(f);
   }
   
   public String gibFormelText(int spalte) {

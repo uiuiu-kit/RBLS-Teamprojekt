@@ -111,4 +111,9 @@ public class PraesentationFassade {
   public String gibFormelText(int spalte) {
     return tabelle.gibFormelText(spalte);
   }
+  
+  public int gibAbgeschlosseneStufe() {
+    //TODO
+    return 0;
+  }
 }

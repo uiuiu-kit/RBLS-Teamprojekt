@@ -7,16 +7,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import modell.formel.Atom;
 import modell.formel.Formel;
 
 
 /** Der Raetselinterpret liest die Ordnerstruktur aus 
- * und liefert darauf basierend Raetselnamen zurück. 
+ * und liefert darauf basierend Raetselnamen zurück.
  * Selbige können angegeben werden, um nach einer Raetseltextdatei gleichen Namens zu suchen 
  * und diese als Reatselobjekt zurückgeliefert zu bekommen. 
  * Außerdem ist der RInterpret für die Erstellung freier Raetsel(FR) zuständig
@@ -28,6 +25,7 @@ public class Raetselinterpret {
   public static final String PATH = "/src/main/resources/Raetsel";
   public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Raetsel gefunden";
   public static final int NUMBER_OF_ROWS = 8;
+  public static final int INIT_NUMBER_OF_COL = 2;
   
   
   
@@ -83,8 +81,17 @@ public class Raetselinterpret {
     return null;
   }
   
-  private int calcRow(String[] atome) {
-    return (int) Math.pow(2, atome.length);
+  private int calcRow(List<String> atome) {
+    return (int) Math.pow(2, atome.size());
+  }
+  
+  private List<String> exAtome(String input) {
+    String[] sep = input.split(",");
+    List<String> output = new ArrayList<String>();
+    for (String temp: sep) {
+      output.add(temp);
+    }
+    return output;
   }
   
   /**Listet alle verfügbaren Raetselnamen auf, die im Ordner 
@@ -109,35 +116,43 @@ public class Raetselinterpret {
    * @return neues Raetselobjekt.
    */
   public Raetsel liesRaetsel(String titel) {
-    String loesung = null;;
-    int zeilen = 0;
     int spalten = 0;
-    List<Atom> atome = null;
-    String[] temp;
-    List<String> output = new ArrayList<String>();   
+    List<String> atome = null;
+    String[] lines = null;
     for (String name : liesDateinamen()) {
       if (name.equals(titel)) {
-        temp = extrahiere(ladeDatei(name));
+        lines = extrahiere(ladeDatei(name));
         break;
       }
     }
-    return new Raetsel(0, 0, 0, null, null, null, null, null);
-    
-    
-    
-    //TODO 
-    //lesen der Textdatei, zwischenspeichern in lokaler Variable 
-    //und dann mit Konstruktor Raetsel erstellen.
-    
-     
+    atome = this.exAtome(lines[4]);
+    spalten = atome.size() + INIT_NUMBER_OF_COL;
+    return new Raetsel(
+        this.calcRow(atome),        //zeilenAnz
+        spalten,                    //spaltenAnz
+        Integer.parseInt(lines[7]), //stufe
+        atome,                      //Atome
+        lines[1],                   //Raetseltext
+        lines[3].split(","),        //Antwortmöglichkeiten
+        lines[5],                   //Lösung
+        lines[2],                   //Antworttext
+        new ArrayList<Formel>());   //Formelliste  
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
    * @param atomA Anzahl und Namen der verfügbaren Atomaren Aussagen, die der Benutzer angeben kann.
    */
   public Raetsel erstelleFR(List<String> atomA) {
-    List<Atom> temp = new ArrayList<Atom>();
-    return new Raetsel(0, 0, 0, temp, null, null, null, null);
+    return new Raetsel(
+        this.calcRow(atomA), 
+        atomA.size() + INIT_NUMBER_OF_COL,
+        0, 
+        atomA, 
+        null, 
+        null, 
+        null, 
+        null, 
+        new ArrayList<Formel>());
   }
 
 }

@@ -15,7 +15,7 @@ public class Raetsel {
   
   private String raetselText;
   private int stufe;
-  private List<Atom> atom;
+  private List<String> atom;
   private String antworttext;
   private List<String> antworten;
   private List<Formel> formeln;
@@ -32,7 +32,7 @@ public class Raetsel {
    * @param raetselText
    * @param loesung
    */
-  public Raetsel(int zeilenAnz, int spaltenAnz, int stufe, List<Atom> atom, String raetselText, String[] antwortMöglichkeiten, String loesung, List<Formel> formeln) {
+  public Raetsel(int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, String loesung, String antworttext, List<Formel> formeln) {
     this.spaltenAnz = spaltenAnz;
     this.zeilenAnz = zeilenAnz;
     this.stufe = stufe;
@@ -40,6 +40,7 @@ public class Raetsel {
     this.loesung = loesung;
     this.raetselText = raetselText;
     this.formeln = formeln;
+    this.antworttext = antworttext;
   }
   
   public String gibRaetselText() {
@@ -57,12 +58,12 @@ public class Raetsel {
   public List<String> gibAtomNamen() {
     List<String> temp = new ArrayList<String>();
     for (int i = 0; i < this.atom.size(); i++) {
-      temp.add(atom.get(i).gibStringRep());
+      temp.add(atom.get(i));
     }
     return temp;
   }
   
-  public List<Atom> gibAtomareAussage() {
+  public List<String> gibAtomareAussage() {
     return atom;
   }
   
@@ -100,5 +101,9 @@ public class Raetsel {
   
   public int gibAtomAnz() {
     return atom.size();
+  }
+  
+  public void addFormel(Formel formel) {
+    this.formeln.add(formel);
   }
 }
