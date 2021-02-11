@@ -1,7 +1,7 @@
 package modell;
 
 import java.util.List;
-import modell.formel.Atom;
+
 import modell.formel.Formel;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
@@ -51,7 +51,7 @@ public class SteuerungFassade {
   /** Gibt eine Liste aller im Raetsel verwendeter Atome aus.
    * @return Liste der Atomobjekte.
    */
-  public List<Atom> gibAtomareAussage() {
+  public List<String> gibAtomareAussage() {
     return this.raetsel.gibAtomareAussage();
   }
   

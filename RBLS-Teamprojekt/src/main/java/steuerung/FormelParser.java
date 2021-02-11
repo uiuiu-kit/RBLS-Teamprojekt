@@ -31,7 +31,7 @@ public class FormelParser {
     }
     if (formelS.length() < 2) {
       int num = Integer.parseInt(formelS);
-      String aussage = fassade.gibAtomareAussage().get(num).getAussage();
+      String aussage = fassade.gibAtomareAussage().get(num);
       String repraesentation = aussage.substring(0, 1);
       formelF = new Atom(aussage, repraesentation, num);
     }

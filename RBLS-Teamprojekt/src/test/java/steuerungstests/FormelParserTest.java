@@ -23,10 +23,10 @@ public class FormelParserTest {
    */
   @Before
   public void setup() {
-    List<Atom> atomareAussagenMock = new ArrayList<Atom>();
-    atomareAussagenMock.add(new Atom("Charlie", "C", 0));
-    atomareAussagenMock.add(new Atom("Donald", "D", 1));
-    atomareAussagenMock.add(new Atom("Edgar", "E", 2));
+    List<String> atomareAussagenMock = new ArrayList<String>();
+    atomareAussagenMock.add("Charlie");
+    atomareAussagenMock.add("Donald");
+    atomareAussagenMock.add("Edgar");
     sfMock = Mockito.mock(SteuerungFassade.class);
     Mockito.when(sfMock.gibAtomareAussage()).thenReturn(atomareAussagenMock);
   }

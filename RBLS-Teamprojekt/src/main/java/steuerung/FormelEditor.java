@@ -5,7 +5,7 @@ import modell.formel.Atom;
 import praesentation.FormelAnsicht;
 
 public class FormelEditor {
-  private List<Atom> atomareAussagenA;
+  private List<String> atomareAussagenA;
   private String formelAlt;
   private String formel;
 
@@ -15,7 +15,7 @@ public class FormelEditor {
    * @param atomareAussagen die atomaren Aussagen die in den aussagenlogischen
    *                        Formel vorkommen kommen.
    */
-  public FormelEditor(List<Atom> atomareAussagen) {
+  public FormelEditor(List<String> atomareAussagen) {
     this.atomareAussagenA = atomareAussagen;
     formel = "";
   }
@@ -31,24 +31,9 @@ public class FormelEditor {
    */
   public String gibNeueFormel(String formelAlt) {
     this.formelAlt = formelAlt;
-    FormelAnsicht ansicht = new FormelAnsicht(atomZuString(atomareAussagenA), this);
+    FormelAnsicht ansicht = new FormelAnsicht(atomareAussagenA, this);
     ansicht.getFormel();
     return this.formel;
-  }
-
-  /**
-   * Wandelt die Atom-Liste in ein String-Liste um, sodass sie von der
-   * FormelAnsicht verarbeitet werden kann.
-   * 
-   * @param atomareAussageA die Aussagen die als Atom Liste übergeben werden
-   * @return die Aussagen der Atome als String-Liste.
-   */
-  private String[] atomZuString(List<Atom> atomareAussageA) {
-    String[] atomareAussageS = new String[atomareAussageA.size()];
-    for (int i = 0; i < atomareAussageA.size(); i++) {
-      atomareAussageS[i] = (atomareAussageA.get(i).getAussage());
-    }
-    return atomareAussageS;
   }
 
   /**
