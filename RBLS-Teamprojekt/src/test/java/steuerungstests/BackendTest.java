@@ -44,10 +44,10 @@ public class BackendTest {
     String[] awm = { "XX", "YY" };
     
     //Rätsel irgendwie mit den Daten erstellen
-    sf.setRaetsel(raetsel);
+    //sf.setRaetsel(raetsel);
     
     Tabelle tabelle = new Tabelle((int) Math.pow(2, anzAtome), anzAtome, anzAtome);
-    sf.setTabelle(tabelle);
+    //sf.setTabelle(tabelle);
     
     wts = new WahrheitstabellenSteuerungen(sf);
   }
