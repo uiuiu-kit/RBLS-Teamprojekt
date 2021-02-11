@@ -9,7 +9,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
 
   private int spalte;
   private String alteFromel;
-  private List<Atom> atomareAussagen;
+  private List<String> atomareAussagen;
 
   /**
    * Der Konstruktor, für die Befehl, der den Befehl auch direkt ausführt.

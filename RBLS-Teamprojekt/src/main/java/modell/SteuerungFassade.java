@@ -1,7 +1,7 @@
 package modell;
 
 import java.util.List;
-import modell.formel.Atom;
+
 import modell.formel.Formel;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
