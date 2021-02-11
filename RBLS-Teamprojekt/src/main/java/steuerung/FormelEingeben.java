@@ -2,7 +2,6 @@ package steuerung;
 
 import java.util.List;
 import modell.SteuerungFassade;
-import modell.formel.Atom;
 import modell.formel.Formel;
 
 public class FormelEingeben extends WahrheitstabellenBefehl {

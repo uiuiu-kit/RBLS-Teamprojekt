@@ -2,7 +2,6 @@ package steuerung;
 
 import java.util.List;
 import modell.SteuerungFassade;
-import modell.formel.Atom;
 
 public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
 
