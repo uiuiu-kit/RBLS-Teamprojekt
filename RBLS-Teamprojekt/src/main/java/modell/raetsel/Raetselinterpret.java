@@ -134,7 +134,7 @@ public class Raetselinterpret {
         atome,                      //Atome
         lines[1],                   //Raetseltext
         lines[3].split(","),        //Antwortmöglichkeiten
-        lines[5],                   //Lösung
+        Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
         lines[2],                   //Antworttext
         new ArrayList<Formel>());   //Formelliste  
   }
@@ -150,7 +150,7 @@ public class Raetselinterpret {
         atomA, 
         null, 
         null, 
-        null, 
+        0, 
         null, 
         new ArrayList<Formel>());
   }

@@ -21,7 +21,7 @@ public class Raetsel {
   private List<Formel> formeln;
   private int spaltenAnz;
   private int zeilenAnz;
-  private String loesung;
+  private int loesung;
 
   
   /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
@@ -32,7 +32,7 @@ public class Raetsel {
    * @param raetselText
    * @param loesung
    */
-  public Raetsel(int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, String loesung, String antworttext, List<Formel> formeln) {
+  public Raetsel(int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
     this.spaltenAnz = spaltenAnz;
     this.zeilenAnz = zeilenAnz;
     this.stufe = stufe;
@@ -76,7 +76,7 @@ public class Raetsel {
   }
   
   public String gibLoesung() {
-    return this.loesung;
+    return this.antworten.get(loesung);
   }
   
   /**Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der Formeln um 
