@@ -20,10 +20,10 @@ public class PraesentationFassade {
   private Raetsel raetsel;
   private Tabelle tabelle;
   
-  @SuppressWarnings("static-access")
+  
   public PraesentationFassade(Raetselinterpret interpret) {
     this.interpret = interpret;
-    this.praFa = this;
+    PraesentationFassade.praFa = this;
   }
   
   /**

@@ -51,7 +51,7 @@ public class SteuerungFassade {
   /** Gibt eine Liste aller im Raetsel verwendeter Atome aus.
    * @return Liste der Atomobjekte.
    */
-  public List<Atom> gibAtomareAussage() {
+  public List<String> gibAtomareAussage() {
     return this.raetsel.gibAtomareAussage();
   }
   
