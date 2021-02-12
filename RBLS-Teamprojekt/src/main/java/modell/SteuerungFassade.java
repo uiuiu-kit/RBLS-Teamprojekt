@@ -18,7 +18,7 @@ public class SteuerungFassade {
   
   private static SteuerungFassade steuFa = null;
   private Raetselinterpret interpret;
-  private Memento memento = new Memento();
+  private Memento memento;
   private Raetsel raetsel;
   private Tabelle tabelle;
   PraesentationFassade praesFassade;
@@ -42,10 +42,6 @@ public class SteuerungFassade {
   public void init() {
     this.interpret = new Raetselinterpret();
     praesFassade = new PraesentationFassade(interpret);
-    /* interpret.liesRaetsel(); hier kann noch kein Raetsel erstellt werden. 
-    In der Initphase ist noch nicht bekannt, welches Reatsel ausgewählt wurde.
-    Bitte nach dem Lesen diesen Kommentar löschen
-    */
   }
   
   /** Gibt eine Liste aller im Raetsel verwendeter Atome aus.
@@ -55,7 +51,7 @@ public class SteuerungFassade {
     return this.raetsel.gibAtomareAussage();
   }
   
-  /** Gibt eine Liste aller Formeln zurück, die in der Tabelle verwendung finden.
+  /** Gibt eine Liste aller Formeln zurück, die in der Tabelle Verwendung finden.
    * @return
    */
   public List<String> gibNoetigeFormel() {
@@ -90,8 +86,15 @@ public class SteuerungFassade {
     tabelle.spalteEntfernen(spalte);
   }
   
-  public void fuehreSicherungAus(Raetsel r) {
-    memento.sichern(r);
+  /**
+   * Speichert das aktuelle Raetsel als den aktuellen Spielstand in Form eines Memento.
+   * @param r Das aktuelle Raetsel.
+   * @return Ein Memento-Objekt.
+   */
+  public Memento fuehreSicherungAus(Raetsel r) {
+    this.memento = new Memento(r);
+    this.praesFassade.setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
+    return this.memento;
   }
   
   public Formel gibFormel(int spalte) {
