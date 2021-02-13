@@ -49,6 +49,7 @@ public class WahrheitstabellenSteuerungen {
         break;
       case "FormelEingeben":
         new FormelEingeben(model, Integer.parseInt(parameter[0]));
+        ueberpruefeTabelle(Integer.parseInt(parameter[0]), 0);
         break;
       case "FuelleTabelle":
         if ((stufe == 1 || stufe == 2 || stufe == 4)) {
@@ -64,11 +65,11 @@ public class WahrheitstabellenSteuerungen {
       case "ZelleInBlauOrangeAendern":
         new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
             Integer.parseInt(parameter[1]));
+        ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
         break;
       default:
         break;
     }
-    ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
   }
 
   public int[] gibTip() {
