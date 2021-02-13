@@ -28,38 +28,43 @@ public class BackendTest {
   @Before
   public void setup() {
     sf = new SteuerungFassade();
-    
-    List<Atom> atomareAussagen = new ArrayList<Atom>();
-    atomareAussagen.add(new Atom("Charlie", "C", 0));
-    atomareAussagen.add(new Atom("Donald", "D", 1));
-    atomareAussagen.add(new Atom("Edgar", "E", 2));
-    
+
+    List<String> atomareAussagen = new ArrayList<String>();
+    atomareAussagen.add("Charlie");
+    atomareAussagen.add("Donald");
+    atomareAussagen.add("Edgar");
     List<Formel> noetigeFormeln = new ArrayList<Formel>();
-    noetigeFormeln.add(FormelParser.pars("1u2", sf));
-    noetigeFormeln.add(FormelParser.pars("0o2", sf));
-    noetigeFormeln.add(FormelParser.pars("n0", sf));
-    
     int stufe = 1;
     int anzAtome = atomareAussagen.size();
     String[] awm = { "XX", "YY" };
-    
-    //Rätsel irgendwie mit den Daten erstellen
-    //sf.setRaetsel(raetsel);
-    
+    Raetsel raetsel = new Raetsel((int) Math.pow(2, anzAtome), anzAtome, stufe, atomareAussagen,
+        "WW", awm, 1, "ZZ", noetigeFormeln);
+    sf.setRaetsel(raetsel);
+    raetsel.addFormel(FormelParser.pars("1u2", sf));
+    raetsel.addFormel(FormelParser.pars("0o1", sf));
+    raetsel.addFormel(FormelParser.pars("2", sf));
+    sf.setRaetsel(raetsel);
+
     Tabelle tabelle = new Tabelle((int) Math.pow(2, anzAtome), anzAtome, anzAtome);
-    //sf.setTabelle(tabelle);
-    
+    sf.setTabelle(tabelle);
+
     wts = new WahrheitstabellenSteuerungen(sf);
   }
 
   @Test
+  public void raetselFormeln() {
+    sf.gibNoetigeFormel();
+  }
+  
+  @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
+    
     String fall;
     int[] koordinate = new int[2];
     for (int i = 0; i < sf.gibZeilenAnz(); i++) {
       fall = "";
-      koordinate[0] = i; 
+      koordinate[0] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {
         koordinate[1] = j;
         fall = fall + sf.gibZelleWW(koordinate);

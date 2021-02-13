@@ -21,15 +21,14 @@ public class FormelParser {
    */
   public static Formel pars(String formelS, SteuerungFassade fassade) {
     Formel formelF = null;
-    List<String> klammerAusdruecke = null;
+    List<String> klammerAusdruecke = new ArrayList<String>();
     if (formelS.length() > 1) {
       if (formelS.charAt(0) == '(' && formelS.charAt(formelS.length() - 1) == ')') {
         formelS = formelS.substring(1, formelS.length() - 1);
-      } else {
-        klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
-        formelS = klammerAusdruecke.get(klammerAusdruecke.size() - 1);
       }
     }
+    klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
+    formelS = klammerAusdruecke.get(klammerAusdruecke.size() - 1);
     if (formelS.length() < 2) {
       int num = Integer.parseInt(formelS);
       String aussage = fassade.gibAtomareAussage().get(num);
@@ -103,8 +102,8 @@ public class FormelParser {
       if (0 < open) {
         formelSn = formelS.substring(0, open) + formelSn;
       }
-      if (close + 1 < formelS.length() - 1) {
-        formelSn = formelSn + formelS.substring(close + 1, formelS.length() - 1);
+      if (close < formelS.length() - 1) {
+        formelSn = formelSn + formelS.substring(close, formelS.length() - 1);
       }
       formelS = formelSn;
       System.out.println("Fx = " + formelS);
@@ -123,12 +122,12 @@ public class FormelParser {
    */
   private static String klammerAusdrueckeWiederherstellen(String formelS,
       List<String> klammerAusdruecke) {
-    int i = 0;
+    int i = klammerAusdruecke.size() - 2;
     while (formelS.matches(".*k[0-9]*.*")) {
       System.out.println("F = " + formelS);
       System.out.println("k = " + klammerAusdruecke.get(i));
       formelS = formelS.replaceFirst("k[0-9]*", klammerAusdruecke.get(i));
-      i++;
+      i--;
     }
     return formelS;
   }
