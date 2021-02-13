@@ -139,9 +139,10 @@ public class SteuerungFassade {
    * benötigt zum Test für Steuerung und Steuerungsfassade.
    * @param test  Instanz des Testinterpreten.
    */
-  public void erstelleTestUmgebung(Raetselinterpret test) {
+  public PraesentationFassade erstelleTestUmgebung(Raetselinterpret test) {
     praesFassade = new PraesentationFassade(test);
     praesFassade.setzeRaetsel("Raetseldummy");
     this.setzeFormel(new Und(new Atom("A", "A", 1), new Atom("B", "B", 2)), 4);
+    return praesFassade;
   }
 }
