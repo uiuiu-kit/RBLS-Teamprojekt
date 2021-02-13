@@ -1,3 +1,5 @@
+package modelltests;
+
 import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Formel;
