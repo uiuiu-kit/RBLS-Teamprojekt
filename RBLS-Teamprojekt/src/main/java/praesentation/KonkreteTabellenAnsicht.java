@@ -221,9 +221,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       switch (fm.gibStatus(row, col)) {
         case standard:l.setBackground(Color.WHITE);
         break;
-        case wahr:l.setBackground(Color.GREEN);
+        case wahr:l.setBackground(new Color(133, 242, 184));
         break;
-        case falsch:l.setBackground(Color.RED);
+        case falsch:l.setBackground(new Color(242, 133, 133));
         break;
         case markiert:l.setBackground(Color.LIGHT_GRAY);
         break;
@@ -248,12 +248,16 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     if (i > 0 && j >= 0) {
       wahrheitswerte[i - 1][j] = !wahrheitswerte[i - 1][j];
       if (wahrheitswerte[i - 1][j]) {
-        inhalt[i][j] = "true";
-        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
+        inhalt[i][j] = "wahr";
+        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
+        }
         tabelle.getModel().setValueAt("wahr", i, j);
       } else {
-        inhalt[i][j] = "false";
-        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+        inhalt[i][j] = "falsch";
+        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+        }
         tabelle.getModel().setValueAt("falsch", i, j);
       }
       //strg.befehl("zelleAendern(" + i + "," + j + ")");  //TODO noch auskommentiert
@@ -264,8 +268,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
   }
   
-  private void klickeFormel(int zeile) {
+  private void klickeFormel(int spalte) {
     //strg.befehl("formelEingeben(" + zeile + ")");  //TODO Kommentar entfernen
+    ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte); 
   }
   
   private void fuegeSpalteHinzu() {
@@ -296,6 +302,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
       } else if (inhalt[i][j].equals("falsch")) {
         ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+      } else {
+        System.out.println(inhalt[i][j]);
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.standard);
       }
       ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
     }
@@ -315,7 +324,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   public void zeigeTippAn() {
-    
+    int[] tipp = strg.gibTip();
+    assert tipp.length == 2;
+    ((FarbModell) tabelle.getModel()).setzeStatus(tipp[0], tipp[1], ZellenStatus.tipp);
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(tipp[0], tipp[1]);
   }
   
   private void fuelleAus() {
@@ -326,6 +338,12 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     assert zelle.length == 2;
     inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
+    if (zelle[0] > 0 && inhalt[zelle[0]][zelle[1]].equals("wahr")) {
+      ((FarbModell) tabelle.getModel()).setzeStatus(zelle[0], zelle[1], ZellenStatus.wahr);
+    } else if (zelle[0] > 0 && inhalt[zelle[0]][zelle[1]].equals("falsch")) {
+      ((FarbModell) tabelle.getModel()).setzeStatus(zelle[0], zelle[1], ZellenStatus.falsch);
+    }
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(zelle[0], zelle[1]); 
   }
   
   public JPanel gibAnsicht() {
