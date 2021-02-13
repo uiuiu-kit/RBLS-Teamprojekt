@@ -9,7 +9,7 @@ public class Raetseldummy extends Raetsel {
 
   public Raetseldummy(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText,
       String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
-    super("Text", 8, 4, 1, new ArrayList<String>(), "Test", new ArrayList<String>(), 2, "Text", new ArrayList<Formel>());
+    super("Text", 9, 4, 1, new ArrayList<String>(), "Test", new ArrayList<String>(), 2, "Text", new ArrayList<Formel>());
     this.atom.add("A");
     this.atom.add("B");
     this.atom.add("C");
