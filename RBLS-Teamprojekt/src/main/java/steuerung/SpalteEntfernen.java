@@ -7,9 +7,18 @@ public class SpalteEntfernen extends WahrheitstabellenBefehl {
   private int spalte;
   private int spaltenAnz;
 
+  /**
+   * Kostruktor für SpalteEntfernen der die Ausführung des Befehls anstößt.
+   * 
+   * @param model  die SteuerungFassade auf die bei der Ausführung zugegriffen
+   *               wird.
+   * @param spalte die spalte die entfernt werden soll
+   */
   public SpalteEntfernen(SteuerungFassade model, int spalte) {
     super(model);
     this.spalte = spalte;
+    hohleDaten();
+    setzeDaten();
   }
 
   @Override

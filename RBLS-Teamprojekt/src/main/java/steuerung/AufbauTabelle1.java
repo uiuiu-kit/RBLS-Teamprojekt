@@ -10,8 +10,16 @@ public class AufbauTabelle1 extends AufbauTabelle {
   private List<String> noetigeFormelnS;
   private int atomSpaltenAnz;
 
+  /**
+   * Kostruktor für AufbauTabelle1 der die Ausführung des Befehls anstößt.
+   * 
+   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   *              wird.
+   */
   public AufbauTabelle1(SteuerungFassade model) {
     super(model);
+    hohleDaten();
+    setzeDaten();
   }
 
   @Override
