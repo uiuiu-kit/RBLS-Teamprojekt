@@ -155,4 +155,6 @@ public class Raetselinterpret {
         null, 
         new ArrayList<Formel>());
   }
+  
+  
 }
