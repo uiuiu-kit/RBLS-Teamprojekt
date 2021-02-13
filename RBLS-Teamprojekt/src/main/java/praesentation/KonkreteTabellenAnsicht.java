@@ -18,8 +18,11 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
 import modell.PraesentationFassade;
 import modell.SteuerungFassade;
+import steuerung.FormelEditor;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -43,8 +46,13 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private int zeilenzahl = 9;
   private int spaltenzahl = 5;
   
+  private enum Modus { standard,  entfernen, markieren
+  }
+  
+  private Modus modus = Modus.standard;
   private int stufe;
   private JPanel panel;
+  private JPanel tabellenRahmen = new JPanel();
 
   public KonkreteTabellenAnsicht(PraesentationFassade modell) {
     this.modell = modell;
@@ -57,7 +65,106 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     //TODO unkommentieren wenn fertig
     //zeilenzahl = modell.gibZeilenAnz();
     //spaltenzahl = modell.gibSpaltenAnz();
+    initTabelle();
+
+    //SchaltflaechenPanel//
+    JPanel SchaltflaechenPanel = new JPanel();
+    SchaltflaechenPanel.setLayout(new BoxLayout(SchaltflaechenPanel, BoxLayout.Y_AXIS));
+    SchaltflaechenPanel.setBackground(Color.WHITE);
+    SchaltflaechenPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
     
+    mehrSpalten.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        fuegeSpalteHinzu();
+      }
+    });
+    SchaltflaechenPanel.add(mehrSpalten);
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+    wenigerSpalten.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        wechseleModus(wenigerSpalten, Modus.entfernen);
+      }
+    });
+    SchaltflaechenPanel.add(wenigerSpalten); 
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+    zeileMarkieren.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        wechseleModus(zeileMarkieren, Modus.markieren);
+      }
+    });
+    SchaltflaechenPanel.add(zeileMarkieren);
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 
+        (int) (SchaltflaechenPanel.getMaximumSize().height 
+        - mehrSpalten.getMaximumSize().height * 1.6))));
+    ausfuellen.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        fuelleAus();
+      }
+    });
+    SchaltflaechenPanel.add(ausfuellen);
+    
+    //Panel//
+    panel = new JPanel();
+    panel.setLayout(new BorderLayout());
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    
+    tabellenRahmen.setLayout(new BorderLayout());
+    tabellenRahmen.add(tabelle, BorderLayout.CENTER);
+    tabellenRahmen.setBackground(Color.GRAY);
+    tabellenRahmen.setBorder(BorderFactory.createEmptyBorder(1, 1, 0, 0));
+    panel.add(tabellenRahmen, BorderLayout.CENTER);
+    panel.add(SchaltflaechenPanel, BorderLayout.EAST);
+    tabelle.setFillsViewportHeight(true);    
+  }
+  
+  private void fuelleAus() {
+    strg.befehl("fuelleAus");
+  }
+  
+  private void klickeZelle(int i, int j) {
+    if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
+      entferneSpalte(j);
+      return;
+    }
+    if (i >= 0 && j >= 0 && modus == Modus.markieren) {
+      markiereZeile(i);
+      return;
+    }
+    if (i > 0 && j >= 0) {
+      wahrheitswerte[i - 1][j] = !wahrheitswerte[i - 1][j];
+      if (wahrheitswerte[i - 1][j]) {
+        inhalt[i][j] = "true";
+        tabelle.getModel().setValueAt("wahr", i, j);
+        //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.GREEN);
+      } else {
+        inhalt[i][j] = "false";
+        tabelle.getModel().setValueAt("falsch", i, j);
+        //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.RED);
+      }
+      //strg.befehl("zelleAendern(" + i + "," + j + ")");  //TODO noch auskommentiert
+    } else if (i == 0 && j >= 0) {
+      klickeFormel(j);
+      return;
+    }
+    ((AbstractTableModel) tabelle.getModel()).fireTableCellUpdated(i, j);
+  }
+  
+  private void klickeFormel(int zeile) {
+    //strg.befehl("formelEingeben(" + zeile + ")");  //TODO Kommentar entfernen
+  }
+  
+  private void fuegeSpalteHinzu() {
+    spaltenzahl++;
+    //strg.befehl("SpalteHinzufuegen");  //TODO Kommentarzeichen entfernen
+    tabelle.setVisible(false);
+    initTabelle();
+    tabelle.setVisible(true);
+    tabellenRahmen.add(tabelle);
+  }
+  
+  private void initTabelle() {
+    
+    //Modelldaten//
     wahrheitswerte = new boolean[zeilenzahl - 1][spaltenzahl];
     for (int i = 0; i < wahrheitswerte.length; i++) {
       for (int j = 0; j < wahrheitswerte[0].length; j++) {
@@ -65,7 +172,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         //TODO Platzhalter
         wahrheitswerte[i][j] = true;
       }
-    }
+    }  
     inhalt = new String[zeilenzahl][spaltenzahl];
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
@@ -97,105 +204,36 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         int i = tabelle.rowAtPoint(evt.getPoint());
         int j = tabelle.columnAtPoint(evt.getPoint());
         klickeZelle(i, j);
-        if (i > 0 && j >= 0) {
-          wahrheitswerte[i - 1][j] = !wahrheitswerte[i - 1][j];
-          if (wahrheitswerte[i - 1][j]) {
-              inhalt[i][j] = "true";
-              tabelle.getModel().setValueAt("wahr", i, j);
-              //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.GREEN);
-            } else {
-              inhalt[i][j] = "false";
-              tabelle.getModel().setValueAt("falsch", i, j);
-              //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.RED);
-            }
-        }
-        ((AbstractTableModel) tabelle.getModel()).fireTableCellUpdated(i, j);
       }
     });
     
     tabelle.setRowHeight((int) (tabelle.getRowHeight() * 1.5));
-    DefaultTableCellRenderer renderer = (DefaultTableCellRenderer) tabelle.getDefaultRenderer(getClass());
+    DefaultTableCellRenderer renderer = 
+        (DefaultTableCellRenderer) tabelle.getDefaultRenderer(getClass());
     renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
-
-    
-    //SchaltflaechenPanel//
-    JPanel SchaltflaechenPanel = new JPanel();
-    SchaltflaechenPanel.setLayout(new BoxLayout(SchaltflaechenPanel, BoxLayout.Y_AXIS));
-    SchaltflaechenPanel.setBackground(Color.WHITE);
-    SchaltflaechenPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-    
-    mehrSpalten.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        fuegeSpalteHinzu();
-      }
-    });
-    SchaltflaechenPanel.add(mehrSpalten);
-    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
-    wenigerSpalten.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        entferneSpalte();
-      }
-    });
-    SchaltflaechenPanel.add(wenigerSpalten); 
-    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
-    zeileMarkieren.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        markiereZeile();
-      }
-    });
-    SchaltflaechenPanel.add(zeileMarkieren);
-    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 
-        (int) (SchaltflaechenPanel.getMaximumSize().height 
-        - mehrSpalten.getMaximumSize().height * 1.6))));
-    ausfuellen.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        fuelleAus();
-      }
-    });
-    SchaltflaechenPanel.add(ausfuellen);
-    
-    //Panel//
-    panel = new JPanel();
-    panel.setLayout(new BorderLayout());
-    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    JPanel tabellenRahmen = new JPanel();
-    tabellenRahmen.setLayout(new BorderLayout());
-    tabellenRahmen.add(tabelle, BorderLayout.CENTER);
-    tabellenRahmen.setBackground(Color.GRAY);
-    tabellenRahmen.setBorder(BorderFactory.createEmptyBorder(1, 1, 0, 0));
-    panel.add(tabellenRahmen, BorderLayout.CENTER);
-    panel.add(SchaltflaechenPanel, BorderLayout.EAST);
-    tabelle.setFillsViewportHeight(true);
-    
-    
+  }
+  
+  private void wechseleModus(Schaltflaeche s, Modus m) {
+    if (modus == Modus.standard) {
+      modus = m;
+      s.setBackground(Color.DARK_GRAY);
+      s.setForeground(Color.LIGHT_GRAY);
+    } else if (modus == m) {
+      modus = Modus.standard;
+      s.setBackground(Color.LIGHT_GRAY);
+      s.setForeground(Color.DARK_GRAY);
+    }
+  }
+  
+  private void entferneSpalte(int j) {
     
   }
   
-  private void fuelleAus() {
-    
-  }
-  
-  private void klickeZelle(int reihe, int spalte) {
-    //strg.befehl("zelleAendern," + reihe + "," + spalte);
-  }
-  
-  private void klickeFormel(int zeile) {
-    
-  }
-  
-  private void fuegeSpalteHinzu() {
-    
-  }
-  
-  private void entferneSpalte() {
+  public void markiereZeile(int i) {
     
   }
   
   public void zeigeTippAn() {
-    
-  }
-  
-  public void markiereZeile() {
     
   }
   
