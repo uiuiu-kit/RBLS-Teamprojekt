@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -45,6 +47,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private int spaltenzahl = 5;
   
   private enum Modus { standard,  entfernen, markieren
+  }
+  
+  private enum ZellenStatus { standard, wahr, falsch, markiert, tipp
   }
   
   private Modus modus = Modus.standard;
@@ -146,16 +151,15 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
       }
     }
+    
     //JTable//
     tabelle = new JTable(inhalt, inhalt[0]);
-    DefaultTableModel tm = new DefaultTableModel(inhalt, inhalt[0]) {
-        public boolean isCellEditable(int row, int column) {
-          tabelle.setFocusable(false);
-          tabelle.setRowSelectionAllowed(false);
-          return false;
-        }
-      };
-    tabelle.setModel(tm);
+    FarbModell tm = new FarbModell(inhalt, inhalt[0]);
+    tabelle.setModel((FarbModell) tm);
+    for (int j = 0; j < spaltenzahl; j++) {
+      tabelle.getColumnModel().getColumn(j).setCellRenderer(new FarbRenderer());
+    }
+    
     tabelle.addMouseListener(new java.awt.event.MouseAdapter() {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,9 +169,68 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       }
     });
     tabelle.setRowHeight((int) (tabelle.getRowHeight() * 1.5));
-    DefaultTableCellRenderer renderer = 
-        (DefaultTableCellRenderer) tabelle.getDefaultRenderer(getClass());
-    renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+    
+    for (int i = 0; i < inhalt.length; i++) {
+      for (int j = 0; j < inhalt[0].length; j++) {
+        if (i > 0 && inhalt[i][j].equals("wahr")) {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
+        } else if (i > 0 && inhalt[i][j].equals("falsch")) {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+        }
+      }
+    }
+  }
+  
+  class FarbModell extends DefaultTableModel {
+    ZellenStatus[][] status = new ZellenStatus[zeilenzahl][spaltenzahl];
+    
+    public FarbModell(String[][] inhalt, String[] inhalt2) {
+      this.setDataVector(inhalt, inhalt2);
+      for (int i = 0; i < inhalt.length; i++) {
+        for (int j = 0; j < inhalt[0].length; j++) {
+          status[i][j] = ZellenStatus.standard;
+        }
+      }    
+    }
+    
+    public boolean isCellEditable(int row, int column) {
+      tabelle.setFocusable(false);
+      tabelle.setRowSelectionAllowed(false);
+      return false;
+    }
+ 
+    public void setzeStatus(int i, int j, ZellenStatus s) {
+      status[i][j] = s;
+    }
+      
+    public ZellenStatus gibStatus(int i, int j) {
+      return status[i][j];
+    }
+  }
+  
+  class FarbRenderer extends DefaultTableCellRenderer {
+    @Override
+    public Component getTableCellRendererComponent(
+        JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
+      JLabel l = (JLabel) super.getTableCellRendererComponent(
+          table, value, isSelected, hasFocus, row, col);
+      FarbModell fm = (FarbModell) tabelle.getModel();
+      switch (fm.gibStatus(row, col)) {
+        case standard:l.setBackground(Color.WHITE);
+        break;
+        case wahr:l.setBackground(Color.GREEN);
+        break;
+        case falsch:l.setBackground(Color.RED);
+        break;
+        case markiert:l.setBackground(Color.LIGHT_GRAY);
+        break;
+        case tipp:l.setBackground(Color.DARK_GRAY);
+        break;
+        default: l.setBackground(Color.WHITE);
+      }
+      setHorizontalAlignment(javax.swing.JLabel.CENTER);
+      return l;
+    }
   }
   
   private void klickeZelle(int i, int j) {
@@ -183,19 +246,19 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       wahrheitswerte[i - 1][j] = !wahrheitswerte[i - 1][j];
       if (wahrheitswerte[i - 1][j]) {
         inhalt[i][j] = "true";
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
         tabelle.getModel().setValueAt("wahr", i, j);
-        //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.GREEN);
       } else {
         inhalt[i][j] = "false";
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
         tabelle.getModel().setValueAt("falsch", i, j);
-        //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.RED);
       }
       //strg.befehl("zelleAendern(" + i + "," + j + ")");  //TODO noch auskommentiert
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
       return;
     }
-    ((AbstractTableModel) tabelle.getModel()).fireTableCellUpdated(i, j);
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
   }
   
   private void klickeFormel(int zeile) {
