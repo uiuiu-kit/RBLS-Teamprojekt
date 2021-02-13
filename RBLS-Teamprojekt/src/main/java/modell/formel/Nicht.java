@@ -24,7 +24,7 @@ public class Nicht extends Konnektor {
 
   @Override
   public String gibStringRep() {
-    return this.rep + this.rechts.gibStringRep();
+    return "(" + this.rep + this.rechts.gibStringRep() + ")";
   }
 
 }

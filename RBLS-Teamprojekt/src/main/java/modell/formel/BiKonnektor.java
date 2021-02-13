@@ -11,6 +11,6 @@ public abstract class BiKonnektor extends Konnektor {
   
   @Override
   public String gibStringRep() {
-    return this.links.gibStringRep() + this.rep + this.rechts.gibStringRep();
+    return "(" + this.links.gibStringRep() + this.rep + this.rechts.gibStringRep() + ")";
   }
 }
