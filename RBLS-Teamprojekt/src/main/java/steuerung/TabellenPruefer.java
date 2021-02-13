@@ -32,6 +32,10 @@ public class TabellenPruefer {
     nochNoetigeFaelle = noetigeFaelle;
     vollstaendig = false;
     fehlerhafteWW = new ArrayList<int[]>();
+    fehlerhafteFaelle = new ArrayList<Integer>();
+    for (int i = 0; i < (int) Math.pow(2, anzAtom); i++) {
+      fehlerhafteFaelle.add(i);
+    }
   }
 
   /**

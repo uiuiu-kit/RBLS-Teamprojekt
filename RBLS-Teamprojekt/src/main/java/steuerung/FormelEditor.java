@@ -30,7 +30,7 @@ public class FormelEditor {
    */
   public String gibNeueFormel(String formelAlt) {
     this.formelAlt = formelAlt;
-    FormelAnsicht ansicht = new FormelAnsicht((String[]) atomareAussagen.toArray(), this);
+    FormelAnsicht ansicht = new FormelAnsicht(listToArray(atomareAussagen), this);
     ansicht.getFormel();
     return this.formel;
   }
@@ -105,6 +105,14 @@ public class FormelEditor {
             || naechsterCh == '2' || naechsterCh == '3';
     }
 
+  }
+
+  private String[] listToArray(List<String> atomareAussagenL) {
+    String[] atomareAussagenA = new String[atomareAussagenL.size()];
+    for (int i = 0; i < atomareAussagenL.size(); i++) {
+      atomareAussagenA[i] = atomareAussagenL.get(i);
+    }
+    return atomareAussagenA;
   }
 
   /**

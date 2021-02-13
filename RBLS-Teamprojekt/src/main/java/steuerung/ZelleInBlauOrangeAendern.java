@@ -15,6 +15,7 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
    */
   public ZelleInBlauOrangeAendern(SteuerungFassade model, int spalte, int zeile) {
     super(model);
+    zellenKoordinaten = new int[2];
     zellenKoordinaten[0] = zeile;
     zellenKoordinaten[1] = spalte;
     hohleDaten();
