@@ -8,6 +8,8 @@ import modell.formel.Formel;
 import modell.raetsel.Raetsel;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
+import modelltests.Testinterpret;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,25 +30,7 @@ public class BackendTest {
   @Before
   public void setup() {
     sf = new SteuerungFassade();
-
-    List<String> atomareAussagen = new ArrayList<String>();
-    atomareAussagen.add("Charlie");
-    atomareAussagen.add("Donald");
-    atomareAussagen.add("Edgar");
-    List<Formel> noetigeFormeln = new ArrayList<Formel>();
-    int stufe = 1;
-    int anzAtome = atomareAussagen.size();
-    String[] awm = { "XX", "YY" };
-    Raetsel raetsel = new Raetsel((int) Math.pow(2, anzAtome), anzAtome, stufe, atomareAussagen,
-        "WW", awm, 1, "ZZ", noetigeFormeln);
-    sf.setRaetsel(raetsel);
-    raetsel.addFormel(FormelParser.pars("1u2", sf));
-    raetsel.addFormel(FormelParser.pars("0o1", sf));
-    raetsel.addFormel(FormelParser.pars("2", sf));
-    sf.setRaetsel(raetsel);
-
-    Tabelle tabelle = new Tabelle((int) Math.pow(2, anzAtome), anzAtome, anzAtome);
-    sf.setTabelle(tabelle);
+    sf.erstelleTestUmgebung(new Testinterpret());
 
     wts = new WahrheitstabellenSteuerungen(sf);
   }
