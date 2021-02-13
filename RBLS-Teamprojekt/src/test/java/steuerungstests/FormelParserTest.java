@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 import modell.SteuerungFassade;
-import modell.formel.Atom;
 import modell.formel.Formel;
 import org.junit.Before;
 import org.junit.Test;
