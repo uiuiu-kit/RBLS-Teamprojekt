@@ -33,7 +33,7 @@ public class Tabelle {
     this.atomAnz = atomAnz;
     formelTabelle = new ArrayList<Formelzelle>();
     wwTabelle = new ArrayList<List<Wahrheitswertzelle>>();
-    for (int i = 0; i < zeilenAnz; i++) {
+    for (int i = 0; i <= zeilenAnz; i++) {
       this.spalteHinzufuegen();
     }
   }
@@ -52,8 +52,7 @@ public class Tabelle {
    */
   public boolean gibZellenWert(int[] i) {
     if (i[0] > 0) {
-      Wahrheitswertzelle temp = (Wahrheitswertzelle) this.gibWZ(i);
-      return temp.gibZustand();
+      return this.gibWZ(i).gibZustand();
     }
     return false;
   }
@@ -75,7 +74,10 @@ public class Tabelle {
    * @return Zellenobjekt.
    */
   private Wahrheitswertzelle gibWZ(int[] i) {
-    return this.wwTabelle.get(i[0]).get(i[1]);
+    if (i[0] != 0) {
+      return this.wwTabelle.get(i[0] - 1).get(i[1]);
+    }
+    return null;
   }
   
   /** Liefert der Fassade die gewählte Aussagenlogische Formel der angegebenen Zelle.

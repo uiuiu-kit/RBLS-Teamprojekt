@@ -17,12 +17,11 @@ public class SteuerungFassade {
   
   private static SteuerungFassade steuFa = null;
   private Raetselinterpret interpret;
-  private Memento memento;
   private Raetsel raetsel;
   private Tabelle tabelle;
   PraesentationFassade praesFassade;
   
-  /**Einzelstückmethode, die dafür sorgt, dass die Klasse nur einmaql erstellt, 
+  /**Einzelstückmethode, die dafür sorgt, dass die Klasse nur einmal erstellt, 
    * aber jederzeit von allen Klassen genutzt werden kann.
    * @return Objekt der Klasse SteuerungFassade.
    */
@@ -100,13 +99,13 @@ public class SteuerungFassade {
   
   /**
    * Speichert das aktuelle Raetsel als den aktuellen Spielstand in Form eines Memento.
-   * @param r Das aktuelle Raetsel.
    * @return Ein Memento-Objekt.
    */
-  public Memento fuehreSicherungAus(Raetsel r) {
-    this.memento = new Memento(r);
+  public Memento fuehreSicherungAus() {
+    this.aktualisiere();
+    Memento memento = new Memento(raetsel);
     this.praesFassade.setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
-    return this.memento;
+    return memento;
   }
   
   public Formel gibFormel(int spalte) {
