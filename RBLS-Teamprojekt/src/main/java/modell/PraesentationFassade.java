@@ -21,15 +21,14 @@ public class PraesentationFassade {
   private int abgeschlosseneStufe;
   
   
-  public PraesentationFassade(Raetselinterpret interpret) {
+  protected PraesentationFassade(Raetselinterpret interpret) {
     this.interpret = interpret;
     PraesentationFassade.praFa = this;
   }
   
   /**
-   * Gibt das Objekt PraesentationFassade als Einzelstueck zurueck. Wenn es noch nicht existiert,
-   * wird es erzeugt.
-   * @return Das Einzelstueckobjekt PraesentationFassade.
+   * Gibt das Objekt PraesentationFassade als Einzelstueck zurueck. 
+   * @return PraesentationFassade.
    */
   public static PraesentationFassade gibPraFa() {
     return praFa;
@@ -43,7 +42,6 @@ public class PraesentationFassade {
     return this.tabelle;
   }
   
-  
   /**Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem RInterpreten übergibt, 
    * der ein neues Raetselobjekt zurückgibt. Dieses wird hier gesetzt 
    * und daraus eine neue Tabelle erzeugt.
@@ -53,7 +51,6 @@ public class PraesentationFassade {
     this.raetsel = this.interpret.liesRaetsel(raetselname);
     this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
         raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
-    
   }
   
   /** Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.

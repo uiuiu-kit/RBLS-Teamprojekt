@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 import modell.formel.Formel;
 import modell.raetsel.Raetsel;
 
@@ -18,11 +17,15 @@ public class Testinterpret {
   }
   
   public List<String> liesOrdner(int stufe) {
-    return {"Raetsel1", "Raetsel2", "Raetseldummy"};
+    List<String> output = new ArrayList<String>();
+    output.add("Raetsel1");
+    output.add("Raetsel2");
+    output.add("Raetseldummy");
+    return output;
   }
   
   public Raetsel liesRaetsel(String titel) {
-    return new Raetseldummy();
+    return new Raetseldummy(null, 0, 0, 0, null, null, null, 0, null, null);
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.

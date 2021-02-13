@@ -1,19 +1,40 @@
 import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Formel;
+import modell.raetsel.Raetsel;
 
-public class Raetseldummy {
+public class Raetseldummy extends Raetsel {
   
-  private String raetselText = "Text";
-  private int stufe = 1;
-  private List<String> atom = {"A", "B", "C"};
-  private String antworttext = "Antwort";
-  private List<String> antworten = {"A", "B", "C"};
-  private List<Formel> formeln = new List<Formel>();
-  private int spaltenAnz = 4;
-  private int zeilenAnz = 8;
-  private int loesung = 2;
-  private String name = "Test";
+  
+  public Raetseldummy(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText,
+      String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
+    super(name, zeilenAnz, spaltenAnz, stufe, atom, raetselText, antwortMöglichkeiten, loesung, antworttext, formeln);
+    raetselText = "Text";
+    stufe = 1;
+    atom = new ArrayList<String>();
+    antworttext = "Antwort";
+    formeln = new ArrayList<Formel>();
+    spaltenAnz = 4;
+    zeilenAnz = 8;
+    loesung = 2;
+    name = "Test";
+    atom.add("A");
+    atom.add("B");
+    atom.add("C");
+    antworten = atom;
+    
+  }
+
+  private String raetselText;
+  private int stufe;
+  private List<String> atom;
+  private String antworttext;
+  private List<String> antworten;
+  private List<Formel> formeln;
+  private int spaltenAnz;
+  private int zeilenAnz;
+  private int loesung;
+  private String name;
   
   public String gibRaetselText() {
     return raetselText;
