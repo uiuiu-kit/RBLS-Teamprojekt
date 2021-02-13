@@ -30,13 +30,6 @@ public class AufbauTabelle1 extends AufbauTabelle {
   @Override
   public void setzeDaten() {
     List<Formel> noetigeFormelnF = new ArrayList<Formel>();
-    List<Formel> atomareAussagenF = new ArrayList<Formel>();
-    for (int i = 0; i < atomareAussagen.size(); i++) {
-      atomareAussagenF.add(FormelParser.pars("" + i, model));
-    }
-    for (int i = 0; i < atomareAussagen.size(); i++) {
-      model.setzeFormel(atomareAussagenF.get(i), i);
-    }
     for (int i = 0; i < noetigeFormelnF.size(); i++) {
       noetigeFormelnF.add(FormelParser.pars(noetigeFormelnS.get(i), model));
     }
