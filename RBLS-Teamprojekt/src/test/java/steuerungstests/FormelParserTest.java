@@ -99,8 +99,8 @@ public class FormelParserTest {
 
   @Test
   public void testdoppelKlammer() {
-    Formel formel = FormelParser.pars("0u(2x(1o1))", sfMock);
-    assertEquals(true, formel.auswerten(fall));
-    assertEquals("(Cu(Ex(DoD)))", formel.gibStringRep());
+    Formel formel = FormelParser.pars("0u(2x(1f1))", sfMock);
+    assertEquals(false, formel.auswerten(fall));
+    assertEquals("(Cu(Ex(DfD)))", formel.gibStringRep());
   }
 }
