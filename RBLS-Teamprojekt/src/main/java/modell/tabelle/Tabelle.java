@@ -94,7 +94,7 @@ public class Tabelle {
   }
   
   public int gibZeilenAnz() {
-    return this.wwTabelle.get(0).size() + 1;
+    return this.wwTabelle.get(0).size();
   }
   
   /** Erlaubt es der Fassade eine neue Spalte mit einer neuen Formel zur Tabelle hinzuzufügen.
