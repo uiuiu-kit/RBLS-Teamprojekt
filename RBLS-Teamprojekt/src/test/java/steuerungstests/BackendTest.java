@@ -29,43 +29,43 @@ public class BackendTest {
   @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
-
+    System.out.println("AufbauTabelle");
     gibTabelle();
   }
 
   @Test
   public void formelEingebenTest() {
     wts.befehl("FormelEingeben(1)");
-
+    System.out.println("FormelEingeben");
     System.out.println(sf.gibFormelText(1));
   }
 
   @Test
   public void fuelleTabelleTest() {
     wts.befehl("FuelleTabelle");
-
+    System.out.println("FuelleTabelle");
     gibTabelle();
   }
 
   @Test
   public void spalteEntfernenTest() {
     wts.befehl("SpalteEntfernen(1)");
-
+    System.out.println("SpalteEntfernen");
     gibTabelle();
   }
 
   @Test
   public void spalteHinzufügenTest() {
     wts.befehl("SpalteHinzufügen(1)");
-
+    System.out.println("SpalteHinzufügen");
     gibTabelle();
   }
 
   @Test
   public void ZelleInBlauOrangeAendernTest() {
     gibTabelle();
-    wts.befehl("ZelleInBlauOrangeAendern(1,3)");
-
+    wts.befehl("ZelleInBlauOrangeAendern(2,2)");
+    System.out.println("ZelleInBlauOrangeAendern(1,3)");
     gibTabelle();
   }
 
