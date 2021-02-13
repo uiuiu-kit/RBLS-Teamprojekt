@@ -45,21 +45,21 @@ public class FormelParserTest {
   public void testZweiAtome() {
     Formel formel = FormelParser.pars("1u2", sfMock);
     assertEquals(false, formel.auswerten(fall));
-    assertEquals("DuE", formel.gibStringRep());
+    assertEquals("(DuE)", formel.gibStringRep());
   }
 
   @Test
   public void testXor() {
     Formel formel = FormelParser.pars("1x2", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("DxE", formel.gibStringRep());
+    assertEquals("(DxE)", formel.gibStringRep());
   }
 
   @Test
   public void testDreiAtom() {
     Formel formel = FormelParser.pars("1u2o0", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("DuEoC", formel.gibStringRep());
+    assertEquals("((DuE)oC)", formel.gibStringRep());
   }
 
   @Test
@@ -73,34 +73,34 @@ public class FormelParserTest {
   public void testNicht() {
     Formel formel = FormelParser.pars("n1", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("nD", formel.gibStringRep());
+    assertEquals("(nD)", formel.gibStringRep());
   }
 
   @Test
   public void testKlammerMitKonnektor() {
     Formel formel = FormelParser.pars("(1u2)", sfMock);
     assertEquals(false, formel.auswerten(fall));
-    assertEquals("DuE", formel.gibStringRep());
+    assertEquals("(DuE)", formel.gibStringRep());
   }
 
   @Test
   public void testKlammerOderZusatz() {
     Formel formel = FormelParser.pars("0o(1u2)", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("CoDuE", formel.gibStringRep());
+    assertEquals("(Co(DuE))", formel.gibStringRep());
   }
 
   @Test
   public void testKlammerUndZusatz() {
     Formel formel = FormelParser.pars("0u(1x2)", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("CuDxE", formel.gibStringRep());
+    assertEquals("(Cu(DxE))", formel.gibStringRep());
   }
 
   @Test
   public void testdoppelKlammer() {
     Formel formel = FormelParser.pars("0u(2x(1o1))", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("CuExDoD", formel.gibStringRep());
+    assertEquals("(Cu(Ex(DoD)))", formel.gibStringRep());
   }
 }
