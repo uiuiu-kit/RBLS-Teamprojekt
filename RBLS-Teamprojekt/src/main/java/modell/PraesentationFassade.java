@@ -2,7 +2,6 @@ package modell;
 
 import java.util.List;
 import modell.raetsel.Raetsel;
-import modell.raetsel.RaetselZustand;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 

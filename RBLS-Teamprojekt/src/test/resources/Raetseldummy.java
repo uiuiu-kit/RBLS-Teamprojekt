@@ -1,50 +1,19 @@
-package modell.raetsel;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import modell.formel.Formel;
 
-/**Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei 
- * dem Rest des Programms zur Verfügung zu stellen.
- * Es wird daher vom Raetselinterpreten erstellt und der Fassade übergeben.
- * @author Flo
- *
- */
-public class Raetsel {
+public class Raetseldummy {
   
-  private String raetselText;
-  private int stufe;
-  private List<String> atom;
-  private String antworttext;
-  private List<String> antworten;
-  private List<Formel> formeln;
-  private int spaltenAnz;
-  private int zeilenAnz;
-  private int loesung;
-  private String name;
-  
-
-  
-  /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
-   * @param zeilenAnz
-   * @param spaltenAnz
-   * @param stufe
-   * @param atom
-   * @param raetselText
-   * @param loesung
-   */
-  public Raetsel(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
-    this.spaltenAnz = spaltenAnz;
-    this.zeilenAnz = zeilenAnz;
-    this.stufe = stufe;
-    this.atom = atom;
-    this.loesung = loesung;
-    this.raetselText = raetselText;
-    this.formeln = formeln;
-    this.antworttext = antworttext;
-    this.name = name;
-  }
+  private String raetselText = "Text";
+  private int stufe = 1;
+  private List<String> atom = {"A", "B", "C"};
+  private String antworttext = "Antwort";
+  private List<String> antworten = {"A", "B", "C"};
+  private List<Formel> formeln = new List<Formel>();
+  private int spaltenAnz = 4;
+  private int zeilenAnz = 8;
+  private int loesung = 2;
+  private String name = "Test";
   
   public String gibRaetselText() {
     return raetselText;
@@ -113,4 +82,5 @@ public class Raetsel {
   public void addFormel(Formel formel) {
     this.formeln.add(formel);
   }
+
 }

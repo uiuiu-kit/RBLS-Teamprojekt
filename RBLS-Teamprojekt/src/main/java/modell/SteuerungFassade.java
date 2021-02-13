@@ -1,7 +1,6 @@
 package modell;
 
 import java.util.List;
-
 import modell.formel.Formel;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
@@ -115,10 +114,14 @@ public class SteuerungFassade {
     return tabelle.gibFormel(spalte);
   }
   
-  public void setzeFormel(Formel f, int spalte) {
+  /** Ermöglicht der Steuerung Formeln zu setzen.
+   * @param formel zu setzende Formel.
+   * @param spalte position der Formel (Zelle)
+   */
+  public void setzeFormel(Formel formel, int spalte) {
     this.aktualisiere();
-    tabelle.setzeFormel(f, spalte);
-    this.raetsel.addFormel(f);
+    tabelle.setzeFormel(formel, spalte);
+    this.raetsel.addFormel(formel);
   }
   
   public String gibFormelText(int spalte) {

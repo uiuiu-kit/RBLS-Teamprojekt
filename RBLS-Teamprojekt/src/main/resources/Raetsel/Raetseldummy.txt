@@ -1,12 +1,12 @@
-Testraetsel
+Test
 ##
-Hier koennte Ihre werbung stehen
+Text
 ##
-$ ist eine suesse Katze$
+Antwort
 ##
-Herbert, Norbert, Saskia, Reinhardt
+A,B,C
 ##
-(H)Herbert, (N)Norbert, (S)Saskia, (R)Reinhardt
+A,B,C
 ##
 Herbert
 ##
