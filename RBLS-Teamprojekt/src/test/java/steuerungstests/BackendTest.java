@@ -75,11 +75,11 @@ public class BackendTest {
     for (int i = 0; i < sf.gibSpaltenAnz(); i++) {
       output = output + sf.gibFormel(i).gibStringRep();
     }
-    for (int i = 1; i < sf.gibZeilenAnz(); i++) {
+    for (int i = 0; i < sf.gibZeilenAnz(); i++) {
       output = output + "\n";
-      koordinate[0] = i;
+      koordinate[1] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {
-        koordinate[1] = j;
+        koordinate[0] = j;
         output = output + " " + sf.gibZelleWW(koordinate);
       }
     }
