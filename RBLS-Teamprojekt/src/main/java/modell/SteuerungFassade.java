@@ -142,7 +142,7 @@ public class SteuerungFassade {
   public PraesentationFassade erstelleTestUmgebung(Raetselinterpret test) {
     praesFassade = new PraesentationFassade(test);
     praesFassade.setzeRaetsel("Raetseldummy");
-    this.setzeFormel(new Und(new Atom("A", "A", 1), new Atom("B", "B", 2)), 4);
+    this.setzeFormel(new Und(new Atom("A", "A", 1), new Atom("B", "B", 2)), 0);
     return praesFassade;
   }
 }

@@ -61,4 +61,27 @@ public class SteuerungsFassadeTest {
     
     assertEquals(3, testen.gibSpaltenAnz());
   }
+  
+  @Test
+  public void spaltenÄndernTest() {
+    
+    assertEquals(3, testen.gibSpaltenAnz());
+    
+    testen.spalteHinzufuegen();
+    
+    assertEquals(4, testen.gibSpaltenAnz());
+    
+    testen.spalteEntfernen(3);
+    
+    assertEquals(3, testen.gibSpaltenAnz());
+  }
+  
+  @Test
+  public void formelTextTest() {
+    String test = "AuB";//"((A)u(B))";
+    
+    assert (testen.gibFormelText(0) != null);
+    
+    assertEquals(test, testen.gibFormelText(0));
+  }
 }

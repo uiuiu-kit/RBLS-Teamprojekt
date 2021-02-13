@@ -33,7 +33,7 @@ public class Tabelle {
     this.atomAnz = atomAnz;
     formelTabelle = new ArrayList<Formelzelle>();
     wwTabelle = new ArrayList<List<Wahrheitswertzelle>>();
-    for (int i = 0; i <= zeilenAnz; i++) {
+    for (int i = 0; i < spaltenAnz; i++) {
       this.spalteHinzufuegen();
     }
   }
@@ -92,11 +92,11 @@ public class Tabelle {
   }
   
   public int gibSpaltenAnz() {
-    return this.spalte;
+    return this.formelTabelle.size();
   }
   
   public int gibZeilenAnz() {
-    return this.zeile;
+    return this.wwTabelle.get(0).size() + 1;
   }
   
   /** Erlaubt es der Fassade eine neue Spalte mit einer neuen Formel zur Tabelle hinzuzufügen.
@@ -115,7 +115,7 @@ public class Tabelle {
    * @param spalte zu löschende Spalte.
    */
   public void spalteEntfernen(int spalte) {
-    if ((this.spalte - 1) > 1 && spalte != this.atomAnz - 1) { 
+    if ((this.gibSpaltenAnz()) > this.atomAnz) {
       this.wwTabelle.remove(spalte);
       this.formelTabelle.remove(spalte);
     } 
