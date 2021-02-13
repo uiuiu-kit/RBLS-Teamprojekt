@@ -34,6 +34,11 @@ public class SteuerungFassade {
     return steuFa;
   }
 
+  public void aktualisiere() {
+    this.raetsel = praesFassade.gibRaetsel();
+    this.tabelle = praesFassade.gibTabelle();
+  }
+
   /** Initialisiert die Erstellung aller Modell-Objekte zu Beginn des Programms, 
    * die ohne weitere Eingaben des Benutzers erstellt werden können
    * Diese sind der Raetselinterpret, Memento und die Praesentationsfassade.
@@ -48,6 +53,7 @@ public class SteuerungFassade {
    * @return Liste der Atomobjekte.
    */
   public List<String> gibAtomareAussage() {
+    this.aktualisiere();
     return this.raetsel.gibAtomareAussage();
   }
   
@@ -55,22 +61,27 @@ public class SteuerungFassade {
    * @return
    */
   public List<String> gibNoetigeFormel() {
+    this.aktualisiere();
     return this.raetsel.gibFormeln();
   }
   
   public boolean gibZelleWW(int[] i) {
+    this.aktualisiere();
     return tabelle.gibZellenWert(i);
   }
   
   public void setzeZelleWW(int[] i, boolean ww) {
+    this.aktualisiere();
     tabelle.setzeZelle(i, ww);
   }
   
   public int gibZeilenAnz() {
+    this.aktualisiere();
     return tabelle.gibZeilenAnz();
   }
   
   public int gibSpaltenAnz() {
+    this.aktualisiere();
     return tabelle.gibSpaltenAnz();
   }
   
@@ -79,10 +90,12 @@ public class SteuerungFassade {
   }
   
   public void spalteHinzufuegen() {
+    this.aktualisiere();
     tabelle.spalteHinzufuegen();
   }
   
   public void spalteEntfernen(int spalte) {
+    this.aktualisiere();
     tabelle.spalteEntfernen(spalte);
   }
   
@@ -98,19 +111,23 @@ public class SteuerungFassade {
   }
   
   public Formel gibFormel(int spalte) {
+    this.aktualisiere();
     return tabelle.gibFormel(spalte);
   }
   
   public void setzeFormel(Formel f, int spalte) {
+    this.aktualisiere();
     tabelle.setzeFormel(f, spalte);
     this.raetsel.addFormel(f);
   }
   
   public String gibFormelText(int spalte) {
+    this.aktualisiere();
     return tabelle.gibFormelText(spalte);
   }
   
   public int gibStufe() {
+    this.aktualisiere();
     return this.raetsel.gibStufe();
   }
 }
