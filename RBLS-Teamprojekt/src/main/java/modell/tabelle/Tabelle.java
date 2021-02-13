@@ -29,7 +29,7 @@ public class Tabelle {
     this.atomAnz = atom.size();
     formelTabelle = new ArrayList<Formelzelle>();
     wwTabelle = new ArrayList<List<Wahrheitswertzelle>>();
-    for (int i = 0; i < atom.size(); i++) {
+    for (int i = 1; i <= atom.size(); i++) {
       this.spalteHinzufuegen();
     }
     for (int i = 0; i < atom.size(); i++) {
@@ -74,7 +74,7 @@ public class Tabelle {
    */
   private Wahrheitswertzelle gibWZ(int[] i) {
     if (i[0] > 0) {
-      return this.wwTabelle.get(i[1]).get(i[0] - 1);
+      return this.wwTabelle.get(i[1]).get(i[0]);
     }
     return null;
   }

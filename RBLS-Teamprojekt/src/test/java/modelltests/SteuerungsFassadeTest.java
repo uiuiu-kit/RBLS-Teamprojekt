@@ -115,4 +115,17 @@ public class SteuerungsFassadeTest {
     assertEquals(test[1],testen.gibZeileFall(1)[1]);
     assertEquals(test[2],testen.gibZeileFall(1)[2]);
   }
+  
+  @Test
+  public void tabelleTest() {
+    for (int z = 1; z < 9; z++) {
+      String temp = "";
+      for (int s = 0; s < 2; s++) {
+        int[] a = {z, s};
+        testen.setzeZelleWW(a, true);
+        temp = temp + " / " + testen.gibZelleWW(a);
+      }
+      System.out.println(temp);
+    } 
+  }
 }
