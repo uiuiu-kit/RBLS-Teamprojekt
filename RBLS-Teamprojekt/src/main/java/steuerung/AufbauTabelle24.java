@@ -20,6 +20,7 @@ public class AufbauTabelle24 extends AufbauTabelle {
   @Override
   public void hohleDaten() {
     anzAtome = model.gibAtomareAussage().size();
+    atomareAussagen = model.gibAtomareAussage();
   }
 
   @Override

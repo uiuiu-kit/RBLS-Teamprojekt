@@ -26,6 +26,7 @@ public class AufbauTabelle1 extends AufbauTabelle {
   public void hohleDaten() {
     noetigeFormelnS = model.gibNoetigeFormel();
     atomSpaltenAnz = model.gibSpaltenAnz();
+    atomareAussagen = model.gibAtomareAussage();
   }
 
   @Override

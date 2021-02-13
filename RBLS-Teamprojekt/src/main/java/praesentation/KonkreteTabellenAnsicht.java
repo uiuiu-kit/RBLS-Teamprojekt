@@ -3,8 +3,14 @@ package praesentation;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -13,6 +19,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import modell.PraesentationFassade;
+import modell.SteuerungFassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -27,10 +34,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private WahrheitstabellenSteuerungen strg;
   private PraesentationFassade modell;
   private JTable tabelle;
-  private Schaltflaeche ausfuellen = new Schaltflaeche(2);
-  private Schaltflaeche mehrSpalten = new Schaltflaeche(2);
-  private Schaltflaeche wenigerSpalten = new Schaltflaeche(2);
-  private Schaltflaeche zeileMarkieren = new Schaltflaeche(2);
+  private Schaltflaeche ausfuellen = new Schaltflaeche("Fülle Tabelle", 2);
+  private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 2);
+  private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 2);
+  private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 2);
   private boolean[][] wahrheitswerte;
   private String[][] inhalt;
   private int zeilenzahl = 9;
@@ -45,7 +52,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void init() {
-    this.strg = new WahrheitstabellenSteuerungen(null);  //TODO Wie?
+    //this.strg = new WahrheitstabellenSteuerungen(SteuerungFassade.gibSteuFa());  //TODO Wie?
     
     //TODO unkommentieren wenn fertig
     //zeilenzahl = modell.gibZeilenAnz();
@@ -65,9 +72,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         //inhalt[i][j] = modell.gibZelle(new int[] {i,j});
         //TODO Platzhalter
         if (i > 0 && wahrheitswerte[i - 1][j]) {
-          inhalt[i][j] = "true";
+          inhalt[i][j] = "wahr";
         } else if (i > 0 && wahrheitswerte[i - 1][j]) {
-          inhalt[i][j] = "false";
+          inhalt[i][j] = "falsch";
         } else {
           inhalt[i][j] = "" + j + "" + i;
         }
@@ -94,11 +101,11 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
           wahrheitswerte[i - 1][j] = !wahrheitswerte[i - 1][j];
           if (wahrheitswerte[i - 1][j]) {
               inhalt[i][j] = "true";
-              tabelle.getModel().setValueAt("true", i, j);
+              tabelle.getModel().setValueAt("wahr", i, j);
               //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.GREEN);
             } else {
               inhalt[i][j] = "false";
-              tabelle.getModel().setValueAt("false", i, j);
+              tabelle.getModel().setValueAt("falsch", i, j);
               //((DefaultTableCellRenderer) tabelle.getCellRenderer(i, j)).setBackground(Color.RED);
             }
         }
@@ -111,10 +118,45 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     renderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
 
     
+    //SchaltflaechenPanel//
+    JPanel SchaltflaechenPanel = new JPanel();
+    SchaltflaechenPanel.setLayout(new BoxLayout(SchaltflaechenPanel, BoxLayout.Y_AXIS));
+    SchaltflaechenPanel.setBackground(Color.WHITE);
+    SchaltflaechenPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    
+    mehrSpalten.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        fuegeSpalteHinzu();
+      }
+    });
+    SchaltflaechenPanel.add(mehrSpalten);
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+    wenigerSpalten.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        entferneSpalte();
+      }
+    });
+    SchaltflaechenPanel.add(wenigerSpalten); 
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+    zeileMarkieren.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        markiereZeile();
+      }
+    });
+    SchaltflaechenPanel.add(zeileMarkieren);
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, (int) (SchaltflaechenPanel.getMaximumSize().height - mehrSpalten.getMaximumSize().height * 2.5))));
+    ausfuellen.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        fuelleAus();
+      }
+    });
+    SchaltflaechenPanel.add(ausfuellen);
+    
     //Panel//
     panel = new JPanel();
     panel.setLayout(new BorderLayout());
     panel.add(tabelle, BorderLayout.CENTER);
+    panel.add(SchaltflaechenPanel, BorderLayout.EAST);
     tabelle.setFillsViewportHeight(true);
     
     
@@ -126,7 +168,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void klickeZelle(int reihe, int spalte) {
-    strg.befehl("zelleAendern," + reihe + "," + spalte);
+    //strg.befehl("zelleAendern," + reihe + "," + spalte);
   }
   
   private void klickeFormel(int zeile) {
@@ -145,7 +187,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     
   }
   
-  public void markiereZeile(int zeile) {
+  public void markiereZeile() {
     
   }
   

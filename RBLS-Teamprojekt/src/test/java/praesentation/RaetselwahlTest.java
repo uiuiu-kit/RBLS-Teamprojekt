@@ -18,7 +18,7 @@ public class RaetselwahlTest {
     fv.init();
     List<String> raetsel = new ArrayList<String>();
     
-    RaetselZustand r1 = new RaetselZustand();
+    /*RaetselZustand r1 = new RaetselZustand();
     r1.geloest = false;
     r1.raetselname = "Rätsel 1";
     raetsel.add(r1.raetselname);
@@ -37,7 +37,9 @@ public class RaetselwahlTest {
     RaetselZustand r5 = new RaetselZustand();
     r5.geloest = false;
     r5.raetselname = "Rätsel 5";
-    raetsel.add(r5.raetselname);
+    raetsel.add(r5.raetselname);*/
+    raetsel.add("Platzhalterrätsel 1");
+    raetsel.add("Platzhalterrätsel 2");
     
     JFrame aktivesFenster = new Raetselwahl(fv, raetsel);
     aktivesFenster.setTitle("Rätselwahl");
