@@ -73,8 +73,8 @@ public class Tabelle {
    * @return Zellenobjekt.
    */
   private Wahrheitswertzelle gibWZ(int[] i) {
-    if (i[0] != 0) {
-      return this.wwTabelle.get(i[0] - 1).get(i[1]);
+    if (i[0] > 0) {
+      return this.wwTabelle.get(i[1]).get(i[0] - 1);
     }
     return null;
   }
@@ -103,7 +103,7 @@ public class Tabelle {
    */
   public void spalteHinzufuegen() {
     List<Wahrheitswertzelle> row = new ArrayList<Wahrheitswertzelle>();
-    for (int h = 1; h < (int) Math.pow(2, atomAnz) + 2; h++) {
+    for (int h = 0; h <= (int) Math.pow(2, atomAnz); h++) {
       row.add(new Wahrheitswertzelle());
     }
     this.wwTabelle.add(row);
