@@ -26,7 +26,6 @@ public class Raetselinterpret {
   public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rätsel gefunden";
   public static final String FREIES_RAETSEL_NAME = "Freies Rätsel";
   public static final int NUMBER_OF_ROWS = 8;
-  public static final int INIT_NUMBER_OF_COL = 2;
   
   
   
@@ -117,7 +116,6 @@ public class Raetselinterpret {
    * @return neues Raetselobjekt.
    */
   public Raetsel liesRaetsel(String titel) {
-    int spalten = 0;
     List<String> atome = null;
     String[] lines = null;
     for (String name : liesDateinamen()) {
@@ -131,7 +129,7 @@ public class Raetselinterpret {
       antwortM.add(temp);
     }
     atome = this.exAtome(lines[4]);
-    spalten = atome.size() + INIT_NUMBER_OF_COL;
+    int spalten = atome.size();
     return new Raetsel(
         lines[0],
         this.calcRow(atome),        //zeilenAnz
@@ -152,7 +150,7 @@ public class Raetselinterpret {
     return new Raetsel(
         FREIES_RAETSEL_NAME,
         this.calcRow(atomA), 
-        atomA.size() + INIT_NUMBER_OF_COL,
+        atomA.size(),
         0, 
         atomA, 
         null, 
