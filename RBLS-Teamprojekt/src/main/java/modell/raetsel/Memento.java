@@ -7,22 +7,24 @@ package modell.raetsel;
  *
  */
 public class Memento {
-
-  public void sichern(Raetsel r) {
-    //TODO
+  
+  private RaetselZustand zustand;
+  
+  /**
+   * Konstruktor fuer ein Memento. Dieses speichert den aktuellen Spielstand,
+   * also welches Rätsel zuletzt geloest wurde.
+   * @param r Das Raetsel, welches gespeichert werden soll.
+   */
+  public Memento (Raetsel r) {
+    this.zustand = new RaetselZustand(r, true);
   }
   
   public RaetselZustand gibSicherung() {
-    //TODO
-    return null;
+    return this.zustand;
   }
   
-  public void loesche(String s) {
-    //TODO
+  public void loesche() {
+    this.zustand = null;
   }
   
-  public String leseSicherung() {
-    //TODO
-    return null;
-  }
 }

@@ -13,8 +13,6 @@ public abstract class WahrheitstabellenBefehl {
    */
   public WahrheitstabellenBefehl(SteuerungFassade model) {
     this.model = model;
-    hohleDaten();
-    setzeDaten();
   }
 
   /**

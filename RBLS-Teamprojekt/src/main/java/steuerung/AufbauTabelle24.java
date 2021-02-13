@@ -5,8 +5,16 @@ import modell.SteuerungFassade;
 public class AufbauTabelle24 extends AufbauTabelle {
   private int anzAtome;
 
+  /**
+   * Kostruktor für AufbauTabelle24 der die Ausführung des Befehls anstößt.
+   * 
+   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   *              wird.
+   */
   public AufbauTabelle24(SteuerungFassade model) {
     super(model);
+    hohleDaten();
+    setzeDaten();
   }
 
   @Override

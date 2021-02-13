@@ -26,7 +26,7 @@ public class TabellenPruefer {
     this.model = model;
     this.stufe = stufe;
     int anzAtom = model.gibAtomareAussage().size() + 1;
-    boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtom)][2];
+    boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtom)][anzAtom];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
     noetigeFaelle = Arrays.asList(faelle);
     nochNoetigeFaelle = noetigeFaelle;

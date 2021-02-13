@@ -54,6 +54,12 @@ public class FormelParserTest {
     Formel formel = FormelParser.pars("(1)", sfMock);
     assertEquals("D", formel.gibStringRep());
   }
+  
+  @Test
+  public void testNicht() {
+    Formel formel = FormelParser.pars("n1", sfMock);
+    assertEquals("nD", formel.gibStringRep());
+  }
 
   @Test
   public void testKlammerMitKonnektor() {
@@ -64,12 +70,17 @@ public class FormelParserTest {
   @Test
   public void testKlammerOderZusatz() {
     Formel formel = FormelParser.pars("0o(1u2)", sfMock);
-    assertEquals("CoDuE", formel.gibStringRep());
+    assertEquals("CoDuE", formel.gibStringRep());   
   }
   
   @Test
   public void testKlammerUndZusatz() {
-    Formel formel = FormelParser.pars("0u(1o2)", sfMock);
-    assertEquals("CuDoE", formel.gibStringRep());
+    Formel formel = FormelParser.pars("0u(0x0)", sfMock);
+    assertEquals("CuCxC", formel.gibStringRep());
+  }
+  
+  public void testdoppelKlammer() {
+    Formel formel = FormelParser.pars("0u(0x(0o0))", sfMock);
+    assertEquals("CuCxCo0", formel.gibStringRep());
   }
 }

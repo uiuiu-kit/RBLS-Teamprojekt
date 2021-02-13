@@ -16,9 +16,10 @@ public class PraesentationFassade {
   private static PraesentationFassade praFa = null;
   
   private Raetselinterpret interpret;
-  private RaetselZustand raetselZustand = new RaetselZustand();
+  //private RaetselZustand raetselZustand = new RaetselZustand();
   private Raetsel raetsel;
   private Tabelle tabelle;
+  private int abgeschlosseneStufe;
   
   
   public PraesentationFassade(Raetselinterpret interpret) {
@@ -64,9 +65,10 @@ public class PraesentationFassade {
     return interpret.liesOrdner(i);
   }
 
+  /* Wird von niemandem gebraucht
   public String gibAktivenRaetselnamen() {
     return raetselZustand.raetselname;
-  }
+  }*/
   
   public String gibFragestellung() {
     return raetsel.gibRaetselText();
@@ -90,13 +92,9 @@ public class PraesentationFassade {
   
   /**
    * Holt die String-Repraesentation der Zelle und aktualisiert die konkrete Tabellenansicht.
-   * @param zelle Die Zelle, zurueckgegeben werden soll.
    * @return Die String-Repraesentation der Zelle.
    */
   public String gibZelle(int[] zelle) {
-    /*String temp = tabelle.gibZelle(zelle);
-     * KonkreteTabellenAnsicht.aktualisiere();
-     */
     return tabelle.gibZelle(zelle);
   }
   
@@ -120,8 +118,11 @@ public class PraesentationFassade {
     return tabelle.gibFormelText(spalte);
   }
   
+  public void setzeAbgeschlosseneStufe(int abgeschlosseneStufe) {
+    this.abgeschlosseneStufe = abgeschlosseneStufe;
+  }
+  
   public int gibAbgeschlosseneStufe() {
-    //TODO
-    return 0;
+    return this.abgeschlosseneStufe;
   }
 }

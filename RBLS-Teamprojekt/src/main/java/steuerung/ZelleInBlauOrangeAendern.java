@@ -17,6 +17,8 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
     super(model);
     zellenKoordinaten[0] = zeile;
     zellenKoordinaten[1] = spalte;
+    hohleDaten();
+    setzeDaten();
   }
 
   @Override
