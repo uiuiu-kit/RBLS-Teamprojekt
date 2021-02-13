@@ -78,4 +78,9 @@ public class FormelParserTest {
     Formel formel = FormelParser.pars("0u(0x0)", sfMock);
     assertEquals("CuCxC", formel.gibStringRep());
   }
+  
+  public void testdoppelKlammer() {
+    Formel formel = FormelParser.pars("0u(0x(0o0))", sfMock);
+    assertEquals("CuCxCo0", formel.gibStringRep());
+  }
 }
