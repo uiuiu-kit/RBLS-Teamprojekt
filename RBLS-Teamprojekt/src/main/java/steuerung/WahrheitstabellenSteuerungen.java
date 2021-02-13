@@ -28,8 +28,11 @@ public class WahrheitstabellenSteuerungen {
   public void befehl(String befehl) {
     String[] split = befehl.split("\\(");
     String befehlsname = split[0];
-    split[1] = split[1].substring(0, split.length - 1);
-    String[] parameter = split[1].split(",");
+    String[] parameter = null;
+    if (split.length > 1) {
+      split[1] = split[1].substring(0, split.length - 1);
+      parameter = split[1].split(",");
+    }
     switch (befehlsname) {
       case "AufbauTabelle":
         switch (stufe) {

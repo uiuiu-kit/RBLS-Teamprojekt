@@ -1,10 +1,9 @@
 package steuerungstests;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import modell.SteuerungFassade;
 import modelltests.Testinterpret;
+import org.junit.Before;
+import org.junit.Test;
 import steuerung.WahrheitstabellenSteuerungen;
 
 public class BackendTest {
@@ -25,21 +24,64 @@ public class BackendTest {
 
     wts = new WahrheitstabellenSteuerungen(sf);
   }
-  
+
   @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
-    
-    String fall;
+
+    gibTabelle();
+  }
+
+  @Test
+  public void formelEingebenTest() {
+    wts.befehl("FormelEingeben(1)");
+
+    System.out.println(sf.gibFormelText(1));
+  }
+
+  @Test
+  public void fuelleTabelleTest() {
+    wts.befehl("FuelleTabelle");
+
+    gibTabelle();
+  }
+
+  @Test
+  public void spalteEntfernenTest() {
+    wts.befehl("SpalteEntfernen(1)");
+
+    gibTabelle();
+  }
+  
+  @Test
+  public void spalteHinzufügenTest() {
+    wts.befehl("SpalteHinzufügen(1)");
+
+    gibTabelle();
+  }
+  
+  @Test
+  public void ZelleInBlauOrangeAendernTest() {
+    gibTabelle();
+    wts.befehl("ZelleInBlauOrangeAendern(1,3)");
+
+    gibTabelle();
+  }
+  
+  private void gibTabelle() {
+    String output = "";
     int[] koordinate = new int[2];
+//    for (int i = sf.gibAtomareAussage().size(); i < sf.gibSpaltenAnz(); i++) {
+//      output = output + sf.gibFormel(i).gibStringRep();
+//    }
     for (int i = 1; i < sf.gibZeilenAnz(); i++) {
-      fall = "";
+      output = output + "\n";
       koordinate[0] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {
         koordinate[1] = j;
-        fall = fall + sf.gibZelleWW(koordinate);
+        output = output + " " + sf.gibZelleWW(koordinate);
       }
-      System.out.println(fall);
     }
+    System.out.println(output);
   }
 }
