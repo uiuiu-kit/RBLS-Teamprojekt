@@ -15,7 +15,6 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
    */
   public AufbauTabelle(SteuerungFassade model) {
     super(model);
-    holeDaten();
   }
 
   /**
