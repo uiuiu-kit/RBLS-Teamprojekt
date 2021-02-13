@@ -34,7 +34,7 @@ public class SteuerungFassade {
     return steuFa;
   }
 
-  public void aktualisiere() {
+  private void aktualisiere() {
     this.raetsel = praesFassade.gibRaetsel();
     this.tabelle = praesFassade.gibTabelle();
   }
