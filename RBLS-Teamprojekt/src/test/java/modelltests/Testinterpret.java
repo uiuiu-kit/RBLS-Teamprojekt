@@ -16,7 +16,7 @@ public class Testinterpret extends Raetselinterpret{
   
   
   private int calcRow(List<String> atome) {
-    return (int) Math.pow(2, atome.size());
+    return (int) Math.pow(2, atome.size()) + 1;
   }
   
   public List<String> liesOrdner(int stufe) {
