@@ -25,11 +25,6 @@ public class BackendTest {
 
     wts = new WahrheitstabellenSteuerungen(sf);
   }
-
-  @Test
-  public void raetselFormeln() {
-    sf.gibNoetigeFormel();
-  }
   
   @Test
   public void aufbauTabelle1Test() {
@@ -37,7 +32,7 @@ public class BackendTest {
     
     String fall;
     int[] koordinate = new int[2];
-    for (int i = 0; i < sf.gibZeilenAnz(); i++) {
+    for (int i = 1; i < sf.gibZeilenAnz(); i++) {
       fall = "";
       koordinate[0] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {
