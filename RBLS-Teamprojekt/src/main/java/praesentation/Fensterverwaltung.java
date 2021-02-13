@@ -75,7 +75,7 @@ public class Fensterverwaltung {
    */
   public void starteRaetsel(String name) {
     //modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
-    strg.raetselFensterInit();
+    //strg.raetselFensterInit();
     wechseleFenster(new StufenRaetselFenster(this, modell).ansicht, "RBLS");    
   }
 
