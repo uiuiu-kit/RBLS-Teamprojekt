@@ -104,4 +104,15 @@ public class SteuerungsFassadeTest {
   public void sicherungTest() {
     
   }
+  
+  @Test
+  public void zeileFallTest() {
+    int[] a = {1, 0};
+    Boolean[] test = {true, false, false};
+    testen.setzeZelleWW(a, true);
+    
+    assertEquals(test[0],testen.gibZeileFall(1)[0]);
+    assertEquals(test[1],testen.gibZeileFall(1)[1]);
+    assertEquals(test[2],testen.gibZeileFall(1)[2]);
+  }
 }

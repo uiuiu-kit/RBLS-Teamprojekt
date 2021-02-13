@@ -19,6 +19,7 @@ public class Tabelle {
   private List<List<Wahrheitswertzelle>> wwTabelle;
   private List<Formelzelle> formelTabelle;
   private int atomAnz;
+  private static final String UNDEFINED_F = "formel hinzufügen";
   
   /**
    * Konstruktor für die Tabelle eines Raetels. Konstruiert anhand der uebergebenen Parameter.
@@ -101,11 +102,13 @@ public class Tabelle {
    * 
    */
   public void spalteHinzufuegen() {
-    List<Wahrheitswertzelle> temp = new ArrayList<Wahrheitswertzelle>();
+    List<Wahrheitswertzelle> row = new ArrayList<Wahrheitswertzelle>();
     for (int h = 1; h < (int) Math.pow(2, atomAnz) + 2; h++) {
-      temp.add(new Wahrheitswertzelle());
+      Wahrheitswertzelle temp = new Wahrheitswertzelle();
+      temp.setzeZelle(new Atom(UNDEFINED_F, 5));
+      row.add(temp);
     }
-    this.wwTabelle.add(temp);
+    this.wwTabelle.add(row);
     this.formelTabelle.add(new Formelzelle());
   }
   
@@ -138,9 +141,8 @@ public class Tabelle {
     boolean[] out = new boolean[this.atomAnz];
     if (i != 0) {
       for (int h = 0; h < this.atomAnz; h++) {
-        int[] pos = {i,h};
-        Wahrheitswertzelle temp = this.gibWZ(pos);
-        out[h] = temp.gibZustand();
+        int[] pos = {i, h};
+        out[h] = this.gibWZ(pos).gibZustand();
       } 
     }
     return out;
