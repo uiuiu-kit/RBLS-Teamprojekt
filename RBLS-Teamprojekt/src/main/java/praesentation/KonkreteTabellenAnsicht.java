@@ -4,25 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 import modell.PraesentationFassade;
-import modell.SteuerungFassade;
-import steuerung.FormelEditor;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -58,14 +51,14 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private JPanel panel;
   private JPanel tabellenRahmen = new JPanel();
 
-  public KonkreteTabellenAnsicht(PraesentationFassade modell) {
+  public KonkreteTabellenAnsicht(PraesentationFassade modell, WahrheitstabellenSteuerungen strg) {
     this.modell = modell;
+    this.strg = strg;
     init();
   }
   
   private void init() {
-    //this.strg = new WahrheitstabellenSteuerungen(SteuerungFassade.gibSteuFa());  //TODO Wie?
-    
+
     //TODO unkommentieren wenn fertig
     //zeilenzahl = modell.gibZeilenAnz();
     //spaltenzahl = modell.gibSpaltenAnz();
@@ -127,6 +120,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     panel.add(tabellenRahmen, BorderLayout.CENTER);
     panel.add(schaltflaechenPanel, BorderLayout.EAST);
+    panel.setBackground(Color.WHITE);
     tabelle.setFillsViewportHeight(true);    
   }
   

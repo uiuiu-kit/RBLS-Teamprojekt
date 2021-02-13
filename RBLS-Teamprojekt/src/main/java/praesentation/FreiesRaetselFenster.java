@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import modell.PraesentationFassade;
+import steuerung.WahrheitstabellenSteuerungen;
 
 /**
  * Grafische Ansicht des freien Modus. Zeigt eine
@@ -36,6 +37,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
   
   private Fensterverwaltung fv;
   private PraesentationFassade modell;
+  private WahrheitstabellenSteuerungen wstrg;
 
   /**
    * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit nötigen Buttons und Tabelle.
@@ -43,10 +45,11 @@ public class FreiesRaetselFenster extends RaetselFenster {
    * @param modell Praesentationsfassade
    *     zum Setzen und Erhalten von Informationen über atomare Aussagen und Status
    */
-  public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell) {
+  public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung,
+      PraesentationFassade modell, WahrheitstabellenSteuerungen wstrg) {
     this.fv = fensterverwaltung;
     this.modell = modell;
-    this.tabelle = new KonkreteTabellenAnsicht(modell);
+    this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
     
     ansicht = new JFrame();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
@@ -76,9 +79,9 @@ public class FreiesRaetselFenster extends RaetselFenster {
     //WahrheitstabellenPanel//
     JPanel tabellenPanel = new JPanel();
     tabellenPanel.setLayout(new BorderLayout());
-    tabellenPanel.setBackground(Color.DARK_GRAY);
-    tabellenPanel.add(new javax.swing.JLabel("TABELLE", SwingConstants.CENTER));
+    tabellenPanel.add(tabelle.gibAnsicht());
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
+    tabellenPanel.setBackground(Color.WHITE);
     
     //Ansicht zusammenfügen//
     ansicht.getContentPane().add(oben, 0);
@@ -129,8 +132,8 @@ public class FreiesRaetselFenster extends RaetselFenster {
   }
 
   private void initTabelle() {
-    //TODO// Tabelle initialisieren!!
-    modell.erstelleRaetsel(aussagenListe);   // Verfügbar wenn ausführbar!!
+    modell.erstelleRaetsel(aussagenListe);   // Verfügbar wenn ausführbar!!  //TODO Test
+    tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
   }
 
   private void geheZuMenue() {

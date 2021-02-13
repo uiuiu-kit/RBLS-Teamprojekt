@@ -38,7 +38,7 @@ public class FormelAnsicht {
   private Schaltflaeche oder = new Schaltflaeche("\u2228", 3);
   private Schaltflaeche nicht = new Schaltflaeche("\u00AC", 3);
   private Schaltflaeche impliziert = new Schaltflaeche("\u2192", 3);
-  //private Schaltflaeche aequivalent = new Schaltflaeche("\u2194", 3);  //TODO
+  //private Schaltflaeche aequivalent = new Schaltflaeche("\u2194", 3);  //TODO Aequivalenz
   private Schaltflaeche xor = new Schaltflaeche("\u2295", 3);
   private Schaltflaeche klammerAuf = new Schaltflaeche("(", 3);
   private Schaltflaeche klammerZu = new Schaltflaeche(")", 3);
@@ -111,6 +111,7 @@ public class FormelAnsicht {
         }
       });
     operatorPanel2.add(impliziert);
+    //TODO Aequivalenz
     /* aequivalent.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           schreibe(aequivalent.getText());

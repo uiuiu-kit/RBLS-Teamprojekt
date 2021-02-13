@@ -47,6 +47,7 @@ public class Raetselwahl extends javax.swing.JFrame {
     buttonPanel.setBackground(new Color(255,102,0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
+      //TODO falls Raetsel wiederholt werden können sollen
       //if (raetsel.get(j).geloest) {
       //buttons[j] = new Schaltflaeche(raetsel.get(j), 5);
       //} else {

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import modell.PraesentationFassade;
 import steuerung.Hauptsteuerung;
+import steuerung.WahrheitstabellenSteuerungen;
 
 /**Startet zu Beginn das Hauptmenü, wechselt die sichtbare Ansicht
  * und stößt das Beenden des Programms durch die Hauptsteuerung an.
@@ -74,9 +75,10 @@ public class Fensterverwaltung {
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {
-    //modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
-    //strg.raetselFensterInit();
-    wechseleFenster(new StufenRaetselFenster(this, modell).ansicht, "RBLS");    
+    modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
+    WahrheitstabellenSteuerungen wstrg;
+    wstrg = strg.raetselFensterInit();
+    wechseleFenster(new StufenRaetselFenster(this, modell, wstrg).ansicht, "RBLS");    
   }
 
   /**
@@ -95,7 +97,9 @@ public class Fensterverwaltung {
    * Startet den Freien Modus.
    */
   public void starteFreienModus() {
-    wechseleFenster(new FreiesRaetselFenster(this, modell).ansicht, "RBLS");
+    WahrheitstabellenSteuerungen wstrg;
+    wstrg = strg.raetselFensterInit();
+    wechseleFenster(new FreiesRaetselFenster(this, modell, wstrg).ansicht, "RBLS");
   }
 
   /**

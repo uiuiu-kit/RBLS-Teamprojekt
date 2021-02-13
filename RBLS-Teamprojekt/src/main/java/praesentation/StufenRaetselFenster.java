@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import modell.PraesentationFassade;
+import steuerung.WahrheitstabellenSteuerungen;
 
 /**
  * Grafische Ansicht eines Rätsels. Zeigt eine Wahrheitstabelle
@@ -49,15 +50,15 @@ public class StufenRaetselFenster extends RaetselFenster {
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des aktiven Fensters
    * @param modell Praesentationsfassade zum Erhalten von Informationen des aktiven Raetsels
    */
-  public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell) {
+  public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell, WahrheitstabellenSteuerungen wstrg) {
     this.fv = fensterverwaltung;
     this.modell = modell;
-    this.tabelle = new KonkreteTabellenAnsicht(modell);
+    this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
     
-    ///* TODO BRAUCHT MODELL UND STEUERUNG
-    //this.name = modell.gibAktivenRaetselnamen();
-    //this.frage = modell.gibFragestellung();
-    //*/
+    // TODO BRAUCHT MODELL UND STEUERUNG
+    this.name = modell.gibAktivenRaetselnamen();
+    this.frage = modell.gibFragestellung();
+    
     ansicht = new JFrame();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
     ansicht.getContentPane().setBackground(Color.WHITE);
@@ -104,20 +105,16 @@ public class StufenRaetselFenster extends RaetselFenster {
     fragePanel.add(tippPanel, BorderLayout.EAST);
     
     //WahrheitstabellenPanel//
-    JPanel tabellenPanel = new JPanel();  //TODO Kann weg
+    JPanel tabellenPanel = new JPanel();
     tabellenPanel = tabelle.gibAnsicht();
-    //tabellenPanel.setLayout(new BorderLayout());  //TODO Kann weg
     tabellenPanel.setBackground(Color.WHITE);
-    //tabellenPanel.add(new javax.swing.JLabel("TABELLE", SwingConstants.CENTER)); //TODO Platzhalter, kann weg
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
     
     //AntwortfeldPanel//
     JPanel antwortPanel = new JPanel();
-    
-    ////TODO Platzhalter, bis Programm ausführbar!!
-    antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();
-    //antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
-        //modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
+    //antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();  ////TODO Platzhalter
+    antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
+        modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
     
     JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
@@ -171,12 +168,11 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
 
   private void geheZuRaetselwahlMenue() {
-    //fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
-    //fv.oeffneMenue();  //TODO Platzhalter, bis Programm ausführbar ist
+    fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
   }
   
   public void schliesseRaetselAb() {
-    //TODO NUR falls Tabelle stimmt
+    //TODO evtl Dialogfenster falls Tabelle noch nicht vollständig
     weiter.setVisible(true);
   }
 

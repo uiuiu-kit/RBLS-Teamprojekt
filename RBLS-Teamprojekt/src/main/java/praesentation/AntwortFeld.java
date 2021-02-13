@@ -27,7 +27,7 @@ public class AntwortFeld {
   private StufenRaetselFenster fenster;
 
   private List<String> antwortMoeglichkeiten;
-  private String text = "[Hier könnte Ihre Antwort stehen]";
+  private String text = "[Hier könnte Ihre Antwort stehen]"; //TODO Platzhalter
   private String loesung;
 
   /**
@@ -40,15 +40,15 @@ public class AntwortFeld {
   public AntwortFeld(List<String> antworten, String text, String loesung, 
       StufenRaetselFenster fenster) {
     
-    /*Kommt wieder rein, sobald Programm ausführbar////////////
     this.text = text;  
     this.antwortMoeglichkeiten = antworten;
     this.loesung = loesung;
-    */
     
-    //Platzhalter//
+    //Platzhalter// TODO
+    /*
     this.antwortMoeglichkeiten = Arrays.asList("foo", "bar");
     this.loesung = "bar";
+    */
     
     this.fenster = fenster;
     JPanel p = new JPanel();
@@ -93,7 +93,7 @@ public class AntwortFeld {
       fenster.schliesseRaetselAb();
       antwortWahl.setEnabled(false);
     } else {
-      //TODO Dialogfenster oder so (?)
+      //TODO evtl Dialogfenster
     }
   }
   

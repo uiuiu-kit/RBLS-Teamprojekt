@@ -1,7 +1,6 @@
 package praesentation;
 
 import org.junit.Test;
-
 import steuerung.FormelEditor;
 import steuerung.Hauptsteuerung;
 
