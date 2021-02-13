@@ -72,9 +72,9 @@ public class BackendTest {
   private void gibTabelle() {
     String output = "";
     int[] koordinate = new int[2];
-//    for (int i = sf.gibAtomareAussage().size(); i < sf.gibSpaltenAnz(); i++) {
-//      output = output + sf.gibFormel(i).gibStringRep();
-//    }
+    for (int i = 0; i < sf.gibSpaltenAnz(); i++) {
+      output = output + sf.gibFormel(i).gibStringRep();
+    }
     for (int i = 1; i < sf.gibZeilenAnz(); i++) {
       output = output + "\n";
       koordinate[0] = i;
