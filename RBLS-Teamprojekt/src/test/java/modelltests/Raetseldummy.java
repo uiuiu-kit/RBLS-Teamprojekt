@@ -2,7 +2,11 @@ package modelltests;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import modell.formel.Atom;
 import modell.formel.Formel;
+import modell.formel.Konnektor;
+import modell.formel.Und;
 import modell.raetsel.Raetsel;
 
 public class Raetseldummy extends Raetsel {

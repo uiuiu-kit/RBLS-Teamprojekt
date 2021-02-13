@@ -57,7 +57,7 @@ public class RaetselinterpretTest {
         + "Wahr steht dabei dafÃ¼r, dass die Personen die Wahrheit sagt, "
         + "also nicht der Dieb ist, und Falsch dafÃ¼r, dass die Person lÃ¼gt "
         + "und einer der Diebe ist.",                   //Raetseltext
-        typen,        //Antwortmöglichkeiten
+        atome,        //Antwortmöglichkeiten
         2,            //Wievielte Antwort die Lösung ist
         "ist auf jeden Fall schuldig",       //Antworttext
         new ArrayList<Formel>());            //Formelliste  )

@@ -1,7 +1,9 @@
 package modell;
 
 import java.util.List;
+import modell.formel.Atom;
 import modell.formel.Formel;
+import modell.formel.Und;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
 import modell.raetsel.Raetselinterpret;
@@ -133,8 +135,13 @@ public class SteuerungFassade {
     return this.raetsel.gibStufe();
   }
   
+  /**Klasse zur Initialisierung einer Testumgebung, 
+   * benötigt zum Test für Steuerung und Steuerungsfassade.
+   * @param test  Instanz des Testinterpreten.
+   */
   public void erstelleTestUmgebung(Raetselinterpret test) {
     praesFassade = new PraesentationFassade(test);
     praesFassade.setzeRaetsel("Raetseldummy");
+    this.setzeFormel(new Und(new Atom("A", "A", 1), new Atom("B", "B", 2)), 4);
   }
 }
