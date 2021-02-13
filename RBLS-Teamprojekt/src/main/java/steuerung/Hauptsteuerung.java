@@ -28,9 +28,10 @@ public class Hauptsteuerung {
    * erstellt die WahrheitstabellenSteuerungen die für das Rätselfenster.
    * 
    */
-  public void raetselFensterInit() {
+  public WahrheitstabellenSteuerungen raetselFensterInit() {
     ws = new WahrheitstabellenSteuerungen(sf);
     ws.befehl("AufbauTabelle");
+    return ws;
   }
 
   /**
