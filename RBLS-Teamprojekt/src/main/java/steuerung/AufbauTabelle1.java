@@ -8,7 +8,6 @@ import modell.formel.Formel;
 public class AufbauTabelle1 extends AufbauTabelle {
 
   private List<String> noetigeFormelnS;
-  private int atomSpaltenAnz;
 
   /**
    * Kostruktor für AufbauTabelle1 der die Ausführung des Befehls anstößt.
@@ -25,20 +24,25 @@ public class AufbauTabelle1 extends AufbauTabelle {
   @Override
   public void hohleDaten() {
     noetigeFormelnS = model.gibNoetigeFormel();
-    atomSpaltenAnz = model.gibSpaltenAnz();
     atomareAussagen = model.gibAtomareAussage();
   }
 
   @Override
   public void setzeDaten() {
     List<Formel> noetigeFormelnF = new ArrayList<Formel>();
-
+    List<Formel> atomareAussagenF = new ArrayList<Formel>();
+    for (int i = 0; i < atomareAussagen.size(); i++) {
+      atomareAussagenF.add(FormelParser.pars("" + i, model));
+    }
+    for (int i = 0; i < atomareAussagen.size(); i++) {
+      model.setzeFormel(atomareAussagenF.get(i), i);
+    }
     for (int i = 0; i < noetigeFormelnF.size(); i++) {
       noetigeFormelnF.add(FormelParser.pars(noetigeFormelnS.get(i), model));
     }
-    for (int i = 0; i < noetigeFormelnF.size(); i++) {
+    for (int i = atomareAussagen.size(); i < noetigeFormelnF.size(); i++) {
       model.spalteHinzufuegen();
-      model.setzeFormel(noetigeFormelnF.get(i), i + atomSpaltenAnz);
+      model.setzeFormel(noetigeFormelnF.get(i), i + atomareAussagen.size());
     }
 
   }
