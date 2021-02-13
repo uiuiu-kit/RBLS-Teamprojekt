@@ -15,7 +15,8 @@ import modell.formel.Formel;
  */
 public class Tabelle {
   
-  private List<List<Zelle>> tabelle;
+  private List<List<Wahrheitswertzelle>> wwTabelle;
+  private List<Formelzelle> formelTabelle;
   private int zeile;
   private int spalte;
   private int atomAnz;
@@ -30,32 +31,31 @@ public class Tabelle {
     this.zeile = zeilenAnz;
     this.spalte = spaltenAnz;
     this.atomAnz = atomAnz;
-    tabelle = new ArrayList<List<Zelle>>();
+    formelTabelle = new ArrayList<Formelzelle>();
+    wwTabelle = new ArrayList<List<Wahrheitswertzelle>>();
     for (int i = 0; i < zeilenAnz; i++) {
       this.spalteHinzufuegen();
     }
   }
   
   public void setzeZelle(int[] z, boolean ww) {
-    gibZ(z).setzeZelle(ww);
+    gibWZ(z).setzeZelle(ww);
   }
   
   public void setzeFormel(Formel f, int spalte) {
-    int[] temp = {0, spalte};
-    this.gibZ(temp).setzeZelle(f);
+    this.formelTabelle.get(spalte).setzeZelle(f);
   }
   
   /** Gibt der Fassade den WW der angepingten Zelle zurück.
-   * @param z Zellenposition 
+   * @param i Zellenposition 
    * @return WW
    */
-  public boolean gibZellenWert(int[] z) {
-    if (z[0] > 0) {
-      Wahrheitswertzelle temp = (Wahrheitswertzelle) this.gibZ(z);
+  public boolean gibZellenWert(int[] i) {
+    if (i[0] > 0) {
+      Wahrheitswertzelle temp = (Wahrheitswertzelle) this.gibWZ(i);
       return temp.gibZustand();
     }
     return false;
-    // In Testphase exception einfügen?
   }
   
   /**
@@ -64,25 +64,27 @@ public class Tabelle {
    * @return String-Repraesentation der ausgewaehlten Zelle.
    */
   public String gibZelle(int[] i) {
-    return gibZ(i).toString();
+    if (i[0] == 0) {
+      return this.gibFormelText(i[1]);
+    }
+    return gibWZ(i).toString();
   }
   
   /** Sucht das Zellenobjekt im 2dimensionalen Listenfeld.
    * @param i Array der größe 2, gibt Zeile und Spalte der Zellenposition an.
    * @return Zellenobjekt.
    */
-  private Zelle gibZ(int[] i) {
-    return this.tabelle.get(i[0]).get(i[1]);
+  private Wahrheitswertzelle gibWZ(int[] i) {
+    return this.wwTabelle.get(i[0]).get(i[1]);
   }
   
   /** Liefert der Fassade die gewählte Aussagenlogische Formel der angegebenen Zelle.
-   * @param z Position der Zelle
+   * @param i Position der Zelle
    * @return Formel der angegeben Zelle.
    */
-  public Formel gibAussagenlogischeFormel(int[] z) {
-    if (z[0] == 0) {
-      Formelzelle temp = (Formelzelle) gibZ(z);
-      return temp.gibZustand();
+  public Formel gibAussagenlogischeFormel(int[] i) {
+    if (i[0] == 0) {
+      return this.formelTabelle.get(i[1]).gibZustand();
     }
     return null;
   }
@@ -99,12 +101,12 @@ public class Tabelle {
    * 
    */
   public void spalteHinzufuegen() {
-    List<Zelle> temp = new ArrayList<Zelle>();
-    temp.add(new Formelzelle());
+    List<Wahrheitswertzelle> temp = new ArrayList<Wahrheitswertzelle>();
     for (int h = 1; h < this.zeile; h++) {
       temp.add(new Wahrheitswertzelle());
     }
-    tabelle.add(temp);
+    this.wwTabelle.add(temp);
+    this.formelTabelle.add(new Formelzelle());
   }
   
   /** Erlaubt das gezielte Löschen von Spalten.
@@ -112,7 +114,8 @@ public class Tabelle {
    */
   public void spalteEntfernen(int spalte) {
     if ((this.spalte - 1) > 1 && spalte != this.atomAnz - 1) { 
-      this.tabelle.remove(spalte);
+      this.wwTabelle.remove(spalte);
+      this.formelTabelle.remove(spalte);
     } 
   }
   
@@ -122,22 +125,23 @@ public class Tabelle {
    */
   public String gibAtomareAussage(int[] z) {
     if (z[0] > 0) {
-      Wahrheitswertzelle temp = (Wahrheitswertzelle) this.gibZ(z);
-      return temp.toString();
+      return this.gibWZ(z).toString();
     }
     return null;
   }
   
   /** Ermittelt die Wahrheitswertbelegung einer kompletten Zeile.
-   * @param z gewünschte Zeilennummer
+   * @param i gewünschte Zeilennummer
    * @return Booleanarray mit Wahrheitswerten.
    */
-  public boolean[] gibZeileFall(int z) {
+  public boolean[] gibZeileFall(int i) {
     boolean[] out = new boolean[this.atomAnz];
-    for (int i = 0; i < this.atomAnz; i++) {
-      int[] pos = {z,i};
-      Wahrheitswertzelle temp = (Wahrheitswertzelle) this.gibZ(pos);
-      out[i] = temp.gibZustand();
+    if (i != 0) {
+      for (int h = 0; h < this.atomAnz; h++) {
+        int[] pos = {i,h};
+        Wahrheitswertzelle temp = this.gibWZ(pos);
+        out[h] = temp.gibZustand();
+      } 
     }
     return out;
   }
@@ -148,10 +152,8 @@ public class Tabelle {
    * @return Formel der Zelle
    */
   public Formel gibFormel(int s) {
-    int[] box = {0, s};
     if (s == 0) {
-      Formelzelle temp = (Formelzelle) gibZ(box);
-      return temp.gibZustand();
+      return this.formelTabelle.get(s).gibZustand();
     }
     return null;
   }
