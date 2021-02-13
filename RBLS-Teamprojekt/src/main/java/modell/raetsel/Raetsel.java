@@ -24,8 +24,6 @@ public class Raetsel {
   private int loesung;
   private String name;
   
-
-  
   /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
    * @param zeilenAnz
    * @param spaltenAnz

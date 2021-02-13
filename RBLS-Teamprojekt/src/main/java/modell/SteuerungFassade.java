@@ -47,7 +47,7 @@ public class SteuerungFassade {
     this.interpret = new Raetselinterpret();
     praesFassade = new PraesentationFassade(interpret);
   }
-  
+
   /** Gibt eine Liste aller im Raetsel verwendeter Atome aus.
    * @return Liste der Atomobjekte.
    */
@@ -132,5 +132,9 @@ public class SteuerungFassade {
   public int gibStufe() {
     this.aktualisiere();
     return this.raetsel.gibStufe();
+  }
+  
+  public void erstelleTestUmgebung(Raetselinterpret test) {
+    praesFassade = new PraesentationFassade(test);
   }
 }

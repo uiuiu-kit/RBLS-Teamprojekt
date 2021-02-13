@@ -9,9 +9,11 @@ import modell.SteuerungFassade;
 
 public class SteuerungsFassadeTest {
 
-  SteuerungFassade testen = new SteuerungFassade();
+  SteuerungFassade testen;
+  
   @BeforeClass
   public void init() {
+    testen = new SteuerungFassade();
     
   }
   
