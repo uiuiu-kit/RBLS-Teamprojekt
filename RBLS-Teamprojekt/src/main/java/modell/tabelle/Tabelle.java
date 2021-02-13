@@ -102,7 +102,7 @@ public class Tabelle {
    */
   public void spalteHinzufuegen() {
     List<Wahrheitswertzelle> temp = new ArrayList<Wahrheitswertzelle>();
-    for (int h = 1; h < (int) Math.pow(2, atomAnz); h++) {
+    for (int h = 1; h < (int) Math.pow(2, atomAnz) + 2; h++) {
       temp.add(new Wahrheitswertzelle());
     }
     this.wwTabelle.add(temp);
