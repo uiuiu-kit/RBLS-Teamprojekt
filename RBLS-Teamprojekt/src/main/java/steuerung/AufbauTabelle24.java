@@ -29,13 +29,6 @@ public class AufbauTabelle24 extends AufbauTabelle {
 
   @Override
   public void setzeDaten() {
-    List<Formel> atomareAussagenF = new ArrayList<Formel>();
-    for (int i = 0; i < atomareAussagen.size(); i++) {
-      atomareAussagenF.add(FormelParser.pars("" + i, model));
-    }
-    for (int i = 0; i < atomareAussagen.size(); i++) {
-      model.setzeFormel(atomareAussagenF.get(i), i);
-    }
     boolean[] akFall;
     int[] koordinaten = new int[2];
     boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtome)][anzAtome];
