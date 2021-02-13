@@ -45,6 +45,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private String[][] inhalt;
   private int zeilenzahl = 9;
   private int spaltenzahl = 5;
+  private boolean[] markierteZeilen;
   
   private enum Modus { standard,  entfernen, markieren
   }
@@ -69,8 +70,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     //zeilenzahl = modell.gibZeilenAnz();
     //spaltenzahl = modell.gibSpaltenAnz();
     //stufe = modell.gibAktuelleStufe();
+    markierteZeilen = new boolean[zeilenzahl];
+    Arrays.fill(markierteZeilen, false);
     initTabelle();
-
+    
     //SchaltflaechenPanel//
     JPanel schaltflaechenPanel = new JPanel();
     schaltflaechenPanel.setLayout(new BoxLayout(schaltflaechenPanel, BoxLayout.Y_AXIS));
@@ -238,7 +241,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       entferneSpalte(j);
       return;
     }
-    if (i >= 0 && j >= 0 && modus == Modus.markieren) {
+    if (i > 0 && j >= 0 && modus == Modus.markieren) {
       markiereZeile(i);
       return;
     }
@@ -284,8 +287,19 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     wechseleModus(wenigerSpalten, Modus.entfernen);
   }
   
-  public void markiereZeile(int i) {
-    
+  private void markiereZeile(int i) {
+    markierteZeilen[i] = !markierteZeilen[i];
+    for (int j = 0; j < spaltenzahl; j++) {
+      if (markierteZeilen[i]) {
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert);
+      } else if (inhalt[i][j].equals("wahr")) {
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
+      } else if (inhalt[i][j].equals("falsch")) {
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+      }
+      ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
+    }
+    wechseleModus(zeileMarkieren, Modus.markieren);
   }
   
   private void wechseleModus(Schaltflaeche s, Modus m) {
