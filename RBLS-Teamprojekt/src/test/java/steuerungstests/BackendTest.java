@@ -79,9 +79,9 @@ public class BackendTest {
     }
     for (int i = 0; i < sf.gibZeilenAnz(); i++) {
       output = output + "\n";
-      koordinate[1] = i;
+      koordinate[0] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {
-        koordinate[0] = j;
+        koordinate[1] = j;
         output = output + " " + sf.gibZelleWW(koordinate);
       }
     }
