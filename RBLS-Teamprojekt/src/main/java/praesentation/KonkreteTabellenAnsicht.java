@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import modell.PraesentationFassade;
+import modell.SteuerungFassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -45,7 +46,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void init() {
-    this.strg = new WahrheitstabellenSteuerungen(null);  //TODO Wie?
+    //this.strg = new WahrheitstabellenSteuerungen(SteuerungFassade.gibSteuFa());  //TODO Wie?
     
     //TODO unkommentieren wenn fertig
     //zeilenzahl = modell.gibZeilenAnz();
@@ -126,7 +127,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void klickeZelle(int reihe, int spalte) {
-    strg.befehl("zelleAendern," + reihe + "," + spalte);
+    //strg.befehl("zelleAendern," + reihe + "," + spalte);
   }
   
   private void klickeFormel(int zeile) {
