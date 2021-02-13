@@ -16,12 +16,4 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
   public AufbauTabelle(SteuerungFassade model) {
     super(model);
   }
-
-  /**
-   * Holt die atomaren Aussagen von der Fassade, da sie in jedem Befehl vom Typ
-   * AufbauTabelle verwendet werden.
-   */
-  public void holeDaten() {
-    atomareAussagen = model.gibAtomareAussage();
-  }
 }
