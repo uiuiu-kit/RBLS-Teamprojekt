@@ -49,6 +49,8 @@ public class BackendTest {
 
   @Test
   public void spalteEntfernenTest() {
+    wts.befehl("SpalteHinzufuegen");
+    wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteEntfernen(1)");
     System.out.println("SpalteEntfernen");
     gibTabelle();
@@ -56,8 +58,8 @@ public class BackendTest {
 
   @Test
   public void spalteHinzufügenTest() {
-    wts.befehl("SpalteHinzufügen(1)");
-    System.out.println("SpalteHinzufügen");
+    wts.befehl("SpalteHinzufuegen");
+    System.out.println("SpalteHinzufuegen");
     gibTabelle();
   }
 
