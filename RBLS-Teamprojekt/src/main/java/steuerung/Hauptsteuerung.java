@@ -37,7 +37,7 @@ public class Hauptsteuerung {
    * beendet das Rätsel und setzt das Rätsel auf gelöst.
    */
   public void raetselGeloest() {
-    //ToDO
+    sf.fuehreSicherungAus();
   }
 
   /**

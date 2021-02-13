@@ -35,10 +35,10 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
     int[] koordinaten = new int[2];
     for (int spalte = anzAtomSpalten; spalte < spaltenAnz; spalte++) {
       akFormel = model.gibFormel(spalte);
-      koordinaten[0] = spalte;
+      koordinaten[1] = spalte;
       for (int zeile = 1; zeile < zeilenAnz; zeile++) {
         akFall = model.gibZeileFall(zeile);
-        koordinaten[1] = zeile;
+        koordinaten[0] = zeile;
         model.setzeZelleWW(koordinaten, akFormel.auswerten(akFall));
       }
     }

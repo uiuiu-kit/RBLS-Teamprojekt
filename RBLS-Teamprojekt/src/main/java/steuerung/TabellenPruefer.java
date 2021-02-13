@@ -44,14 +44,14 @@ public class TabellenPruefer {
    * @return die Liste an fehlerhaften Fällen
    */
   public List<Integer> ueberpuefeFaelle(int[] koordinate) {
-    boolean[] akFall = model.gibZeileFall(koordinate[1]);
+    boolean[] akFall = model.gibZeileFall(koordinate[0]);
     if (nochNoetigeFaelle.contains(akFall)) {
       nochNoetigeFaelle.remove(akFall);
-      fehlerhafteFaelle.remove(koordinate[1]);
+      fehlerhafteFaelle.remove(koordinate[0]);
     } else {
-      akFall[koordinate[1]] = !akFall[koordinate[1]];
+      akFall[koordinate[0]] = !akFall[koordinate[0]];
       if (noetigeFaelle.contains(akFall)) {
-        fehlerhafteFaelle.add(koordinate[1]);
+        fehlerhafteFaelle.add(koordinate[0]);
         nochNoetigeFaelle.add(akFall);
       }
     }
