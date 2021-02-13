@@ -137,7 +137,7 @@ public class Raetselinterpret {
         Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
-        antwortM,        //Antwortmöglichkeiten
+        antwortM,                   //Antwortmöglichkeiten
         Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
         lines[2],                   //Antworttext
         new ArrayList<Formel>());   //Formelliste  
