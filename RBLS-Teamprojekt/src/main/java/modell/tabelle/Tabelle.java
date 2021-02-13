@@ -104,12 +104,12 @@ public class Tabelle {
   public void spalteHinzufuegen() {
     List<Wahrheitswertzelle> row = new ArrayList<Wahrheitswertzelle>();
     for (int h = 1; h < (int) Math.pow(2, atomAnz) + 2; h++) {
-      Wahrheitswertzelle temp = new Wahrheitswertzelle();
-      temp.setzeZelle(new Atom(UNDEFINED_F, 5));
-      row.add(temp);
+      row.add(new Wahrheitswertzelle());
     }
     this.wwTabelle.add(row);
-    this.formelTabelle.add(new Formelzelle());
+    Formelzelle temp = new Formelzelle();
+    temp.setzeZelle(new Atom(UNDEFINED_F, 5));
+    this.formelTabelle.add(temp);
   }
   
   /** Erlaubt das gezielte Löschen von Spalten.
