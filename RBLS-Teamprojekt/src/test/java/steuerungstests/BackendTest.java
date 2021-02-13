@@ -1,19 +1,10 @@
 package steuerungstests;
 
-import java.util.ArrayList;
-import java.util.List;
-import modell.SteuerungFassade;
-import modell.formel.Atom;
-import modell.formel.Formel;
-import modell.raetsel.Raetsel;
-import modell.raetsel.Raetselinterpret;
-import modell.tabelle.Tabelle;
-import modelltests.Testinterpret;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import steuerung.FormelParser;
+import modell.SteuerungFassade;
+import modelltests.Testinterpret;
 import steuerung.WahrheitstabellenSteuerungen;
 
 public class BackendTest {

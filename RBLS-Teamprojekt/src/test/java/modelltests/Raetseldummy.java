@@ -6,37 +6,15 @@ import modell.formel.Formel;
 import modell.raetsel.Raetsel;
 
 public class Raetseldummy extends Raetsel {
-  
-  
+
   public Raetseldummy(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText,
       String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
-    super(name, zeilenAnz, spaltenAnz, stufe, atom, raetselText, antwortMöglichkeiten, loesung, antworttext, formeln);
-    raetselText = "Text";
-    stufe = 1;
-    atom = new ArrayList<String>();
-    antworttext = "Antwort";
-    formeln = new ArrayList<Formel>();
-    spaltenAnz = 4;
-    zeilenAnz = 8;
-    loesung = 2;
-    name = "Test";
-    atom.add("A");
-    atom.add("B");
-    atom.add("C");
-    antworten = atom;
-    
+    super("Text", 4, 8, 1, new ArrayList<String>(), "Test", new ArrayList<String>(), 2, "Text", new ArrayList<Formel>());
+    this.atom.add("A");
+    this.atom.add("B");
+    this.atom.add("C");
+    antworten = this.atom;
   }
-
-  private String raetselText;
-  private int stufe;
-  private List<String> atom;
-  private String antworttext;
-  private List<String> antworten;
-  private List<Formel> formeln;
-  private int spaltenAnz;
-  private int zeilenAnz;
-  private int loesung;
-  private String name;
   
   public String gibRaetselText() {
     return raetselText;

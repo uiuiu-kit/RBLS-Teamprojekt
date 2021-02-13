@@ -13,16 +13,16 @@ import modell.formel.Formel;
  */
 public class Raetsel {
   
-  private String raetselText;
-  private int stufe;
-  private List<String> atom;
-  private String antworttext;
-  private List<String> antworten;
-  private List<Formel> formeln;
-  private int spaltenAnz;
-  private int zeilenAnz;
-  private int loesung;
-  private String name;
+  protected String raetselText;
+  protected int stufe;
+  protected List<String> atom;
+  protected String antworttext;
+  protected List<String> antworten;
+  protected List<Formel> formeln;
+  protected int spaltenAnz;
+  protected int zeilenAnz;
+  protected int loesung;
+  protected String name;
   
   /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
    * @param zeilenAnz
@@ -32,7 +32,7 @@ public class Raetsel {
    * @param raetselText
    * @param loesung
    */
-  public Raetsel(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
+  public Raetsel(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
     this.spaltenAnz = spaltenAnz;
     this.zeilenAnz = zeilenAnz;
     this.stufe = stufe;
