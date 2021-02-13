@@ -12,7 +12,6 @@ public class Testinterpret extends Raetselinterpret{
   public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rätsel gefunden";
   public static final String FREIES_RAETSEL_NAME = "Freies Rätsel";
   public static final int NUMBER_OF_ROWS = 8;
-  public static final int INIT_NUMBER_OF_COL = 2;
   
   
   private int calcRow(List<String> atome) {
@@ -28,7 +27,7 @@ public class Testinterpret extends Raetselinterpret{
   }
   
   public Raetsel liesRaetsel(String titel) {
-    return new Raetseldummy(null, 0, 0, 0, null, null, null, 0, null, null);
+    return new Raetseldummy(null, 0, null, null, null, 0, null, null);
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
@@ -37,8 +36,6 @@ public class Testinterpret extends Raetselinterpret{
   public Raetsel erstelleFR(List<String> atomA) {
     return new Raetsel(
         FREIES_RAETSEL_NAME,
-        this.calcRow(atomA), 
-        atomA.size() + INIT_NUMBER_OF_COL,
         0, 
         atomA, 
         null, 

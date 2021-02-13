@@ -20,6 +20,8 @@ public class SteuerungsFassadeTest {
   public void init() {
     testen = SteuerungFassade.gibSteuFa();
     testen.erstelleTestUmgebung(new Testinterpret());
+    testen.spalteHinzufuegen();
+    testen.setzeFormel(new Und(new Atom("A", 1), new Atom("B", 2)), 3);
   }
   
   
@@ -30,7 +32,7 @@ public class SteuerungsFassadeTest {
  
   @Test
   public void gibAtomareAussageTest() {
-    String[] vergleich = {"A", "B", "C"};
+    String[] vergleich = {"0", "1", "2"};
     
     assert (testen.gibAtomareAussage() != null);
     
@@ -41,7 +43,7 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void gibNoetigeFormelTest() {
-    Formel test = new Und(new Atom("A", "A", 1), new Atom("B", "B", 2)); 
+    Formel test = new Und(new Atom("A", 1), new Atom("B", 2)); 
     
     assertEquals(test.gibStringRep(), testen.gibNoetigeFormel().get(0));
   }
@@ -59,19 +61,19 @@ public class SteuerungsFassadeTest {
   public void tabellenGrößeTest() {
     assertEquals(9, testen.gibZeilenAnz());
     
-    assertEquals(3, testen.gibSpaltenAnz());
+    assertEquals(4, testen.gibSpaltenAnz());
   }
   
   @Test
   public void spaltenÄndernTest() {
     
-    assertEquals(3, testen.gibSpaltenAnz());
+    assertEquals(4, testen.gibSpaltenAnz());
     
     testen.spalteHinzufuegen();
     
-    assertEquals(4, testen.gibSpaltenAnz());
+    assertEquals(5, testen.gibSpaltenAnz());
     
-    testen.spalteEntfernen(3);
+    testen.spalteEntfernen(4);
     
     assertEquals(3, testen.gibSpaltenAnz());
   }
@@ -83,10 +85,23 @@ public class SteuerungsFassadeTest {
     assert (testen.gibFormelText(0) != null);
     
     assertEquals(test, testen.gibFormelText(0));
+    
+  }
+  
+  @Test
+  public void formelTest() {
+    Formel test = new Und(new Atom("A", 1), new Atom("B", 2));
+    
+    assertEquals(test, testen.gibFormel(3));
   }
   
   @Test
   public void gibStufeTest() {
     assertEquals(1, testen.gibStufe());
+  }
+  
+  @Test
+  public void sicherungTest() {
+    
   }
 }

@@ -33,9 +33,7 @@ public class RaetselinterpretTest {
       atome.add(temp);
     }
     vergleich = new Raetsel(
-        "Butterbierdiebe",
-        8,                     //zeilenAnz
-        5,                    //spaltenAnz
+        "Butterbierdiebe",  
         1,                    //stufe
         atome,                      //Atome
         "Der â€žHonigtopfâ€� wurde ausgeraubt, "

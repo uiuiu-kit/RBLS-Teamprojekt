@@ -50,7 +50,7 @@ public class PraesentationFassade {
   public void setzeRaetsel(String raetselname) {
     this.raetsel = this.interpret.liesRaetsel(raetselname);
     this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
-        raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
+        raetsel.gibSpaltenAnz(), raetsel.gibAtome());
   }
   
   /** Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.

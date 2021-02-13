@@ -3,6 +3,7 @@ package modell.tabelle;
 import java.util.ArrayList;
 import java.util.List;
 
+import modell.formel.Atom;
 import modell.formel.Formel;
 
 /**
@@ -27,14 +28,17 @@ public class Tabelle {
    * @param spaltenAnz Entspricht der benoetigten Spaltenanzahl des Raetsels.
    * @param atomAnz Anzahl der Atomaren Aussagen.
    */
-  public Tabelle(int zeilenAnz, int spaltenAnz, int atomAnz) {
+  public Tabelle(int zeilenAnz, int spaltenAnz, List<Atom> atom) {
     this.zeile = zeilenAnz;
     this.spalte = spaltenAnz;
-    this.atomAnz = atomAnz;
+    this.atomAnz = atom.size();
     formelTabelle = new ArrayList<Formelzelle>();
     wwTabelle = new ArrayList<List<Wahrheitswertzelle>>();
-    for (int i = 0; i < spaltenAnz; i++) {
+    for (int i = 0; i < atom.size(); i++) {
       this.spalteHinzufuegen();
+    }
+    for (int i = 0; i < atom.size(); i++) {
+      this.formelTabelle.get(i).setzeZelle(atom.get(i));
     }
   }
   

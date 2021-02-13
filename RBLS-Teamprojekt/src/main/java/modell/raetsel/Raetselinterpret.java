@@ -131,9 +131,7 @@ public class Raetselinterpret {
     atome = this.exAtome(lines[4]);
     int spalten = atome.size();
     return new Raetsel(
-        lines[0],
-        this.calcRow(atome),        //zeilenAnz
-        spalten,                    //spaltenAnz
+        lines[0],//spaltenAnz
         Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
@@ -149,8 +147,6 @@ public class Raetselinterpret {
   public Raetsel erstelleFR(List<String> atomA) {
     return new Raetsel(
         FREIES_RAETSEL_NAME,
-        this.calcRow(atomA), 
-        atomA.size(),
         0, 
         atomA, 
         null, 

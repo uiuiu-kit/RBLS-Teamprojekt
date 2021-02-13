@@ -3,6 +3,7 @@ package modell.raetsel;
 import java.util.ArrayList;
 import java.util.List;
 
+import modell.formel.Atom;
 import modell.formel.Formel;
 
 /**Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei 
@@ -15,7 +16,7 @@ public class Raetsel {
   
   protected String raetselText;
   protected int stufe;
-  protected List<String> atom;
+  protected List<Atom> atom;
   protected String antworttext;
   protected List<String> antworten;
   protected List<Formel> formeln;
@@ -32,16 +33,20 @@ public class Raetsel {
    * @param raetselText
    * @param loesung
    */
-  public Raetsel(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
-    this.spaltenAnz = spaltenAnz;
-    this.zeilenAnz = zeilenAnz;
+  public Raetsel(String name, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
+    this.spaltenAnz = atom.size();
+    this.zeilenAnz = (int) Math.pow(atom.size(), 2);
     this.stufe = stufe;
-    this.atom = atom;
+    this.atom = new ArrayList<Atom>();
     this.loesung = loesung;
     this.raetselText = raetselText;
     this.formeln = formeln;
     this.antworttext = antworttext;
     this.name = name;
+    for (int i = 0; i < atom.size(); i++) {
+      this.atom.add(new Atom(atom.get(i), i));
+      formeln.add(this.atom.get(i));
+    }
   }
   
   public String gibRaetselText() {
@@ -63,13 +68,17 @@ public class Raetsel {
   public List<String> gibAtomNamen() {
     List<String> temp = new ArrayList<String>();
     for (int i = 0; i < this.atom.size(); i++) {
-      temp.add(atom.get(i));
+      temp.add(atom.get(i).gibStringRep());
     }
     return temp;
   }
   
   public List<String> gibAtomareAussage() {
-    return atom;
+    List<String> output = new ArrayList<String>();   
+    for (Atom temp : atom) {
+      output.add(temp.gibStringRep());
+    }
+    return output;
   }
   
   public String gibAntworttext() {
@@ -110,5 +119,10 @@ public class Raetsel {
   
   public void addFormel(Formel formel) {
     this.formeln.add(formel);
+    this.spaltenAnz++;
+  }
+  
+  public List<Atom> gibAtome() {
+    return atom;
   }
 }

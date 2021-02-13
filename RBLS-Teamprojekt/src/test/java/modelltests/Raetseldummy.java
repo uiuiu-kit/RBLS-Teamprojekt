@@ -11,12 +11,10 @@ import modell.raetsel.Raetsel;
 
 public class Raetseldummy extends Raetsel {
 
-  public Raetseldummy(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText,
+  public Raetseldummy(String name, int stufe, List<String> atom, String raetselText,
       String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
     super(
         "Text", 
-        9, 
-        3, 
         1, 
         new ArrayList<String>(), 
         "Test", 
@@ -25,10 +23,13 @@ public class Raetseldummy extends Raetsel {
         "Text", 
         new ArrayList<Formel>());
     
-    this.atom.add("A");
-    this.atom.add("B");
-    this.atom.add("C");
-    antworten = this.atom;
+    this.atom.add(new Atom("A", 0));
+    this.atom.add(new Atom("B", 1));
+    this.atom.add(new Atom("C", 2));
+    antworten = new ArrayList<String>();
+    antworten.add("A");
+    antworten.add("B");
+    antworten.add("C");
   }
   
   public String gibRaetselText() {
@@ -50,13 +51,17 @@ public class Raetseldummy extends Raetsel {
   public List<String> gibAtomNamen() {
     List<String> temp = new ArrayList<String>();
     for (int i = 0; i < this.atom.size(); i++) {
-      temp.add(atom.get(i));
+      temp.add(atom.get(i).gibStringRep());
     }
     return temp;
   }
   
   public List<String> gibAtomareAussage() {
-    return atom;
+    List<String> output = new ArrayList<String>();   
+    for (Atom temp : atom) {
+      output.add(temp.gibStringRep());
+    }
+    return output;
   }
   
   public String gibAntworttext() {
@@ -97,6 +102,7 @@ public class Raetseldummy extends Raetsel {
   
   public void addFormel(Formel formel) {
     this.formeln.add(formel);
+    this.spaltenAnz++;
   }
 
 }

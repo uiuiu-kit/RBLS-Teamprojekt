@@ -16,12 +16,11 @@ public class Atom extends Formel {
     
   /** Konstruktor. Setzt nur seine Werte, die er übergeben bekommt.
    * @param aussage Entspricht dem vollen Namen des Atoms (zB Herbert).
-   * @param repraesentation Großbuchstabe, der das Atom in der Formel repräsentiert.
    * @param nummer Position im Werte-Array.
    */
-  public Atom(String aussage, String repraesentation, int nummer) {
+  public Atom(String aussage, int nummer) {
     this.aussage = aussage;
-    this.rep = repraesentation;
+    this.rep = "" + nummer;
     this.nummer = nummer;
   }
 
