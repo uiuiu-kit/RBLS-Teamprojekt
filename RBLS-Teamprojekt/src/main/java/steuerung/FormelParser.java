@@ -21,12 +21,13 @@ public class FormelParser {
    */
   public static Formel pars(String formelS, SteuerungFassade fassade) {
     Formel formelF = null;
-    List<String> klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
-    formelS = klammerAusdruecke.get(klammerAusdruecke.size() - 1);
+    List<String> klammerAusdruecke = null;
     if (formelS.length() > 1) {
       if (formelS.charAt(0) == '(' && formelS.charAt(formelS.length() - 1) == ')') {
-        formelS = klammerAusdrueckeWiederherstellen(formelS, klammerAusdruecke);
         formelS = formelS.substring(1, formelS.length() - 1);
+      } else {
+        klammerAusdruecke = klammerAusdrueckeErsetzen(formelS);
+        formelS = klammerAusdruecke.get(klammerAusdruecke.size() - 1);
       }
     }
     if (formelS.length() < 2) {
@@ -68,10 +69,10 @@ public class FormelParser {
                 klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke), fassade);
             formelF = new Und(rechts, links);
           } else {
-            formleSplit = formelS.split("n", 1);
-            if (formleSplit.length > 1) {
+            if (formelS.charAt(0) == 'n') {
               Formel rechts = pars(
-                  klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke), fassade);
+                  klammerAusdrueckeWiederherstellen(formelS.substring(1), klammerAusdruecke),
+                  fassade);
               formelF = new Nicht(rechts);
             }
           }

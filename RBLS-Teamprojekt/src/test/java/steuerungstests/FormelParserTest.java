@@ -54,6 +54,12 @@ public class FormelParserTest {
     Formel formel = FormelParser.pars("(1)", sfMock);
     assertEquals("D", formel.gibStringRep());
   }
+  
+  @Test
+  public void testNicht() {
+    Formel formel = FormelParser.pars("n1", sfMock);
+    assertEquals("nD", formel.gibStringRep());
+  }
 
   @Test
   public void testKlammerMitKonnektor() {
