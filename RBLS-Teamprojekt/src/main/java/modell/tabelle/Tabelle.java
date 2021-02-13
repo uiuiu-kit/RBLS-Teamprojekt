@@ -74,7 +74,7 @@ public class Tabelle {
    */
   private Wahrheitswertzelle gibWZ(int[] i) {
     if (i[0] != 0) {
-      return this.wwTabelle.get(i[1]).get(i[0] - 1);
+      return this.wwTabelle.get(i[0] - 1).get(i[1]);
     }
     return null;
   }

@@ -115,6 +115,4 @@ public class SteuerungsFassadeTest {
     assertEquals(test[1],testen.gibZeileFall(1)[1]);
     assertEquals(test[2],testen.gibZeileFall(1)[2]);
   }
-  
-  
 }

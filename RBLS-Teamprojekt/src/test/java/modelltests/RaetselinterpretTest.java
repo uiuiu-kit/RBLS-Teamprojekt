@@ -27,19 +27,37 @@ public class RaetselinterpretTest {
   public void init() {
     testen = new Raetselinterpret();
     
-    String[] typen = {"A", "B", "C"};
+    String[] typen = {"Charles", "Donald", "Edgar"};
     List<String> atome = new ArrayList<String>();
     for (String temp: typen) {
       atome.add(temp);
     }
     vergleich = new Raetsel(
-        "Test",  
+        "Butterbierdiebe",  
         1,                    //stufe
         atome,                      //Atome
-        "Text",                   //Raetseltext
+        "Der â€žHonigtopfâ€� wurde ausgeraubt, "
+        + "sÃ¤mtliche ButterbierfÃ¤sser sind verschwunden. "
+        + "Die schwarzen Magier Charles, Donald und Edgar "
+        + "wurden in der NÃ¤he gesichtet. \r\n" 
+        + "Beim VerhÃ¶r geben sie folgende Aussagen zu Protokoll:\r\n" 
+        +  "(1) Charles: â€žIch war es nicht, aber Donald und Edgar haben eingebrochen.â€œ\r\n" 
+        +  "(2) Donald: â€žIch bin unschuldig, Edgar hat auch nichts damit zu tun, "
+        + "aber Charles war es.â€œ\r\n" 
+        + "(3) Edgar: â€žCharles und Donald haben das durchgezogen, "
+        + "ich habe nichts damit zu tun.â€œ\r\n" 
+        + "Dumbledore geht davon aus, dass jeder Schuldige lÃ¼gt "
+        + "und jeder Unschuldige die Wahrheit sagt "
+        + "und stellt nach sorgfÃ¤ltiger Untersuchung fest: \r\n" 
+        + "â€žEiner ist auf jeden Fall schuldig!â€œ. "
+        + "Zeige mit Hilfe einer Wahrheitstabelle, "
+        + "wen Dumbledore meint. \r\n" 
+        + "Wahr steht dabei dafÃ¼r, dass die Personen die Wahrheit sagt, "
+        + "also nicht der Dieb ist, und Falsch dafÃ¼r, dass die Person lÃ¼gt "
+        + "und einer der Diebe ist.",                   //Raetseltext
         atome,        //Antwortmöglichkeiten
         2,            //Wievielte Antwort die Lösung ist
-        "Antwort",       //Antworttext
+        "ist auf jeden Fall schuldig",       //Antworttext
         new ArrayList<Formel>());            //Formelliste  )
   }
   
@@ -51,14 +69,14 @@ public class RaetselinterpretTest {
   
   @Test
   public void liesRaetselTest() {
-    Raetsel test = testen.liesRaetsel("Raetseldummy");
+    Raetsel test = testen.liesRaetsel("Butterbierdiebe");
     
     assert (test != null);
   }
   
   @Test
   public void liesExplizitesRaetselTest() {
-    Raetsel test = testen.liesRaetsel("Raetseldummy");
+    Raetsel test = testen.liesRaetsel("Butterbierdiebe");
     
     assertEquals(vergleich, test);
     assertEquals(vergleich.gibName(), test.gibName());
@@ -76,7 +94,7 @@ public class RaetselinterpretTest {
   
   @Test
   public void erstelleFreiesRaetselTest() {
-    Raetsel test = testen.liesRaetsel("Raetseldummy");
+    Raetsel test = testen.liesRaetsel("Butterbierdiebe");
     
     assert (test != null);
   }
