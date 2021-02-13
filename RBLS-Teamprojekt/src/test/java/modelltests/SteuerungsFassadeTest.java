@@ -78,10 +78,15 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void formelTextTest() {
-    String test = "AuB";//"((A)u(B))";
+    String test = "(AuB)";
     
     assert (testen.gibFormelText(0) != null);
     
     assertEquals(test, testen.gibFormelText(0));
+  }
+  
+  @Test
+  public void gibStufeTest() {
+    assertEquals(1, testen.gibStufe());
   }
 }
