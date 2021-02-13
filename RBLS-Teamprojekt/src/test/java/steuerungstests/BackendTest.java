@@ -1,19 +1,9 @@
 package steuerungstests;
 
-import java.util.ArrayList;
-import java.util.List;
 import modell.SteuerungFassade;
-import modell.formel.Atom;
-import modell.formel.Formel;
-import modell.raetsel.Raetsel;
-import modell.raetsel.Raetselinterpret;
-import modell.tabelle.Tabelle;
 import modelltests.Testinterpret;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import steuerung.FormelParser;
 import steuerung.WahrheitstabellenSteuerungen;
 
 public class BackendTest {
@@ -39,11 +29,11 @@ public class BackendTest {
   public void raetselFormeln() {
     sf.gibNoetigeFormel();
   }
-  
+
   @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
-    
+
     String fall;
     int[] koordinate = new int[2];
     for (int i = 0; i < sf.gibZeilenAnz(); i++) {
