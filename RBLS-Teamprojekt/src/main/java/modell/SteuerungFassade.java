@@ -136,5 +136,6 @@ public class SteuerungFassade {
   
   public void erstelleTestUmgebung(Raetselinterpret test) {
     praesFassade = new PraesentationFassade(test);
+    praesFassade.setzeRaetsel("Raetseldummy");
   }
 }

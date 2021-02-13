@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Formel;
 import modell.raetsel.Raetsel;
+import modell.raetsel.Raetselinterpret;
 
-public class Testinterpret {
+public class Testinterpret extends Raetselinterpret{
   
   public static final String PATH = "/src/main/resources/Raetsel";
   public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rätsel gefunden";
