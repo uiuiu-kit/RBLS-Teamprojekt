@@ -126,6 +126,10 @@ public class Raetselinterpret {
         break;
       }
     }
+    List<String> antwortM = new ArrayList<String>();
+    for (String temp : lines[3].split(",")) {
+      antwortM.add(temp);
+    }
     atome = this.exAtome(lines[4]);
     spalten = atome.size() + INIT_NUMBER_OF_COL;
     return new Raetsel(
@@ -135,7 +139,7 @@ public class Raetselinterpret {
         Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
-        lines[3].split(","),        //Antwortmöglichkeiten
+        antwortM,        //Antwortmöglichkeiten
         Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
         lines[2],                   //Antworttext
         new ArrayList<Formel>());   //Formelliste  
