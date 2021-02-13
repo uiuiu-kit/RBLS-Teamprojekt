@@ -18,19 +18,13 @@ public class Tabelle {
   
   private List<List<Wahrheitswertzelle>> wwTabelle;
   private List<Formelzelle> formelTabelle;
-  private int zeile;
-  private int spalte;
   private int atomAnz;
   
   /**
    * Konstruktor für die Tabelle eines Raetels. Konstruiert anhand der uebergebenen Parameter.
-   * @param zeilenAnz Entspricht der Zeilenanzahl, die fuer das Raetsel benoetigt werden.
-   * @param spaltenAnz Entspricht der benoetigten Spaltenanzahl des Raetsels.
-   * @param atomAnz Anzahl der Atomaren Aussagen.
+   * @param atom Anzahl der Atomaren Aussagen.
    */
-  public Tabelle(int zeilenAnz, int spaltenAnz, List<Atom> atom) {
-    this.zeile = zeilenAnz;
-    this.spalte = spaltenAnz;
+  public Tabelle(List<Atom> atom) {
     this.atomAnz = atom.size();
     formelTabelle = new ArrayList<Formelzelle>();
     wwTabelle = new ArrayList<List<Wahrheitswertzelle>>();
@@ -108,7 +102,7 @@ public class Tabelle {
    */
   public void spalteHinzufuegen() {
     List<Wahrheitswertzelle> temp = new ArrayList<Wahrheitswertzelle>();
-    for (int h = 1; h < this.zeile; h++) {
+    for (int h = 1; h < (int) Math.pow(atomAnz, 2); h++) {
       temp.add(new Wahrheitswertzelle());
     }
     this.wwTabelle.add(temp);

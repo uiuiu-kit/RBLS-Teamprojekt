@@ -21,7 +21,7 @@ public class SteuerungsFassadeTest {
     testen = SteuerungFassade.gibSteuFa();
     testen.erstelleTestUmgebung(new Testinterpret());
     testen.spalteHinzufuegen();
-    testen.setzeFormel(new Und(new Atom("A", 1), new Atom("B", 2)), 3);
+    testen.setzeFormel(new Und(new Atom("A", 0), new Atom("B", 1)), 3);
   }
   
   
@@ -43,7 +43,7 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void gibNoetigeFormelTest() {
-    Formel test = new Und(new Atom("A", 1), new Atom("B", 2)); 
+    Formel test = new Und(new Atom("A", 0), new Atom("B", 1)); 
     
     assertEquals(test.gibStringRep(), testen.gibNoetigeFormel().get(0));
   }
@@ -80,7 +80,7 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void formelTextTest() {
-    String test = "(AuB)";
+    String test = "(0u1)";
     
     assert (testen.gibFormelText(0) != null);
     
@@ -90,7 +90,7 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void formelTest() {
-    Formel test = new Und(new Atom("A", 1), new Atom("B", 2));
+    Formel test = new Und(new Atom("A", 0), new Atom("B", 1));
     
     assertEquals(test, testen.gibFormel(3));
   }
