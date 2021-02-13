@@ -34,10 +34,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private WahrheitstabellenSteuerungen strg;
   private PraesentationFassade modell;
   private JTable tabelle;
-  private Schaltflaeche ausfuellen = new Schaltflaeche("Fülle Tabelle", 2);
-  private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 2);
-  private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 2);
-  private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 2);
+  private Schaltflaeche ausfuellen = new Schaltflaeche("Fülle Tabelle", 5);
+  private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
+  private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 6);
+  private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 6);
   private boolean[][] wahrheitswerte;
   private String[][] inhalt;
   private int zeilenzahl = 9;
@@ -122,7 +122,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     JPanel SchaltflaechenPanel = new JPanel();
     SchaltflaechenPanel.setLayout(new BoxLayout(SchaltflaechenPanel, BoxLayout.Y_AXIS));
     SchaltflaechenPanel.setBackground(Color.WHITE);
-    SchaltflaechenPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    SchaltflaechenPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
     
     mehrSpalten.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -144,7 +144,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       }
     });
     SchaltflaechenPanel.add(zeileMarkieren);
-    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, (int) (SchaltflaechenPanel.getMaximumSize().height - mehrSpalten.getMaximumSize().height * 2.5))));
+    SchaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 
+        (int) (SchaltflaechenPanel.getMaximumSize().height 
+        - mehrSpalten.getMaximumSize().height * 1.6))));
     ausfuellen.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         fuelleAus();
@@ -155,7 +157,13 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     //Panel//
     panel = new JPanel();
     panel.setLayout(new BorderLayout());
-    panel.add(tabelle, BorderLayout.CENTER);
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    JPanel tabellenRahmen = new JPanel();
+    tabellenRahmen.setLayout(new BorderLayout());
+    tabellenRahmen.add(tabelle, BorderLayout.CENTER);
+    tabellenRahmen.setBackground(Color.GRAY);
+    tabellenRahmen.setBorder(BorderFactory.createEmptyBorder(1, 1, 0, 0));
+    panel.add(tabellenRahmen, BorderLayout.CENTER);
     panel.add(SchaltflaechenPanel, BorderLayout.EAST);
     tabelle.setFillsViewportHeight(true);
     
