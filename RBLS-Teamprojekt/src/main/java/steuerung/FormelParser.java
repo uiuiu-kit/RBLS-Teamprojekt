@@ -106,7 +106,6 @@ public class FormelParser {
         formelSn = formelSn + formelS.substring(close, formelS.length() - 1);
       }
       formelS = formelSn;
-      System.out.println("Fx = " + formelS);
       i++;
     }
     klammerAusdruecke.add(formelS);
@@ -124,8 +123,6 @@ public class FormelParser {
       List<String> klammerAusdruecke) {
     int i = klammerAusdruecke.size() - 2;
     while (formelS.matches(".*k[0-9]*.*")) {
-      System.out.println("F = " + formelS);
-      System.out.println("k = " + klammerAusdruecke.get(i));
       formelS = formelS.replaceFirst("k[0-9]*", klammerAusdruecke.get(i));
       i--;
     }
