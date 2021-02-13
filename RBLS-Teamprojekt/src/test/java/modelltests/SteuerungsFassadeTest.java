@@ -75,7 +75,7 @@ public class SteuerungsFassadeTest {
     
     testen.spalteEntfernen(4);
     
-    assertEquals(3, testen.gibSpaltenAnz());
+    assertEquals(4, testen.gibSpaltenAnz());
   }
   
   @Test
@@ -84,7 +84,7 @@ public class SteuerungsFassadeTest {
     
     assert (testen.gibFormelText(0) != null);
     
-    assertEquals(test, testen.gibFormelText(0));
+    assertEquals(test, testen.gibFormelText(3));
     
   }
   
@@ -92,7 +92,7 @@ public class SteuerungsFassadeTest {
   public void formelTest() {
     Formel test = new Und(new Atom("A", 0), new Atom("B", 1));
     
-    assertEquals(test, testen.gibFormel(3));
+    assertEquals(test.gibStringRep(), testen.gibFormel(3).gibStringRep());
   }
   
   @Test

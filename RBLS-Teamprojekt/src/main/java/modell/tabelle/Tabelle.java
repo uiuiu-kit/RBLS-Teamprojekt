@@ -152,10 +152,7 @@ public class Tabelle {
    * @return Formel der Zelle
    */
   public Formel gibFormel(int s) {
-    if (s == 0) {
-      return this.formelTabelle.get(s).gibZustand();
-    }
-    return null;
+    return this.formelTabelle.get(s).gibZustand();
   }
   
   
