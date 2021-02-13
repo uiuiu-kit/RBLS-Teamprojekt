@@ -30,8 +30,8 @@ public class WahrheitstabellenSteuerungen {
     String befehlsname = split[0];
     String[] parameter = null;
     if (split.length > 1) {
-      split[1] = split[1].substring(0, split.length - 1);
-      parameter = split[1].split(",");
+      split[1] = split[1].substring(0, split[1].length() - 1);
+      parameter = split[1].split("\\,");
     }
     switch (befehlsname) {
       case "AufbauTabelle":
@@ -66,7 +66,7 @@ public class WahrheitstabellenSteuerungen {
         new SpalteHinzufuegen(model);
         break;
       case "ZelleInBlauOrangeAendern":
-        new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
+        new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]) - 1,
             Integer.parseInt(parameter[1]));
         ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
         break;

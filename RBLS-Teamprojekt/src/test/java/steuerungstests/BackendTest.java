@@ -3,6 +3,7 @@ package steuerungstests;
 import modell.SteuerungFassade;
 import modelltests.Testinterpret;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import steuerung.WahrheitstabellenSteuerungen;
 
@@ -25,35 +26,35 @@ public class BackendTest {
     wts = new WahrheitstabellenSteuerungen(sf);
   }
 
-  @Test
+  @Ignore
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
 
     gibTabelle();
   }
 
-  @Test
+  @Ignore
   public void formelEingebenTest() {
     wts.befehl("FormelEingeben(1)");
 
     System.out.println(sf.gibFormelText(1));
   }
 
-  @Test
+  @Ignore
   public void fuelleTabelleTest() {
     wts.befehl("FuelleTabelle");
 
     gibTabelle();
   }
 
-  @Test
+  @Ignore
   public void spalteEntfernenTest() {
     wts.befehl("SpalteEntfernen(1)");
 
     gibTabelle();
   }
   
-  @Test
+  @Ignore
   public void spalteHinzufügenTest() {
     wts.befehl("SpalteHinzufügen(1)");
 

@@ -7,7 +7,7 @@ import modell.formel.Formel;
 public class FormelEingeben extends WahrheitstabellenBefehl {
 
   private int spalte;
-  private String alteFromel;
+  private String alteFormel;
   private List<String> atomareAussagen;
 
   /**
@@ -27,7 +27,11 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
    * hohlt die alte Formel und die atomaren Aussagen von der Fasssade.
    */
   public void hohleDaten() {
-    alteFromel = model.gibFormelText(spalte);
+    try {
+      alteFormel = model.gibFormelText(spalte);
+    } catch (NullPointerException e) {
+      alteFormel = "";
+    }
     atomareAussagen = model.gibAtomareAussage();
   }
 
@@ -37,7 +41,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
    */
   public void setzeDaten() {
     FormelEditor fe = new FormelEditor(atomareAussagen);
-    String neueFormel = fe.gibNeueFormel(alteFromel);
+    String neueFormel = fe.gibNeueFormel(alteFormel);
     Formel neueFormelF = FormelParser.pars(neueFormel, model);
     model.setzeFormel(neueFormelF, spalte);
   }
