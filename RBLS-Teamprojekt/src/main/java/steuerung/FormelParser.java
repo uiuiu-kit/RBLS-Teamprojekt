@@ -32,8 +32,7 @@ public class FormelParser {
     if (formelS.length() < 2) {
       int num = Integer.parseInt(formelS);
       String aussage = fassade.gibAtomareAussage().get(num);
-      String repraesentation = aussage.substring(0, 1);
-      formelF = new Atom(aussage, repraesentation, num);
+      formelF = new Atom(aussage, num);
     }
     String[] formleSplit;
     formleSplit = formelS.split("f", 2);
