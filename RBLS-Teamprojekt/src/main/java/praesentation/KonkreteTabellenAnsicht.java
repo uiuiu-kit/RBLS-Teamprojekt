@@ -35,7 +35,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private WahrheitstabellenSteuerungen strg;
   private PraesentationFassade modell;
   private JTable tabelle;
-  private Schaltflaeche ausfuellen = new Schaltflaeche("Fülle Tabelle", 5);
+  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp Fülle<br />Tabelle</html>", 5);
   private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
   private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 6);
   private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 6);
@@ -97,7 +97,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     });
     schaltflaechenPanel.add(zeileMarkieren);
     schaltflaechenPanel.add(Box.createRigidArea(
-        new Dimension(0, (int) (mehrSpalten.getMaximumSize().height * 1.8))));
+        new Dimension(0, (int) (mehrSpalten.getMaximumSize().height * 1))));
     ausfuellen.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         fuelleAus();
