@@ -35,7 +35,14 @@ public class PraesentationFassade {
     return praFa;
   }
   
-
+  protected Raetsel gibRaetsel() {
+    return this.raetsel;
+  }
+  
+  protected Tabelle gibTabelle() {
+    return this.tabelle;
+  }
+  
   
   /**Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem RInterpreten übergibt, 
    * der ein neues Raetselobjekt zurückgibt. Dieses wird hier gesetzt 
@@ -46,6 +53,7 @@ public class PraesentationFassade {
     this.raetsel = this.interpret.liesRaetsel(raetselname);
     this.tabelle = new Tabelle(raetsel.gibZeilenAnz(),
         raetsel.gibSpaltenAnz(), raetsel.gibAtomAnz());
+    
   }
   
   /** Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.

@@ -33,6 +33,7 @@ public class RaetselinterpretTest {
       atome.add(temp);
     }
     vergleich = new Raetsel(
+        "Butterbierdiebe",
         8,                     //zeilenAnz
         5,                    //spaltenAnz
         1,                    //stufe
@@ -80,6 +81,7 @@ public class RaetselinterpretTest {
     Raetsel test = testen.liesRaetsel("Butterbierdiebe");
     
     assertEquals(vergleich, test);
+    assertEquals(vergleich.gibName(), test.gibName());
     assertEquals(vergleich.gibAntwort(), test.gibAntwort());
     assertEquals(vergleich.gibAntworttext(), test.gibAntworttext());
     assertEquals(vergleich.gibAtomareAussage(), test.gibAtomareAussage());

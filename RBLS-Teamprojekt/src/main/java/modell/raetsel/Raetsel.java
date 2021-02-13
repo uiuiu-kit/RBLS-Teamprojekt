@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Atom;
 import modell.formel.Formel;
+import modell.tabelle.Tabelle;
 
 /**Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei 
  * dem Rest des Programms zur Verfügung zu stellen.
@@ -22,6 +23,8 @@ public class Raetsel {
   private int spaltenAnz;
   private int zeilenAnz;
   private int loesung;
+  private String name;
+  
 
   
   /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
@@ -32,7 +35,7 @@ public class Raetsel {
    * @param raetselText
    * @param loesung
    */
-  public Raetsel(int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
+  public Raetsel(String name, int zeilenAnz, int spaltenAnz, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
     this.spaltenAnz = spaltenAnz;
     this.zeilenAnz = zeilenAnz;
     this.stufe = stufe;
@@ -41,6 +44,7 @@ public class Raetsel {
     this.raetselText = raetselText;
     this.formeln = formeln;
     this.antworttext = antworttext;
+    this.name = name;
   }
   
   public String gibRaetselText() {
@@ -49,6 +53,10 @@ public class Raetsel {
   
   public int gibStufe() {
     return stufe;
+  }
+  
+  public String gibName() {
+    return this.name;
   }
   
   /**Wandelt die Liste der Atome in eine Liste der entsprechenden Namen der Atome um 

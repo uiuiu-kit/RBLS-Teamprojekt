@@ -23,9 +23,11 @@ import modell.formel.Formel;
 public class Raetselinterpret {
 
   public static final String PATH = "/src/main/resources/Raetsel";
-  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Raetsel gefunden";
+  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rätsel gefunden";
+  public static final String FREIES_RAETSEL_NAME = "Freies Rätsel";
   public static final int NUMBER_OF_ROWS = 8;
   public static final int INIT_NUMBER_OF_COL = 2;
+  private Raetsel aktuellesRaetsel;
   
   
   
@@ -127,7 +129,8 @@ public class Raetselinterpret {
     }
     atome = this.exAtome(lines[4]);
     spalten = atome.size() + INIT_NUMBER_OF_COL;
-    return new Raetsel(
+    this.aktuellesRaetsel = new Raetsel(
+        lines[0],
         this.calcRow(atome),        //zeilenAnz
         spalten,                    //spaltenAnz
         Integer.parseInt(lines[7]), //stufe
@@ -137,13 +140,15 @@ public class Raetselinterpret {
         Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
         lines[2],                   //Antworttext
         new ArrayList<Formel>());   //Formelliste  
+    return this.aktuellesRaetsel;
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
    * @param atomA Anzahl und Namen der verfügbaren Atomaren Aussagen, die der Benutzer angeben kann.
    */
   public Raetsel erstelleFR(List<String> atomA) {
-    return new Raetsel(
+    this.aktuellesRaetsel = new Raetsel(
+        FREIES_RAETSEL_NAME,
         this.calcRow(atomA), 
         atomA.size() + INIT_NUMBER_OF_COL,
         0, 
@@ -153,6 +158,11 @@ public class Raetselinterpret {
         0, 
         null, 
         new ArrayList<Formel>());
+    return this.aktuellesRaetsel;
+  }
+  
+  public Raetsel gibAktuellesRaetsel() {
+    return this.aktuellesRaetsel;
   }
 
 }
