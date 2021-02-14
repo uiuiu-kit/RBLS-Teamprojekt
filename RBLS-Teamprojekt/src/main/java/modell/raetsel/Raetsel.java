@@ -19,7 +19,7 @@ public class Raetsel {
   protected int stufe;
   protected List<Atom> atom;
   protected String antworttext;
-  protected List<String> antworten;
+  protected String[] antworten;
   protected List<String> formeln;
   protected int spaltenAnz;
   protected int zeilenAnz;
@@ -36,7 +36,7 @@ public class Raetsel {
    * @param antworttext
    * @param formeln
    */
-  public Raetsel(String name, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten,
+  public Raetsel(String name, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten,
       int loesung, String antworttext, List<String> formeln) {
     this.spaltenAnz = atom.size();
     this.zeilenAnz = (int) Math.pow(2, atom.size());
@@ -95,12 +95,12 @@ public class Raetsel {
     return antworttext;
   }
 
-  public List<String> gibAntwort() {
+  public String[] gibAntwort() {
     return antworten;
   }
 
   public String gibLoesung() {
-    return this.antworten.get(loesung - 1);
+    return this.antworten[loesung - 1];
   }
 
   /**

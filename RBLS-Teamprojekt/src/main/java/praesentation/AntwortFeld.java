@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- * Grafische Ansicht eines Antwortfeldes. Zeigt einen Antworttext und
- * eine Auswahl der Antwortmöglichkeiten durch eine JComboBox an und vergleicht
- * beim Klicken des Prüfe-Buttons den ausgewählten Wert mit der tatsächlichen
- * Lösung. 
+ * Grafische Ansicht eines Antwortfeldes. Zeigt einen Antworttext und eine
+ * Auswahl der Antwortmöglichkeiten durch eine JComboBox an und vergleicht beim
+ * Klicken des Prüfe-Buttons den ausgewählten Wert mit der tatsächlichen Lösung.
+ * 
  * @author Nick
  */
 public class AntwortFeld {
@@ -25,58 +25,59 @@ public class AntwortFeld {
   private JComboBox<String> antwortWahl;
   private StufenRaetselFenster fenster;
 
-  private List<String> antwortMoeglichkeiten;
+  private String[] antwortMoeglichkeiten;
   private String text = "[Antworttext]";
   private String loesung;
 
   /**
    * Konstruktor, erstellt ein Antwortfeld mit den angegebenen Inhalten.
+   * 
    * @param antworten Antwortmoeglichkeiten als Liste
-   * @param text Text des Antwortsatzes
-   * @param loesung richtige Antwortmoeglichkeit, soll in der Liste enthalten sein
-   * @param fenster StufenRaetselFenster, welches das Antwortfeld benoetigt
+   * @param text      Text des Antwortsatzes
+   * @param loesung   richtige Antwortmoeglichkeit, soll in der Liste enthalten
+   *                  sein
+   * @param fenster   StufenRaetselFenster, welches das Antwortfeld benoetigt
    */
-  public AntwortFeld(List<String> antworten, String text, String loesung, 
-      StufenRaetselFenster fenster) {
-    
-    this.text = text;  
+  public AntwortFeld(String[] antworten, String text, String loesung, StufenRaetselFenster fenster) {
+
+    this.text = text;
     this.antwortMoeglichkeiten = antworten;
     this.loesung = loesung;
-    
-    //Platzhalter// TODO
+
+    // Platzhalter// TODO
     /*
-    this.antwortMoeglichkeiten = Arrays.asList("foo", "bar");
-    this.loesung = "bar";
-    */
-    
+     * this.antwortMoeglichkeiten = Arrays.asList("foo", "bar"); this.loesung =
+     * "bar";
+     */
+
     this.fenster = fenster;
     JPanel p = new JPanel();
     p.setLayout(new FlowLayout());
     p.setBackground(Color.WHITE);
-    
+
     JLabel textLabel = new JLabel(this.text, SwingConstants.CENTER);
-    textLabel.setFont(new javax.swing.plaf.FontUIResource("Arial",Font.PLAIN,18));
-    
-    antwortWahl = new JComboBox<String>((String[]) antwortMoeglichkeiten.toArray());
+    textLabel.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.PLAIN, 18));
+
+    antwortWahl = new JComboBox<String>(antwortMoeglichkeiten);
     antwortWahl.setSelectedIndex(0);
     antwortWahl.setBackground(Color.WHITE);
-    antwortWahl.setFont(new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,18));
-    
+    antwortWahl.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.BOLD, 18));
+
     p.add(antwortWahl);
     p.add(textLabel);
-    
+
     pruefeKnopf = new Schaltflaeche("Prüfen");
     pruefeKnopf.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          pruefeAntwort();
-        }
-      });
-    
+      public void actionPerformed(ActionEvent e) {
+        pruefeAntwort();
+      }
+    });
+
     JPanel p2 = new JPanel();
     p2.setLayout(new FlowLayout());
     p2.setBackground(Color.WHITE);
     p2.add(pruefeKnopf);
-    
+
     ansicht = new JPanel();
     ansicht.setLayout(new BorderLayout());
     ansicht.add(p, BorderLayout.CENTER);
@@ -86,14 +87,14 @@ public class AntwortFeld {
   public JPanel gibAnsicht() {
     return ansicht;
   }
-  
+
   private void pruefeAntwort() {
     if (antwortWahl.getSelectedItem().equals(loesung)) {
       fenster.schliesseRaetselAb();
       antwortWahl.setEnabled(false);
     } else {
-      //TODO evtl Dialogfenster
+      // TODO evtl Dialogfenster
     }
   }
-  
+
 }

@@ -113,7 +113,7 @@ public class Fassade {
     return raetsel.gibAntworttext();
   }
 
-  public List<String> gibAntwortmoeglichkeiten() {
+  public String[] gibAntwortmoeglichkeiten() {
     aktualisiere();
     return raetsel.gibAntwort();
   }

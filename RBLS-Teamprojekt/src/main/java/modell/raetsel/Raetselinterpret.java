@@ -113,10 +113,7 @@ public class Raetselinterpret {
     }
     String[] lines = extrahiere(text);
     List<String> atome = null;
-    List<String> antwortM = new ArrayList<String>();
-    for (String temp : lines[3].split(",")) {
-      antwortM.add(temp);
-    }
+    String[] antwortM = lines[3].split(",");
     List<String> formeln = new ArrayList<String>()
 ;    for (String temp : lines[6].split(",")) {
       formeln.add(temp);
