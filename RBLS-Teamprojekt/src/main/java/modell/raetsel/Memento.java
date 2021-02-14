@@ -18,9 +18,9 @@ import java.util.List;
 public class Memento {
   
   private Writer fw = null;
-  private List<String> memento = null;
-  private List<String> namenGeloesterRaetsel = null;
+  private List<String> memento;
   private RaetselZustand zustand;
+  private int abschlussStufe = 0;
   
   /**
    * Konstruktor fuer ein Memento. Dieses speichert den aktuellen Spielstand,
@@ -34,6 +34,11 @@ public class Memento {
   
   public RaetselZustand gibSicherung() {
     return this.zustand;
+  }
+  
+  public int gibStufenSicherung() {
+    this.liesMementoDatei();
+    return this.abschlussStufe;
   }
   
   public void loesche() {
@@ -53,13 +58,13 @@ public class Memento {
   public boolean erstelleMementoDatei(int stufe, String name) {
     liesMementoDatei();
     try {
-      if (this.namenGeloesterRaetsel.size() > 0) {
+      if (this.memento.size() > 0) {
         fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
         fw.write(stufe + "\n");       //die neue hoechste Stufe
         fw.write("##\n");             
         fw.write(name + "\n");        //der neu hinzugekommene Raetselname
-        for (int i = 0; i <= namenGeloesterRaetsel.size(); i++) {
-          fw.write(namenGeloesterRaetsel.get(i) + "\n"); //alle bisher geloesten Raetselnamen
+        for (int i = 0; i <= memento.size(); i++) {
+          fw.write(memento.get(i) + "\n"); //alle bisher geloesten Raetselnamen
         }
       } else {
         fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
@@ -86,19 +91,33 @@ public class Memento {
    * eine Liste nur mit den Namen der bisher geloesten Raetsel.
    */
   private void liesMementoDatei() {
-    memento = new ArrayList<String>();      //Liste, mit allen Infos des Memento
+    //memento = new ArrayList<String>(); unnötig, 
+    //da memento 2 Zeilen weiter gleich wieder gesetzt wird.
     try {
-      this.memento = Files.readAllLines(
+      memento = extrahiere(Files.readAllLines(
           FileSystems.getDefault().getPath("src/main/resources/Sicherung/Sicherung.txt"), 
-          StandardCharsets.UTF_8);
+          StandardCharsets.UTF_8));
     } catch (IOException e) {
       e.printStackTrace();
     }
-    namenGeloesterRaetsel = new ArrayList<String>();
-    if (memento.size() > 3) {
-      for (int i = 3; i <= memento.size(); i++) {     //Liste nur mit den Raetselnamen
-        this.namenGeloesterRaetsel.add(memento.get(i));
+    this.abschlussStufe = Integer.parseInt(memento.get(1));
+    //namenGeloesterRaetsel = new ArrayList<String>();
+    memento.remove(1); 
+    memento.remove(0);
+    //    if (memento.size() > 3) {
+    //      for (int i = 3; i <= memento.size(); i++) {     //Liste nur mit den Raetselnamen
+    //        this.namenGeloesterRaetsel.add(memento.get(i));
+    //      }
+    //    }
+  }
+  
+  private List<String> extrahiere(List<String> input) {
+    List<String> output = new ArrayList<String>();
+    for (String temp : input) {
+      if (!temp.equals("##")) {
+        output.add(temp);
       }
     }
+    return output;
   }
 }
