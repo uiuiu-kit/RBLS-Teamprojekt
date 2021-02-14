@@ -171,7 +171,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       return;
     }
     if (i > 0 && j >= 0) {
-      //strg.befehl("ZelleAendern(" + i + "," + j + ")");
+      strg.befehl("ZelleAendern(" + j + "," + i + ")");
       if (inhalt[i][j].equals("wahr")) {   // TODO
         inhalt[i][j] = "false";            //
       } else {                             //  KOMMT WEG SOBALD ZELLEÄNDERNBEFEHL GEHT
