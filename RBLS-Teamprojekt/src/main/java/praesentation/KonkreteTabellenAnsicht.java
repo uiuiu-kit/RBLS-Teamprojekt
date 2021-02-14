@@ -17,9 +17,9 @@ import praesentation.tabelle.ZellenStatus;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
- * Grafische Ansicht einer Wahrheitstabelle. Über das
+ * Grafische Ansicht einer Wahrheitstabelle. Ãœber das
  * Befehlsmuster werden der Wahrheitstabellensteuerung Aktionen mitgeteilt.
- * Außerdem wird die Ansicht einer Zelle mit den Informationen der
+ * AuÃŸerdem wird die Ansicht einer Zelle mit den Informationen der
  * Modell-Fassade aktuell gehalten.
  * @author Nick
  */
@@ -28,7 +28,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private WahrheitstabellenSteuerungen strg;
   private PraesentationFassade modell;
   private JTable tabelle;
-  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp Fülle<br />Tabelle</html>", 5);
+  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp FÃ¼lle<br />Tabelle</html>", 5);
   private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
   private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 6);
   private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 6);
@@ -172,11 +172,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
     if (i > 0 && j >= 0) {
       strg.befehl("ZelleAendern(" + j + "," + i + ")");
-    /*  if (inhalt[i][j].equals("wahr")) {   // TODO
-        inhalt[i][j] = "false";            //
-      } else {                             //  KOMMT WEG SOBALD ZELLEÄNDERNBEFEHL GEHT
-        inhalt[i][j] = "true";             //
-      }                                    // TODO */
       aktualisiere(new int[] {i, j});
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
@@ -263,6 +258,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     assert zelle.length == 2;
     int i = zelle[0];
     int j = zelle[1];
+    inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     if (i > 0 && j >= 0) {
       if (inhalt[i][j].equals("true")) {
         inhalt[i][j] = "wahr";
@@ -275,8 +271,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
         }
       } 
-    } else if (i == 0 && j >= 0) {
-      inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     }
     tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j); 
