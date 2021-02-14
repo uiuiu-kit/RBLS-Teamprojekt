@@ -30,7 +30,7 @@ public class SpalteEntfernen extends WahrheitstabellenBefehl {
 
   @Override
   public void setzeDaten() {
-    if (spalte < spaltenAnz && spalte > atomAnz) {
+    if (spalte < spaltenAnz && spalte >= atomAnz) {
       model.spalteEntfernen(spalte);
     }
   }
