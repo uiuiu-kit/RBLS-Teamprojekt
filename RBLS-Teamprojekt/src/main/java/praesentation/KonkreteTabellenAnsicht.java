@@ -60,8 +60,8 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private void init() {
 
     //TODO unkommentieren wenn fertig
-    //zeilenzahl = modell.gibZeilenAnz();
-    //spaltenzahl = modell.gibSpaltenAnz();
+    zeilenzahl = modell.gibZeilenAnz();
+    spaltenzahl = modell.gibSpaltenAnz();
     //stufe = modell.gibAktuelleStufe();
     markierteZeilen = new boolean[zeilenzahl];
     Arrays.fill(markierteZeilen, false);
