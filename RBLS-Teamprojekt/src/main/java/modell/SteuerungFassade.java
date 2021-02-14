@@ -135,7 +135,6 @@ public class SteuerungFassade {
   public void setzeFormel(Formel formel, int spalte) {
     this.aktualisiere();
     tabelle.setzeFormel(formel, spalte);
-    this.raetsel.addFormel(formel);
   }
 
   public String gibFormelText(int spalte) {

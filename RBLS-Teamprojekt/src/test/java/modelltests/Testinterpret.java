@@ -42,6 +42,6 @@ public class Testinterpret extends Raetselinterpret{
         null, 
         0, 
         null, 
-        new ArrayList<Formel>());
+        new ArrayList<String>());
   }
 }
