@@ -36,9 +36,10 @@ public class BackendTest {
 
   @Test
   public void formelEingebenTest() {
-    wts.befehl("FormelEingeben(1)");
+    wts.befehl("SpalteHinzufuegen");
+    wts.befehl("FormelEingeben(3)");
     System.out.println("FormelEingeben");
-    System.out.println(sf.gibFormelText(1));
+    System.out.println(sf.gibFormelText(3));
   }
 
   @Test
@@ -52,7 +53,7 @@ public class BackendTest {
   public void spalteEntfernenTest() {
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteHinzufuegen");
-    wts.befehl("SpalteEntfernen(1)");
+    wts.befehl("SpalteEntfernen(4)");
     System.out.println("SpalteEntfernen");
     gibTabelle();
   }
