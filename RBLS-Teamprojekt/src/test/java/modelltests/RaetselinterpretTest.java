@@ -34,6 +34,9 @@ public class RaetselinterpretTest {
     for (String temp: typen) {
       atome.add(temp);
     }
+    List<String> formeln = new ArrayList<String>();
+    formeln.add("AunBuC");
+    formeln.add("AoB");
     vergleich = new Raetsel(
         "Test",  
         1,                    //stufe
@@ -42,7 +45,7 @@ public class RaetselinterpretTest {
         atome,        //Antwortmöglichkeiten
         2,            //Wievielte Antwort die Lösung ist
         "Antwort",       //Antworttext
-        new ArrayList<Formel>());            //Formelliste  )
+        formeln);            //Formelliste  )
   }
   
   @Test
@@ -95,5 +98,14 @@ public class RaetselinterpretTest {
     Raetsel test = testen.erstelleFR(atome);
     
     assert (test != null);
+  }
+  
+  @Test
+  public void anderesRaetselTest() {
+    Raetsel test = testen.liesRaetsel("Butterbierdiebe");
+    
+    assert (test != null);
+    
+    assertEquals("Butterbierdiebe", test.gibName());
   }
 }

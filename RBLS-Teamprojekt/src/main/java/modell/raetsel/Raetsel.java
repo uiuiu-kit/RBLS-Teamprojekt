@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import modell.formel.Atom;
-import modell.formel.Formel;
 
 /**Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei 
  * dem Rest des Programms zur Verfuegung zu stellen.
@@ -19,7 +18,7 @@ public class Raetsel {
   protected List<Atom> atom;
   protected String antworttext;
   protected List<String> antworten;
-  protected List<Formel> formeln;
+  protected List<String> formeln;
   protected int spaltenAnz;
   protected int zeilenAnz;
   protected int loesung;
@@ -35,7 +34,7 @@ public class Raetsel {
    * @param antworttext
    * @param formeln
    */
-  public Raetsel(String name, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
+  public Raetsel(String name, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten, int loesung, String antworttext, List<String> formeln) {
     this.spaltenAnz = atom.size();
     this.zeilenAnz = (int) Math.pow(2, atom.size());
     this.stufe = stufe;
@@ -45,10 +44,6 @@ public class Raetsel {
     this.formeln = formeln;
     this.antworttext = antworttext;
     this.name = name;
-    for (int i = 0; i < atom.size(); i++) {
-      this.atom.add(new Atom(atom.get(i), i));
-      formeln.add(this.atom.get(i));
-    }
     this.antworten = antwortMöglichkeiten;
   }
   
@@ -101,11 +96,7 @@ public class Raetsel {
    * @return Liste der benotigten Formelnamen, die zur Loesung des Raetsels benoetigt werden.
    */
   public List<String> gibFormeln() {
-    List<String> temp = new ArrayList<String>();
-    for (int i = 0; i < this.formeln.size(); i++) {
-      temp.add(formeln.get(i).gibStringRep());
-    }
-    return temp;
+    return formeln;
   }
   
   public int gibSpaltenAnz() {
@@ -118,11 +109,6 @@ public class Raetsel {
   
   public int gibAtomAnz() {
     return atom.size();
-  }
-  
-  public void addFormel(Formel formel) {
-    this.formeln.add(formel);
-    this.spaltenAnz++;
   }
   
   public List<Atom> gibAtome() {

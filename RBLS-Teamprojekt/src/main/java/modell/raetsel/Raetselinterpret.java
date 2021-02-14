@@ -7,7 +7,6 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-import modell.formel.Formel;
 
 
 /** Der Raetselinterpret liest die Ordnerstruktur aus 
@@ -99,7 +98,7 @@ public class Raetselinterpret {
   
   /**Sucht die angegebene Textdatei des Reatsels und liest deren Daten aus, 
    * speichert sie zwischen und erstellt dann ein Raetselobjekt.
-   * @param titel Angegebener Name des Reatsels, aufgrund dessen die Raetseltextdatei gesucht wird.
+   * @param input Angegebener Name des Reatsels, aufgrund dessen die Raetseltextdatei gesucht wird.
    * @return Ein neues Raetselobjekt.
    */
   public Raetsel liesRaetsel(String input) {
@@ -122,17 +121,22 @@ public class Raetselinterpret {
     for (String temp : lines[3].split(",")) {
       antwortM.add(temp);
     }
+    List<String> formeln = new ArrayList<String>()
+;    for (String temp : lines[6].split(",")) {
+      formeln.add(temp);
+    }
+    
     String[] name = lines[0].split(".txt");
     atome = this.exAtome(lines[4]);
     return new Raetsel(
         name[0],//spaltenAnz
-        Integer.parseInt(lines[6]), //stufe
+        Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
         antwortM,                   //Antwortmöglichkeiten
         Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
         lines[2],                   //Antworttext
-        new ArrayList<Formel>());   //Formelliste  
+        formeln);   //Formelliste  
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
@@ -147,6 +151,6 @@ public class Raetselinterpret {
         null, 
         0, 
         null, 
-        new ArrayList<Formel>());
+        new ArrayList<String>());
   }
 }

@@ -10,7 +10,7 @@ A,B,C
 ##
 2
 ##
-HunNunSunR
+AunBuC,AoB
 ##
 1
 
