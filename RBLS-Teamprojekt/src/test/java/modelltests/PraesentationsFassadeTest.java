@@ -3,6 +3,9 @@ package modelltests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,27 +30,45 @@ public class PraesentationsFassadeTest {
   
   @Test
   public void setzeRaetselTest() {
+    testen.setzeRaetsel("Raetseldummy");
+    assertEquals("Raetseldummy", testen.gibRaetselString());
     
   }
   
   @Test
   public void gibRaetselListeTest() {
-    
+    List<String> test = new ArrayList<String>();
+    test.add("Raetsel1");
+    test.add("Raetsel2");
+    test.add("Raetseldummy");
+    assertEquals(test, testen.gibRaetselListe(0));
   }
   
   @Test
   public void gibFragestellungTest() {
-    
+    String test = "Test";
+    assertEquals(test, testen.gibFragestellung());
   }
   
   @Test
   public void gibAntwortTextTest() {
-    
+    String test = "Text";
+    assertEquals(test, testen.gibAntwortText());
+  }
+  
+  @Test
+  public void gibAntwortmoeglichkeitenTest() {
+    List<String> test = new ArrayList<String>();
+    test.add("A");
+    test.add("B");
+    test.add("C");
+    assertEquals(test, testen.gibAntwortmoeglichkeiten());
   }
   
   @Test
   public void gibLoesungTest() {
-    
+    String test = "C";
+    assertEquals(test, testen.gibLoesung());
   }
   
   @Test
@@ -59,8 +80,7 @@ public class PraesentationsFassadeTest {
   @Test
   public void gibZelleTest() {
     String t = "false";
-    int [] a = {1, 3};
-    System.out.print(testen.gibZelle(a));
+    int [] a = {1, 1};
     assertTrue(t.equals(testen.gibZelle(a)));
   }
   
@@ -90,7 +110,7 @@ public class PraesentationsFassadeTest {
   
   @Test
   public void gibFormelTextTest() {
-    System.out.print(testen.gibFormelText(3));
+//    System.out.print(testen.gibFormelText(3));
   }
   
   @Test

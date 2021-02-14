@@ -38,6 +38,11 @@ public class PraesentationFassade {
     return this.raetsel;
   }
   
+  //zum Testen benoetigt
+  public String gibRaetselString() {
+    return this.raetsel.gibName();
+  }
+  
   protected Tabelle gibTabelle() {
     return this.tabelle;
   }
