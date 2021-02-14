@@ -88,12 +88,18 @@ public class WahrheitstabellenSteuerungen {
     int[] koordinate = { spalte, zeile };
     switch (stufe) {
       case 1:
-        return tabellenPruefer.ueberpuefeFaelle(koordinate).isEmpty();
+        if (koordinate[0] < model.gibAtomareAussage().size()) {
+          tabellenPruefer.ueberpuefeFaelle(koordinate);
+        }
+        return tabellenPruefer.gibFehlerhafteFaelle().isEmpty();
       case 2:
       case 4:
         return tabellenPruefer.ueberpuefeFormeln();
       case 3:
-        return tabellenPruefer.ueberpuefeWW(koordinate).isEmpty();
+        if (koordinate[1] > 0 && koordinate[0] > model.gibAtomareAussage().size()) {
+          tabellenPruefer.ueberpuefeWW(koordinate);
+        }
+        return tabellenPruefer.gibFehlerhafteWW().isEmpty();
       default:
         return false;
     }

@@ -45,9 +45,8 @@ public class TabellenPruefer {
    * nicht wird auch die Liste der fehlerhaften Fälle aktuallisiert.
    * 
    * @param koordinate die Koordinate die geändert wurde
-   * @return die Liste an fehlerhaften Fällen
    */
-  public List<Integer> ueberpuefeFaelle(int[] koordinate) {
+  public void ueberpuefeFaelle(int[] koordinate) {
     boolean[] akFall = model.gibZeileFall(koordinate[1]);
     if (nochNoetigeFaelle.contains(akFall)) {
       nochNoetigeFaelle.remove(akFall);
@@ -59,6 +58,9 @@ public class TabellenPruefer {
         nochNoetigeFaelle.add(akFall);
       }
     }
+  }
+
+  public List<Integer> gibFehlerhafteFaelle() {
     return fehlerhafteFaelle;
   }
 
@@ -91,16 +93,14 @@ public class TabellenPruefer {
       }
     }
     return vollstaendig;
-
   }
 
   /**
    * gibt eine Liste von fehlerhaften Koordinaten aus.
    * 
    * @param koordinate die Koordinate die geändert wurde
-   * @return die Liste an fehlerhaften Koordinaten
    */
-  public List<int[]> ueberpuefeWW(int[] koordinate) {
+  public void ueberpuefeWW(int[] koordinate) {
     if (fehlerhafteWW.contains(koordinate)) {
       fehlerhafteWW.remove(koordinate);
     } else {
@@ -110,6 +110,9 @@ public class TabellenPruefer {
         fehlerhafteWW.add(koordinate);
       }
     }
+  }
+
+  public List<int[]> gibFehlerhafteWW() {
     return fehlerhafteWW;
   }
 
