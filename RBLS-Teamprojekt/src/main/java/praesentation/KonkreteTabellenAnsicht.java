@@ -129,22 +129,23 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     wahrheitswerte = new boolean[zeilenzahl - 1][spaltenzahl];
     for (int i = 0; i < wahrheitswerte.length; i++) {
       for (int j = 0; j < wahrheitswerte[0].length; j++) {
-        //wahrheitswerte[i][j] = modell.gibZellenWert(new int[] {i,j});
+        wahrheitswerte[i][j] = modell.gibZellenWert(new int[] {i,j});
         //TODO Platzhalter
-        wahrheitswerte[i][j] = true;
+        //wahrheitswerte[i][j] = true;
+        System.out.println("" + wahrheitswerte[i][j] + i + j);
       }
     }  
     inhalt = new String[zeilenzahl][spaltenzahl];
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
-        //inhalt[i][j] = modell.gibZelle(new int[] {i,j});
+        inhalt[i][j] = modell.gibZelle(new int[] {i,j});
         //TODO Platzhalter
         if (i > 0 && wahrheitswerte[i - 1][j]) {
           inhalt[i][j] = "wahr";
         } else if (i > 0 && wahrheitswerte[i - 1][j]) {
           inhalt[i][j] = "falsch";
         } else {
-          inhalt[i][j] = "" + j + "" + i;
+          //inhalt[i][j] = "" + j + "" + i;  //TODO
         }
       }
     }
