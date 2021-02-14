@@ -23,6 +23,7 @@ public class Memento {
    */
   public Memento (Raetsel r) {
     this.zustand = new RaetselZustand(r);
+    erstelleMementoDatei(zustand.gibStufe(), zustand.gibRaetselname());
   }
   
   public RaetselZustand gibSicherung() {
@@ -33,11 +34,12 @@ public class Memento {
     this.zustand = null;
   }
   
-  public boolean erstelleMementoDatei(Raetsel r) {
+  public boolean erstelleMementoDatei(int stufe, String name) {
     try {
-      fw = new FileWriter("PATH");
-      fw.write(r.gibName());
-      fw.append(System.getProperty("line.seperator"));
+      fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
+      fw.write(stufe + "\n");
+      fw.write("##\n");
+      fw.write(name + "\n");
     }
     catch (IOException e) {
       System.err.println("Sicherung konnte nicht erstellt werden.");

@@ -35,7 +35,7 @@ public class PraesentationFassade {
     return praFa;
   }
   
-  protected Raetsel gibRaetsel() {
+  public Raetsel gibRaetsel() {
     return this.raetsel;
   }
   
