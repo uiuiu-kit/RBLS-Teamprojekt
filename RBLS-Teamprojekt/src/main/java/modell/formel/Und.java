@@ -1,14 +1,14 @@
 package modell.formel;
 
 /**Unterklasse des Bikonnektors.
- * Verknüft seinen linken und rechten Formelnachbarn mit einem logischen UND beim Auzswerten.
- * Seine String Repräsentation ist "u".
+ * Verknuepft seinen linken und rechten Formelnachbarn mit einem logischen UND beim Auswerten.
+ * Seine String Repraesentation ist "u".
  * @author Flo
  *
  */
 public class Und extends BiKonnektor {
 
-  /** Kostruktor. Setzt übergebene Werte und seine String Rep.
+  /** Kostruktor. Setzt uebergebene Werte und seine String Rep.
    * @param rechts rechte Formel
    * @param links linke Formel
    */

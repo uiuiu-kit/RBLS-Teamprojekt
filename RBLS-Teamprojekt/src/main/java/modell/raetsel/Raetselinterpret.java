@@ -1,8 +1,6 @@
 package modell.raetsel;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
@@ -13,10 +11,10 @@ import modell.formel.Formel;
 
 
 /** Der Raetselinterpret liest die Ordnerstruktur aus 
- * und liefert darauf basierend Raetselnamen zurück.
- * Selbige können angegeben werden, um nach einer Raetseltextdatei gleichen Namens zu suchen 
- * und diese als Reatselobjekt zurückgeliefert zu bekommen. 
- * Außerdem ist der RInterpret für die Erstellung freier Raetsel(FR) zuständig
+ * und liefert darauf basierend Raetselnamen zurueck.
+ * Selbige koennen angegeben werden, um nach einer Raetseltextdatei gleichen Namens zu suchen 
+ * und diese als Reatselobjekt zurueckgeliefert zu bekommen. 
+ * Außerdem ist der RInterpret fuer die Erstellung freier Raetsel(FR) zustaendig.
  * @author Flo
  *
  */
@@ -72,10 +70,10 @@ public class Raetselinterpret {
     return output;
   }
   
-  /**Listet alle verfügbaren Raetselnamen auf, die im Ordner 
+  /**Listet alle verfuegbaren Raetselnamen auf, die im Ordner 
    * src,main,resources,Raetsel unter der jeweiligen Stufe hinterlegt sind.
    * @param stufe Raetselstufe, nach deren Raetsel gesucht wird.
-   * @return Liste aller Raetselnamen, die die genannte Stufe erfüllen.
+   * @return Liste aller Raetselnamen, die die genannte Stufe erfuellen.
    */
   public List<String> liesOrdner(int stufe) {
     List<String> output = new ArrayList<String>();
@@ -100,7 +98,7 @@ public class Raetselinterpret {
   /**Sucht die angegebene Textdatei des Reatsels und liest deren Daten aus, 
    * speichert sie zwischen und erstellt dann ein Raetselobjekt.
    * @param titel Angegebener Name des Reatsels, aufgrund dessen die Raetseltextdatei gesucht wird.
-   * @return neues Raetselobjekt.
+   * @return Ein neues Raetselobjekt.
    */
   public Raetsel liesRaetsel(String titel) {
     List<String> rows = null;

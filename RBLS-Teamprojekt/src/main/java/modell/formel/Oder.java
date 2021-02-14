@@ -1,14 +1,14 @@
 package modell.formel;
 
 /**Unterklasse des Bikonnektors.
- * Verknüft seinen linken und rechten Formelnachbarn mit einem logischen ODER beim Auzswerten.
- * Seine String Repräsentation ist "o".
+ * Verknuepft seinen linken und rechten Formelnachbarn mit einem logischen ODER beim Auzswerten.
+ * Seine String Repraesentation ist "o".
  * @author Flo
  *
  */
 public class Oder extends BiKonnektor {
 
-  /** Kostruktor. Setzt übergebene Werte und seine String Rep.
+  /** Kostruktor. Setzt uebergebene Werte und seine String Rep.
    * @param rechts rechte Formel
    * @param links linke Formel
    */

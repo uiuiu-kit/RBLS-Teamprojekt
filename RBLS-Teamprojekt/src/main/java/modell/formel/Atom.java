@@ -1,7 +1,7 @@
 package modell.formel;
 
-/** Das Atom enthält den Wahrheitswert der Atomaren Aussage 
- * und den Namen des repräösentierten Subjekts. 
+/** Das Atom enthaelt den Wahrheitswert der Atomaren Aussage 
+ * und den Namen des repraesentierten Subjekts. 
  * Es erbt direkt von der Formel, ist also kein Konnektor 
  * und stellt damit das Ende jeder auswerten()-Kette dar.
  * Es wird als Großbuchstabe in der Formel dargestellt.
@@ -14,7 +14,7 @@ public class Atom extends Formel {
   private String rep;
   private int nummer;
     
-  /** Konstruktor. Setzt nur seine Werte, die er übergeben bekommt.
+  /** Konstruktor. Setzt nur seine Werte, die er uebergeben bekommt.
    * @param aussage Entspricht dem vollen Namen des Atoms (zB Herbert).
    * @param nummer Position im Werte-Array.
    */

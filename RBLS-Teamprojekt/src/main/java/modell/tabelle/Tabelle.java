@@ -7,8 +7,8 @@ import modell.formel.Atom;
 import modell.formel.Formel;
 
 /**
- * Diese Klasse enthält alle Zellenobjekte und hält diese in einer 2dimensionalen Liste. 
- * Die Zellen werden über die Tabelle angesprochen, verwaltet und abgefragt.
+ * Diese Klasse enthaelt alle Zellenobjekte und haelt diese in einer 2-dimensionalen Liste. 
+ * Die Zellen werden ueber die Tabelle angesprochen, verwaltet und abgefragt.
  * Die Zeilen- und Spaltenanzahl ist abhaengig vom Raetsel. Sie enthaelt außerdem Zellenobjekte vom
  * speziellen Typ Wahrheitswert- oder Formelzelle.
  * @author janne
@@ -22,7 +22,7 @@ public class Tabelle {
   private static final String UNDEFINED_F = "formel hinzufügen";
   
   /**
-   * Konstruktor für die Tabelle eines Raetels. Konstruiert anhand der uebergebenen Parameter.
+   * Konstruktor fuer die Tabelle eines Raetels. Konstruiert anhand der uebergebenen Parameter.
    * @param atom Anzahl der Atomaren Aussagen.
    */
   public Tabelle(List<Atom> atom) {
@@ -45,7 +45,7 @@ public class Tabelle {
     this.formelTabelle.get(spalte).setzeZelle(f);
   }
   
-  /** Gibt der Fassade den WW der angepingten Zelle zurück.
+  /** Gibt der Fassade den WW der angepingten Zelle zurueck.
    * @param i Zellenposition 
    * @return WW
    */
@@ -68,8 +68,8 @@ public class Tabelle {
     return gibWZ(i).toString();
   }
   
-  /** Sucht das Zellenobjekt im 2dimensionalen Listenfeld.
-   * @param i Array der größe 2, gibt Zeile und Spalte der Zellenposition an.
+  /** Sucht das Zellenobjekt im 2-dimensionalen Listenfeld.
+   * @param i Array der Groeße 2, gibt Zeile und Spalte der Zellenposition an.
    * @return Zellenobjekt.
    */
   private Wahrheitswertzelle gibWZ(int[] i) {
@@ -79,7 +79,7 @@ public class Tabelle {
     return null;
   }
   
-  /** Liefert der Fassade die gewählte Aussagenlogische Formel der angegebenen Zelle.
+  /** Liefert der Fassade die gewaehlte aussagenlogische Formel der angegebenen Zelle.
    * @param i Position der Zelle
    * @return Formel der angegeben Zelle.
    */
@@ -112,8 +112,8 @@ public class Tabelle {
     this.formelTabelle.add(temp);
   }
   
-  /** Erlaubt das gezielte Löschen von Spalten.
-   * @param spalte zu löschende Spalte.
+  /** Erlaubt das gezielte Loeschen von Spalten.
+   * @param spalte zu loeschende Spalte.
    */
   public void spalteEntfernen(int spalte) {
     if ((this.gibSpaltenAnz()) > this.atomAnz) {
@@ -122,7 +122,7 @@ public class Tabelle {
     } 
   }
   
-  /** Gibt die Stringrepräsentation der genannten Zelle an.
+  /** Gibt die Stringrepraesentation der genannten Zelle an.
    * @param z Zelle
    * @return String
    */
@@ -134,7 +134,7 @@ public class Tabelle {
   }
   
   /** Ermittelt die Wahrheitswertbelegung einer kompletten Zeile.
-   * @param i gewünschte Zeilennummer
+   * @param i gewuenschte Zeilennummer
    * @return Booleanarray mit Wahrheitswerten.
    */
   public boolean[] gibZeileFall(int i) {
@@ -149,7 +149,7 @@ public class Tabelle {
   }
   
   
-  /** Gibt der Fassade die Formel der entsprechenden Zelle zurück.
+  /** Gibt der Fassade die Formel der entsprechenden Zelle zurueck.
    * @param s Spalte der Formelzelle.
    * @return Formel der Zelle
    */

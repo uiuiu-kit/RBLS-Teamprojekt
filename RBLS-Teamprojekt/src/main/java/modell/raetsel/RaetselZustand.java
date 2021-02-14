@@ -14,8 +14,8 @@ public class RaetselZustand {
   private boolean geloest = false;
   
   /**
-   * Ein Objekt, welches den aktuellen Zustand des Rätsels enthält.
-   * @param r Ein Rätselobjekt.
+   * Ein Objekt, welches den aktuellen Zustand des Raetsels enthaelt.
+   * @param r Ein Raetselobjekt.
    * @param stufe Die zum Raetsel gehoerige Stufe.
    */
   public RaetselZustand(Raetsel r) {

@@ -2,6 +2,11 @@ package modell.tabelle;
 
 import modell.formel.Formel;
 
+/**
+ * Symbolisiert eine Formelzelle. Sie erbt von der Zelle und beinhaltet ausschlieﬂlich Formeln.
+ * @author janne
+ *
+ */
 public class Formelzelle extends Zelle {
   
   private Formel aussagenlogischeFormel;

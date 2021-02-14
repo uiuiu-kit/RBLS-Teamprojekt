@@ -23,7 +23,7 @@ public class SteuerungFassade {
   private Tabelle tabelle;
   PraesentationFassade praesFassade;
   
-  /**Einzelstückmethode, die dafür sorgt, dass die Klasse nur einmal erstellt, 
+  /**Einzelstueckmethode, die dafuer sorgt, dass die Klasse nur einmal erstellt, 
    * aber jederzeit von allen Klassen genutzt werden kann.
    * @return Objekt der Klasse SteuerungFassade.
    */
@@ -58,7 +58,7 @@ public class SteuerungFassade {
   }
   
   /** Gibt eine Liste aller Formeln zurück, die in der Tabelle Verwendung finden.
-   * @return
+   * @return Liste der Formeln.
    */
   public List<String> gibNoetigeFormel() {
     this.aktualisiere();
@@ -108,7 +108,6 @@ public class SteuerungFassade {
     Memento memento = new Memento(raetsel);
     this.praesFassade.setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
     this.praesFassade.setzeAktivenZustand(memento.gibSicherung());
-    //memento.erstelleMementoDatei(raetsel);
     return memento;
   }
   
@@ -117,9 +116,9 @@ public class SteuerungFassade {
     return tabelle.gibFormel(spalte);
   }
   
-  /** Ermöglicht der Steuerung Formeln zu setzen.
-   * @param formel zu setzende Formel.
-   * @param spalte position der Formel (Zelle)
+  /** Ermoeglicht der Steuerung Formeln zu setzen.
+   * @param formel Die zu setzende Formel.
+   * @param spalte Die Position der Formel (Zelle).
    */
   public void setzeFormel(Formel formel, int spalte) {
     this.aktualisiere();
@@ -138,7 +137,7 @@ public class SteuerungFassade {
   }
   
   /**Klasse zur Initialisierung einer Testumgebung, 
-   * benötigt zum Test für Steuerung und Steuerungsfassade.
+   * benoetigt zum Test für Steuerung und Steuerungsfassade.
    * @param test  Instanz des Testinterpreten.
    */
   public PraesentationFassade erstelleTestUmgebung(Raetselinterpret test) {

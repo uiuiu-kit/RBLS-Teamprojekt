@@ -7,8 +7,8 @@ import modell.formel.Atom;
 import modell.formel.Formel;
 
 /**Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei 
- * dem Rest des Programms zur Verfügung zu stellen.
- * Es wird daher vom Raetselinterpreten erstellt und der Fassade übergeben.
+ * dem Rest des Programms zur Verfuegung zu stellen.
+ * Es wird daher vom Raetselinterpreten erstellt und der Fassade uebergeben.
  * @author Flo
  *
  */
@@ -25,7 +25,7 @@ public class Raetsel {
   protected int loesung;
   protected String name;
   
-  /**Konstruktor, dem es dem Raetselinterpret ermöglicht, das Raetselobjekt zu erschaffen.
+  /**Konstruktor, dem es dem Raetselinterpret ermoeglicht, das Raetselobjekt zu erschaffen.
    * @param zeilenAnz
    * @param spaltenAnz
    * @param stufe
@@ -62,7 +62,7 @@ public class Raetsel {
   }
   
   /**Wandelt die Liste der Atome in eine Liste der entsprechenden Namen der Atome um 
-   * und gibt diese zurück.
+   * und gibt diese zurueck.
    * @return Liste der Atomnamen.
    */
   public List<String> gibAtomNamen() {
@@ -94,8 +94,8 @@ public class Raetsel {
   }
   
   /**Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der Formeln um 
-   * und gibt diese zurück.
-   * @return Liste der benbötigten Formelnamen, die zur Lösung des Raetsels benötigt werden.
+   * und gibt diese zurueck.
+   * @return Liste der benotigten Formelnamen, die zur Loesung des Raetsels benoetigt werden.
    */
   public List<String> gibFormeln() {
     List<String> temp = new ArrayList<String>();
