@@ -20,7 +20,7 @@ public class RaetselinterpretTest {
 
   Raetselinterpret testen;
   Raetsel vergleich;
-  String raetselName = "Raetseldummy.txt";
+  String raetselName = "Raetseldummy";
   
   /** Initialisiert den Raetselinterpreten sowie das Standartraetsel "Butterbierdiebe".
    * 

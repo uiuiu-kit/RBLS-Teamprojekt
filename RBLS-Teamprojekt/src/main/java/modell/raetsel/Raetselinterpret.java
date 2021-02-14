@@ -79,7 +79,8 @@ public class Raetselinterpret {
   public List<String> liesOrdner(int stufe) {
     List<String> output = new ArrayList<String>();
     for (File temp : gibRaetselausOrdner(stufe)) {
-      output.add(temp.getName());
+      String[] name = temp.getName().split(".txt");
+      output.add(name[0]);
     }
     return output;
   }
@@ -101,7 +102,8 @@ public class Raetselinterpret {
    * @param titel Angegebener Name des Reatsels, aufgrund dessen die Raetseltextdatei gesucht wird.
    * @return Ein neues Raetselobjekt.
    */
-  public Raetsel liesRaetsel(String titel) {
+  public Raetsel liesRaetsel(String input) {
+    String titel = input + ".txt";
     List<String> rows = null;
     try {
       rows = Files.readAllLines(
@@ -120,9 +122,10 @@ public class Raetselinterpret {
     for (String temp : lines[3].split(",")) {
       antwortM.add(temp);
     }
+    String[] name = lines[0].split(".txt");
     atome = this.exAtome(lines[4]);
     return new Raetsel(
-        lines[0],//spaltenAnz
+        name[0],//spaltenAnz
         Integer.parseInt(lines[6]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
