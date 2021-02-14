@@ -12,7 +12,7 @@ import java.io.Writer;
  */
 public class Memento {
   
-  public static final String PATH = "/src/main/resources/Sicherung";
+  public static final String PATH = "/src/main/resources/Sicherung/Sicherung.txt";
   private Writer fw = null;
   private RaetselZustand zustand;
   
@@ -35,7 +35,7 @@ public class Memento {
   
   public boolean erstelleMementoDatei(Raetsel r) {
     try {
-      fw = new FileWriter("Sicherung.txt");
+      fw = new FileWriter("PATH");
       fw.write(r.gibName());
       fw.append(System.getProperty("line.seperator"));
     }
