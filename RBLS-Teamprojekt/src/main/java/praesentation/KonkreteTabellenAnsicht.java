@@ -32,7 +32,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
   private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 6);
   private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 6);
-  private boolean[][] wahrheitswerte;
   private String[][] inhalt;
   private int zeilenzahl = 9;
   private int spaltenzahl = 5;
@@ -124,20 +123,13 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   
   private void initTabelle() {
     //Modelldaten//
-    wahrheitswerte = new boolean[zeilenzahl - 1][spaltenzahl];
-    for (int i = 0; i < wahrheitswerte.length; i++) {
-      for (int j = 0; j < wahrheitswerte[0].length; j++) {
-        wahrheitswerte[i][j] = modell.gibZellenWert(new int[] {i,j});
-        System.out.println("" + wahrheitswerte[i][j] + i + j);
-      }
-    }  
     inhalt = new String[zeilenzahl][spaltenzahl];
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
         inhalt[i][j] = modell.gibZelle(new int[] {i,j});
-        if (i > 0 && wahrheitswerte[i - 1][j]) {
+        if (i > 0 && inhalt[i][j].equals("true")) {
           inhalt[i][j] = "wahr";
-        } else if (i > 0 && wahrheitswerte[i - 1][j]) {
+        } else if (i > 0 && inhalt[i][j].equals("false")) {
           inhalt[i][j] = "falsch";
         }
       }
@@ -162,15 +154,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     tabelle.setRowHeight((int) (tabelle.getRowHeight() * 1.5));
     tabelle.setFocusable(false);
     tabelle.setRowSelectionAllowed(false);
-    
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
-        if (i > 0 && inhalt[i][j].equals("wahr")) {
-          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
-        } else if (i > 0 && inhalt[i][j].equals("falsch")) {
-          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
-        }
-      }
+        aktualisiere(new int[] {i, j});
+      }  
     }
   }
   
@@ -184,21 +171,13 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       return;
     }
     if (i > 0 && j >= 0) {
-      wahrheitswerte[i - 1][j] = !wahrheitswerte[i - 1][j];
-      if (wahrheitswerte[i - 1][j]) {
-        inhalt[i][j] = "wahr";
-        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
-          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
-        }
-        tabelle.getModel().setValueAt("wahr", i, j);
-      } else {
-        inhalt[i][j] = "falsch";
-        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
-          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
-        }
-        tabelle.getModel().setValueAt("falsch", i, j);
-      }
-      strg.befehl("ZelleAendern(" + i + "," + j + ")");
+      //strg.befehl("ZelleAendern(" + i + "," + j + ")");
+      if (inhalt[i][j].equals("wahr")) {   // TODO
+        inhalt[i][j] = "false";            //
+      } else {                             //  KOMMT WEG SOBALD ZELLEÄNDERNBEFEHL GEHT
+        inhalt[i][j] = "true";             //
+      }                                    // TODO 
+      aktualisiere(new int[] {i, j});
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
       return;
@@ -280,14 +259,25 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
    */
   public void aktualisiere(int[] zelle) {
     assert zelle.length == 2;
-    inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
-    tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
-    if (zelle[0] > 0 && inhalt[zelle[0]][zelle[1]].equals("wahr")) {
-      ((FarbModell) tabelle.getModel()).setzeStatus(zelle[0], zelle[1], ZellenStatus.wahr);
-    } else if (zelle[0] > 0 && inhalt[zelle[0]][zelle[1]].equals("falsch")) {
-      ((FarbModell) tabelle.getModel()).setzeStatus(zelle[0], zelle[1], ZellenStatus.falsch);
+    int i = zelle[0];
+    int j = zelle[1];
+    if (i > 0 && j >= 0) {
+      if (inhalt[i][j].equals("true")) {
+        inhalt[i][j] = "wahr";
+        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
+        }
+      } else {
+        inhalt[i][j] = "falsch";
+        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+        }
+      } 
+    } else if (i >= 0 && j >= 0) {
+      inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     }
-    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(zelle[0], zelle[1]); 
+    tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j); 
   }
   
   public JPanel gibAnsicht() {
