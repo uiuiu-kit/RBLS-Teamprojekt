@@ -20,7 +20,6 @@ public class Tabelle {
   private List<List<Wahrheitswertzelle>> wwTabelle;
   private List<Formelzelle> formelTabelle;
   private int atomAnz;
-  private static final String UNDEFINED_F = "formel hinzufügen";
 
   /**
    * Konstruktor fuer die Tabelle eines Raetels. Konstruiert anhand der
@@ -122,7 +121,7 @@ public class Tabelle {
     }
     this.wwTabelle.add(row);
     Formelzelle temp = new Formelzelle();
-    temp.setzeZelle(new Atom("leer", 5));
+    temp.setzeZelle(new Atom("leer", -1));
     this.formelTabelle.add(temp);
   }
 
