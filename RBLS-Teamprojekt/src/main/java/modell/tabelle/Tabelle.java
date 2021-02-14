@@ -122,7 +122,7 @@ public class Tabelle {
     }
     this.wwTabelle.add(row);
     Formelzelle temp = new Formelzelle();
-    temp.setzeZelle(new Atom(UNDEFINED_F, 5));
+    temp.setzeZelle(new Atom("leer", 5));
     this.formelTabelle.add(temp);
   }
 
