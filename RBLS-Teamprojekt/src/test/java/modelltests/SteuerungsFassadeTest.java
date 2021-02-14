@@ -1,6 +1,7 @@
 package modelltests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import modell.SteuerungFassade;
 import modell.formel.Atom;
 import modell.formel.Formel;
 import modell.formel.Und;
+import modell.raetsel.Memento;
 
 
 
@@ -102,7 +104,9 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void sicherungTest() {
-    
+    Memento m = testen.fuehreSicherungAus();
+    assertEquals("Raetseldummy", m.gibSicherung().gibRaetselname());
+    assertTrue(1 == m.gibSicherung().gibStufe());
   }
   
   @Test
