@@ -18,7 +18,7 @@ Charles,Donald,Edgar
 ##
 2
 ##
-CunDunE,DuEunC,nCunDuE
+0un1un2,1u2un0,n0un1u2
 ##
 1
 
