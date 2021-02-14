@@ -95,7 +95,7 @@ public class Fassade {
 
   public String gibAktivenRaetselnamen() {
     aktualisiere();
-    return raetselZustand.gibRaetselname();
+    return raetsel.gibName();
   }
 
   protected void setzeAktivenZustand(RaetselZustand zustand) {
