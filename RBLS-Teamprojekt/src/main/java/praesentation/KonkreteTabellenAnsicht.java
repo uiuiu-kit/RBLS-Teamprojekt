@@ -269,8 +269,8 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void fuegeSpalteHinzu() {
-    spaltenzahl++;                             //TODO Platzhalter
-    //spaltenzahl = modell.gibSpaltenAnz();    //TODO
+    //spaltenzahl++;                             //TODO Platzhalter
+    spaltenzahl = modell.gibSpaltenAnz();    //TODO
     strg.befehl("SpalteHinzufuegen");  //TODO Kommentarzeichen entfernen
     tabelle.setVisible(false);
     initTabelle();
@@ -280,8 +280,8 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   
   private void entferneSpalte(int j) {
     strg.befehl("SpalteEntfernen(" + j + ")");
-    spaltenzahl--;                             //TODO Platzhalter
-    //spaltenzahl = modell.gibSpaltenAnz();    //TODO
+    //spaltenzahl--;                             //TODO Platzhalter
+    spaltenzahl = modell.gibSpaltenAnz();    //TODO
     tabelle.setVisible(false);
     initTabelle();
     tabelle.setVisible(true);
