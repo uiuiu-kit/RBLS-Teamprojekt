@@ -25,13 +25,15 @@ public class Raetsel {
   protected int loesung;
   protected String name;
   
-  /**Konstruktor, dem es dem Raetselinterpret ermoeglicht, das Raetselobjekt zu erschaffen.
-   * @param zeilenAnz
-   * @param spaltenAnz
+  /**
+   * @param name
    * @param stufe
    * @param atom
    * @param raetselText
+   * @param antwortMöglichkeiten
    * @param loesung
+   * @param antworttext
+   * @param formeln
    */
   public Raetsel(String name, int stufe, List<String> atom, String raetselText, List<String> antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
     this.spaltenAnz = atom.size();
@@ -47,6 +49,7 @@ public class Raetsel {
       this.atom.add(new Atom(atom.get(i), i));
       formeln.add(this.atom.get(i));
     }
+    this.antworten = antwortMöglichkeiten;
   }
   
   public String gibRaetselText() {
@@ -90,7 +93,7 @@ public class Raetsel {
   }
   
   public String gibLoesung() {
-    return this.antworten.get(loesung);
+    return this.antworten.get(loesung - 1);
   }
   
   /**Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der Formeln um 

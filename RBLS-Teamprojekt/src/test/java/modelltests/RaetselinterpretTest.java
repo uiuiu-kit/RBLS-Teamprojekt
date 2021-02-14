@@ -1,8 +1,7 @@
 package modelltests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Formel;
@@ -10,6 +9,7 @@ import modell.raetsel.Raetsel;
 import modell.raetsel.Raetselinterpret;
 import org.junit.Before;
 import org.junit.Test;
+
 
 
 /** Test zum Raetselinterpreten.
@@ -87,7 +87,12 @@ public class RaetselinterpretTest {
   @Test
   public void erstelleFreiesRaetselTest() {
     System.out.println("erstelleFreiesRaetselTest");
-    Raetsel test = testen.liesRaetsel(raetselName);
+    String[] typen = {"A", "B", "C"};
+    List<String> atome = new ArrayList<String>();
+    for (String temp: typen) {
+      atome.add(temp);
+    }
+    Raetsel test = testen.erstelleFR(atome);
     
     assert (test != null);
   }

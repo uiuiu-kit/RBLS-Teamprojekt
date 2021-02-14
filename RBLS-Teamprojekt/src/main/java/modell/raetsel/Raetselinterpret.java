@@ -26,10 +26,11 @@ public class Raetselinterpret {
   
   private String[] extrahiere(String input) {
     String[] output = input.split("##");
-    if (output.length == NUMBER_OF_ROWS) {
-      return (output[7].matches("[+-]?\\d*(\\.\\d+)?") ?  output : null);
+    
+    for (String temp: output) {
+      System.out.println(temp);
     }
-    return null;
+    return output;
   }
   
   private List<String> exAtome(String input) {
@@ -122,7 +123,7 @@ public class Raetselinterpret {
     atome = this.exAtome(lines[4]);
     return new Raetsel(
         lines[0],//spaltenAnz
-        Integer.parseInt(lines[7]), //stufe
+        Integer.parseInt(lines[6]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
         antwortM,                   //Antwortmöglichkeiten
