@@ -133,6 +133,11 @@ public class TabellenPruefer {
     return null;
   }
 
+  /**
+   * gibt aus ob fuelleTabelle erlaubt ist.
+   * 
+   * @return ist fuelleTabelle erlaubt
+   */
   public boolean tabelleFuellenErlaubt() {
     if (stufe == 1) {
       return fehlerhafteFaelle.isEmpty();
