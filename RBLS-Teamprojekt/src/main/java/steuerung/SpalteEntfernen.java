@@ -6,6 +6,7 @@ public class SpalteEntfernen extends WahrheitstabellenBefehl {
 
   private int spalte;
   private int spaltenAnz;
+  private int atomAnz;
 
   /**
    * Kostruktor für SpalteEntfernen der die Ausführung des Befehls anstößt.
@@ -24,11 +25,12 @@ public class SpalteEntfernen extends WahrheitstabellenBefehl {
   @Override
   public void hohleDaten() {
     spaltenAnz = model.gibSpaltenAnz();
+    atomAnz = model.gibAtomareAussage().size();
   }
 
   @Override
   public void setzeDaten() {
-    if (spalte < spaltenAnz) {
+    if (spalte < spaltenAnz && spalte > atomAnz) {
       model.spalteEntfernen(spalte);
     }
   }
