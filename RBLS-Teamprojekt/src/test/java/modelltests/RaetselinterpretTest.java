@@ -2,6 +2,7 @@ package modelltests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import modell.formel.Formel;
@@ -19,6 +20,7 @@ public class RaetselinterpretTest {
 
   Raetselinterpret testen;
   Raetsel vergleich;
+  String raetselName = "Raetseldummy.txt";
   
   /** Initialisiert den Raetselinterpreten sowie das Standartraetsel "Butterbierdiebe".
    * 
@@ -44,41 +46,31 @@ public class RaetselinterpretTest {
   }
   
   @Test
-  public void liesDateiNamenTest() {
-    List<String> test = testen.liesDateinamen();
+  public void liesOrdnerTest() {
+    System.out.println("liesOrdnerTest");
+    List<String> ordner = testen.liesOrdner(1);
     
-    
-    
-    for (String temp: test) {
+    for (String temp: ordner) {
       System.out.println(temp);
     }
-  }
-  
-  @Test
-  public void ladeDateiTest() {
-    String test = testen.ladeDatei("Raetseldummy");
     
-    assert (test != null);
-  }
-  
-  @Test
-  public void liesOrdnerTest() {
-    List<String> ordner = testen.liesOrdner(1);
     assertEquals(false, ordner.isEmpty());
   }
   
-  //@Test
+  @Test
   public void liesRaetselTest() {
-    Raetsel test = testen.liesRaetsel("Raetseldummy");
+    System.out.println("liesRaetselTest");
+    Raetsel test = testen.liesRaetsel(raetselName);
     
     assert (test != null);
   }
   
-  //@Test
+  @Test
   public void liesExplizitesRaetselTest() {
-    Raetsel test = testen.liesRaetsel("Raetseldummy");
+    System.out.println("liesExplizietesRaetselTest");
+    Raetsel test = testen.liesRaetsel(raetselName);
     
-    assertEquals(vergleich, test);
+    //assertEquals(vergleich, test);
     assertEquals(vergleich.gibName(), test.gibName());
     assertEquals(vergleich.gibAntwort(), test.gibAntwort());
     assertEquals(vergleich.gibAntworttext(), test.gibAntworttext());
@@ -92,9 +84,10 @@ public class RaetselinterpretTest {
     assertEquals(vergleich.gibAtomNamen(), test.gibAtomNamen());
   }
   
-  //@Test
+  @Test
   public void erstelleFreiesRaetselTest() {
-    Raetsel test = testen.liesRaetsel("Raetseldummy");
+    System.out.println("erstelleFreiesRaetselTest");
+    Raetsel test = testen.liesRaetsel(raetselName);
     
     assert (test != null);
   }

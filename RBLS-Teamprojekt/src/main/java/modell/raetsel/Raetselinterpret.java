@@ -26,77 +26,12 @@ public class Raetselinterpret {
   public static final String FREIES_RAETSEL_NAME = "Freies Rätsel";
   public static final int NUMBER_OF_ROWS = 8;
   
-  
-  
-  /**Wird von LiesOrdner und liesRaetsel benötigt, 
-   * um den Inhalt der Textdateien in einen String zu wandeln.
-   * Lädt die angegebene Textdatei und wandelt sie in einen String um.
-   * @param datName Name der gesuchten Datei.
-   * @return String mit dem Inhalt der Textdatei.
-   */
-  public String ladeDatei(String datName) {
-    File path = new File("src/main/resources/Raetsel/Stufe 1");
-    File[] files = path.listFiles();
-    if (files != null) { 
-      for (int i = 0; i < files.length; i++) {
-        System.out.print(files[i]);
-        if (files[i].isDirectory()) {
-          System.out.print(" (Ordner)\n");
-        } else {
-          System.out.println(" (Datei)\n");
-        }
-      }
-      
-    }
-    return "mau";
-    
-    /*File file = new File(datName);
-    String output = "";
-    if (!file.canRead() || !file.isFile()) {
-      return null;
-    }
-    BufferedReader in = null;
-    try {
-      in = new BufferedReader(new FileReader(datName));
-      String zeile = null;
-      while ((zeile = in.readLine()) != null) {
-        output = output + zeile;
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    } finally {
-      if (in != null) {
-        try {
-          in.close();
-        } catch (IOException e) {
-          return null;
-        }
-      }   
-    }
-    return output;*/
-  }
-  
-  public List<String> liesDateinamen() {
-    try {
-      return Files.readAllLines(FileSystems.getDefault().getPath("src/main/resources/Raetsel"), 
-          StandardCharsets.UTF_8);
-    } catch (IOException e) {
-      List<String> output = new ArrayList<String>();
-      output.add(ERROR_NO_FILE_FOUND);
-      return output;
-    } 
-  }
-  
   private String[] extrahiere(String input) {
     String[] output = input.split("##");
     if (output.length == NUMBER_OF_ROWS) {
       return (output[7].matches("[+-]?\\d*(\\.\\d+)?") ?  output : null);
     }
     return null;
-  }
-  
-  private int calcRow(List<String> atome) {
-    return (int) Math.pow(2, atome.size()) + 1;
   }
   
   private List<String> exAtome(String input) {
@@ -108,48 +43,58 @@ public class Raetselinterpret {
     return output;
   }
   
+  private List<File> gibRaetselausOrdner(int stufe) {
+    List<File> output = new ArrayList<File>();
+    File path = null;
+    switch (stufe) {
+      case 1: path = new File("src/main/resources/Raetsel/Stufe 1");
+      break;
+      case 2: path = new File("src/main/resources/Raetsel/Stufe 2");
+      break;
+      case 3: path = new File("src/main/resources/Raetsel/Stufe 3");
+      break;
+      case 4: path = new File("src/main/resources/Raetsel/Stufe 4");
+      break;
+      default: path = null;
+    }
+    File[] files = path.listFiles();
+    if (files != null) { 
+      for (int i = 0; i < files.length; i++) {
+        //System.out.print(files[i]);
+        if (files[i].isDirectory()) {
+          //System.out.print(" (Ordner)\n");
+        } else {
+          output.add(files[i]);
+          //System.out.println(" (Datei)\n");
+        }
+      }
+    }
+    return output;
+  }
+  
   /**Listet alle verfügbaren Raetselnamen auf, die im Ordner 
    * src,main,resources,Raetsel unter der jeweiligen Stufe hinterlegt sind.
    * @param stufe Raetselstufe, nach deren Raetsel gesucht wird.
    * @return Liste aller Raetselnamen, die die genannte Stufe erfüllen.
    */
   public List<String> liesOrdner(int stufe) {
-    File path = null;
-    switch (stufe) {
-    case 1: path = new File("src/main/resources/Raetsel/Stufe 1");
-      break;
-    case 2: path = new File("src/main/resources/Raetsel/Stufe 2");
-      break;
-   case 3: path = new File("src/main/resources/Raetsel/Stufe 3");
-      break;
-    case 4: path = new File("src/main/resources/Raetsel/Stufe 4");
-      default: path = null;
+    List<String> output = new ArrayList<String>();
+    for (File temp : gibRaetselausOrdner(stufe)) {
+      output.add(temp.getName());
     }
-    
-    //File path = new File("src/main/resources/Raetsel");
-    File[] files = path.listFiles();
-    if (files != null) { 
-      for (int i = 0; i < files.length; i++) {
-        System.out.print(files[i]);
-        if (files[i].isDirectory()) {
-          System.out.print(" (Ordner)\n");
-        } else {
-          System.out.println(" (Datei)\n");
+    return output;
+  }
+  
+  private File findeRaetsel(String titel) {
+    for (int i = 1; i < 5; i++) {
+      List<File> ordner = gibRaetselausOrdner(i);
+      for (File raetsel : ordner) {
+        if (raetsel.getName().equals(titel)) {
+          return raetsel;
         }
       }
-      
     }
-    return "mau";
-    
-    /*
-    List<String> output = new ArrayList<String>();   
-    for (String name : liesDateinamen()) {
-      String[] temp = extrahiere(ladeDatei(name));
-      if (Integer.parseInt(temp[7]) == stufe) {
-        output.add(name);
-      }
-    }
-    return output;*/
+    return null;
   }
   
   /**Sucht die angegebene Textdatei des Reatsels und liest deren Daten aus, 
@@ -158,20 +103,25 @@ public class Raetselinterpret {
    * @return neues Raetselobjekt.
    */
   public Raetsel liesRaetsel(String titel) {
-    List<String> atome = null;
-    String[] lines = null;
-    for (String name : liesDateinamen()) {
-      if (name.equals(titel)) {
-        lines = extrahiere(ladeDatei(name));
-        break;
-      }
+    List<String> rows = null;
+    try {
+      rows = Files.readAllLines(
+          FileSystems.getDefault().getPath(findeRaetsel(titel).getAbsolutePath()), 
+          StandardCharsets.UTF_8);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+    String text = "";
+    for (String temp : rows) {
+      text += temp;
+    }
+    String[] lines = extrahiere(text);
+    List<String> atome = null;
     List<String> antwortM = new ArrayList<String>();
     for (String temp : lines[3].split(",")) {
       antwortM.add(temp);
     }
     atome = this.exAtome(lines[4]);
-    int spalten = atome.size();
     return new Raetsel(
         lines[0],//spaltenAnz
         Integer.parseInt(lines[7]), //stufe
