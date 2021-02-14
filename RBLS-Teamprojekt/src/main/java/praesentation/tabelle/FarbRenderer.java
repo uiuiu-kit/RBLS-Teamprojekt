@@ -2,12 +2,20 @@ package praesentation.tabelle;
 
 import java.awt.Color;
 import java.awt.Component;
-
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+/**
+ * Unterklasse von DefaultTableCellRenderer zum Ändern der Farben einzelner Tabellenzellen.
+ * @author Nick
+ */
 public class FarbRenderer extends DefaultTableCellRenderer {
+  /**
+   * Standard-ID der Unterklasse.
+   */
+  private static final long serialVersionUID = 1L;
+
   @Override
   public Component getTableCellRendererComponent(
       JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {

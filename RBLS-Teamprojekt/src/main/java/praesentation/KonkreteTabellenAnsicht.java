@@ -2,7 +2,6 @@ package praesentation;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +9,8 @@ import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import modell.PraesentationFassade;
 import praesentation.tabelle.FarbModell;
 import praesentation.tabelle.ZellenStatus;
@@ -176,58 +172,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       }
     }
   }
-  
-/*  class FarbModell extends DefaultTableModel {
-    ZellenStatus[][] status = new ZellenStatus[zeilenzahl][spaltenzahl];
-    
-    public FarbModell(String[][] inhalt, String[] inhalt2) {
-      this.setDataVector(inhalt, inhalt2);
-      for (int i = 0; i < inhalt.length; i++) {
-        for (int j = 0; j < inhalt[0].length; j++) {
-          status[i][j] = ZellenStatus.standard;
-        }
-      }    
-    }
-    
-    public boolean isCellEditable(int row, int column) {
-      tabelle.setFocusable(false);
-      tabelle.setRowSelectionAllowed(false);
-      return false;
-    }
- 
-    public void setzeStatus(int i, int j, ZellenStatus s) {
-      status[i][j] = s;
-    }
-      
-    public ZellenStatus gibStatus(int i, int j) {
-      return status[i][j];
-    }
-  }*/
-  
-/*  class FarbRenderer extends DefaultTableCellRenderer {
-    @Override
-    public Component getTableCellRendererComponent(
-        JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-      JLabel l = (JLabel) super.getTableCellRendererComponent(
-          table, value, isSelected, hasFocus, row, col);
-      FarbModell fm = (FarbModell) tabelle.getModel();
-      switch (fm.gibStatus(row, col)) {
-        case standard:l.setBackground(Color.WHITE);
-        break;
-        case wahr:l.setBackground(new Color(133, 242, 184));
-        break;
-        case falsch:l.setBackground(new Color(242, 133, 133));
-        break;
-        case markiert:l.setBackground(Color.LIGHT_GRAY);
-        break;
-        case tipp:l.setBackground(Color.DARK_GRAY);
-        break;
-        default: l.setBackground(Color.WHITE);
-      }
-      setHorizontalAlignment(javax.swing.JLabel.CENTER);
-      return l;
-    }
-  }*/
   
   private void klickeZelle(int i, int j) {
     if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
