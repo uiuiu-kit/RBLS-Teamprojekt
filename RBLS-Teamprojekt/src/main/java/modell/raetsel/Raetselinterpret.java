@@ -53,7 +53,7 @@ public class Raetselinterpret {
     }
     File[] files = path.listFiles();
     if (files != null) { 
-      for (int i = 0; i < files.length; i++) {
+      for (int i = 0; i < files.length; i++) {//TODO
         //System.out.print(files[i]);
         if (files[i].isDirectory()) {
           //System.out.print(" (Ordner)\n");
@@ -125,14 +125,14 @@ public class Raetselinterpret {
     String[] name = lines[0].split(".txt");
     atome = this.exAtome(lines[4]);
     return new Raetsel(
-        name[0],//spaltenAnz
+        name[0],                    //spaltenAnz
         Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
         antwortM,                   //Antwortmöglichkeiten
         Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
         lines[2],                   //Antworttext
-        formeln);   //Formelliste  
+        formeln);                   //Formelliste  
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
