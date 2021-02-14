@@ -9,9 +9,11 @@ public class BerechnerTest {
 
   @Test
   public void berechnerTest2() {
-    int anzAtom = 2;
-    boolean[][] expFaelle = { { true, true }, { false, true }, { true, false }, { false, false } };
-    boolean[][] faelle = new boolean[4][2];
+    int anzAtom = 3;
+    boolean[][] expFaelle = { { true, true, true }, { false, true, true }, { true, false, true },
+        { false, false, true }, { true, true, false }, { false, true, false }, { true, false, false },
+        { false, false, false } };
+    boolean[][] faelle = new boolean[8][3];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
     assertArrayEquals(expFaelle, faelle);
   }

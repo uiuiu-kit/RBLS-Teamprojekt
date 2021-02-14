@@ -107,6 +107,8 @@ public class SteuerungFassade {
     this.aktualisiere();
     Memento memento = new Memento(raetsel);
     this.praesFassade.setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
+    this.praesFassade.setzeAktivenZustand(memento.gibSicherung());
+    //memento.erstelleMementoDatei(raetsel);
     return memento;
   }
   

@@ -1,10 +1,6 @@
 package steuerung;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import modell.SteuerungFassade;
-import modell.formel.Formel;
 
 public class AufbauTabelle24 extends AufbauTabelle {
   private int anzAtome;
@@ -33,9 +29,9 @@ public class AufbauTabelle24 extends AufbauTabelle {
     int[] koordinaten = new int[2];
     boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtome)][anzAtome];
     Berechner.faelleBerechnen(anzAtome, faelle, 0);
-    for (int i = 1; i < faelle.length; i++) {
+    for (int i = 0; i < faelle.length; i++) {
       akFall = faelle[i];
-      koordinaten[0] = i;
+      koordinaten[0] = i + 1;
       for (int j = 0; j < akFall.length; j++) {
         koordinaten[1] = j;
         model.setzeZelleWW(koordinaten, akFall[j]);

@@ -2,6 +2,7 @@ package modell;
 
 import java.util.List;
 import modell.raetsel.Raetsel;
+import modell.raetsel.RaetselZustand;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
@@ -15,7 +16,7 @@ public class PraesentationFassade {
   private static PraesentationFassade praFa = null;
   
   private Raetselinterpret interpret;
-  //private RaetselZustand raetselZustand = new RaetselZustand();
+  private RaetselZustand raetselZustand;
   private Raetsel raetsel;
   private Tabelle tabelle;
   private int abgeschlosseneStufe;
@@ -34,8 +35,13 @@ public class PraesentationFassade {
     return praFa;
   }
   
-  protected Raetsel gibRaetsel() {
+  public Raetsel gibRaetsel() {
     return this.raetsel;
+  }
+  
+  //zum Testen benoetigt
+  public String gibRaetselString() {
+    return this.raetsel.gibName();
   }
   
   protected Tabelle gibTabelle() {
@@ -60,10 +66,13 @@ public class PraesentationFassade {
     return interpret.liesOrdner(i);
   }
 
-  /* Wird von niemandem gebraucht
   public String gibAktivenRaetselnamen() {
-    return raetselZustand.raetselname;
-  }*/
+    return raetselZustand.gibRaetselname();
+  }
+  
+  protected void setzeAktivenZustand(RaetselZustand zustand) {
+    this.raetselZustand = zustand;
+  }
   
   public String gibFragestellung() {
     return raetsel.gibRaetselText();

@@ -254,7 +254,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
         tabelle.getModel().setValueAt("falsch", i, j);
       }
-      //strg.befehl("zelleAendern(" + i + "," + j + ")");  //TODO noch auskommentiert
+      //strg.befehl("ZelleAendern(" + i + "," + j + ")");  //TODO noch auskommentiert
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
       return;
@@ -263,7 +263,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void klickeFormel(int spalte) {
-    //strg.befehl("formelEingeben(" + zeile + ")");  //TODO Kommentar entfernen
+    //strg.befehl("FormelEingeben(" + zeile + ")");  //TODO Kommentar entfernen
     ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte); 
   }
@@ -325,7 +325,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void fuelleAus() {
-    strg.befehl("fuelleAus");
+    strg.befehl("FuelleTabelle");
   }
   
   public void aktualisiere(int[] zelle) {

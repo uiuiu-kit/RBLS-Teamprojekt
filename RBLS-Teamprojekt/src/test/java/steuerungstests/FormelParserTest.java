@@ -38,69 +38,76 @@ public class FormelParserTest {
   public void testEinAtome() {
     Formel formel = FormelParser.pars("0", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("C", formel.gibStringRep());
+    assertEquals("0", formel.gibStringRep());
   }
 
   @Test
   public void testZweiAtome() {
     Formel formel = FormelParser.pars("1u2", sfMock);
     assertEquals(false, formel.auswerten(fall));
-    assertEquals("(DuE)", formel.gibStringRep());
+    assertEquals("(1u2)", formel.gibStringRep());
   }
 
   @Test
   public void testXor() {
     Formel formel = FormelParser.pars("1x2", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("(DxE)", formel.gibStringRep());
+    assertEquals("(1x2)", formel.gibStringRep());
   }
 
   @Test
   public void testDreiAtom() {
     Formel formel = FormelParser.pars("1u2o0", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("((DuE)oC)", formel.gibStringRep());
+    assertEquals("((1u2)o0)", formel.gibStringRep());
   }
 
   @Test
   public void testNurKlammer() {
     Formel formel = FormelParser.pars("(1)", sfMock);
     assertEquals(false, formel.auswerten(fall));
-    assertEquals("D", formel.gibStringRep());
+    assertEquals("1", formel.gibStringRep());
   }
 
   @Test
   public void testNicht() {
     Formel formel = FormelParser.pars("n1", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("(nD)", formel.gibStringRep());
+    assertEquals("(n1)", formel.gibStringRep());
   }
 
   @Test
   public void testKlammerMitKonnektor() {
     Formel formel = FormelParser.pars("(1u2)", sfMock);
     assertEquals(false, formel.auswerten(fall));
-    assertEquals("(DuE)", formel.gibStringRep());
+    assertEquals("(1u2)", formel.gibStringRep());
   }
 
   @Test
   public void testKlammerOderZusatz() {
     Formel formel = FormelParser.pars("0o(1u2)", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("(Co(DuE))", formel.gibStringRep());
+    assertEquals("(0o(1u2))", formel.gibStringRep());
   }
 
   @Test
   public void testKlammerUndZusatz() {
     Formel formel = FormelParser.pars("0u(1x2)", sfMock);
     assertEquals(true, formel.auswerten(fall));
-    assertEquals("(Cu(DxE))", formel.gibStringRep());
+    assertEquals("(0u(1x2))", formel.gibStringRep());
   }
 
   @Test
   public void testdoppelKlammer() {
     Formel formel = FormelParser.pars("0u(2x(1f1))", sfMock);
     assertEquals(false, formel.auswerten(fall));
-    assertEquals("(Cu(Ex(DfD)))", formel.gibStringRep());
+    assertEquals("(0u(2x(1f1)))", formel.gibStringRep());
+  }
+  
+  @Test
+  public void testzweiunabhänigeKlammern() {
+    Formel formel = FormelParser.pars("(0u2)x(1f1)", sfMock);
+    assertEquals(false, formel.auswerten(fall));
+    assertEquals("((0u2)x(1f1))", formel.gibStringRep());
   }
 }

@@ -30,6 +30,7 @@ public class BackendTest {
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
     System.out.println("AufbauTabelle");
+    System.out.println(sf.gibAtomareAussage().size());
     gibTabelle();
   }
 
@@ -74,10 +75,10 @@ public class BackendTest {
   private void gibTabelle() {
     String output = "";
     int[] koordinate = new int[2];
-    for (int i = 1; i < sf.gibSpaltenAnz(); i++) {
+    for (int i = 0; i < sf.gibSpaltenAnz(); i++) {
       output = output + sf.gibFormel(i).gibStringRep();
     }
-    for (int i = 0; i < sf.gibZeilenAnz(); i++) {
+    for (int i = 1; i < sf.gibZeilenAnz(); i++) {
       output = output + "\n";
       koordinate[0] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {
