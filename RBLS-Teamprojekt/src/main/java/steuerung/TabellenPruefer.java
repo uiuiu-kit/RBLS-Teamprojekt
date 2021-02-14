@@ -112,10 +112,6 @@ public class TabellenPruefer {
     }
   }
 
-  public List<int[]> gibFehlerhafteWW() {
-    return fehlerhafteWW;
-  }
-
   /**
    * gib die Koordinaten einer fehlerhaften Zelle zurück. Abhänig von der Stufe
    * wird entweder eine Koordinaten in den Fällen (1), eine Koordinate in den
@@ -136,4 +132,15 @@ public class TabellenPruefer {
     }
     return null;
   }
+
+  public boolean tabelleFuellenErlaubt() {
+    if (stufe == 1) {
+      return fehlerhafteFaelle.isEmpty();
+    }
+    if (stufe == 2 || stufe == 4) {
+      return ueberpuefeFormeln();
+    }
+    return false;
+  }
+
 }

@@ -52,7 +52,6 @@ public class WahrheitstabellenSteuerungen {
         break;
       case "FormelEingeben":
         new FormelEingeben(model, Integer.parseInt(parameter[0]));
-        ueberpruefeTabelle(Integer.parseInt(parameter[0]), 0);
         break;
       case "FuelleTabelle":
         if ((stufe == 1 || stufe == 2 || stufe == 4)) {
@@ -84,24 +83,17 @@ public class WahrheitstabellenSteuerungen {
    * 
    * @return Korrektheit
    */
-  private boolean ueberpruefeTabelle(int spalte, int zeile) {
+  private void ueberpruefeTabelle(int spalte, int zeile) {
     int[] koordinate = { spalte, zeile };
-    switch (stufe) {
-      case 1:
-        if (koordinate[0] < model.gibAtomareAussage().size()) {
-          tabellenPruefer.ueberpuefeFaelle(koordinate);
-        }
-        return tabellenPruefer.gibFehlerhafteFaelle().isEmpty();
-      case 2:
-      case 4:
-        return tabellenPruefer.ueberpuefeFormeln();
-      case 3:
-        if (koordinate[1] > 0 && koordinate[0] > model.gibAtomareAussage().size()) {
-          tabellenPruefer.ueberpuefeWW(koordinate);
-        }
-        return tabellenPruefer.gibFehlerhafteWW().isEmpty();
-      default:
-        return false;
+    if (stufe == 1) {
+      if (koordinate[0] < model.gibAtomareAussage().size()) {
+        tabellenPruefer.ueberpuefeFaelle(koordinate);
+      }
+    }
+    if (stufe == 3) {
+      if (koordinate[1] > 0 && koordinate[0] > model.gibAtomareAussage().size()) {
+        tabellenPruefer.ueberpuefeWW(koordinate);
+      }
     }
   }
 }
