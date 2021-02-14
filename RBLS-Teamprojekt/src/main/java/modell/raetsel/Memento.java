@@ -18,8 +18,8 @@ import java.util.List;
 public class Memento {
   
   private Writer fw = null;
-  private List<String> memento;
-  private List<String> namenGeloesterRaetsel;
+  private List<String> memento = null;
+  private List<String> namenGeloesterRaetsel = null;
   private RaetselZustand zustand;
   
   /**
@@ -51,12 +51,13 @@ public class Memento {
    * @return True, wenn die Datei erfolgreich erstellt wurde.
    */
   public boolean erstelleMementoDatei(int stufe, String name) {
+    liesMementoDatei();
     try {
-      if (this.namenGeloesterRaetsel != null) {
+      if (this.namenGeloesterRaetsel.size() > 0) {
         fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
         fw.write(stufe + "\n");       //die neue hoechste Stufe
         fw.write("##\n");             
-        fw.write(name + "\n");        //der neue hinzugekommene Raetselname
+        fw.write(name + "\n");        //der neu hinzugekommene Raetselname
         for (int i = 0; i <= namenGeloesterRaetsel.size(); i++) {
           fw.write(namenGeloesterRaetsel.get(i) + "\n"); //alle bisher geloesten Raetselnamen
         }
@@ -94,8 +95,10 @@ public class Memento {
       e.printStackTrace();
     }
     namenGeloesterRaetsel = new ArrayList<String>();
-    for (int i = 3; i <= memento.size(); i++) {     //Liste nur mit den Raetselnamen
-      this.namenGeloesterRaetsel.add(memento.get(i));
+    if (memento.size() > 3) {
+      for (int i = 3; i <= memento.size(); i++) {     //Liste nur mit den Raetselnamen
+        this.namenGeloesterRaetsel.add(memento.get(i));
+      }
     }
   }
 }
