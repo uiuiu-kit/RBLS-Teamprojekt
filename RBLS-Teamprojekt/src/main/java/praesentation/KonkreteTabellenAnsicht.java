@@ -139,14 +139,11 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
         inhalt[i][j] = modell.gibZelle(new int[] {i,j});
-       /* //TODO Platzhalter
         if (i > 0 && wahrheitswerte[i - 1][j]) {
           inhalt[i][j] = "wahr";
         } else if (i > 0 && wahrheitswerte[i - 1][j]) {
           inhalt[i][j] = "falsch";
-        } else {
-          //inhalt[i][j] = "" + j + "" + i;  //TODO
-        }*/
+        }
       }
     }
     
