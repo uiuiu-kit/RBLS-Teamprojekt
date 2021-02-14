@@ -42,7 +42,7 @@ public class RaetselinterpretTest {
         1,                    //stufe
         atome,                      //Atome
         "Text",                   //Raetseltext
-        atome,        //Antwortmöglichkeiten
+        typen,        //Antwortmöglichkeiten
         2,            //Wievielte Antwort die Lösung ist
         "Antwort",       //Antworttext
         formeln);            //Formelliste  )

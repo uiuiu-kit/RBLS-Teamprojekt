@@ -13,16 +13,13 @@ public class Raetseldummy extends Raetsel {
 
   public Raetseldummy(String name, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten,
       int loesung, String antworttext, List<Formel> formeln) {
-    super("Raetseldummy", 2, new ArrayList<String>(), "Test", new ArrayList<String>(), 2, "Text",
+    super("Raetseldummy", 2, new ArrayList<String>(), "Test", new String[2], 2, "Text",
         new ArrayList<String>());
 
     this.atom.add(new Atom("A", 0));
     this.atom.add(new Atom("B", 1));
     this.atom.add(new Atom("C", 2));
-    antworten = new ArrayList<String>();
-    antworten.add("A");
-    antworten.add("B");
-    antworten.add("C");
+    antworten = new String[] {"A", "B", "C"};
   }
 
   public String gibRaetselText() {
@@ -63,12 +60,12 @@ public class Raetseldummy extends Raetsel {
     return antworttext;
   }
 
-  public List<String> gibAntwort() {
+  public String[] gibAntwort() {
     return antworten;
   }
 
   public String gibLoesung() {
-    return this.antworten.get(loesung);
+    return this.antworten[loesung];
   }
 
   /**
