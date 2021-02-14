@@ -325,7 +325,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void fuelleAus() {
-    strg.befehl("fuelleAus");
+    strg.befehl("FuelleTabelle");
   }
   
   public void aktualisiere(int[] zelle) {
