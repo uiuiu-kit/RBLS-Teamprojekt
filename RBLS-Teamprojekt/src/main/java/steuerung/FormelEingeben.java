@@ -1,7 +1,7 @@
 package steuerung;
 
 import java.util.List;
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Formel;
 
 public class FormelEingeben extends WahrheitstabellenBefehl {
@@ -16,7 +16,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
    * @param model  die Fassade auf die der Befehl zugreift.
    * @param spalte die Spalte in der die Formel geändert werden soll.
    */
-  public FormelEingeben(SteuerungFassade model, int spalte) {
+  public FormelEingeben(Fassade model, int spalte) {
     super(model);
     this.spalte = spalte;
     hohleDaten();

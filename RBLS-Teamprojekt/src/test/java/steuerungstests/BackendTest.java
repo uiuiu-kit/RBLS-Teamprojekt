@@ -1,6 +1,6 @@
 package steuerungstests;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modelltests.Testinterpret;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import steuerung.WahrheitstabellenSteuerungen;
 
 public class BackendTest {
-  SteuerungFassade sf;
+  Fassade sf;
   WahrheitstabellenSteuerungen wts;
 
   /**
@@ -20,7 +20,7 @@ public class BackendTest {
 
   @Before
   public void setup() {
-    sf = new SteuerungFassade();
+    sf = new Fassade();
     sf.erstelleTestUmgebung(new Testinterpret());
 
     wts = new WahrheitstabellenSteuerungen(sf);

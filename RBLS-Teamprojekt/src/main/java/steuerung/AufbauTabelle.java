@@ -1,7 +1,7 @@
 package steuerung;
 
 import java.util.List;
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
 
@@ -13,7 +13,7 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
    * @param model die Fassde von der Daten geholt und bei der Daten gesetzt
    *              werden.
    */
-  public AufbauTabelle(SteuerungFassade model) {
+  public AufbauTabelle(Fassade model) {
     super(model);
   }
 }

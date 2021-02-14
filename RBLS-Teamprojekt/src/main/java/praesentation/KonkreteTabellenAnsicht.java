@@ -11,7 +11,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import modell.PraesentationFassade;
+import modell.Fassade;
 import praesentation.tabelle.FarbModell;
 import praesentation.tabelle.ZellenStatus;
 import steuerung.WahrheitstabellenSteuerungen;
@@ -26,7 +26,7 @@ import steuerung.WahrheitstabellenSteuerungen;
 public class KonkreteTabellenAnsicht extends TabellenAnsicht {
 
   private WahrheitstabellenSteuerungen strg;
-  private PraesentationFassade modell;
+  private Fassade modell;
   private JTable tabelle;
   private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp Fülle<br />Tabelle</html>", 5);
   private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
@@ -51,7 +51,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
    * @param modell Praesentationsfassade mit den Daten
    * @param strg Wahrheitstabellensteuerung fuer Weitergabe der Befehle
    */
-  public KonkreteTabellenAnsicht(PraesentationFassade modell, WahrheitstabellenSteuerungen strg) {
+  public KonkreteTabellenAnsicht(Fassade modell, WahrheitstabellenSteuerungen strg) {
     this.modell = modell;
     this.strg = strg;
     init();

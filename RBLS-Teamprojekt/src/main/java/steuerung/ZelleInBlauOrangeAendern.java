@@ -1,6 +1,6 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
   private int[] zellenKoordinaten;
@@ -13,7 +13,7 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
    * @param spalte die Spalte in der der Wert geändert wird
    * @param zeile  die Zeile in der der Wert geändert wird
    */
-  public ZelleInBlauOrangeAendern(SteuerungFassade model, int spalte, int zeile) {
+  public ZelleInBlauOrangeAendern(Fassade model, int spalte, int zeile) {
     super(model);
     zellenKoordinaten = new int[2];
     zellenKoordinaten[0] = zeile;

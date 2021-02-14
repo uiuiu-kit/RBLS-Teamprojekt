@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Formel;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import steuerung.FormelParser;
 public class FormelParserTest {
 
   @Mock
-  private SteuerungFassade sfMock;
+  private Fassade sfMock;
   private boolean[] fall = new boolean[3];
 
   /**
@@ -30,7 +30,7 @@ public class FormelParserTest {
     fall[0] = true;
     fall[1] = false;
     fall[2] = true;
-    sfMock = Mockito.mock(SteuerungFassade.class);
+    sfMock = Mockito.mock(Fassade.class);
     Mockito.when(sfMock.gibAtomareAussage()).thenReturn(atomareAussagenMock);
   }
 

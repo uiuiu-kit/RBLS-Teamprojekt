@@ -1,6 +1,6 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public class AufbauTabelle24 extends AufbauTabelle {
   private int anzAtome;
@@ -11,7 +11,7 @@ public class AufbauTabelle24 extends AufbauTabelle {
    * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
    *              wird.
    */
-  public AufbauTabelle24(SteuerungFassade model) {
+  public AufbauTabelle24(Fassade model) {
     super(model);
     hohleDaten();
     setzeDaten();

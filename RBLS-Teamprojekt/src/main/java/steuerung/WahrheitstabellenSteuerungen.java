@@ -1,10 +1,10 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public class WahrheitstabellenSteuerungen {
 
-  private SteuerungFassade model;
+  private Fassade model;
   private TabellenPruefer tabellenPruefer;
   private int stufe;
 
@@ -13,7 +13,7 @@ public class WahrheitstabellenSteuerungen {
    * 
    * @param model die Fassade die von Befehlen angesprochen werden soll
    */
-  public WahrheitstabellenSteuerungen(SteuerungFassade model) {
+  public WahrheitstabellenSteuerungen(Fassade model) {
     this.model = model;
     this.stufe = model.gibStufe();
     tabellenPruefer = new TabellenPruefer(model, stufe);

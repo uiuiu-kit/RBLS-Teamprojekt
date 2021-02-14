@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Atom;
 import modell.formel.Formel;
 import modell.formel.Und;
@@ -16,11 +16,11 @@ import modell.raetsel.Memento;
 
 public class SteuerungsFassadeTest {
 
-  SteuerungFassade testen;
+  Fassade testen;
   
   @Before
   public void init() {
-    testen = SteuerungFassade.gibSteuFa();
+    testen = Fassade.gibSteuFa();
     testen.erstelleTestUmgebung(new Testinterpret());
     testen.spalteHinzufuegen();
     testen.setzeFormel(new Und(new Atom("A", 0), new Atom("B", 1)), 3);
@@ -29,7 +29,7 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void gibSteuerungsfassadetest() {
-    assertEquals(testen, SteuerungFassade.gibSteuFa());
+    assertEquals(testen, Fassade.gibSteuFa());
   }
  
   @Test

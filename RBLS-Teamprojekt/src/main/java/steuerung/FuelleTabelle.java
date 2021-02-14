@@ -1,6 +1,6 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Formel;
 
 public class FuelleTabelle extends WahrheitstabellenBefehl {
@@ -15,7 +15,7 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
    * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
    *              wird.
    */
-  public FuelleTabelle(SteuerungFassade model) {
+  public FuelleTabelle(Fassade model) {
     super(model);
     hohleDaten();
     setzeDaten();

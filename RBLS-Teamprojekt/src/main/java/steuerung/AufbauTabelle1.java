@@ -2,7 +2,7 @@ package steuerung;
 
 import java.util.ArrayList;
 import java.util.List;
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Formel;
 
 public class AufbauTabelle1 extends AufbauTabelle {
@@ -15,7 +15,7 @@ public class AufbauTabelle1 extends AufbauTabelle {
    * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
    *              wird.
    */
-  public AufbauTabelle1(SteuerungFassade model) {
+  public AufbauTabelle1(Fassade model) {
     super(model);
     hohleDaten();
     setzeDaten();

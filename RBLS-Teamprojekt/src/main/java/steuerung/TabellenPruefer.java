@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Formel;
 
 public class TabellenPruefer {
-  private SteuerungFassade model;
+  private Fassade model;
   boolean vollstaendig;
   private List<int[]> fehlerhafteWW;
   private List<Integer> fehlerhafteFaelle;
@@ -22,7 +22,7 @@ public class TabellenPruefer {
    * 
    * @param model die Fassade hinter der die Tabelle ist die getestet werden soll.
    */
-  public TabellenPruefer(SteuerungFassade model, int stufe) {
+  public TabellenPruefer(Fassade model, int stufe) {
     this.model = model;
     this.stufe = stufe;
     int anzAtom = model.gibAtomareAussage().size() + 1;

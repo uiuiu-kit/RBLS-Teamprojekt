@@ -3,7 +3,7 @@ package praesentation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
-import modell.PraesentationFassade;
+import modell.Fassade;
 import modell.raetsel.RaetselZustand;
 import modell.raetsel.Raetselinterpret;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class RaetselwahlTest {
   public void guiTest() {
     praesentation.Fensterverwaltung fv = 
         new praesentation.Fensterverwaltung(new Hauptsteuerung(), 
-            PraesentationFassade.gibPraFa());
+            Fassade.gibSteuFa());
     fv.init();
     List<String> raetsel = new ArrayList<String>();
     

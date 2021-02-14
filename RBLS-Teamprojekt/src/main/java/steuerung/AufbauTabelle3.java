@@ -1,6 +1,6 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public class AufbauTabelle3 extends AufbauTabelle {
 
@@ -14,7 +14,7 @@ public class AufbauTabelle3 extends AufbauTabelle {
    *              wird.
    * 
    */
-  public AufbauTabelle3(SteuerungFassade model) {
+  public AufbauTabelle3(Fassade model) {
     super(model);
     hohleDaten();
     setzeDaten();

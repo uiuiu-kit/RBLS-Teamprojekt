@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import modell.PraesentationFassade;
+import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -36,7 +36,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
   private JTextField[] aussagen;
   
   private Fensterverwaltung fv;
-  private PraesentationFassade modell;
+  private Fassade modell;
   private WahrheitstabellenSteuerungen wstrg;
 
   /**
@@ -46,7 +46,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
    *     zum Setzen und Erhalten von Informationen über atomare Aussagen und Status
    */
   public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung,
-      PraesentationFassade modell, WahrheitstabellenSteuerungen wstrg) {
+      Fassade modell, WahrheitstabellenSteuerungen wstrg) {
     this.fv = fensterverwaltung;
     this.modell = modell;
     this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);

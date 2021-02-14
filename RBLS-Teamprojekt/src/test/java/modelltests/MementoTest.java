@@ -5,23 +5,22 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import modell.PraesentationFassade;
-import modell.SteuerungFassade;
+
+import modell.Fassade;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
 
 public class MementoTest {
   
-  PraesentationFassade praFaTest;
-  SteuerungFassade steuFaTest;
+  Fassade steuFaTest;
   Memento testen;
   Raetsel raetselTest;
   
   @Before
   public void init() {
-    steuFaTest = new SteuerungFassade();
-    praFaTest = steuFaTest.erstelleTestUmgebung(new Testinterpret());
-    raetselTest = praFaTest.gibRaetsel();
+    steuFaTest = new Fassade();
+    steuFaTest.erstelleTestUmgebung(new Testinterpret());
+    raetselTest = steuFaTest.gibRaetsel();
     testen = new Memento(raetselTest);
   }
   

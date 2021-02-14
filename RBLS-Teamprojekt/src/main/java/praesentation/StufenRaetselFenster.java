@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
-import modell.PraesentationFassade;
+import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -43,14 +43,14 @@ public class StufenRaetselFenster extends RaetselFenster {
   private Schaltflaeche weiter;
   
   private Fensterverwaltung fv;
-  private PraesentationFassade modell;
+  private Fassade modell;
 
   /**
    * Erstellt die grafische Ansicht eines Stufenraetselfenster und initialisiert die Schaltflaechen.
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des aktiven Fensters
    * @param modell Praesentationsfassade zum Erhalten von Informationen des aktiven Raetsels
    */
-  public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, PraesentationFassade modell, WahrheitstabellenSteuerungen wstrg) {
+  public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, Fassade modell, WahrheitstabellenSteuerungen wstrg) {
     this.fv = fensterverwaltung;
     this.modell = modell;
     this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
@@ -168,7 +168,7 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
 
   private void geheZuRaetselwahlMenue() {
-    fv.oeffneRaetselwahl(modell.gibAktuelleStufe());
+    fv.oeffneRaetselwahl(modell.gibStufe());
   }
   
   public void schliesseRaetselAb() {

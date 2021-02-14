@@ -1,9 +1,9 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public abstract class WahrheitstabellenBefehl {
-  protected SteuerungFassade model;
+  protected Fassade model;
 
   /**
    * Konstruktor für WahrheitstabellenBefehl.
@@ -11,7 +11,7 @@ public abstract class WahrheitstabellenBefehl {
    * @param model die Fassde von der Daten geholt und bei der Daten gesetzt
    *              werden.
    */
-  public WahrheitstabellenBefehl(SteuerungFassade model) {
+  public WahrheitstabellenBefehl(Fassade model) {
     this.model = model;
   }
 

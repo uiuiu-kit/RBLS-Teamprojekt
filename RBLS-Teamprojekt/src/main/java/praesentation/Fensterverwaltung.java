@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import modell.PraesentationFassade;
+import modell.Fassade;
 import steuerung.Hauptsteuerung;
 import steuerung.WahrheitstabellenSteuerungen;
 
@@ -18,11 +18,11 @@ public class Fensterverwaltung {
 
   private Hauptsteuerung strg;
   private JFrame aktivesFenster;
-  private PraesentationFassade modell;
+  private Fassade modell;
   private int[] fensterMass = new int[]{1000, 620};
   ImageIcon img = new ImageIcon(getClass().getResource("/Icon/testIcon.png"));
 
-  public Fensterverwaltung(Hauptsteuerung strg, PraesentationFassade fsd) {
+  public Fensterverwaltung(Hauptsteuerung strg, Fassade fsd) {
     this.strg = strg;
     this.modell = fsd;
   }
@@ -85,7 +85,7 @@ public class Fensterverwaltung {
    * Startet ein zufaelliges Raetsel der aktuellen Stufe.
    */
   public void starteZufaelligesRaetsel() {
-    List<String> liste = modell.gibRaetselListe(modell.gibAktuelleStufe());
+    List<String> liste = modell.gibRaetselListe(modell.gibStufe());
     for (Iterator<String> i = liste.iterator(); i.hasNext(); ) {
       String raetsel = i.next();
       starteRaetsel(raetsel);

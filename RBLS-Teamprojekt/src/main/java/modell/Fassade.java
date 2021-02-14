@@ -6,6 +6,7 @@ import modell.formel.Formel;
 import modell.formel.Und;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
+import modell.raetsel.RaetselZustand;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
@@ -16,13 +17,14 @@ import modell.tabelle.Tabelle;
  * @author janne
  *
  */
-public class SteuerungFassade {
+public class Fassade {
 
-  private static SteuerungFassade steuFa = null;
+  private static Fassade steuFa = null;
   private Raetselinterpret interpret;
+  private RaetselZustand raetselZustand;
   private Raetsel raetsel;
   private Tabelle tabelle;
-  PraesentationFassade praesFassade;
+  private int abgeschlosseneStufe;
 
   /**
    * Einzelstueckmethode, die dafuer sorgt, dass die Klasse nur einmal erstellt,
@@ -30,16 +32,15 @@ public class SteuerungFassade {
    * 
    * @return Objekt der Klasse SteuerungFassade.
    */
-  public static SteuerungFassade gibSteuFa() {
+  public static Fassade gibSteuFa() {
     if (steuFa == null) {
-      steuFa = new SteuerungFassade();
+      steuFa = new Fassade();
     }
     return steuFa;
   }
 
-  private void aktualisiere() {
-    this.raetsel = praesFassade.gibRaetsel();
-    this.tabelle = praesFassade.gibTabelle();
+  private void aktualisiere() { // Präs aktuallisieren.
+
   }
 
   /**
@@ -50,7 +51,6 @@ public class SteuerungFassade {
    */
   public void init() {
     this.interpret = new Raetselinterpret();
-    praesFassade = new PraesentationFassade(interpret, this);
   }
 
   /**
@@ -61,6 +61,92 @@ public class SteuerungFassade {
   public List<String> gibAtomareAussage() {
     this.aktualisiere();
     return this.raetsel.gibAtomareAussage();
+  }
+
+//zum Testen benoetigt
+  public String gibRaetselString() {
+    aktualisiere();
+    return this.raetsel.gibName();
+  }
+
+  /**
+   * Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem
+   * RInterpreten übergibt, der ein neues Raetselobjekt zurückgibt. Dieses wird
+   * hier gesetzt und daraus eine neue Tabelle erzeugt.
+   * 
+   * @param raetselname Name des neuen Raetsels
+   */
+  public void setzeRaetsel(String raetselname) {
+    aktualisiere();
+    this.raetsel = this.interpret.liesRaetsel(raetselname);
+    this.tabelle = new Tabelle(raetsel.gibAtome());
+  }
+
+  /**
+   * Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.
+   * 
+   * @param i Raetselstufe, nach der gesucht wird.
+   * @return Liste der Raetselnamen der entsprechenden Stufe.
+   */
+  public List<String> gibRaetselListe(int i) {
+    aktualisiere();
+    return interpret.liesOrdner(i);
+  }
+
+  public String gibAktivenRaetselnamen() {
+    aktualisiere();
+    return raetselZustand.gibRaetselname();
+  }
+
+  protected void setzeAktivenZustand(RaetselZustand zustand) {
+    aktualisiere();
+    this.raetselZustand = zustand;
+  }
+
+  public String gibFragestellung() {
+    aktualisiere();
+    return raetsel.gibRaetselText();
+  }
+
+  public String gibAntwortText() {
+    aktualisiere();
+    return raetsel.gibAntworttext();
+  }
+
+  public List<String> gibAntwortmoeglichkeiten() {
+    aktualisiere();
+    return raetsel.gibAntwort();
+  }
+
+  public String gibLoesung() {
+    aktualisiere();
+    return raetsel.gibLoesung();
+  }
+
+  /**
+   * Holt die String-Repraesentation der Zelle und aktualisiert die konkrete
+   * Tabellenansicht.
+   * 
+   * @return Die String-Repraesentation der Zelle.
+   */
+  public String gibZelle(int[] zelle) {
+    aktualisiere();
+    return tabelle.gibZelle(zelle);
+  }
+
+  public void erstelleRaetsel(List<String> atome) {
+    aktualisiere();
+    this.interpret.erstelleFR(atome);
+  }
+
+  public void setzeAbgeschlosseneStufe(int abgeschlosseneStufe) {
+    aktualisiere();
+    this.abgeschlosseneStufe = abgeschlosseneStufe;
+  }
+
+  public int gibAbgeschlosseneStufe() {
+    aktualisiere();
+    return this.abgeschlosseneStufe;
   }
 
   /**
@@ -116,8 +202,8 @@ public class SteuerungFassade {
   public Memento fuehreSicherungAus() {
     this.aktualisiere();
     Memento memento = new Memento(raetsel);
-    this.praesFassade.setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
-    this.praesFassade.setzeAktivenZustand(memento.gibSicherung());
+    setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
+    setzeAktivenZustand(memento.gibSicherung());
     return memento;
   }
 
@@ -153,10 +239,9 @@ public class SteuerungFassade {
    * 
    * @param test Instanz des Testinterpreten.
    */
-  public PraesentationFassade erstelleTestUmgebung(Raetselinterpret test) {
-    praesFassade = new PraesentationFassade(test, this);
-    praesFassade.setzeRaetsel("Raetseldummy");
-    return praesFassade;
+  public void erstelleTestUmgebung(Raetselinterpret test) {
+    this.interpret = test;
+    setzeRaetsel("Raetseldummy");
   }
 
   public Raetsel gibRaetsel() {

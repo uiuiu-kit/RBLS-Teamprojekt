@@ -1,6 +1,6 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public class SpalteHinzufuegen extends WahrheitstabellenBefehl {
 
@@ -14,7 +14,7 @@ public class SpalteHinzufuegen extends WahrheitstabellenBefehl {
    *              wird.
    * 
    */
-  public SpalteHinzufuegen(SteuerungFassade model) {
+  public SpalteHinzufuegen(Fassade model) {
     super(model);
     hohleDaten();
     setzeDaten();

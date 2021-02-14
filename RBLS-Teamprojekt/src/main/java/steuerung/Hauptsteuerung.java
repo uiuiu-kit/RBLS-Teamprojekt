@@ -2,8 +2,7 @@ package steuerung;
 
 public class Hauptsteuerung {
 
-  private modell.SteuerungFassade sf;
-  private modell.PraesentationFassade pf;
+  private modell.Fassade sf;
   private praesentation.Fensterverwaltung fv;
   private WahrheitstabellenSteuerungen ws;
 
@@ -17,10 +16,9 @@ public class Hauptsteuerung {
    */
 
   public void init() {
-    sf = new modell.SteuerungFassade();
+    sf = new modell.Fassade();
     sf.init();
-    pf = modell.PraesentationFassade.gibPraFa();
-    fv = new praesentation.Fensterverwaltung(this, pf);
+    fv = new praesentation.Fensterverwaltung(this, sf);
     fv.init();
   }
 

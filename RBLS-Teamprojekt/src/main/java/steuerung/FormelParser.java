@@ -2,7 +2,7 @@ package steuerung;
 
 import java.util.ArrayList;
 import java.util.List;
-import modell.SteuerungFassade;
+import modell.Fassade;
 import modell.formel.Atom;
 import modell.formel.ExklusivOder;
 import modell.formel.Formel;
@@ -19,7 +19,7 @@ public class FormelParser {
    * @param formelS die gegebene Formel als String
    * @return Das Wurzelelement der Formel
    */
-  public static Formel pars(String formelS, SteuerungFassade fassade) {
+  public static Formel pars(String formelS, Fassade fassade) {
     Formel formelF = null;
     List<String> klammerAusdruecke = new ArrayList<String>();
     if (formelS.length() > 1) {

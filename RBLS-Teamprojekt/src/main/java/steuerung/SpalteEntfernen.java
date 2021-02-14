@@ -1,6 +1,6 @@
 package steuerung;
 
-import modell.SteuerungFassade;
+import modell.Fassade;
 
 public class SpalteEntfernen extends WahrheitstabellenBefehl {
 
@@ -15,7 +15,7 @@ public class SpalteEntfernen extends WahrheitstabellenBefehl {
    *               wird.
    * @param spalte die spalte die entfernt werden soll
    */
-  public SpalteEntfernen(SteuerungFassade model, int spalte) {
+  public SpalteEntfernen(Fassade model, int spalte) {
     super(model);
     this.spalte = spalte;
     hohleDaten();
