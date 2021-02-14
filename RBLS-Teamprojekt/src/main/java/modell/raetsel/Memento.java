@@ -22,7 +22,7 @@ public class Memento {
    * @param r Das Raetsel, welches gespeichert werden soll.
    */
   public Memento (Raetsel r) {
-    this.zustand = new RaetselZustand(r, true);
+    this.zustand = new RaetselZustand(r);
   }
   
   public RaetselZustand gibSicherung() {
@@ -33,7 +33,7 @@ public class Memento {
     this.zustand = null;
   }
   
-  public void erstelleMementoDatei(Raetsel r) {
+  public boolean erstelleMementoDatei(Raetsel r) {
     try {
       fw = new FileWriter("Sicherung.txt");
       fw.write(r.gibName());
@@ -52,5 +52,6 @@ public class Memento {
         }
       }
     }
+    return true;
   }
 }

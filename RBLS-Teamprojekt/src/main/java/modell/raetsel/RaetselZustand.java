@@ -17,13 +17,12 @@ public class RaetselZustand {
    * Ein Objekt, welches den aktuellen Zustand des Rätsels enthält.
    * @param r Ein Rätselobjekt.
    * @param stufe Die zum Raetsel gehoerige Stufe.
-   * @param geloest True, wenn das Raetsel erfolgreich geloest wurde.
    */
-  public RaetselZustand(Raetsel r, boolean geloest) {
+  public RaetselZustand(Raetsel r) {
     this.raetsel = r;
     this.stufe = r.gibStufe();
     this.raetselname = r.gibName();
-    this.geloest = geloest;
+    this.geloest = true;
   }
   
   public int gibStufe() {
