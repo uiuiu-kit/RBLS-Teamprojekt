@@ -63,7 +63,7 @@ public class Fassade {
     return this.raetsel.gibAtomareAussage();
   }
 
-//zum Testen benoetigt
+  //zum Testen benoetigt
   public String gibRaetselString() {
     aktualisiere();
     return this.raetsel.gibName();
