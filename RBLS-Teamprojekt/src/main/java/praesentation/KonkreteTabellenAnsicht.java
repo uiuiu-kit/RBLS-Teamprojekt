@@ -17,9 +17,9 @@ import praesentation.tabelle.ZellenStatus;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
- * Grafische Ansicht einer Wahrheitstabelle. Über das
+ * Grafische Ansicht einer Wahrheitstabelle. Ãœber das
  * Befehlsmuster werden der Wahrheitstabellensteuerung Aktionen mitgeteilt.
- * Außerdem wird die Ansicht einer Zelle mit den Informationen der
+ * AuÃŸerdem wird die Ansicht einer Zelle mit den Informationen der
  * Modell-Fassade aktuell gehalten.
  * @author Nick
  */
@@ -28,7 +28,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private WahrheitstabellenSteuerungen strg;
   private PraesentationFassade modell;
   private JTable tabelle;
-  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp Fülle<br />Tabelle</html>", 5);
+  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp FÃ¼lle<br />Tabelle</html>", 5);
   private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
   private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 6);
   private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 6);
@@ -177,13 +177,15 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       klickeFormel(j);
       return;
     }
-    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
+    if (i >= 0) {
+      ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
+    }
   }
   
   private void klickeFormel(int spalte) {
     strg.befehl("FormelEingeben(" + spalte + ")");
     ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
-    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte); 
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte);
   }
   
   private void fuegeSpalteHinzu() {
