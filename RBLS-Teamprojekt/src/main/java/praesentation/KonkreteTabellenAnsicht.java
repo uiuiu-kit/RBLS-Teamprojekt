@@ -263,7 +263,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void klickeFormel(int spalte) {
-    //strg.befehl("FormelEingeben(" + zeile + ")");  //TODO Kommentar entfernen
+    strg.befehl("FormelEingeben(" + spalte + ")");  //TODO Kommentar entfernen
     ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte); 
   }
