@@ -22,7 +22,7 @@ public class PraesentationFassade {
   private Raetsel raetsel;
   private Tabelle tabelle;
   private int abgeschlosseneStufe;
-  private static SteuerungFassade steuFa;
+  private SteuerungFassade steuFa;
 
   protected PraesentationFassade(Raetselinterpret interpret, SteuerungFassade steuFa) {
     this.interpret = interpret;
