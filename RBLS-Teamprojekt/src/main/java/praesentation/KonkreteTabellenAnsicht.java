@@ -172,17 +172,19 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
     if (i > 0 && j >= 0) {
       strg.befehl("ZelleAendern(" + j + "," + i + ")");
-      if (inhalt[i][j].equals("wahr")) {   // TODO
+    /*  if (inhalt[i][j].equals("wahr")) {   // TODO
         inhalt[i][j] = "false";            //
       } else {                             //  KOMMT WEG SOBALD ZELLEÄNDERNBEFEHL GEHT
         inhalt[i][j] = "true";             //
-      }                                    // TODO 
+      }                                    // TODO */
       aktualisiere(new int[] {i, j});
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
       return;
     }
-    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
+    if (i >= 0) {
+      ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
+    }
   }
   
   private void klickeFormel(int spalte) {
