@@ -68,8 +68,8 @@ public class BackendTest {
   @Test
   public void ZelleInBlauOrangeAendernTest() {
     gibTabelle();
-    wts.befehl("ZelleInBlauOrangeAendern(2,2)");
-    System.out.println("ZelleInBlauOrangeAendern(1,3)");
+    wts.befehl("ZelleAendern(0,2)");
+    System.out.println("ZelleAendern(0,2)");
     gibTabelle();
   }
 
