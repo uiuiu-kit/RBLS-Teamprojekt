@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -27,7 +26,7 @@ public class AntwortFeld {
   private StufenRaetselFenster fenster;
 
   private List<String> antwortMoeglichkeiten;
-  private String text = "[Hier könnte Ihre Antwort stehen]"; //TODO Platzhalter
+  private String text = "[Antworttext]";
   private String loesung;
 
   /**

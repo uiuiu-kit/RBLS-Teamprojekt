@@ -11,7 +11,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
@@ -50,12 +49,11 @@ public class StufenRaetselFenster extends RaetselFenster {
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des aktiven Fensters
    * @param modell Praesentationsfassade zum Erhalten von Informationen des aktiven Raetsels
    */
-  public StufenRaetselFenster(Fensterverwaltung fensterverwaltung, Fassade modell, WahrheitstabellenSteuerungen wstrg) {
+  public StufenRaetselFenster(Fensterverwaltung fensterverwaltung,
+      Fassade modell, WahrheitstabellenSteuerungen wstrg) {
     this.fv = fensterverwaltung;
     this.modell = modell;
     this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
-    
-    // TODO BRAUCHT MODELL UND STEUERUNG
     this.name = modell.gibAktivenRaetselnamen();
     this.frage = modell.gibFragestellung();
     
@@ -112,7 +110,6 @@ public class StufenRaetselFenster extends RaetselFenster {
     
     //AntwortfeldPanel//
     JPanel antwortPanel = new JPanel();
-    //antwortAnsicht = new AntwortFeld(null,null,null,this).gibAnsicht();  ////TODO Platzhalter
     antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
         modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
     
@@ -172,7 +169,7 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
   
   public void schliesseRaetselAb() {
-    //TODO evtl Dialogfenster falls Tabelle noch nicht vollständig
+    //TODO evtl Dialogfenster, falls Tabelle noch nicht vollständig ausgefüllt ist
     weiter.setVisible(true);
   }
 

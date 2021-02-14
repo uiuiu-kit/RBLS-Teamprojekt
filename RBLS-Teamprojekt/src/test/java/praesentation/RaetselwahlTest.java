@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import modell.Fassade;
-import modell.raetsel.RaetselZustand;
-import modell.raetsel.Raetselinterpret;
 import org.junit.Test;
 import steuerung.Hauptsteuerung;
 

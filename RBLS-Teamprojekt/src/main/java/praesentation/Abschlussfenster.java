@@ -26,8 +26,8 @@ public class Abschlussfenster extends javax.swing.JFrame {
   private Schaltflaeche menue;
   private JLabel textLabel;
   private String[] texte = new String[] {
-    "Rätsel gelöst!", "Geschafft!", "[GENERISCHER ABSCHLUSSTEXT]", 
-      "du hast das Rätsel gelöst. Klasse.", "Richtig gelöst!"};
+    "Rätsel gelöst!", "Geschafft!", 
+      "Du hast das Rätsel gelöst. Klasse.", "Richtig gelöst!"};
 
   /**
    * Konstruktor.

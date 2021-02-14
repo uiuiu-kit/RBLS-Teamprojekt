@@ -132,7 +132,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
   }
 
   private void initTabelle() {
-    modell.erstelleRaetsel(aussagenListe);   // Verfügbar wenn ausführbar!!  //TODO Test
+    modell.erstelleRaetsel(aussagenListe);
     tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
   }
 

@@ -75,7 +75,7 @@ public class Fensterverwaltung {
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {
-    modell.setzeRaetsel(name);    //TODO braucht fertigen Raetselinterpreten
+    modell.setzeRaetsel(name);
     WahrheitstabellenSteuerungen wstrg;
     wstrg = strg.raetselFensterInit();
     wechseleFenster(new StufenRaetselFenster(this, modell, wstrg).ansicht, "RBLS");    

@@ -30,7 +30,6 @@ public class FormelAnsicht {
   private Schaltflaeche abbruch = new Schaltflaeche("Abbruch", 2);
   private Schaltflaeche entferne = new Schaltflaeche("Entferne", 3);
   
-  private String alteFormel;
   private String formel = "";
   
   private Schaltflaeche[] atomareAussagen;
@@ -48,6 +47,11 @@ public class FormelAnsicht {
   private ArrayList<Character> symbole = new ArrayList<Character>(
       Arrays.asList(new Character[] {'u', 'o', 'n', 'f',/* 'a',*/ 'x', '(', ')'}));
   
+  /**
+   * Erzeugt eine Ansicht für den Formeleditor als Fenster.
+   * @param aussagen atomare Aussagen, die als Schaltflächen verfügbar sein sollen
+   * @param strg Formeleditor zur Kommunikation
+   */
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {
     this.strg = strg;
     JPanel aussagenPanel = new JPanel();
@@ -241,7 +245,7 @@ public class FormelAnsicht {
     if (strg.bestaetige()) {
       ansicht.dispose();
     } else {
-      //TODO evtl Dialogfenster (?)
+      //TODO evtl Dialogfenster, falls Antwort nicht korrekt ist
     }
   }
   
