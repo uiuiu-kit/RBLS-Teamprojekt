@@ -253,6 +253,11 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
 
   private void fuelleAus() {
     strg.befehl("FuelleTabelle");
+    for (int i = modell.gibAtomareAussage().size() - 1; i < spaltenzahl; i++) {
+      for (int j = 1; j < zeilenzahl; j++) {
+        aktualisiere(new int[] { j, i });
+      }
+    }
   }
 
   /**
