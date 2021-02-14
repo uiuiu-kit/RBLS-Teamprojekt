@@ -65,7 +65,7 @@ public class WahrheitstabellenSteuerungen {
       case "SpalteHinzufuegen":
         new SpalteHinzufuegen(model);
         break;
-      case "ZelleInBlauOrangeAendern":
+      case "ZelleAendern":
         new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
             Integer.parseInt(parameter[1]) - 1);
         ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
