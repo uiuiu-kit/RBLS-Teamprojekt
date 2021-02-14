@@ -16,6 +16,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modell.PraesentationFassade;
+import praesentation.tabelle.FarbModell;
+import praesentation.tabelle.ZellenStatus;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
@@ -43,8 +45,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private enum Modus { standard,  entfernen, markieren
   }
   
-  private enum ZellenStatus { standard, wahr, falsch, markiert, tipp
-  }
+
   
   private Modus modus = Modus.standard;
   private int stufe = 4;
@@ -130,8 +131,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     for (int i = 0; i < wahrheitswerte.length; i++) {
       for (int j = 0; j < wahrheitswerte[0].length; j++) {
         wahrheitswerte[i][j] = modell.gibZellenWert(new int[] {i,j});
-        //TODO Platzhalter
-        //wahrheitswerte[i][j] = true;
         System.out.println("" + wahrheitswerte[i][j] + i + j);
       }
     }  
@@ -152,7 +151,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     FarbModell tm = new FarbModell(inhalt, inhalt[0]);
     tabelle.setModel((FarbModell) tm);
     for (int j = 0; j < spaltenzahl; j++) {
-      tabelle.getColumnModel().getColumn(j).setCellRenderer(new FarbRenderer());
+      tabelle.getColumnModel().getColumn(j).setCellRenderer(new praesentation.tabelle.FarbRenderer());
     }
     
     tabelle.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -164,6 +163,8 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       }
     });
     tabelle.setRowHeight((int) (tabelle.getRowHeight() * 1.5));
+    tabelle.setFocusable(false);
+    tabelle.setRowSelectionAllowed(false);
     
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
@@ -176,7 +177,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
   }
   
-  class FarbModell extends DefaultTableModel {
+/*  class FarbModell extends DefaultTableModel {
     ZellenStatus[][] status = new ZellenStatus[zeilenzahl][spaltenzahl];
     
     public FarbModell(String[][] inhalt, String[] inhalt2) {
@@ -201,9 +202,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     public ZellenStatus gibStatus(int i, int j) {
       return status[i][j];
     }
-  }
+  }*/
   
-  class FarbRenderer extends DefaultTableCellRenderer {
+/*  class FarbRenderer extends DefaultTableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(
         JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) {
@@ -226,7 +227,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       setHorizontalAlignment(javax.swing.JLabel.CENTER);
       return l;
     }
-  }
+  }*/
   
   private void klickeZelle(int i, int j) {
     if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
