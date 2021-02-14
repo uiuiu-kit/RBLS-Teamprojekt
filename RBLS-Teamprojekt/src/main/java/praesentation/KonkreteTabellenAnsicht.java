@@ -139,14 +139,14 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
         inhalt[i][j] = modell.gibZelle(new int[] {i,j});
-        //TODO Platzhalter
+       /* //TODO Platzhalter
         if (i > 0 && wahrheitswerte[i - 1][j]) {
           inhalt[i][j] = "wahr";
         } else if (i > 0 && wahrheitswerte[i - 1][j]) {
           inhalt[i][j] = "falsch";
         } else {
           //inhalt[i][j] = "" + j + "" + i;  //TODO
-        }
+        }*/
       }
     }
     
@@ -255,7 +255,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
         tabelle.getModel().setValueAt("falsch", i, j);
       }
-      //strg.befehl("ZelleAendern(" + i + "," + j + ")");  //TODO noch auskommentiert
+      strg.befehl("ZelleAendern(" + i + "," + j + ")");
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
       return;
@@ -264,15 +264,14 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void klickeFormel(int spalte) {
-    strg.befehl("FormelEingeben(" + spalte + ")");  //TODO Kommentar entfernen
+    strg.befehl("FormelEingeben(" + spalte + ")");
     ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte); 
   }
   
   private void fuegeSpalteHinzu() {
-    //spaltenzahl++;                             //TODO Platzhalter
-    spaltenzahl = modell.gibSpaltenAnz();    //TODO
-    strg.befehl("SpalteHinzufuegen");  //TODO Kommentarzeichen entfernen
+    spaltenzahl = modell.gibSpaltenAnz();
+    strg.befehl("SpalteHinzufuegen");
     tabelle.setVisible(false);
     initTabelle();
     tabelle.setVisible(true);
@@ -281,8 +280,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   
   private void entferneSpalte(int j) {
     strg.befehl("SpalteEntfernen(" + j + ")");
-    //spaltenzahl--;                             //TODO Platzhalter
-    spaltenzahl = modell.gibSpaltenAnz();    //TODO
+    spaltenzahl = modell.gibSpaltenAnz();
     tabelle.setVisible(false);
     initTabelle();
     tabelle.setVisible(true);
