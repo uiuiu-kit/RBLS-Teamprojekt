@@ -40,14 +40,18 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   
   private enum Modus { standard,  entfernen, markieren
   }
-  
 
-  
   private Modus modus = Modus.standard;
   private int stufe = 4;
   private JPanel panel;
   private JPanel tabellenRahmen = new JPanel();
 
+  /**
+   * Erstellt eine Wahrheitstabelle mit den Daten aus der Praesentationsfassade und
+   * initialisiert die Schaltflaechen und die JTable.
+   * @param modell Praesentationsfassade mit den Daten
+   * @param strg Wahrheitstabellensteuerung fuer Weitergabe der Befehle
+   */
   public KonkreteTabellenAnsicht(PraesentationFassade modell, WahrheitstabellenSteuerungen strg) {
     this.modell = modell;
     this.strg = strg;
@@ -55,11 +59,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void init() {
-
-    //TODO unkommentieren wenn fertig
     zeilenzahl = modell.gibZeilenAnz();
     spaltenzahl = modell.gibSpaltenAnz();
-    //stufe = modell.gibAktuelleStufe();
+    //stufe = modell.gibAktuelleStufe();  //TODO unkommentieren!
     markierteZeilen = new boolean[zeilenzahl];
     Arrays.fill(markierteZeilen, false);
     initTabelle();
@@ -69,7 +71,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     schaltflaechenPanel.setLayout(new BoxLayout(schaltflaechenPanel, BoxLayout.Y_AXIS));
     schaltflaechenPanel.setBackground(Color.WHITE);
     schaltflaechenPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-    
     mehrSpalten.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         fuegeSpalteHinzu();
@@ -141,13 +142,13 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
       }
     }
-    
     //JTable//
     tabelle = new JTable(inhalt, inhalt[0]);
     FarbModell tm = new FarbModell(inhalt, inhalt[0]);
     tabelle.setModel((FarbModell) tm);
     for (int j = 0; j < spaltenzahl; j++) {
-      tabelle.getColumnModel().getColumn(j).setCellRenderer(new praesentation.tabelle.FarbRenderer());
+      tabelle.getColumnModel().getColumn(j).setCellRenderer(
+          new praesentation.tabelle.FarbRenderer());
     }
     
     tabelle.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -260,6 +261,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
   }
   
+  /**
+   * Holt Position einer fehlerhaft ausgefuellten Zelle aus der Steuerung und markiert diese.
+   */
   public void zeigeTippAn() {
     int[] tipp = strg.gibTip();
     assert tipp.length == 2;
@@ -271,6 +275,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     strg.befehl("FuelleTabelle");
   }
   
+  /**
+   * Aktualisiert den Wert einer Zelle mit den Daten der Praesentationsfassade.
+   */
   public void aktualisiere(int[] zelle) {
     assert zelle.length == 2;
     inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
