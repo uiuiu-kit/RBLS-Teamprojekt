@@ -22,7 +22,6 @@ import modell.formel.Formel;
  */
 public class Raetselinterpret {
 
-  public static final String PATH = "/src/main/resources/Raetsel";
   public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rätsel gefunden";
   public static final String FREIES_RAETSEL_NAME = "Freies Rätsel";
   public static final int NUMBER_OF_ROWS = 8;
@@ -35,8 +34,23 @@ public class Raetselinterpret {
    * @param datName Name der gesuchten Datei.
    * @return String mit dem Inhalt der Textdatei.
    */
-  private String ladeDatei(String datName) {
-    File file = new File(datName);
+  public String ladeDatei(String datName) {
+    File path = new File("src/main/resources/Raetsel/Stufe 1");
+    File[] files = path.listFiles();
+    if (files != null) { 
+      for (int i = 0; i < files.length; i++) {
+        System.out.print(files[i]);
+        if (files[i].isDirectory()) {
+          System.out.print(" (Ordner)\n");
+        } else {
+          System.out.println(" (Datei)\n");
+        }
+      }
+      
+    }
+    return "mau";
+    
+    /*File file = new File(datName);
     String output = "";
     if (!file.canRead() || !file.isFile()) {
       return null;
@@ -59,12 +73,12 @@ public class Raetselinterpret {
         }
       }   
     }
-    return output;
+    return output;*/
   }
   
-  private List<String> liesDateinamen() {
+  public List<String> liesDateinamen() {
     try {
-      return Files.readAllLines(FileSystems.getDefault().getPath(PATH), 
+      return Files.readAllLines(FileSystems.getDefault().getPath("src/main/resources/Raetsel"), 
           StandardCharsets.UTF_8);
     } catch (IOException e) {
       List<String> output = new ArrayList<String>();
@@ -100,6 +114,34 @@ public class Raetselinterpret {
    * @return Liste aller Raetselnamen, die die genannte Stufe erfüllen.
    */
   public List<String> liesOrdner(int stufe) {
+    File path = null;
+    switch (stufe) {
+    case 1: path = new File("src/main/resources/Raetsel/Stufe 1");
+      break;
+    case 2: path = new File("src/main/resources/Raetsel/Stufe 2");
+      break;
+   case 3: path = new File("src/main/resources/Raetsel/Stufe 3");
+      break;
+    case 4: path = new File("src/main/resources/Raetsel/Stufe 4");
+      default: path = null;
+    }
+    
+    //File path = new File("src/main/resources/Raetsel");
+    File[] files = path.listFiles();
+    if (files != null) { 
+      for (int i = 0; i < files.length; i++) {
+        System.out.print(files[i]);
+        if (files[i].isDirectory()) {
+          System.out.print(" (Ordner)\n");
+        } else {
+          System.out.println(" (Datei)\n");
+        }
+      }
+      
+    }
+    return "mau";
+    
+    /*
     List<String> output = new ArrayList<String>();   
     for (String name : liesDateinamen()) {
       String[] temp = extrahiere(ladeDatei(name));
@@ -107,7 +149,7 @@ public class Raetselinterpret {
         output.add(name);
       }
     }
-    return output;
+    return output;*/
   }
   
   /**Sucht die angegebene Textdatei des Reatsels und liest deren Daten aus, 

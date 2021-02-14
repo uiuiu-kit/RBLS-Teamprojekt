@@ -124,6 +124,16 @@ public class SteuerungsFassadeTest {
         int[] a = {z, s};
         testen.setzeZelleWW(a, true);
         temp = temp + " / " + testen.gibZelleWW(a);
+        testen.setzeZelleWW(a, false);
+      }
+      System.out.println(temp);
+    } 
+    
+    for (int z = 1; z < 9; z++) {
+      String temp = "";
+      for (int s = 0; s <= 2; s++) {
+        int[] a = {z, s};
+        temp = temp + " / " + testen.gibZelleWW(a);
       }
       System.out.println(temp);
     } 
