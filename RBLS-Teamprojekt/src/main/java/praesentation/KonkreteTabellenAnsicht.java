@@ -172,11 +172,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
     if (i > 0 && j >= 0) {
       strg.befehl("ZelleAendern(" + j + "," + i + ")");
-      if (inhalt[i][j].equals("wahr")) {   // TODO
-        inhalt[i][j] = "false";            //
-      } else {                             //  KOMMT WEG SOBALD ZELLEÄNDERNBEFEHL GEHT
-        inhalt[i][j] = "true";             //
-      }                                    // TODO 
       aktualisiere(new int[] {i, j});
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
@@ -261,6 +256,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     assert zelle.length == 2;
     int i = zelle[0];
     int j = zelle[1];
+    inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     if (i > 0 && j >= 0) {
       if (inhalt[i][j].equals("true")) {
         inhalt[i][j] = "wahr";
@@ -273,8 +269,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
         }
       } 
-    } else if (i >= 0 && j >= 0) {
-      inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     }
     tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j); 
