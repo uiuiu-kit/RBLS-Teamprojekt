@@ -17,10 +17,10 @@ import praesentation.tabelle.ZellenStatus;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
- * Grafische Ansicht einer Wahrheitstabelle. Über das
- * Befehlsmuster werden der Wahrheitstabellensteuerung Aktionen mitgeteilt.
- * Außerdem wird die Ansicht einer Zelle mit den Informationen der
- * Modell-Fassade aktuell gehalten.
+ * Grafische Ansicht einer Wahrheitstabelle. Über das Befehlsmuster werden der
+ * Wahrheitstabellensteuerung Aktionen mitgeteilt. Außerdem wird die Ansicht
+ * einer Zelle mit den Informationen der Modell-Fassade aktuell gehalten.
+ * 
  * @author Nick
  */
 public class KonkreteTabellenAnsicht extends TabellenAnsicht {
@@ -36,8 +36,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private int zeilenzahl = 9;
   private int spaltenzahl = 5;
   private boolean[] markierteZeilen;
-  
-  private enum Modus { standard,  entfernen, markieren
+
+  private enum Modus {
+    standard, entfernen, markieren
   }
 
   private Modus modus = Modus.standard;
@@ -46,26 +47,27 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private JPanel tabellenRahmen = new JPanel();
 
   /**
-   * Erstellt eine Wahrheitstabelle mit den Daten aus der Praesentationsfassade und
-   * initialisiert die Schaltflaechen und die JTable.
+   * Erstellt eine Wahrheitstabelle mit den Daten aus der Praesentationsfassade
+   * und initialisiert die Schaltflaechen und die JTable.
+   * 
    * @param modell Praesentationsfassade mit den Daten
-   * @param strg Wahrheitstabellensteuerung fuer Weitergabe der Befehle
+   * @param strg   Wahrheitstabellensteuerung fuer Weitergabe der Befehle
    */
   public KonkreteTabellenAnsicht(Fassade modell, WahrheitstabellenSteuerungen strg) {
     this.modell = modell;
     this.strg = strg;
     init();
   }
-  
+
   private void init() {
     zeilenzahl = modell.gibZeilenAnz();
     spaltenzahl = modell.gibSpaltenAnz();
-    //stufe = modell.gibAktuelleStufe();  //TODO unkommentieren!
+    // stufe = modell.gibAktuelleStufe(); //TODO unkommentieren!
     markierteZeilen = new boolean[zeilenzahl];
     Arrays.fill(markierteZeilen, false);
     initTabelle();
-    
-    //SchaltflaechenPanel//
+
+    // SchaltflaechenPanel//
     JPanel schaltflaechenPanel = new JPanel();
     schaltflaechenPanel.setLayout(new BoxLayout(schaltflaechenPanel, BoxLayout.Y_AXIS));
     schaltflaechenPanel.setBackground(Color.WHITE);
@@ -75,7 +77,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         fuegeSpalteHinzu();
       }
     });
-    if (stufe == 2 || stufe == 4) { 
+    if (stufe == 2 || stufe == 4) {
       schaltflaechenPanel.add(mehrSpalten);
     }
     schaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -84,7 +86,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         wechseleModus(wenigerSpalten, Modus.entfernen);
       }
     });
-    if (stufe == 2 || stufe == 4) { 
+    if (stufe == 2 || stufe == 4) {
       schaltflaechenPanel.add(wenigerSpalten);
     }
     schaltflaechenPanel.add(Box.createRigidArea(new Dimension(0, 5)));
@@ -94,39 +96,39 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       }
     });
     schaltflaechenPanel.add(zeileMarkieren);
-    schaltflaechenPanel.add(Box.createRigidArea(
-        new Dimension(0, (int) (mehrSpalten.getMaximumSize().height * 1))));
+    schaltflaechenPanel.add(
+        Box.createRigidArea(new Dimension(0, (int) (mehrSpalten.getMaximumSize().height * 1))));
     ausfuellen.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         fuelleAus();
       }
     });
-    if (stufe != 3) { 
+    if (stufe != 3) {
       schaltflaechenPanel.add(ausfuellen);
     }
-    
-    //Tabellenrahmen//
+
+    // Tabellenrahmen//
     tabellenRahmen.setLayout(new BorderLayout());
     tabellenRahmen.add(tabelle, BorderLayout.CENTER);
     tabellenRahmen.setBackground(Color.GRAY);
     tabellenRahmen.setBorder(BorderFactory.createEmptyBorder(1, 1, 0, 0));
-    
-    //Panel//
+
+    // Panel//
     panel = new JPanel();
     panel.setLayout(new BorderLayout());
     panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     panel.add(tabellenRahmen, BorderLayout.CENTER);
     panel.add(schaltflaechenPanel, BorderLayout.EAST);
     panel.setBackground(Color.WHITE);
-    tabelle.setFillsViewportHeight(true);    
+    tabelle.setFillsViewportHeight(true);
   }
-  
+
   private void initTabelle() {
-    //Modelldaten//
+    // Modelldaten//
     inhalt = new String[zeilenzahl][spaltenzahl];
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
-        inhalt[i][j] = modell.gibZelle(new int[] {i,j});
+        inhalt[i][j] = modell.gibZelle(new int[] { i, j });
         if (i > 0 && inhalt[i][j].equals("true")) {
           inhalt[i][j] = "wahr";
         } else if (i > 0 && inhalt[i][j].equals("false")) {
@@ -134,15 +136,15 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
       }
     }
-    //JTable//
+    // JTable//
     tabelle = new JTable(inhalt, inhalt[0]);
     FarbModell tm = new FarbModell(inhalt, inhalt[0]);
     tabelle.setModel((FarbModell) tm);
     for (int j = 0; j < spaltenzahl; j++) {
-      tabelle.getColumnModel().getColumn(j).setCellRenderer(
-          new praesentation.tabelle.FarbRenderer());
+      tabelle.getColumnModel().getColumn(j)
+          .setCellRenderer(new praesentation.tabelle.FarbRenderer());
     }
-    
+
     tabelle.addMouseListener(new java.awt.event.MouseAdapter() {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -156,11 +158,11 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     tabelle.setRowSelectionAllowed(false);
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
-        aktualisiere(new int[] {i, j});
-      }  
+        aktualisiere(new int[] { i, j });
+      }
     }
   }
-  
+
   private void klickeZelle(int i, int j) {
     if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
       entferneSpalte(j);
@@ -172,7 +174,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
     if (i > 0 && j >= 0) {
       strg.befehl("ZelleAendern(" + j + "," + i + ")");
-      aktualisiere(new int[] {i, j});
+      aktualisiere(new int[] { i, j });
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
       return;
@@ -181,22 +183,23 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
     }
   }
-  
+
   private void klickeFormel(int spalte) {
     strg.befehl("FormelEingeben(" + spalte + ")");
     ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte);
+    aktualisiere(new int[] { 0, spalte });
   }
-  
+
   private void fuegeSpalteHinzu() {
-    spaltenzahl = modell.gibSpaltenAnz();
     strg.befehl("SpalteHinzufuegen");
+    spaltenzahl = modell.gibSpaltenAnz();
     tabelle.setVisible(false);
     initTabelle();
     tabelle.setVisible(true);
     tabellenRahmen.add(tabelle);
   }
-  
+
   private void entferneSpalte(int j) {
     strg.befehl("SpalteEntfernen(" + j + ")");
     spaltenzahl = modell.gibSpaltenAnz();
@@ -206,7 +209,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     tabellenRahmen.add(tabelle);
     wechseleModus(wenigerSpalten, Modus.entfernen);
   }
-  
+
   private void markiereZeile(int i) {
     markierteZeilen[i] = !markierteZeilen[i];
     for (int j = 0; j < spaltenzahl; j++) {
@@ -224,7 +227,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     }
     wechseleModus(zeileMarkieren, Modus.markieren);
   }
-  
+
   private void wechseleModus(Schaltflaeche s, Modus m) {
     if (modus == Modus.standard) {
       modus = m;
@@ -236,9 +239,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       s.setForeground(Color.DARK_GRAY);
     }
   }
-  
+
   /**
-   * Holt Position einer fehlerhaft ausgefuellten Zelle aus der Steuerung und markiert diese.
+   * Holt Position einer fehlerhaft ausgefuellten Zelle aus der Steuerung und
+   * markiert diese.
    */
   public void zeigeTippAn() {
     int[] tipp = strg.gibTip();
@@ -246,11 +250,11 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     ((FarbModell) tabelle.getModel()).setzeStatus(tipp[0], tipp[1], ZellenStatus.tipp);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(tipp[0], tipp[1]);
   }
-  
+
   private void fuelleAus() {
     strg.befehl("FuelleTabelle");
   }
-  
+
   /**
    * Aktualisiert den Wert einer Zelle mit den Daten der Praesentationsfassade.
    */
@@ -270,14 +274,14 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
         }
-      } 
+      }
     }
     tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
-    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j); 
+    ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
   }
-  
+
   public JPanel gibAnsicht() {
     return panel;
   }
-  
+
 }
