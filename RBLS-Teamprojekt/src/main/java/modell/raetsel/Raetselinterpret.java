@@ -25,10 +25,6 @@ public class Raetselinterpret {
   
   private String[] extrahiere(String input) {
     String[] output = input.split("##");
-    
-    for (String temp: output) {
-      System.out.println(temp);
-    }
     return output;
   }
   
