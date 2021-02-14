@@ -26,7 +26,7 @@ public class BackendTest {
     wts = new WahrheitstabellenSteuerungen(sf);
   }
 
-  @Ignore
+  @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
     System.out.println("AufbauTabelle");
@@ -34,21 +34,21 @@ public class BackendTest {
     gibTabelle();
   }
 
-  @Ignore
+  @Test
   public void formelEingebenTest() {
     wts.befehl("FormelEingeben(1)");
     System.out.println("FormelEingeben");
     System.out.println(sf.gibFormelText(1));
   }
 
-  @Ignore
+  @Test
   public void fuelleTabelleTest() {
     wts.befehl("FuelleTabelle");
     System.out.println("FuelleTabelle");
     gibTabelle();
   }
 
-  @Ignore
+  @Test
   public void spalteEntfernenTest() {
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteHinzufuegen");
@@ -57,7 +57,7 @@ public class BackendTest {
     gibTabelle();
   }
 
-  @Ignore
+  @Test
   public void spalteHinzufügenTest() {
     wts.befehl("SpalteHinzufuegen");
     System.out.println("SpalteHinzufuegen");
