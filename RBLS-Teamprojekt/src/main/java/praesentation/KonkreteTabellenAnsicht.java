@@ -270,7 +270,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   
   private void fuegeSpalteHinzu() {
     spaltenzahl++;
-    //strg.befehl("SpalteHinzufuegen");  //TODO Kommentarzeichen entfernen
+    strg.befehl("SpalteHinzufuegen");  //TODO Kommentarzeichen entfernen
     tabelle.setVisible(false);
     initTabelle();
     tabelle.setVisible(true);
@@ -278,7 +278,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
   
   private void entferneSpalte(int j) {
-    //strg.befehl("SpalteEntfernen(" + j + ")");  //TODO Kommentarzeichen entfernen
+    strg.befehl("SpalteEntfernen(" + j + ")");  //TODO Kommentarzeichen entfernen
     spaltenzahl--;
     tabelle.setVisible(false);
     initTabelle();
