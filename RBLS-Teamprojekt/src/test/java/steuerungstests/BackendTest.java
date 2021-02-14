@@ -26,28 +26,29 @@ public class BackendTest {
     wts = new WahrheitstabellenSteuerungen(sf);
   }
 
-  @Test
+  @Ignore
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
     System.out.println("AufbauTabelle");
+    System.out.println(sf.gibAtomareAussage().size());
     gibTabelle();
   }
 
-  @Test
+  @Ignore
   public void formelEingebenTest() {
     wts.befehl("FormelEingeben(1)");
     System.out.println("FormelEingeben");
     System.out.println(sf.gibFormelText(1));
   }
 
-  @Test
+  @Ignore
   public void fuelleTabelleTest() {
     wts.befehl("FuelleTabelle");
     System.out.println("FuelleTabelle");
     gibTabelle();
   }
 
-  @Test
+  @Ignore
   public void spalteEntfernenTest() {
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteHinzufuegen");
@@ -56,7 +57,7 @@ public class BackendTest {
     gibTabelle();
   }
 
-  @Test
+  @Ignore
   public void spalteHinzufügenTest() {
     wts.befehl("SpalteHinzufuegen");
     System.out.println("SpalteHinzufuegen");
@@ -74,10 +75,10 @@ public class BackendTest {
   private void gibTabelle() {
     String output = "";
     int[] koordinate = new int[2];
-    for (int i = 1; i < sf.gibSpaltenAnz(); i++) {
+    for (int i = 0; i < sf.gibSpaltenAnz(); i++) {
       output = output + sf.gibFormel(i).gibStringRep();
     }
-    for (int i = 0; i < sf.gibZeilenAnz(); i++) {
+    for (int i = 1; i < sf.gibZeilenAnz(); i++) {
       output = output + "\n";
       koordinate[0] = i;
       for (int j = 0; j < sf.gibSpaltenAnz(); j++) {

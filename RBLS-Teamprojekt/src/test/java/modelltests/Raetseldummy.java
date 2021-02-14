@@ -15,7 +15,7 @@ public class Raetseldummy extends Raetsel {
       String[] antwortMöglichkeiten, int loesung, String antworttext, List<Formel> formeln) {
     super(
         "Raetseldummy", 
-        1, 
+        2, 
         new ArrayList<String>(), 
         "Test", 
         new ArrayList<String>(), 
