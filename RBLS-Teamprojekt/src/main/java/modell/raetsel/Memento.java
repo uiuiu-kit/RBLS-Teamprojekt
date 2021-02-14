@@ -33,6 +33,8 @@ public class Memento {
   }
   
   public RaetselZustand gibSicherung() {
+    this.liesMementoDatei();
+    //TODO umändern zu Rückgabewett Liste<Raetselzustand>
     return this.zustand;
   }
   
