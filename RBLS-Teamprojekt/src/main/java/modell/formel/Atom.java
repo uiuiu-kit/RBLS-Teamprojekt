@@ -1,10 +1,10 @@
 package modell.formel;
 
-/** Das Atom enthaelt den Wahrheitswert der Atomaren Aussage 
+/** Das Atom enthaelt den Wahrheitswert der atomaren Aussage 
  * und den Namen des repraesentierten Subjekts. 
  * Es erbt direkt von der Formel, ist also kein Konnektor 
  * und stellt damit das Ende jeder auswerten()-Kette dar.
- * Es wird als Groﬂbuchstabe in der Formel dargestellt.
+ * Es wird als Gro√übuchstabe in der Formel dargestellt.
  * @author Flo
  *
  */
