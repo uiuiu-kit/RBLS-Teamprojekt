@@ -53,16 +53,13 @@ public class Raetselinterpret {
     }
     File[] files = path.listFiles();
     if (files != null) { 
-      for (int i = 0; i < files.length; i++) {//TODO
-        //System.out.print(files[i]);
+      for (int i = 0; i < files.length; i++) 
         if (files[i].isDirectory()) {
-          //System.out.print(" (Ordner)\n");
         } else {
           output.add(files[i]);
-          //System.out.println(" (Datei)\n");
+          
         }
       }
-    }
     return output;
   }
   
