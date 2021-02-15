@@ -135,7 +135,7 @@ public class Raetselinterpret {
   public Raetsel erstelleFR(List<String> atomA) {
     return new Raetsel(
         FREIES_RAETSEL_NAME,
-        0, 
+        4,
         atomA, 
         null, 
         null, 

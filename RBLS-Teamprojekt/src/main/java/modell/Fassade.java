@@ -1,12 +1,9 @@
 package modell;
 
 import java.util.List;
-import modell.formel.Atom;
 import modell.formel.Formel;
-import modell.formel.Und;
 import modell.raetsel.Memento;
 import modell.raetsel.Raetsel;
-import modell.raetsel.RaetselZustand;
 import modell.raetsel.Raetselinterpret;
 import modell.tabelle.Tabelle;
 
@@ -128,10 +125,12 @@ public class Fassade {
     aktualisiere();
     return tabelle.gibZelle(zelle);
   }
+  
 
   public void erstelleRaetsel(List<String> atome) {
     aktualisiere();
-    this.interpret.erstelleFR(atome);
+    System.out.println("erstelleRaetsel(Fassade) aufgerufen!");
+    raetsel = this.interpret.erstelleFR(atome);
   }
 
   /**
@@ -214,7 +213,7 @@ public class Fassade {
     this.interpret = test;
     setzeRaetsel("Raetseldummy");
   }
-
+/*
   public Raetsel gibRaetsel() {
     return raetsel;
   }
@@ -222,7 +221,7 @@ public class Fassade {
   public Tabelle gibTabelle() {
     return tabelle;
   }
-  
+  */
   public List<String> gibGeloesteRaetsel(int stufe) {
     this.memento = new Memento();
     return memento.gibGeloesteRaetsel();
@@ -244,5 +243,4 @@ public class Fassade {
     this.aktualisiere();
     memento.erstelleMementoDatei(raetsel);
   }
-
 }
