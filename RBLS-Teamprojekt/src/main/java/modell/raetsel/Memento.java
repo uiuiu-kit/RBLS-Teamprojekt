@@ -22,6 +22,12 @@ public class Memento {
   private List<String> memento;
   private int abschlussStufe = 0;
 
+  
+  
+  public Memento() {
+    liesMementoDatei();
+  }
+  
   public int gibStufenSicherung() {
     this.liesMementoDatei();
     return this.abschlussStufe;
@@ -104,8 +110,6 @@ public class Memento {
    * Erstellt außerdem eine Liste nur mit den Namen der bisher geloesten Raetsel.
    */
   private void liesMementoDatei() {
-    // memento = new ArrayList<String>(); unnötig,
-    // da memento 2 Zeilen weiter gleich wieder gesetzt wird.
     try {
       memento = extrahiere(Files.readAllLines(
           FileSystems.getDefault().getPath("Resources/Sicherung/Sicherung.txt"),
@@ -113,15 +117,11 @@ public class Memento {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    this.abschlussStufe = Integer.parseInt(memento.get(0));
-    // namenGeloesterRaetsel = new ArrayList<String>();
+    if (memento != null && !memento.isEmpty()) {
+      this.abschlussStufe = Integer.parseInt(memento.get(0));
+    }
     memento.remove(1);
     memento.remove(0);
-    // if (memento.size() > 3) {
-    // for (int i = 3; i <= memento.size(); i++) { //Liste nur mit den Raetselnamen
-    // this.namenGeloesterRaetsel.add(memento.get(i));
-    // }
-    // }
   }
 
   private List<String> extrahiere(List<String> input) {
