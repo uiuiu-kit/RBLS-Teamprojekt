@@ -10,8 +10,8 @@ import modell.Fassade;
 import steuerung.Hauptsteuerung;
 import steuerung.WahrheitstabellenSteuerungen;
 
-/**Startet zu Beginn das Hauptmenü, wechselt die sichtbare Ansicht
- * und stößt das Beenden des Programms durch die Hauptsteuerung an.
+/**Startet zu Beginn das Hauptmenï¿½, wechselt die sichtbare Ansicht
+ * und stï¿½ï¿½t das Beenden des Programms durch die Hauptsteuerung an.
  * @author Nick
  */
 public class Fensterverwaltung {
@@ -60,7 +60,7 @@ public class Fensterverwaltung {
    * @param stufe Stufe der Raetsel
    */
   public void oeffneRaetselwahl(int stufe) {
-    wechseleFenster(new Raetselwahl(this, modell.gibRaetselListe(stufe)), "Rätselwahl");
+    wechseleFenster(new Raetselwahl(this, modell.gibRaetselListe(stufe), modell.gibGeloesteRaetsel(stufe)), "Rï¿½tselwahl");
   }
 
   /**
@@ -88,8 +88,12 @@ public class Fensterverwaltung {
     List<String> liste = modell.gibRaetselListe(modell.gibStufe());
     for (Iterator<String> i = liste.iterator(); i.hasNext(); ) {
       String raetsel = i.next();
-      starteRaetsel(raetsel);
-      return;
+      if (modell.gibGeloesteRaetsel(modell.gibStufe()).contains(raetsel) == false) {
+        starteRaetsel(raetsel);
+        return;
+      } else {
+        oeffneRaetselwahl(modell.gibStufe());
+      }
     }
   }
 

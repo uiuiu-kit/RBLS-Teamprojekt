@@ -15,32 +15,34 @@ public class RaetselwahlTest {
             Fassade.gibSteuFa());
     fv.init();
     List<String> raetsel = new ArrayList<String>();
+    List<String> geloest = new ArrayList<String>();
     
     /*RaetselZustand r1 = new RaetselZustand();
     r1.geloest = false;
-    r1.raetselname = "Rätsel 1";
+    r1.raetselname = "Rï¿½tsel 1";
     raetsel.add(r1.raetselname);
     RaetselZustand r2 = new RaetselZustand();
     r2.geloest = true;
-    r2.raetselname = "Rätsel 2";
+    r2.raetselname = "Rï¿½tsel 2";
     raetsel.add(r2.raetselname);
     RaetselZustand r3 = new RaetselZustand();
     r3.geloest = true;
-    r3.raetselname = "Rätsel 3";
+    r3.raetselname = "Rï¿½tsel 3";
     raetsel.add(r3.raetselname);
     RaetselZustand r4 = new RaetselZustand();
     r4.geloest = false;
-    r4.raetselname = "Rätsel 4";
+    r4.raetselname = "Rï¿½tsel 4";
     raetsel.add(r4.raetselname);
     RaetselZustand r5 = new RaetselZustand();
     r5.geloest = false;
-    r5.raetselname = "Rätsel 5";
+    r5.raetselname = "Rï¿½tsel 5";
     raetsel.add(r5.raetselname);*/
-    raetsel.add("Platzhalterrätsel 1");
-    raetsel.add("Platzhalterrätsel 2");
+    raetsel.add("Platzhalterrï¿½tsel 1");
+    raetsel.add("Platzhalterrï¿½tsel 2");
+    geloest.add("Platzhalterrï¿½tsel 1");
     
-    JFrame aktivesFenster = new Raetselwahl(fv, raetsel);
-    aktivesFenster.setTitle("Rätselwahl");
+    JFrame aktivesFenster = new Raetselwahl(fv, raetsel, geloest);
+    aktivesFenster.setTitle("Rï¿½tselwahl");
     aktivesFenster.setSize(1000, 620);
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
