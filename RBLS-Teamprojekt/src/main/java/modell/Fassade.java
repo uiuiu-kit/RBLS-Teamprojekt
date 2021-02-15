@@ -21,10 +21,9 @@ public class Fassade {
 
   private static Fassade steuFa = null;
   private Raetselinterpret interpret;
-  private RaetselZustand raetselZustand;
   private Raetsel raetsel;
   private Tabelle tabelle;
-  private int abgeschlosseneStufe;
+  private Memento memento;
 
   /**
    * Einzelstueckmethode, die dafuer sorgt, dass die Klasse nur einmal erstellt,
@@ -39,18 +38,19 @@ public class Fassade {
     return steuFa;
   }
 
-  private void aktualisiere() { // Präs aktuallisieren.
+  private void aktualisiere() { // PrÃ¤s aktuallisieren.
 
   }
 
   /**
    * Initialisiert die Erstellung aller Modell-Objekte zu Beginn des Programms,
-   * die ohne weitere Eingaben des Benutzers erstellt werden können Diese sind der
+   * die ohne weitere Eingaben des Benutzers erstellt werden kÃ¶nnen Diese sind der
    * Raetselinterpret, Memento und die Praesentationsfassade.
    * 
    */
   public void init() {
     this.interpret = new Raetselinterpret();
+    this.memento = new Memento();
   }
 
   /**
@@ -71,7 +71,7 @@ public class Fassade {
 
   /**
    * Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem
-   * RInterpreten übergibt, der ein neues Raetselobjekt zurückgibt. Dieses wird
+   * RInterpreten Ã¼bergibt, der ein neues Raetselobjekt zurÃ¼ckgibt. Dieses wird
    * hier gesetzt und daraus eine neue Tabelle erzeugt.
    * 
    * @param raetselname Name des neuen Raetsels
@@ -83,7 +83,7 @@ public class Fassade {
   }
 
   /**
-   * Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.
+   * Gibt eine Liste aller Raetselnamen zurÃ¼ck, deren Stufe angefordert wurde.
    * 
    * @param i Raetselstufe, nach der gesucht wird.
    * @return Liste der Raetselnamen der entsprechenden Stufe.
@@ -96,11 +96,6 @@ public class Fassade {
   public String gibAktivenRaetselnamen() {
     aktualisiere();
     return raetsel.gibName();
-  }
-
-  protected void setzeAktivenZustand(RaetselZustand zustand) {
-    aktualisiere();
-    this.raetselZustand = zustand;
   }
 
   public String gibFragestellung() {
@@ -139,18 +134,8 @@ public class Fassade {
     this.interpret.erstelleFR(atome);
   }
 
-  public void setzeAbgeschlosseneStufe(int abgeschlosseneStufe) {
-    aktualisiere();
-    this.abgeschlosseneStufe = abgeschlosseneStufe;
-  }
-
-  public int gibAbgeschlosseneStufe() {
-    aktualisiere();
-    return this.abgeschlosseneStufe;
-  }
-
   /**
-   * Gibt eine Liste aller Formeln zurück, die in der Tabelle Verwendung finden.
+   * Gibt eine Liste aller Formeln zurÃ¼ck, die in der Tabelle Verwendung finden.
    * 
    * @return Liste der Formeln.
    */
@@ -199,12 +184,9 @@ public class Fassade {
    * 
    * @return Ein Memento-Objekt.
    */
-  public Memento fuehreSicherungAus() {
+  public void fuehreSicherungAus() {
     this.aktualisiere();
-    Memento memento = new Memento(raetsel);
-    setzeAbgeschlosseneStufe(memento.gibSicherung().gibStufe());
-    setzeAktivenZustand(memento.gibSicherung());
-    return memento;
+    memento.erstelleMementoDatei(raetsel);
   }
 
   public Formel gibFormel(int spalte) {
@@ -234,7 +216,7 @@ public class Fassade {
   }
 
   /**
-   * Klasse zur Initialisierung einer Testumgebung, benoetigt zum Test für
+   * Klasse zur Initialisierung einer Testumgebung, benoetigt zum Test fÃ¼r
    * Steuerung und Steuerungsfassade.
    * 
    * @param test Instanz des Testinterpreten.
@@ -252,7 +234,12 @@ public class Fassade {
     return tabelle;
   }
   
-  public List<String> gibGelösteRaetsel(int stufe) {
-    return null;
+  public List<String> gibGeloesteRaetsel(int stufe) {
+    return memento.gibGeloesteRaetsel();
+  }
+  
+  public int gibAbgeschlosseneStufe() {
+    aktualisiere();
+    return memento.gibStufenSicherung();
   }
 }

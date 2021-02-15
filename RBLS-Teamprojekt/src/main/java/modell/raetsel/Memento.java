@@ -19,57 +19,56 @@ import java.util.List;
  */
 public class Memento {
 
-  private Writer fw = null;
   private List<String> memento;
-  private RaetselZustand zustand;
   private int abschlussStufe = 0;
-
-  /**
-   * Konstruktor fuer ein Memento. Dieses speichert den aktuellen Spielstand, also
-   * welches Rätsel zuletzt geloest wurde.
-   * 
-   * @param r Das Raetsel, welches gespeichert werden soll.
-   */
-  public Memento(Raetsel r) {
-    this.zustand = new RaetselZustand(r);
-    erstelleMementoDatei(zustand.gibStufe(), zustand.gibRaetselname());
-  }
-
-  public RaetselZustand gibSicherung() {
-    this.liesMementoDatei();
-    // TODO umändern zu Rückgabewett Liste<Raetselzustand>
-    return this.zustand;
-  }
 
   public int gibStufenSicherung() {
     this.liesMementoDatei();
     return this.abschlussStufe;
   }
 
+  /** LÃ¶scht Daten von Memento: Ã¼berschreibt textdatei, resettet Memento.
+   * 
+   */
   public void loesche() {
-    this.zustand = null;
+    Writer fw = null;
+    try {
+      fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
+    } catch (IOException e) {
+      System.err.println("Sicherung konnte nicht gelÃ¶scht werden.");
+    } finally {
+      if (fw != null) {
+        try {
+          fw.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+    this.memento = new ArrayList<String>();
   }
 
   /**
    * Quelle: http://openbook.rheinwerk-verlag.de/javainsel9/
    * javainsel_17_001.htm#mj87f7ea8c7b8051417049399df2c5782a
    * 
-   * Erstellt eine Textdatei, welche den aktuellen Spielstand, sprich die höchste
+   * Erstellt eine Textdatei, welche den aktuellen Spielstand, sprich die hÃ¶chste
    * geloeste Stufe und den Raetselnamen enthaelt.
    * 
    * @param stufe Die Stufe des geloesten Raetsels.
    * @param name  Der Name des geloesten Raetsels.
    * @return True, wenn die Datei erfolgreich erstellt wurde.
    */
-  public boolean erstelleMementoDatei(int stufe, String name) {
+  public boolean erstelleMementoDatei(Raetsel raetsel) {
+    Writer fw = null;
     liesMementoDatei();
-    if (istNeu(name)) {
-      memento.add(name);
+    if (istNeu(raetsel.gibName())) {
+      memento.add(raetsel.gibName());
     }
     try {
       fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
-      if (stufe > this.abschlussStufe) {
-        fw.write(stufe + "\n");  
+      if (raetsel.gibStufe() > this.abschlussStufe) {
+        fw.write(raetsel.gibStufe() + "\n");  
       } else {
         fw.write(abschlussStufe + "\n");  
       }
@@ -103,10 +102,10 @@ public class Memento {
 
   /**
    * Liest die Memento-Textdatei und schreibt den Inhalt in eine String-Liste.
-   * Erstellt außerdem eine Liste nur mit den Namen der bisher geloesten Raetsel.
+   * Erstellt auÃŸerdem eine Liste nur mit den Namen der bisher geloesten Raetsel.
    */
   private void liesMementoDatei() {
-    // memento = new ArrayList<String>(); unnötig,
+    // memento = new ArrayList<String>(); unnÃ¶tig,
     // da memento 2 Zeilen weiter gleich wieder gesetzt wird.
     try {
       memento = extrahiere(Files.readAllLines(
@@ -134,5 +133,10 @@ public class Memento {
       }
     }
     return output;
+  }
+  
+  public List<String> gibGeloesteRaetsel() {
+    liesMementoDatei();
+    return memento;
   }
 }
