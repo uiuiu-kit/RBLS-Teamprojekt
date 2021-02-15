@@ -1,7 +1,7 @@
-# RBLS-Teamprojekt
+﻿# RBLS-Teamprojekt
 RBLS Teamprojekt 2021 KIT
 
 
-zur Erstellung eines Implementierungsartefakte. Muss man bei der pom.xlm maven package ausführen. In dem Ordern in dem man nun die dadurch erstellt .jar Datei hat muss man nun noch den Ordner Resources. Danach kann man mit einem Doppelcklick das RBLS starten.
+Zur Erstellung eines Implementierungsartefakts muss bei der pom.xlm 'maven package' ausgeführt werden. In dem Target-Order, in dem sich nun die dadurch erstellte .jar-Datei befindet, muss nun noch der Ordner 'Resources' kopiert werden. Danach lässt sich die Anwendung mit einem Doppelklick starten.
 
-aktuelle Fehler: Tip-Funktion führt noch zu Fehlern.
+aktuelle Fehler: Tipp-Funktion führt noch zu Fehlern.

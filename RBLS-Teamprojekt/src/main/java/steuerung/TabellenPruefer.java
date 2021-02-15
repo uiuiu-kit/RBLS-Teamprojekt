@@ -25,49 +25,64 @@ public class TabellenPruefer {
   public TabellenPruefer(Fassade model, int stufe) {
     this.model = model;
     this.stufe = stufe;
-    int anzAtom = model.gibAtomareAussage().size() + 1;
+    int anzAtom = model.gibAtomareAussage().size();
     boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtom)][anzAtom];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
-    noetigeFaelle = Arrays.asList(faelle);
+    noetigeFaelle = new ArrayList<boolean[]>();
+    for (int i = 0; i < faelle.length; i++) {
+      noetigeFaelle.add(faelle[i]);
+    }
     nochNoetigeFaelle = noetigeFaelle;
     vollstaendig = false;
     fehlerhafteWW = new ArrayList<int[]>();
     fehlerhafteFaelle = new ArrayList<Integer>();
-    for (int i = 0; i < (int) Math.pow(2, anzAtom); i++) {
+    for (int i = 1; i < (int) Math.pow(2, anzAtom) + 1; i++) {
       fehlerhafteFaelle.add(i);
     }
   }
 
   /**
-   * Testet ob ein Fall noch nötig war. Wenn nicht wird getestet ob der Fall der
-   * vorher in der Zeile stand nötig war. Je nachdem wir die Liste der noch
-   * nötigen Fälle aktualisiert. Je nachdem ob der Fall nun fehlerhaft ist oder
-   * nicht wird auch die Liste der fehlerhaften Fälle aktuallisiert.
+   * Testet ob ein Fall noch nï¿½tig war. Wenn nicht wird getestet ob der Fall der
+   * vorher in der Zeile stand nï¿½tig war. Je nachdem wir die Liste der noch
+   * nï¿½tigen Fï¿½lle aktualisiert. Je nachdem ob der Fall nun fehlerhaft ist oder
+   * nicht wird auch die Liste der fehlerhaften Fï¿½lle aktuallisiert.
    * 
-   * @param koordinate die Koordinate die geändert wurde
+   * @param koordinate die Koordinate die geï¿½ndert wurde
    */
   public void ueberpuefeFaelle(int[] koordinate) {
     boolean[] akFall = model.gibZeileFall(koordinate[1]);
-    if (nochNoetigeFaelle.contains(akFall)) {
-      nochNoetigeFaelle.remove(akFall);
+    if (durchsucheFallListe(akFall) != -1) {
+      nochNoetigeFaelle.remove(durchsucheFallListe(akFall));
       fehlerhafteFaelle.remove(koordinate[0]);
     } else {
       akFall[koordinate[0]] = !(akFall[koordinate[0]]);
-      if (noetigeFaelle.contains(akFall)) {
+      if (durchsucheFallListe(akFall) != -1) {
         fehlerhafteFaelle.add(koordinate[0]);
         nochNoetigeFaelle.add(akFall);
       }
     }
   }
 
-  public List<Integer> gibFehlerhafteFaelle() {
-    return fehlerhafteFaelle;
+  private int durchsucheFallListe(boolean[] akFall) {
+    boolean gleich = false;
+    for (int i = 0; i < nochNoetigeFaelle.size(); i++) {
+      boolean[] listFall = nochNoetigeFaelle.get(i);
+      for (int j = 0; j < listFall.length; j++) {
+        if (listFall[j] == akFall[i]) {
+          gleich = true;
+        }
+      }
+      if (gleich) {
+        return i;
+      }
+    }
+    return -1;
   }
 
   /**
-   * überprüft ob alle nötigen Formeln vorhanden sind.
+   * ï¿½berprï¿½ft ob alle nï¿½tigen Formeln vorhanden sind.
    * 
-   * @return sind alle nötigen Formel vorhanden.
+   * @return sind alle nï¿½tigen Formel vorhanden.
    */
   public boolean ueberpuefeFormeln() {
     boolean vollstaendig = true;
@@ -98,7 +113,7 @@ public class TabellenPruefer {
   /**
    * gibt eine Liste von fehlerhaften Koordinaten aus.
    * 
-   * @param koordinate die Koordinate die geändert wurde
+   * @param koordinate die Koordinate die geï¿½ndert wurde
    */
   public void ueberpuefeWW(int[] koordinate) {
     if (fehlerhafteWW.contains(koordinate)) {
@@ -113,9 +128,9 @@ public class TabellenPruefer {
   }
 
   /**
-   * gib die Koordinaten einer fehlerhaften Zelle zurück. Abhänig von der Stufe
-   * wird entweder eine Koordinaten in den Fällen (1), eine Koordinate in den
-   * Wahrheitswerden(3) oder null (2,4) zurück gegegben.
+   * gib die Koordinaten einer fehlerhaften Zelle zurï¿½ck. Abhï¿½nig von der Stufe
+   * wird entweder eine Koordinaten in den Fï¿½llen (1), eine Koordinate in den
+   * Wahrheitswerden(3) oder null (2,4) zurï¿½ck gegegben.
    * 
    * @return die Koordinaten einer Fehlerhaften Zelle
    */
@@ -123,10 +138,10 @@ public class TabellenPruefer {
     int pos;
     if (stufe == 1) {
       pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteFaelle.size());
-      int[] koordinaten = { 1, fehlerhafteFaelle.get(pos) };
+      int[] koordinaten = { fehlerhafteFaelle.get(pos), 0 };
       return koordinaten;
     }
-    if (stufe == 3) {
+    if (stufe == 3 && fehlerhafteWW.size() != 0) {
       pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteWW.size());
       return fehlerhafteWW.get(pos);
     }
