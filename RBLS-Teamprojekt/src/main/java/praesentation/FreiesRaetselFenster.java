@@ -51,7 +51,6 @@ public class FreiesRaetselFenster extends RaetselFenster {
     this.fv = fensterverwaltung;
     this.modell = modell;
     this.strg = strg;
-    //this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
     
     //Dialogfenster//
     atomareAussagen = new JDialog();
@@ -137,13 +136,10 @@ public class FreiesRaetselFenster extends RaetselFenster {
     //Ansicht zusammenf�gen//
     ansicht.getContentPane().add(oben, 0);
     ansicht.getContentPane().add(tabellenPanel, 1);
-    
-
   }
 
   private void initTabelle() {
     modell.erstelleRaetsel(aussagenListe);
-    
     WahrheitstabellenSteuerungen wstrg;
     wstrg = strg.raetselFensterInit();
     tabelle = new KonkreteTabellenAnsicht(modell, wstrg);

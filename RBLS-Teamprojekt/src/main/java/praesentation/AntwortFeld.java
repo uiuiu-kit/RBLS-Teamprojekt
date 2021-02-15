@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,8 +13,8 @@ import javax.swing.SwingConstants;
 
 /**
  * Grafische Ansicht eines Antwortfeldes. Zeigt einen Antworttext und eine
- * Auswahl der Antwortmöglichkeiten durch eine JComboBox an und vergleicht beim
- * Klicken des Prüfe-Buttons den ausgewählten Wert mit der tatsächlichen Lösung.
+ * Auswahl der Antwortmï¿½glichkeiten durch eine JComboBox an und vergleicht beim
+ * Klicken des Prï¿½fe-Buttons den ausgewï¿½hlten Wert mit der tatsï¿½chlichen Lï¿½sung.
  * 
  * @author Nick
  */
@@ -38,17 +37,12 @@ public class AntwortFeld {
    *                  sein
    * @param fenster   StufenRaetselFenster, welches das Antwortfeld benoetigt
    */
-  public AntwortFeld(String[] antworten, String text, String loesung, StufenRaetselFenster fenster) {
+  public AntwortFeld(String[] antworten, 
+      String text, String loesung, StufenRaetselFenster fenster) {
 
     this.text = text;
     this.antwortMoeglichkeiten = antworten;
     this.loesung = loesung;
-
-    // Platzhalter// TODO
-    /*
-     * this.antwortMoeglichkeiten = Arrays.asList("foo", "bar"); this.loesung =
-     * "bar";
-     */
 
     this.fenster = fenster;
     JPanel p = new JPanel();
@@ -66,7 +60,7 @@ public class AntwortFeld {
     p.add(antwortWahl);
     p.add(textLabel);
 
-    pruefeKnopf = new Schaltflaeche("Prüfen");
+    pruefeKnopf = new Schaltflaeche("Prï¿½fen");
     pruefeKnopf.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         pruefeAntwort();

@@ -246,6 +246,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
    */
   public void zeigeTippAn() {
     int[] tipp = strg.gibTip();
+    if (tipp.equals(null)) {
+      return;
+    }
     assert tipp.length == 2;
     ((FarbModell) tabelle.getModel()).setzeStatus(tipp[0], tipp[1], ZellenStatus.tipp);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(tipp[0], tipp[1]);
