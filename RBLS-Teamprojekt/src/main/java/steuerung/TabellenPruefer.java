@@ -1,7 +1,6 @@
 package steuerung;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import modell.Fassade;
@@ -49,15 +48,15 @@ public class TabellenPruefer {
    * 
    * @param koordinate die Koordinate die ge�ndert wurde
    */
-  public void ueberpuefeFaelle(int[] koordinate) {
-    boolean[] akFall = model.gibZeileFall(koordinate[1]);
+  public void ueberpuefeFaelle(int zeile, int spalte) {
+    boolean[] akFall = model.gibZeileFall(zeile);
     if (durchsucheFallListe(akFall) != -1) {
       nochNoetigeFaelle.remove(durchsucheFallListe(akFall));
-      fehlerhafteFaelle.remove(koordinate[0]);
+      fehlerhafteFaelle.remove(zeile);
     } else {
-      akFall[koordinate[0]] = !(akFall[koordinate[0]]);
+      akFall[zeile] = !(akFall[zeile]);
       if (durchsucheFallListe(akFall) != -1) {
-        fehlerhafteFaelle.add(koordinate[0]);
+        fehlerhafteFaelle.add(zeile);
         nochNoetigeFaelle.add(akFall);
       }
     }
@@ -113,18 +112,29 @@ public class TabellenPruefer {
   /**
    * gibt eine Liste von fehlerhaften Koordinaten aus.
    * 
-   * @param koordinate die Koordinate die ge�ndert wurde
+   * @param zeile  die zeile die überprüft wird.
+   * @param spalte die spalte die überprüft wird.
    */
-  public void ueberpuefeWW(int[] koordinate) {
-    if (fehlerhafteWW.contains(koordinate)) {
-      fehlerhafteWW.remove(koordinate);
+  public void ueberpuefeWW(int zeile, int spalte) {
+    int i = enthaltenInFehlerhaft(zeile, spalte);
+    if (i != 1) {
+      fehlerhafteWW.remove(i);
     } else {
-      Formel akFormel = model.gibFormel(koordinate[1]);
-      boolean[] akFall = model.gibZeileFall(koordinate[0]);
+      Formel akFormel = model.gibFormel(spalte);
+      boolean[] akFall = model.gibZeileFall(zeile);
       if (!akFormel.auswerten(akFall)) {
-        fehlerhafteWW.add(koordinate);
+        fehlerhafteWW.add(new int[] { zeile, spalte });
       }
     }
+  }
+
+  private int enthaltenInFehlerhaft(int zeile, int spalte) {
+    for (int i = 0; i < fehlerhafteWW.size(); i++) {
+      if (fehlerhafteWW.get(i)[0] == zeile && fehlerhafteWW.get(i)[1] == spalte) {
+        return i;
+      }
+    }
+    return -1;
   }
 
   /**

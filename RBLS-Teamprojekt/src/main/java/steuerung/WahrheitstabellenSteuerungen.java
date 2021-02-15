@@ -67,7 +67,7 @@ public class WahrheitstabellenSteuerungen {
       case "ZelleAendern":
         new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
             Integer.parseInt(parameter[1]));
-        //ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
+        ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
         break;
       default:
         break;
@@ -84,15 +84,14 @@ public class WahrheitstabellenSteuerungen {
    * @return Korrektheit
    */
   private void ueberpruefeTabelle(int spalte, int zeile) {
-    int[] koordinate = { spalte, zeile };
     if (stufe == 1) {
-      if (koordinate[0] < model.gibAtomareAussage().size()) {
-        tabellenPruefer.ueberpuefeFaelle(koordinate);
+      if (zeile < model.gibAtomareAussage().size()) {
+        tabellenPruefer.ueberpuefeFaelle(zeile, spalte);
       }
     }
     if (stufe == 3) {
-      if (koordinate[1] > 0 && koordinate[0] > model.gibAtomareAussage().size()) {
-        tabellenPruefer.ueberpuefeWW(koordinate);
+      if (zeile > 0 && spalte > model.gibAtomareAussage().size()) {
+        tabellenPruefer.ueberpuefeWW(zeile, spalte);
       }
     }
   }
