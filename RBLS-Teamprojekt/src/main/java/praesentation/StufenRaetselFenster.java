@@ -16,9 +16,9 @@ import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
- * Grafische Ansicht eines Rätsels. Zeigt eine Wahrheitstabelle
- * an und stößt beim Klicken des Menü-Buttons den Wechsel der Ansicht zum
- * Rätselauswahlmenü an.
+ * Grafische Ansicht eines Rï¿½tsels. Zeigt eine Wahrheitstabelle
+ * an und stï¿½ï¿½t beim Klicken des Menï¿½-Buttons den Wechsel der Ansicht zum
+ * Rï¿½tselauswahlmenï¿½ an.
  * @author Nick
  */
 public class StufenRaetselFenster extends RaetselFenster {
@@ -66,7 +66,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     fragePanel.setLayout(new BorderLayout());
     fragePanel.setBackground(Color.WHITE);
     
-    menueKnopf = new Schaltflaeche("Menü", 2);
+    menueKnopf = new Schaltflaeche("MenÃ¼", 2);
     menueKnopf.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           geheZuRaetselwahlMenue();
@@ -113,7 +113,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
         modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
     
-    JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
+    JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "LÃ¶sung");
     antwortPanel.setLayout(new BorderLayout());
     Border antwortBorder = BorderFactory.createEmptyBorder(10, 50, 10, 50);
     antwortPanel.setBorder(antwortBorder);
@@ -129,7 +129,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     antwortPanel.add(weiter, BorderLayout.EAST);
     weiter.setVisible(false);
     
-    //Ansicht zusammenfügen//
+    //Ansicht zusammenfï¿½gen//
     ansicht.getContentPane().add(fragePanel, 0);
     ansicht.getContentPane().add(tabellenPanel, 1);
     ansicht.getContentPane().add(antwortPanel, 2);
@@ -169,7 +169,7 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
   
   public void schliesseRaetselAb() {
-    //TODO evtl Dialogfenster, falls Tabelle noch nicht vollständig ausgefüllt ist
+    //TODO evtl Dialogfenster, falls Tabelle noch nicht vollstï¿½ndig ausgefï¿½llt ist
     weiter.setVisible(true);
   }
 
