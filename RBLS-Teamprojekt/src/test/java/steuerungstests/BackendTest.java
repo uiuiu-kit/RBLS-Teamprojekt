@@ -12,10 +12,10 @@ public class BackendTest {
   WahrheitstabellenSteuerungen wts;
 
   /**
-   * Baut die SteuerungFassade mit allen Komponenten auf und übergiebt sie der
-   * WahrheitstabellenSteuerungen. Dabei sind Antwortmöglichkeit, Lösung und
-   * Rätseltext nur Dummys da sie nicht benötigt werden in diesen Tests. Die
-   * Stufe, die Formeln und die Atome können noch geändert werden.
+   * Baut die SteuerungFassade mit allen Komponenten auf und ï¿½bergiebt sie der
+   * WahrheitstabellenSteuerungen. Dabei sind Antwortmï¿½glichkeit, Lï¿½sung und
+   * Rï¿½tseltext nur Dummys da sie nicht benï¿½tigt werden in diesen Tests. Die
+   * Stufe, die Formeln und die Atome kï¿½nnen noch geï¿½ndert werden.
    */
 
   @Before
@@ -59,7 +59,7 @@ public class BackendTest {
   }
 
   @Test
-  public void spalteHinzufügenTest() {
+  public void spalteHinzufuegenTest() {
     wts.befehl("SpalteHinzufuegen");
     System.out.println("SpalteHinzufuegen");
     gibTabelle();

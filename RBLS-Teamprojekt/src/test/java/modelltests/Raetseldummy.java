@@ -11,7 +11,7 @@ import modell.raetsel.Raetsel;
 
 public class Raetseldummy extends Raetsel {
 
-  public Raetseldummy(String name, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten,
+  public Raetseldummy(String name, int stufe, List<String> atom, String raetselText, String[] antwortMoeglichkeiten,
       int loesung, String antworttext, List<Formel> formeln) {
     super("Raetseldummy", 2, new ArrayList<String>(), "Test", new String[2], 2, "Text",
         new ArrayList<String>());
@@ -36,7 +36,7 @@ public class Raetseldummy extends Raetsel {
 
   /**
    * Wandelt die Liste der Atome in eine Liste der entsprechenden Namen der Atome
-   * um und gibt diese zurück.
+   * um und gibt diese zurï¿½ck.
    * 
    * @return Liste der Atomnamen.
    */
@@ -70,10 +70,10 @@ public class Raetseldummy extends Raetsel {
 
   /**
    * Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der
-   * Formeln um und gibt diese zurück.
+   * Formeln um und gibt diese zurï¿½ck.
    * 
-   * @return Liste der benbötigten Formelnamen, die zur Lösung des Raetsels
-   *         benötigt werden.
+   * @return Liste der benbï¿½tigten Formelnamen, die zur Lï¿½sung des Raetsels
+   *         benï¿½tigt werden.
    */
   public List<String> gibFormeln() {
     List<String> temp = new ArrayList<String>();

@@ -106,7 +106,7 @@ public class FormelParserTest {
   }
   
   @Ignore
-  public void testzweiunabhänigeKlammern() {
+  public void testzweiunabhaenigeKlammern() {
     Formel formel = FormelParser.pars("(0u2)x(1f1)", sfMock);
     assertEquals(false, formel.auswerten(fall));
     assertEquals("((0u2)x(1f1))", formel.gibStringRep());

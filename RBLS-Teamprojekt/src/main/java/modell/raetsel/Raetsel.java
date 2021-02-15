@@ -31,12 +31,12 @@ public class Raetsel {
    * @param stufe
    * @param atom
    * @param raetselText
-   * @param antwortMöglichkeiten
+   * @param antwortMï¿½glichkeiten
    * @param loesung
    * @param antworttext
    * @param formeln
    */
-  public Raetsel(String name, int stufe, List<String> atom, String raetselText, String[] antwortMöglichkeiten,
+  public Raetsel(String name, int stufe, List<String> atom, String raetselText, String[] antwortMoeglichkeiten,
       int loesung, String antworttext, List<String> formeln) {
     this.spaltenAnz = atom.size();
     this.zeilenAnz = (int) Math.pow(2, atom.size());
@@ -47,7 +47,7 @@ public class Raetsel {
     this.formeln = formeln;
     this.antworttext = antworttext;
     this.name = name;
-    this.antworten = antwortMöglichkeiten;
+    this.antworten = antwortMoeglichkeiten;
   }
 
   private void stringToAtomList(List<String> atomS) {

@@ -60,14 +60,14 @@ public class SteuerungsFassadeTest {
   }
   
   @Test
-  public void tabellenGrößeTest() {
+  public void tabellenGroeseTest() {
     assertEquals(9, testen.gibZeilenAnz());
     
     assertEquals(4, testen.gibSpaltenAnz());
   }
   
   @Test
-  public void spaltenÄndernTest() {
+  public void spaltenaendernTest() {
     
     assertEquals(4, testen.gibSpaltenAnz());
     
