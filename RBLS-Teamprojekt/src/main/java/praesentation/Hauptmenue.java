@@ -32,7 +32,7 @@ public class Hauptmenue extends javax.swing.JFrame {
   private Schaltflaeche freierModus;
   private Schaltflaeche beenden;
 
-  public Hauptmenue(Fensterverwaltung fw) { //Fassade fehlt
+  public Hauptmenue(Fensterverwaltung fw) {
     this.fw = fw;
     init();
   }
@@ -42,9 +42,9 @@ public class Hauptmenue extends javax.swing.JFrame {
    */
   private void init() {
     stufe1 = new Schaltflaeche(3);
-    stufe2 = new Schaltflaeche(2);
-    stufe3 = new Schaltflaeche(2);
-    stufe4 = new Schaltflaeche(2);
+    stufe2 = new Schaltflaeche(3);
+    stufe3 = new Schaltflaeche(3);
+    stufe4 = new Schaltflaeche(3);
     freierModus = new Schaltflaeche("FREIER MODUS");
     beenden = new Schaltflaeche("BEENDEN");
     JPanel startFeld = new JPanel(new java.awt.FlowLayout());
@@ -93,13 +93,13 @@ public class Hauptmenue extends javax.swing.JFrame {
     startFeld.add(stufe4);
     
     int stufe = Fassade.gibSteuFa().gibAbgeschlosseneStufe();
-    if (stufe < 2) {
+    if (stufe <= 2) {
       stufe2.setEnabled(false);
     }
-    if (stufe < 3) {
+    if (stufe <= 3) {
       stufe3.setEnabled(false);
     }
-    if (stufe < 4) {
+    if (stufe <= 4) {
       stufe4.setEnabled(false);
     }
         
