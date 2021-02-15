@@ -178,17 +178,6 @@ public class Fassade {
     tabelle.spalteEntfernen(spalte);
   }
 
-  /**
-   * Speichert das aktuelle Raetsel als den aktuellen Spielstand in Form eines
-   * Memento.
-   * 
-   * @return Ein Memento-Objekt.
-   */
-  public void fuehreSicherungAus() {
-    this.aktualisiere();
-    memento.erstelleMementoDatei(raetsel);
-  }
-
   public Formel gibFormel(int spalte) {
     this.aktualisiere();
     return tabelle.gibFormel(spalte);
@@ -242,4 +231,16 @@ public class Fassade {
     aktualisiere();
     return memento.gibStufenSicherung();
   }
+  
+  /**
+   * Speichert das aktuelle Raetsel als den aktuellen Spielstand in Form eines
+   * Memento.
+   * 
+   * @return Ein Memento-Objekt.
+   */
+  public void fuehreSicherungAus() {
+    this.aktualisiere();
+    memento.erstelleMementoDatei(raetsel);
+  }
+
 }

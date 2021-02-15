@@ -73,7 +73,7 @@ public class Memento {
         fw.write(abschlussStufe + "\n");  
       }
       fw.write("##\n");             
-      for (int i = 0; i <= memento.size(); i++) {
+      for (int i = 0; i < memento.size(); i++) {
         fw.write(memento.get(i) + "\n"); //alle bisher geloesten Raetselnamen
       }
     } catch (IOException e) {
@@ -114,7 +114,7 @@ public class Memento {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    this.abschlussStufe = Integer.parseInt(memento.get(1));
+    this.abschlussStufe = Integer.parseInt(memento.get(0));
     // namenGeloesterRaetsel = new ArrayList<String>();
     memento.remove(1);
     memento.remove(0);
