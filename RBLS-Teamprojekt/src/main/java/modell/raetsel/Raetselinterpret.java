@@ -13,14 +13,14 @@ import java.util.List;
  * und liefert darauf basierend Raetselnamen zurueck.
  * Selbige koennen angegeben werden, um nach einer Raetseltextdatei gleichen Namens zu suchen 
  * und diese als Reatselobjekt zurueckgeliefert zu bekommen. 
- * Außerdem ist der RInterpret fuer die Erstellung freier Raetsel(FR) zustaendig.
+ * Auï¿½erdem ist der RInterpret fuer die Erstellung freier Raetsel(FR) zustaendig.
  * @author Flo
  *
  */
 public class Raetselinterpret {
 
-  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rätsel gefunden";
-  public static final String FREIES_RAETSEL_NAME = "Freies Rätsel";
+  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Rï¿½tsel gefunden";
+  public static final String FREIES_RAETSEL_NAME = "Freies Rï¿½tsel";
   public static final int NUMBER_OF_ROWS = 8;
   
   private String[] extrahiere(String input) {
@@ -41,13 +41,13 @@ public class Raetselinterpret {
     List<File> output = new ArrayList<File>();
     File path = null;
     switch (stufe) {
-      case 1: path = new File("src/main/resources/Raetsel/Stufe 1");
+      case 1: path = new File("Raetsel/Stufe 1");
       break;
-      case 2: path = new File("src/main/resources/Raetsel/Stufe 2");
+      case 2: path = new File("Raetsel/Stufe 2");
       break;
-      case 3: path = new File("src/main/resources/Raetsel/Stufe 3");
+      case 3: path = new File("Raetsel/Stufe 3");
       break;
-      case 4: path = new File("src/main/resources/Raetsel/Stufe 4");
+      case 4: path = new File("Raetsel/Stufe 4");
       break;
       default: path = null;
     }
@@ -126,14 +126,14 @@ public class Raetselinterpret {
         Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
-        antwortM,                   //Antwortmöglichkeiten
-        Integer.parseInt(lines[5]), //Wievielte Antwort die Lösung ist
+        antwortM,                   //Antwortmï¿½glichkeiten
+        Integer.parseInt(lines[5]), //Wievielte Antwort die Lï¿½sung ist
         lines[2],                   //Antworttext
         formeln);                   //Formelliste  
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
-   * @param atomA Anzahl und Namen der verfügbaren Atomaren Aussagen, die der Benutzer angeben kann.
+   * @param atomA Anzahl und Namen der verfï¿½gbaren Atomaren Aussagen, die der Benutzer angeben kann.
    */
   public Raetsel erstelleFR(List<String> atomA) {
     return new Raetsel(
