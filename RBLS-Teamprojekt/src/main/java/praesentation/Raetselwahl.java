@@ -29,7 +29,8 @@ public class Raetselwahl extends javax.swing.JFrame {
   /**
    * Konstruktor.
    * @param fstr Fensterverwaltung zum Wechseln der Ansicht
-   * @param list Stufe der anzuzeigenden R�tsel
+   * @param liste Liste der anzuzeigenden Rätselnamen der Stufe
+   * @param geloest Liste der Namen der gelösten Rätsel der Stufe
    */
   public Raetselwahl(Fensterverwaltung fstr, List<String> liste, List<String> geloest) {
     this.fw = fstr;
@@ -49,7 +50,6 @@ public class Raetselwahl extends javax.swing.JFrame {
     buttonPanel.setBackground(new Color(255,102,0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
-      //TODO falls Raetsel wiederholt werden k�nnen sollen
       if (geloest.size() > 0 && geloest.contains(raetsel.get(j))) {
         buttons[j] = new Schaltflaeche(raetsel.get(j), 5);
       } else {
@@ -69,7 +69,7 @@ public class Raetselwahl extends javax.swing.JFrame {
     getContentPane().setLayout(new BorderLayout());
     getContentPane().add(buttonPanel, BorderLayout.CENTER);
     
-    zurueck = new Schaltflaeche("ZUM MEN�", 2);
+    zurueck = new Schaltflaeche("ZUM MENÜ", 2);
     zurueck.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeZurueck();

@@ -60,7 +60,8 @@ public class Fensterverwaltung {
    * @param stufe Stufe der Raetsel
    */
   public void oeffneRaetselwahl(int stufe) {
-    wechseleFenster(new Raetselwahl(this, modell.gibRaetselListe(stufe), modell.gibGeloesteRaetsel(stufe)), "R�tselwahl");
+    wechseleFenster(new Raetselwahl(this, modell.gibRaetselListe(stufe), 
+        modell.gibGeloesteRaetsel(stufe)), "Rätselwahl");
   }
 
   /**
@@ -101,7 +102,6 @@ public class Fensterverwaltung {
    * Startet den Freien Modus.
    */
   public void starteFreienModus() {
-
     wechseleFenster(new FreiesRaetselFenster(this, modell, strg).ansicht, "RBLS");
   }
 

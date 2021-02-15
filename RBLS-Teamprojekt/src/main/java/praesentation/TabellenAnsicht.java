@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 
 /**
- * Vorlage für die Ansicht einer Wahrheitstabelle.
+ * Vorlage fÃ¼r die Ansicht einer Wahrheitstabelle.
  * @author Nick
  */
 public abstract class TabellenAnsicht {

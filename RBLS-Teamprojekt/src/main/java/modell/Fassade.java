@@ -129,7 +129,6 @@ public class Fassade {
 
   public void erstelleRaetsel(List<String> atome) {
     aktualisiere();
-    System.out.println("erstelleRaetsel(Fassade) aufgerufen!");
     raetsel = this.interpret.erstelleFR(atome);
   }
 
@@ -144,13 +143,18 @@ public class Fassade {
   }
 
   public boolean gibZelleWW(int[] i) {
-    this.aktualisiere();
-    return tabelle.gibZellenWert(i);
+    
+    if (tabelle != null) {
+      return tabelle.gibZellenWert(i);
+    }
+    return false;
   }
 
   public void setzeZelleWW(int[] i, boolean ww) {
     this.aktualisiere();
+    if (tabelle != null) {
     tabelle.setzeZelle(i, ww);
+    }
   }
 
   public int gibZeilenAnz() {
