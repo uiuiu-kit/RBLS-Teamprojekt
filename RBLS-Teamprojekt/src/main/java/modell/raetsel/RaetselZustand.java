@@ -3,6 +3,7 @@ package modell.raetsel;
 /**
  * Diese Klasse gehoert zum Memento und beinhaltet den Zustand des konkreten Raetsels
  * sowie dessen Namen.
+
  * @author janne
  *
  */
@@ -15,8 +16,8 @@ public class RaetselZustand {
   
   /**
    * Ein Objekt, welches den aktuellen Zustand des Raetsels enthaelt.
+
    * @param r Ein Raetselobjekt.
-   * @param stufe Die zum Raetsel gehoerige Stufe.
    */
   public RaetselZustand(Raetsel r) {
     this.raetsel = r;

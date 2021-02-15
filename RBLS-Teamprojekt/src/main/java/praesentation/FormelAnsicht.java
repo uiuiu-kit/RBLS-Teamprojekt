@@ -19,6 +19,7 @@ import steuerung.FormelEditor;
 /**
  * Grafische Formelansicht zum Eingeben von Formeln als Pop-Up-Fenster.
  * Zeigt Buttons mit Zeichen und Buttons mit atomaren Aussagen an.
+
  * @author Nick
  */
 public class FormelAnsicht {
@@ -26,7 +27,11 @@ public class FormelAnsicht {
   private FormelEditor strg;
   private JDialog ansicht;
   private JLabel formelAnzeige = new JLabel();
+<<<<<<< Updated upstream
   private Schaltflaeche bestaetige = new Schaltflaeche("Bestätige");
+=======
+  private Schaltflaeche bestaetige = new Schaltflaeche("Best�tige");
+>>>>>>> Stashed changes
   private Schaltflaeche abbruch = new Schaltflaeche("Abbruch", 2);
   private Schaltflaeche entferne = new Schaltflaeche("Entferne", 3);
   
@@ -49,7 +54,12 @@ public class FormelAnsicht {
   
   /**
    * Erzeugt eine Ansicht f�r den Formeleditor als Fenster.
+<<<<<<< Updated upstream
    * @param aussagen atomare Aussagen, die als Schaltfl�chen verf�gbar sein sollen
+=======
+
+   * @param aussagen atomare Aussagen, die als Schaltfl�chen verfuegbar sein sollen
+>>>>>>> Stashed changes
    * @param strg Formeleditor zur Kommunikation
    */
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {

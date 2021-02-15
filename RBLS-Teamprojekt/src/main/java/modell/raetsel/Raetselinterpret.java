@@ -13,7 +13,8 @@ import java.util.List;
  * und liefert darauf basierend Raetselnamen zurueck.
  * Selbige koennen angegeben werden, um nach einer Raetseltextdatei gleichen Namens zu suchen 
  * und diese als Reatselobjekt zurueckgeliefert zu bekommen. 
- * Au�erdem ist der RInterpret fuer die Erstellung freier Raetsel(FR) zustaendig.
+ * Außerdem ist der RInterpret fuer die Erstellung freier Raetsel(FR) zustaendig.
+
  * @author Flo
  *
  */
@@ -53,7 +54,7 @@ public class Raetselinterpret {
     }
     File[] files = path.listFiles();
     if (files != null) { 
-      for (int i = 0; i < files.length; i++) 
+      for (int i = 0; i < files.length; i++)
         if (files[i].isDirectory()) {
         } else {
           output.add(files[i]);
@@ -65,6 +66,7 @@ public class Raetselinterpret {
   
   /**Listet alle verfuegbaren Raetselnamen auf, die im Ordner 
    * src,main,resources,Raetsel unter der jeweiligen Stufe hinterlegt sind.
+
    * @param stufe Raetselstufe, nach deren Raetsel gesucht wird.
    * @return Liste aller Raetselnamen, die die genannte Stufe erfuellen.
    */
@@ -91,6 +93,7 @@ public class Raetselinterpret {
   
   /**Sucht die angegebene Textdatei des Reatsels und liest deren Daten aus, 
    * speichert sie zwischen und erstellt dann ein Raetselobjekt.
+
    * @param input Angegebener Name des Reatsels, aufgrund dessen die Raetseltextdatei gesucht wird.
    * @return Ein neues Raetselobjekt.
    */
@@ -130,6 +133,7 @@ public class Raetselinterpret {
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
+
    * @param atomA Anzahl und Namen der verf�gbaren Atomaren Aussagen, die der Benutzer angeben kann.
    */
   public Raetsel erstelleFR(List<String> atomA) {

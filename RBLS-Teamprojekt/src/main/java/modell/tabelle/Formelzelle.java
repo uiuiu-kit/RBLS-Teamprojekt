@@ -3,7 +3,8 @@ package modell.tabelle;
 import modell.formel.Formel;
 
 /**
- * Symbolisiert eine Formelzelle. Sie erbt von der Zelle und beinhaltet ausschlieﬂlich Formeln.
+ * Symbolisiert eine Formelzelle. Sie erbt von der Zelle und beinhaltet ausschlie√ülich Formeln.
+
  * @author janne
  *
  */
@@ -17,6 +18,7 @@ public class Formelzelle extends Zelle {
   
   /**
    * Gibt den aktuellen Inhalt der Zelle, also die Formel zurueck.
+
    * @return Ein Objekt des Typs Formel.
    */
   public Formel gibZustand() {
