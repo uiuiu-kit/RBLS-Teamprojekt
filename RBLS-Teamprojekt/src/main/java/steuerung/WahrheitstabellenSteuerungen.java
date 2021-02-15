@@ -9,7 +9,7 @@ public class WahrheitstabellenSteuerungen {
   private int stufe;
 
   /**
-   * Konstruktor für die WahrheitstabellenSteuerungen.
+   * Konstruktor fï¿½r die WahrheitstabellenSteuerungen.
    * 
    * @param model die Fassade die von Befehlen angesprochen werden soll
    */
@@ -20,10 +20,10 @@ public class WahrheitstabellenSteuerungen {
   }
 
   /**
-   * löst Befehl von der Präsentation auf und konstruiert das passenden
-   * Befehls-Objekt und stößt damit dessen Ausführung an.
+   * lï¿½st Befehl von der Prï¿½sentation auf und konstruiert das passenden
+   * Befehls-Objekt und stï¿½ï¿½t damit dessen Ausfï¿½hrung an.
    * 
-   * @param befehl der auszuführende Befehl
+   * @param befehl der auszufï¿½hrende Befehl
    */
   public void befehl(String befehl) {
     String[] split = befehl.split("\\(");
@@ -54,7 +54,7 @@ public class WahrheitstabellenSteuerungen {
         new FormelEingeben(model, Integer.parseInt(parameter[0]));
         break;
       case "FuelleTabelle":
-        if ((stufe == 1 || stufe == 2 || stufe == 4)) {
+        if ((stufe == 1 || stufe == 2 || stufe == 4) && tabellenPruefer.tabelleFuellenErlaubt()) {
           new FuelleTabelle(model);
         }
         break;
@@ -79,7 +79,7 @@ public class WahrheitstabellenSteuerungen {
   }
 
   /**
-   * überprüft ob der Inhalt der Tabelle korrekt ist.
+   * ï¿½berprï¿½ft ob der Inhalt der Tabelle korrekt ist.
    * 
    * @return Korrektheit
    */
