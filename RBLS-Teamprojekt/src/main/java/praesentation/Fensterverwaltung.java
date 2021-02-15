@@ -101,9 +101,8 @@ public class Fensterverwaltung {
    * Startet den Freien Modus.
    */
   public void starteFreienModus() {
-    WahrheitstabellenSteuerungen wstrg;
-    wstrg = strg.raetselFensterInit();
-    wechseleFenster(new FreiesRaetselFenster(this, modell, wstrg).ansicht, "RBLS");
+
+    wechseleFenster(new FreiesRaetselFenster(this, modell, strg).ansicht, "RBLS");
   }
 
   /**

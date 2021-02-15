@@ -21,12 +21,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import modell.Fassade;
+import steuerung.Hauptsteuerung;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
  * Grafische Ansicht des freien Modus. Zeigt eine
- * Wahrheitstabelle an und stößt beim Klicken des Menü-Buttons den Wechsel der
- * Ansicht zum Hauptmenü an.
+ * Wahrheitstabelle an und stï¿½ï¿½t beim Klicken des Menï¿½-Buttons den Wechsel der
+ * Ansicht zum Hauptmenï¿½ an.
  * @author Nick
  */
 public class FreiesRaetselFenster extends RaetselFenster {
@@ -37,55 +38,20 @@ public class FreiesRaetselFenster extends RaetselFenster {
   
   private Fensterverwaltung fv;
   private Fassade modell;
-  private WahrheitstabellenSteuerungen wstrg;
+  private Hauptsteuerung strg;
 
   /**
-   * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit nötigen Buttons und Tabelle.
+   * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit nï¿½tigen Buttons und Tabelle.
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des Fensters
    * @param modell Praesentationsfassade
-   *     zum Setzen und Erhalten von Informationen über atomare Aussagen und Status
+   *     zum Setzen und Erhalten von Informationen ï¿½ber atomare Aussagen und Status
    */
   public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung,
-      Fassade modell, WahrheitstabellenSteuerungen wstrg) {
+      Fassade modell, Hauptsteuerung strg) {
     this.fv = fensterverwaltung;
     this.modell = modell;
-    this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
-    
-    ansicht = new JFrame();
-    ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
-    ansicht.getContentPane().setBackground(Color.WHITE);
-    
-    //oberes Panel//
-    JPanel oben = new JPanel();
-    oben.setLayout(new BorderLayout());
-    oben.setBackground(Color.WHITE);
-    
-    menueKnopf = new Schaltflaeche("Menü", 2);
-    menueKnopf.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          geheZuMenue();
-        }
-      });
-    JPanel menuePanel = new JPanel();
-    menuePanel.setLayout(new FlowLayout());
-    menuePanel.add(menueKnopf);
-    menuePanel.setBackground(Color.WHITE);
-    
-    JLabel text = new JLabel("Freier Modus      ", SwingConstants.CENTER);
-    
-    oben.add(menuePanel, BorderLayout.WEST);
-    oben.add(text, BorderLayout.CENTER);
-
-    //WahrheitstabellenPanel//
-    JPanel tabellenPanel = new JPanel();
-    tabellenPanel.setLayout(new BorderLayout());
-    tabellenPanel.add(tabelle.gibAnsicht());
-    tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
-    tabellenPanel.setBackground(Color.WHITE);
-    
-    //Ansicht zusammenfügen//
-    ansicht.getContentPane().add(oben, 0);
-    ansicht.getContentPane().add(tabellenPanel, 1);
+    this.strg = strg;
+    //this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
     
     //Dialogfenster//
     atomareAussagen = new JDialog();
@@ -96,7 +62,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     aussagen = new JTextField[5];
     ((JComponent) atomareAussagen.getContentPane()).setBorder(
         BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    JLabel aussagenHinweis = new JLabel("Wähle die Namen für bis zu 5 atomare Aussagen:");
+    JLabel aussagenHinweis = new JLabel("Wï¿½hle die Namen fï¿½r bis zu 5 atomare Aussagen:");
     aussagenHinweis.setFont(new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,18));
     aussagenHinweis.setForeground(Color.WHITE);
     atomareAussagen.add(aussagenHinweis, 0);
@@ -129,10 +95,51 @@ public class FreiesRaetselFenster extends RaetselFenster {
     atomareAussagen.getContentPane().setBackground(new Color(255,102,0));
     atomareAussagen.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     atomareAussagen.setVisible(true);
+    
+    ansicht = new JFrame();
+    ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
+    ansicht.getContentPane().setBackground(Color.WHITE);
+    
+    //oberes Panel//
+    JPanel oben = new JPanel();
+    oben.setLayout(new BorderLayout());
+    oben.setBackground(Color.WHITE);
+    
+    menueKnopf = new Schaltflaeche("Menï¿½", 2);
+    menueKnopf.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          geheZuMenue();
+        }
+      });
+    JPanel menuePanel = new JPanel();
+    menuePanel.setLayout(new FlowLayout());
+    menuePanel.add(menueKnopf);
+    menuePanel.setBackground(Color.WHITE);
+    
+    JLabel text = new JLabel("Freier Modus      ", SwingConstants.CENTER);
+    
+    oben.add(menuePanel, BorderLayout.WEST);
+    oben.add(text, BorderLayout.CENTER);
+
+    //WahrheitstabellenPanel//
+    JPanel tabellenPanel = new JPanel();
+    tabellenPanel.setLayout(new BorderLayout());
+    tabellenPanel.add(tabelle.gibAnsicht());
+    tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
+    tabellenPanel.setBackground(Color.WHITE);
+    
+    //Ansicht zusammenfï¿½gen//
+    ansicht.getContentPane().add(oben, 0);
+    ansicht.getContentPane().add(tabellenPanel, 1);
+    
+
   }
 
   private void initTabelle() {
     modell.erstelleRaetsel(aussagenListe);
+    
+    WahrheitstabellenSteuerungen wstrg;
+    wstrg = strg.raetselFensterInit();
     tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
   }
 
