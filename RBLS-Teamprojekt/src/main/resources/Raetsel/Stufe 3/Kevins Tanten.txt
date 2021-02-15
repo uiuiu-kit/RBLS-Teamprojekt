@@ -15,6 +15,6 @@ Hedwig, Rosa, Trude
 ##
 5
 ##
-n(1u2), 0u2, 1f0;n(n0un1un2)
+n(1u2),0u2,1f0,n(n0un1un2)
 ##
 3
