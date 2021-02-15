@@ -13,7 +13,7 @@ import java.util.List;
  * Diese Klasse symbolisiert ein Memento. Sie verwaltet die Speicherung und das
  * Abrufen der Raetsel sowie deren Zustaende und erstellt eine
  * Sicherungs-Textdatei.
-
+ * 
  * @author janne
  *
  */
@@ -33,8 +33,8 @@ public class Memento {
     return this.abschlussStufe;
   }
 
-  /**
-   * Löscht Daten von Memento: überschreibt die Textdatei, resettet das Memento.
+  /** Löscht Daten von Memento: überschreibt textdatei, resettet Memento.
+   * 
    */
   public void loesche() {
     Writer fw = null;
@@ -57,9 +57,11 @@ public class Memento {
   /**
    * Quelle: http://openbook.rheinwerk-verlag.de/javainsel9/
    * javainsel_17_001.htm#mj87f7ea8c7b8051417049399df2c5782a
-   * Erstellt eine Textdatei, welche den aktuellen Spielstand, sprich die hoechste
+   * Erstellt eine Textdatei, welche den aktuellen Spielstand, sprich die höchste
    * geloeste Stufe und den Raetselnamen enthaelt.
-
+   * 
+   * @param stufe Die Stufe des geloesten Raetsels.
+   * @param name  Der Name des geloesten Raetsels.
    * @return True, wenn die Datei erfolgreich erstellt wurde.
    */
   public boolean erstelleMementoDatei(Raetsel raetsel) {

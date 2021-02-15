@@ -4,7 +4,6 @@ import modell.formel.Formel;
 
 /**
  * Abstrakte Oberklasse Zelle. Die Wahrheitswertzelle und die Formelzelle erben von dieser Klasse.
-
  * @author janne
  *
  */
@@ -17,7 +16,6 @@ public abstract class Zelle {
 
   /**
    * Setzt den Wert der Zelle auf den uebergebenen Wahrheitswert.
-
    * @param w der neue Wahrheitswert, den die Zelle beinhalten soll.
    */
   public void setzeZelle(boolean w) {
@@ -25,7 +23,6 @@ public abstract class Zelle {
   
   /**
    * Uebernimmt die uebergebene Formel als neuen Inhalt der Zelle.
-
    * @param f neue Formel, die die Zelle beinhalten soll.
    */
   public void setzeZelle(Formel f) {

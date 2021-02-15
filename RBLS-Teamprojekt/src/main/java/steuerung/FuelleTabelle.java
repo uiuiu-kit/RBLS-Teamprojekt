@@ -10,9 +10,9 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
   private int anzAtomSpalten;
 
   /**
-   * Kostruktor fï¿½r FuelleTabelle der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+   * Kostruktor für FuelleTabelle der die Ausführung des Befehls anstößt.
    * 
-   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
+   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
    *              wird.
    */
   public FuelleTabelle(Fassade model) {

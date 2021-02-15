@@ -7,11 +7,11 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
   private boolean zelleWW;
 
   /**
-   * ï¿½ndert den Wahrheitswert in einer Wahrheitswert Zelle.
+   * Ändert den Wahrheitswert in einer Wahrheitswert Zelle.
    * 
-   * @param model  die SteuerungFassade auf der der Befehl ausgefï¿½hrt wird.
-   * @param spalte die Spalte in der der Wert geï¿½ndert wird
-   * @param zeile  die Zeile in der der Wert geï¿½ndert wird
+   * @param model  die SteuerungFassade auf der der Befehl ausgeführt wird.
+   * @param spalte die Spalte in der der Wert geändert wird
+   * @param zeile  die Zeile in der der Wert geändert wird
    */
   public ZelleInBlauOrangeAendern(Fassade model, int spalte, int zeile) {
     super(model);

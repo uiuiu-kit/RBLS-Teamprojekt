@@ -6,9 +6,9 @@ public class AufbauTabelle24 extends AufbauTabelle {
   private int anzAtome;
 
   /**
-   * Kostruktor fï¿½r AufbauTabelle24 der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+   * Kostruktor für AufbauTabelle24 der die Ausführung des Befehls anstößt.
    * 
-   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
+   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
    *              wird.
    */
   public AufbauTabelle24(Fassade model) {

@@ -10,7 +10,7 @@ import modell.tabelle.Tabelle;
 /**
  * Dies ist die Klasse fuer die Fassade, die mit der Steuerung zusammenarbeitet.
  * Ueber sie werden die Anfragen der Steuerung im Modell verwaltet.
-
+ * 
  * @author janne
  *
  */
@@ -25,7 +25,7 @@ public class Fassade {
   /**
    * Einzelstueckmethode, die dafuer sorgt, dass die Klasse nur einmal erstellt,
    * aber jederzeit von allen Klassen genutzt werden kann.
-
+   * 
    * @return Objekt der Klasse SteuerungFassade.
    */
   public static Fassade gibSteuFa() {
@@ -35,13 +35,13 @@ public class Fassade {
     return steuFa;
   }
 
-  private void aktualisiere() { // Praes aktuallisieren.
+  private void aktualisiere() { // Präs aktuallisieren.
 
   }
 
   /**
    * Initialisiert die Erstellung aller Modell-Objekte zu Beginn des Programms,
-   * die ohne weitere Eingaben des Benutzers erstellt werden koennen. Diese sind der
+   * die ohne weitere Eingaben des Benutzers erstellt werden können Diese sind der
    * Raetselinterpret, Memento und die Praesentationsfassade.
    * 
    */
@@ -52,7 +52,7 @@ public class Fassade {
 
   /**
    * Gibt eine Liste aller im Raetsel verwendeter Atome aus.
-
+   * 
    * @return Liste der Atomobjekte.
    */
   public List<String> gibAtomareAussage() {
@@ -68,9 +68,9 @@ public class Fassade {
 
   /**
    * Aktualisiert das Raetsel, indem es den erhaltenen Raetselnamen dem
-   * RInterpreten uebergibt, der ein neues Raetselobjekt zurueckgibt. Dieses wird
+   * RInterpreten übergibt, der ein neues Raetselobjekt zurückgibt. Dieses wird
    * hier gesetzt und daraus eine neue Tabelle erzeugt.
-
+   * 
    * @param raetselname Name des neuen Raetsels
    */
   public void setzeRaetsel(String raetselname) {
@@ -80,8 +80,8 @@ public class Fassade {
   }
 
   /**
-   * Gibt eine Liste aller Raetselnamen zurueck, deren Stufe angefordert wurde.
-
+   * Gibt eine Liste aller Raetselnamen zurück, deren Stufe angefordert wurde.
+   * 
    * @param i Raetselstufe, nach der gesucht wird.
    * @return Liste der Raetselnamen der entsprechenden Stufe.
    */
@@ -118,7 +118,7 @@ public class Fassade {
   /**
    * Holt die String-Repraesentation der Zelle und aktualisiert die konkrete
    * Tabellenansicht.
-
+   * 
    * @return Die String-Repraesentation der Zelle.
    */
   public String gibZelle(int[] zelle) {
@@ -126,32 +126,22 @@ public class Fassade {
     return tabelle.gibZelle(zelle);
   }
   
-  /**
-   * Erstellt ein neues Raetsel im Interpreten.
 
-   * @param atome
-   */
   public void erstelleRaetsel(List<String> atome) {
     aktualisiere();
     raetsel = this.interpret.erstelleFR(atome);
   }
 
   /**
-   * Gibt eine Liste aller Formeln zurueck, die in der Tabelle Verwendung finden.
-
+   * Gibt eine Liste aller Formeln zurück, die in der Tabelle Verwendung finden.
+   * 
    * @return Liste der Formeln.
    */
   public List<String> gibNoetigeFormel() {
     this.aktualisiere();
     return this.raetsel.gibFormeln();
   }
-  
-  /**
-   * Gibt den Wahrheitswert der Zelle zurueck.
 
-   * @param i Die Zelle als Spalten und Zeilen Angabe.
-   * @return Den Wahreitswert der konkreten Zelle.
-   */
   public boolean gibZelleWW(int[] i) {
     
     if (tabelle != null) {
@@ -198,7 +188,7 @@ public class Fassade {
 
   /**
    * Ermoeglicht der Steuerung Formeln zu setzen.
-
+   * 
    * @param formel Die zu setzende Formel.
    * @param spalte Die Position der Formel (Zelle).
    */
@@ -218,26 +208,29 @@ public class Fassade {
   }
 
   /**
-   * Klasse zur Initialisierung einer Testumgebung, benoetigt zum Test fuer
+   * Klasse zur Initialisierung einer Testumgebung, benoetigt zum Test für
    * Steuerung und Steuerungsfassade.
-
+   * 
    * @param test Instanz des Testinterpreten.
    */
   public void erstelleTestUmgebung(Raetselinterpret test) {
     this.interpret = test;
     setzeRaetsel("Raetseldummy");
   }
+/*
+  public Raetsel gibRaetsel() {
+    return raetsel;
+  }
 
+  public Tabelle gibTabelle() {
+    return tabelle;
+  }
+  */
   public List<String> gibGeloesteRaetsel(int stufe) {
     this.memento = new Memento();
     return memento.gibGeloesteRaetsel();
   }
   
-  /**
-   * Gibt die abgeschlossene Stufe zurueck.
-
-   * @return Die zuletzt abgeschlossene Raetselstufe.
-   */
   public int gibAbgeschlosseneStufe() {
     aktualisiere();
     this.memento = new Memento();
@@ -247,6 +240,8 @@ public class Fassade {
   /**
    * Speichert das aktuelle Raetsel als den aktuellen Spielstand in Form eines
    * Memento.
+   * 
+   * @return Ein Memento-Objekt.
    */
   public void fuehreSicherungAus() {
     this.aktualisiere();
