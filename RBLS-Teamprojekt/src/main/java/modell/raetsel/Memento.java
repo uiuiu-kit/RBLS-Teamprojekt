@@ -44,6 +44,7 @@ public class Memento {
   }
   
   public void loesche() {
+    //TODO weitere attribute löschen
     this.zustand = null;
   }
   
@@ -59,20 +60,19 @@ public class Memento {
    */
   public boolean erstelleMementoDatei(int stufe, String name) {
     liesMementoDatei();
+    if (istNeu(name)) {
+      memento.add(name);
+    }
     try {
-      if (this.memento.size() > 0) {
-        fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
-        fw.write(stufe + "\n");       //die neue hoechste Stufe
-        fw.write("##\n");             
-        fw.write(name + "\n");        //der neu hinzugekommene Raetselname
-        for (int i = 0; i <= memento.size(); i++) {
-          fw.write(memento.get(i) + "\n"); //alle bisher geloesten Raetselnamen
-        }
+      fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
+      if (stufe > this.abschlussStufe) {
+        fw.write(stufe + "\n");  
       } else {
-        fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
-        fw.write(stufe + "\n");
-        fw.write("##\n");             
-        fw.write(name + "\n");
+        fw.write(abschlussStufe + "\n");  
+      }
+      fw.write("##\n");             
+      for (int i = 0; i <= memento.size(); i++) {
+        fw.write(memento.get(i) + "\n"); //alle bisher geloesten Raetselnamen
       }
     } catch (IOException e) {
       System.err.println("Sicherung konnte nicht erstellt werden.");
@@ -86,6 +86,16 @@ public class Memento {
       }
     }
     return true;
+  }
+  
+  private boolean istNeu(String name) {
+    boolean output = true;
+    for (String temp : memento) {
+      if (temp.equals(name)) {
+        output = false;
+      }
+    }
+    return output;
   }
   
   /**

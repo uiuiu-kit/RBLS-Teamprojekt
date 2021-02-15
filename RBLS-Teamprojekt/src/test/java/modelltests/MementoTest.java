@@ -28,5 +28,10 @@ public class MementoTest {
   public void erstelleMementoDateiTest() {
     assertTrue(true == testen.erstelleMementoDatei(1, "Raetseldummy"));
   }
+  
+  @Test
+  public void mementoListeTest() {
+    
+  }
 
 }
