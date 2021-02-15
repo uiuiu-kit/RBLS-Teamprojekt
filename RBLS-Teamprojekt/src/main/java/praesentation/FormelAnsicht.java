@@ -111,7 +111,7 @@ public class FormelAnsicht {
     impliziert.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           schreibe(impliziert.getText());
-          fuegeHinzu('i');
+          fuegeHinzu('f');
         }
       });
     operatorPanel2.add(impliziert);

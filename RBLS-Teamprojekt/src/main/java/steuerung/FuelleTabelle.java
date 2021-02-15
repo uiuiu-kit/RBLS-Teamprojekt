@@ -39,7 +39,7 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
       for (int zeile = 1; zeile < zeilenAnz; zeile++) {
         akFall = model.gibZeileFall(zeile);
         koordinaten[0] = zeile;
-        if (!akFormel.gibStringRep().equals("leer")) {
+        if (!akFormel.gibStringRep().equals("-1")) {
           model.setzeZelleWW(koordinaten, akFormel.auswerten(akFall));
         }
       }
