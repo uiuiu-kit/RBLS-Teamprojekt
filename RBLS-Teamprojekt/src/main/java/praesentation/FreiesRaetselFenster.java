@@ -79,9 +79,15 @@ public class FreiesRaetselFenster extends RaetselFenster {
             }
           }
           if (!aussagenListe.isEmpty()) {
-            initTabelle();
             atomareAussagen.dispose();
-          }    
+            initTabelle();
+          } else {
+            atomareAussagen.dispose();
+            aussagenListe.add("A");
+            aussagenListe.add("B");
+            aussagenListe.add("C");
+            initTabelle();
+          }
         }
       });
     atomareAussagen.add(okButton);
