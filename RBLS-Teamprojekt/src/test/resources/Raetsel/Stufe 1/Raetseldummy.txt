@@ -10,7 +10,6 @@ A,B,C
 ##
 2
 ##
-AunBuC,AoB
+0un1u2,0o1
 ##
 1
-
