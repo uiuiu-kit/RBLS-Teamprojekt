@@ -26,7 +26,7 @@ public class FormelAnsicht {
   private FormelEditor strg;
   private JDialog ansicht;
   private JLabel formelAnzeige = new JLabel();
-  private Schaltflaeche bestaetige = new Schaltflaeche("Bestätige");
+  private Schaltflaeche bestaetige = new Schaltflaeche("BestÃ¤tige");
   private Schaltflaeche abbruch = new Schaltflaeche("Abbruch", 2);
   private Schaltflaeche entferne = new Schaltflaeche("Entferne", 3);
   
@@ -48,8 +48,8 @@ public class FormelAnsicht {
       Arrays.asList(new Character[] {'u', 'o', 'n', 'f',/* 'a',*/ 'x', '(', ')'}));
   
   /**
-   * Erzeugt eine Ansicht für den Formeleditor als Fenster.
-   * @param aussagen atomare Aussagen, die als Schaltflächen verfügbar sein sollen
+   * Erzeugt eine Ansicht fï¿½r den Formeleditor als Fenster.
+   * @param aussagen atomare Aussagen, die als Schaltflï¿½chen verfï¿½gbar sein sollen
    * @param strg Formeleditor zur Kommunikation
    */
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {
