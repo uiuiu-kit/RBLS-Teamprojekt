@@ -251,4 +251,8 @@ public class Fassade {
   public Tabelle gibTabelle() {
     return tabelle;
   }
+  
+  public List<String> gibGelösteRaetsel(int stufe) {
+    return null;
+  }
 }
