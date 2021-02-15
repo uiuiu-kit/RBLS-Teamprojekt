@@ -1,0 +1,22 @@
+Butterbierdiebe
+##
+Der â€žHonigtopfâ€� wurde ausgeraubt, sÃ¤mtliche ButterbierfÃ¤sser sind verschwunden. Die schwarzen Magier Charles, Donald und Edgar wurden in der NÃ¤he gesichtet. 
+Beim VerhÃ¶r geben sie folgende Aussagen zu Protokoll:
+(1) Charles: â€žIch war es nicht, aber Donald und Edgar haben eingebrochen.â€œ
+(2) Donald: â€žIch bin unschuldig, Edgar hat auch nichts damit zu tun, aber Charles war es.â€œ
+(3) Edgar: â€žCharles und Donald haben das durchgezogen, ich habe nichts damit zu tun.â€œ
+Dumbledore geht davon aus, dass jeder Schuldige lÃ¼gt und jeder Unschuldige die Wahrheit sagt und stellt nach sorgfÃ¤ltiger Untersuchung fest: 
+â€žEiner ist auf jeden Fall schuldig!â€œ. Zeige mit Hilfe einer Wahrheitstabelle, wen Dumbledore meint. 
+Wahr steht dabei dafÃ¼r, dass die Personen die Wahrheit sagt, also nicht der Dieb ist, und Falsch dafÃ¼r, dass die Person lÃ¼gt und einer der Diebe ist.
+##
+ist auf jeden Fall schuldig
+##
+Charles,Donald,Edgar
+##
+Charles,Donald,Edgar
+##
+2
+##
+0un1un2,1u2un0,n0un1u2
+##
+1
