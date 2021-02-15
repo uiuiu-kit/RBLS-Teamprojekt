@@ -46,7 +46,8 @@ public class TabellenPruefer {
    * n�tigen F�lle aktualisiert. Je nachdem ob der Fall nun fehlerhaft ist oder
    * nicht wird auch die Liste der fehlerhaften F�lle aktuallisiert.
    * 
-   * @param koordinate die Koordinate die ge�ndert wurde
+   * @param zeile die Zeile in der die Zelle ge�ndert wurde
+   * @param spalte die Spalte in der die Zelle ge�ndert wurde
    */
   public void ueberpuefeFaelle(int zeile, int spalte) {
     boolean[] akFall = model.gibZeileFall(zeile);
