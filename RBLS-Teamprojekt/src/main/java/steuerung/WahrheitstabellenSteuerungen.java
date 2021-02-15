@@ -54,7 +54,7 @@ public class WahrheitstabellenSteuerungen {
         new FormelEingeben(model, Integer.parseInt(parameter[0]));
         break;
       case "FuelleTabelle":
-        if ((stufe == 1 || stufe == 2 || stufe == 4) && tabellenPruefer.tabelleFuellenErlaubt()) {
+        if ((stufe == 1 || stufe == 2 || stufe == 4)) {
           new FuelleTabelle(model);
         }
         break;
@@ -67,7 +67,7 @@ public class WahrheitstabellenSteuerungen {
       case "ZelleAendern":
         new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
             Integer.parseInt(parameter[1]));
-        ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
+        //ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
         break;
       default:
         break;

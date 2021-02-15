@@ -28,7 +28,10 @@ public class TabellenPruefer {
     int anzAtom = model.gibAtomareAussage().size();
     boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtom)][anzAtom];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
-    noetigeFaelle = Arrays.asList(faelle);
+    noetigeFaelle = new ArrayList<boolean[]>();
+    for (int i = 0; i < faelle.length; i++) {
+      noetigeFaelle.add(faelle[i]);
+    }
     nochNoetigeFaelle = noetigeFaelle;
     vollstaendig = false;
     fehlerhafteWW = new ArrayList<int[]>();
