@@ -8,10 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import modell.Fassade;
+
 /**
- * Grafische Ansicht des Hauptmenüs.
- * Stößt bei Mausklick eines Buttons das Öffnen des Rätselwahl-Bildschirms oder des freien Modus
- * bzw. das Beenden des Programms über die Fensterverwaltung an.
+ * Grafische Ansicht des Hauptmenï¿½s.
+ * Stï¿½ï¿½t bei Mausklick eines Buttons das ï¿½ffnen des Rï¿½tselwahl-Bildschirms oder des freien Modus
+ * bzw. das Beenden des Programms ï¿½ber die Fensterverwaltung an.
  * @author Nick
  */
 public class Hauptmenue extends javax.swing.JFrame {
@@ -89,6 +91,17 @@ public class Hauptmenue extends javax.swing.JFrame {
       }
     });
     startFeld.add(stufe4);
+    
+    int stufe = Fassade.gibSteuFa().gibAbgeschlosseneStufe();
+    if (stufe < 2) {
+      stufe2.setEnabled(false);
+    }
+    if (stufe < 3) {
+      stufe3.setEnabled(false);
+    }
+    if (stufe < 4) {
+      stufe4.setEnabled(false);
+    }
         
     GridBagConstraints c = new GridBagConstraints();
     c.weightx = 0.5;

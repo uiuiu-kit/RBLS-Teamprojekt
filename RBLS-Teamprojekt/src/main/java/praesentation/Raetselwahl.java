@@ -11,7 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 /**
- * Grafische Ansicht des Rätselauswahlbildschirms einer Stufe.
+ * Grafische Ansicht des Rï¿½tselauswahlbildschirms einer Stufe.
  * @author Nick
  */
 public class Raetselwahl extends javax.swing.JFrame {
@@ -24,15 +24,17 @@ public class Raetselwahl extends javax.swing.JFrame {
   private Schaltflaeche zurueck;
   private Schaltflaeche[] buttons;
   private List<String> raetsel;
+  private List<String> geloest;
   
   /**
    * Konstruktor.
    * @param fstr Fensterverwaltung zum Wechseln der Ansicht
-   * @param list Stufe der anzuzeigenden Rätsel
+   * @param list Stufe der anzuzeigenden Rï¿½tsel
    */
-  public Raetselwahl(Fensterverwaltung fstr, List<String> list) {
+  public Raetselwahl(Fensterverwaltung fstr, List<String> liste, List<String> geloest) {
     this.fw = fstr;
-    this.raetsel = list;
+    this.raetsel = liste;
+    this.geloest = geloest;
     init();
   }
 
@@ -47,12 +49,12 @@ public class Raetselwahl extends javax.swing.JFrame {
     buttonPanel.setBackground(new Color(255,102,0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
-      //TODO falls Raetsel wiederholt werden können sollen
-      //if (raetsel.get(j).geloest) {
-      //buttons[j] = new Schaltflaeche(raetsel.get(j), 5);
-      //} else {
-      buttons[j] = new Schaltflaeche(raetsel.get(j), 3);
-      //}
+      //TODO falls Raetsel wiederholt werden kï¿½nnen sollen
+      if (geloest.size() > 0 && geloest.contains(raetsel.get(j))) {
+        buttons[j] = new Schaltflaeche(raetsel.get(j), 5);
+      } else {
+        buttons[j] = new Schaltflaeche(raetsel.get(j), 3);
+      }
       buttons[j].addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           waehleAus(e.getActionCommand());
@@ -67,7 +69,7 @@ public class Raetselwahl extends javax.swing.JFrame {
     getContentPane().setLayout(new BorderLayout());
     getContentPane().add(buttonPanel, BorderLayout.CENTER);
     
-    zurueck = new Schaltflaeche("ZUM MENÜ", 2);
+    zurueck = new Schaltflaeche("ZUM MENï¿½", 2);
     zurueck.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeZurueck();
