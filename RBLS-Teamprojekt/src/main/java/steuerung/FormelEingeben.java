@@ -4,6 +4,7 @@ import java.util.List;
 import modell.Fassade;
 import modell.formel.Formel;
 
+
 public class FormelEingeben extends WahrheitstabellenBefehl {
 
   private int spalte;
@@ -11,10 +12,10 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
   private List<String> atomareAussagen;
 
   /**
-   * Der Konstruktor, für die Befehl, der den Befehl auch direkt ausführt.
+   * Der Konstruktor, fï¿½r die Befehl, der den Befehl auch direkt ausfï¿½hrt.
    * 
    * @param model  die Fassade auf die der Befehl zugreift.
-   * @param spalte die Spalte in der die Formel geändert werden soll.
+   * @param spalte die Spalte in der die Formel geï¿½ndert werden soll.
    */
   public FormelEingeben(Fassade model, int spalte) {
     super(model);
@@ -37,7 +38,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
 
   /**
    * Ruf das Dialogfenster auf, in dem man die Formel editieren kann, und
-   * überträgt die neue Formel, über die Fassade, zum Modell.
+   * ï¿½bertrï¿½gt die neue Formel, ï¿½ber die Fassade, zum Modell.
    */
   public void setzeDaten() {
     FormelEditor fe = new FormelEditor(atomareAussagen);
