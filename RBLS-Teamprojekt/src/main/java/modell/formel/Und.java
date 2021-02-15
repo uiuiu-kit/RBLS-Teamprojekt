@@ -9,8 +9,8 @@ package modell.formel;
 public class Und extends BiKonnektor {
 
   /** Kostruktor. Setzt uebergebene Werte und seine String Rep.
-   * @param rechts rechte Formel
-   * @param links linke Formel
+   * @param rechts Die rechte Formel.
+   * @param links Die linke Formel.
    */
   public Und(Formel links, Formel rechts) {
     this.rechts = rechts;

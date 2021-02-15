@@ -1,6 +1,6 @@
 package modell.formel;
 
-/** Abstrakte Unterklasse des Konnektors, von ihr erben UND, ODER, EXOR und ImplikatorBokonnektor.
+/** Abstrakte Unterklasse des Konnektors, von ihr erben UND, ODER, EXOR und Implikator.
  * @author Flo
  *
  */
