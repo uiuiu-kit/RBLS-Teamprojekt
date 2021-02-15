@@ -93,13 +93,13 @@ public class Hauptmenue extends javax.swing.JFrame {
     startFeld.add(stufe4);
     
     int stufe = Fassade.gibSteuFa().gibAbgeschlosseneStufe();
-    if (stufe <= 2) {
+    if (stufe < 1) {
       stufe2.setEnabled(false);
     }
-    if (stufe <= 3) {
+    if (stufe < 2) {
       stufe3.setEnabled(false);
     }
-    if (stufe <= 4) {
+    if (stufe < 3) {
       stufe4.setEnabled(false);
     }
         

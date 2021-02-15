@@ -50,6 +50,7 @@ public class Fassade {
    */
   public void init() {
     this.interpret = new Raetselinterpret();
+    this.memento = new Memento();
   }
 
   /**
@@ -223,6 +224,7 @@ public class Fassade {
   }
   
   public List<String> gibGeloesteRaetsel(int stufe) {
+    this.memento = new Memento();
     return memento.gibGeloesteRaetsel();
   }
   

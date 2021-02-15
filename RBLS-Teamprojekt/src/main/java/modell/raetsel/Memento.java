@@ -120,8 +120,8 @@ public class Memento {
     if (memento != null && !memento.isEmpty()) {
       this.abschlussStufe = Integer.parseInt(memento.get(0));
     }
-    memento.remove(1);
     memento.remove(0);
+    
   }
 
   private List<String> extrahiere(List<String> input) {
