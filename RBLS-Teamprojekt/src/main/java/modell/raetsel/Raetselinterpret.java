@@ -31,7 +31,7 @@ public class Raetselinterpret {
   private List<String> exAtome(String input) {
     String[] sep = input.split(",");
     List<String> output = new ArrayList<String>();
-    for (String temp: sep) {
+    for (String temp : sep) {
       output.add(temp);
     }
     return output;
@@ -41,13 +41,13 @@ public class Raetselinterpret {
     List<File> output = new ArrayList<File>();
     File path = null;
     switch (stufe) {
-      case 1: path = new File("Raetsel/Stufe 1");
+      case 1: path = new File("Resources/Raetsel/Stufe 1");
       break;
-      case 2: path = new File("Raetsel/Stufe 2");
+      case 2: path = new File("Resources/Raetsel/Stufe 2");
       break;
-      case 3: path = new File("Raetsel/Stufe 3");
+      case 3: path = new File("Resources/Raetsel/Stufe 3");
       break;
-      case 4: path = new File("Raetsel/Stufe 4");
+      case 4: path = new File("Resources/Raetsel/Stufe 4");
       break;
       default: path = null;
     }

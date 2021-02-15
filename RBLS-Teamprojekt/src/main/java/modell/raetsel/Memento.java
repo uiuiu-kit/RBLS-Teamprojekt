@@ -33,7 +33,7 @@ public class Memento {
   public void loesche() {
     Writer fw = null;
     try {
-      fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
+      fw = new FileWriter("Resources/Sicherung/Sicherung.txt");
     } catch (IOException e) {
       System.err.println("Sicherung konnte nicht gelöscht werden.");
     } finally {
@@ -51,7 +51,6 @@ public class Memento {
   /**
    * Quelle: http://openbook.rheinwerk-verlag.de/javainsel9/
    * javainsel_17_001.htm#mj87f7ea8c7b8051417049399df2c5782a
-   * 
    * Erstellt eine Textdatei, welche den aktuellen Spielstand, sprich die höchste
    * geloeste Stufe und den Raetselnamen enthaelt.
    * 
@@ -66,7 +65,7 @@ public class Memento {
       memento.add(raetsel.gibName());
     }
     try {
-      fw = new FileWriter("src/main/resources/Sicherung/Sicherung.txt");
+      fw = new FileWriter("Resources/Sicherung/Sicherung.txt");
       if (raetsel.gibStufe() > this.abschlussStufe) {
         fw.write(raetsel.gibStufe() + "\n");  
       } else {
@@ -109,7 +108,7 @@ public class Memento {
     // da memento 2 Zeilen weiter gleich wieder gesetzt wird.
     try {
       memento = extrahiere(Files.readAllLines(
-          FileSystems.getDefault().getPath("src/main/resources/Sicherung/Sicherung.txt"),
+          FileSystems.getDefault().getPath("Resources/Sicherung/Sicherung.txt"),
           StandardCharsets.UTF_8));
     } catch (IOException e) {
       e.printStackTrace();
