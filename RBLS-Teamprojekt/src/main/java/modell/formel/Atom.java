@@ -20,7 +20,11 @@ public class Atom extends Formel {
    */
   public Atom(String aussage, int nummer) {
     this.aussage = aussage;
-    this.rep = "" + nummer;
+    if (nummer == -1) {
+      this.rep = "Formel einfügen";
+    } else {
+      this.rep = "" + nummer;
+    }
     this.nummer = nummer;
   }
 
