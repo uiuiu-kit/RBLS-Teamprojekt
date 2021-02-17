@@ -7,6 +7,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 /** Der Raetselinterpret liest die Ordnerstruktur aus 
@@ -33,7 +34,7 @@ public class Raetselinterpret {
     String[] sep = input.split(",");
     List<String> output = new ArrayList<String>();
     for (String temp : sep) {
-      output.add(temp);
+      output.add(killSpace(temp));
     }
     return output;
   }
@@ -115,13 +116,15 @@ public class Raetselinterpret {
     String[] lines = extrahiere(text);
     List<String> atome = null;
     String[] antwortM = lines[3].split(",");
-    List<String> formeln = new ArrayList<String>()
-;    for (String temp : lines[6].split(",")) {
+    List<String> formeln = new ArrayList<String>();    
+    for (String temp : lines[6].split(",")) {
       formeln.add(temp);
     }
-    
     String[] name = lines[0].split(".txt");
     atome = this.exAtome(lines[4]);
+    for (int i = 0; i < antwortM.length; i++) {
+      antwortM[i] = killSpace(antwortM[i]);
+    }
     return new Raetsel(
         name[0],                    //spaltenAnz
         Integer.parseInt(lines[7]), //stufe
@@ -147,5 +150,16 @@ public class Raetselinterpret {
         0, 
         null, 
         new ArrayList<String>());
+  }
+  
+  private String killSpace(String input) {
+    String[] teile = input.split(" ");
+    StringJoiner sj = new StringJoiner(" ");
+    for (String temp : teile) {
+      if (!temp.isEmpty()) {
+        sj.add(temp);
+      }
+    }
+    return sj.toString();
   }
 }
