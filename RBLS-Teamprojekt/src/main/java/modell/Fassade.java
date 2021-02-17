@@ -127,9 +127,15 @@ public class Fassade {
   }
   
 
+  /** Erstellt ein leeres Raetsel.
+   * Wird von FreiesRaetselfenster aufgerufen.
+   * benötigt die Namen der zu verwendenden Atome.
+   * @param atome Namen der verwendeten Atome.
+   */
   public void erstelleRaetsel(List<String> atome) {
     aktualisiere();
-    raetsel = this.interpret.erstelleFrRa(atome);
+    this.raetsel = this.interpret.erstelleFrRa(atome);
+    this.tabelle = new Tabelle(raetsel.gibAtome());
   }
 
   /**
