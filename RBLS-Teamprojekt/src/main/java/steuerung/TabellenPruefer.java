@@ -11,33 +11,20 @@ public class TabellenPruefer {
   boolean vollstaendig;
   private List<int[]> fehlerhafteWaWe;
   private List<Integer> fehlerhafteFaelle;
-  private List<boolean[]> noetigeFaelle;
-  private List<boolean[]> nochNoetigeFaelle;
+  private int anzAtom;
   private int stufe;
 
   /**
    * Konstruktor des TabellenPruefers der die Startvoraussetzunge und die globalen
    * Variablen initialisiert und.
-
+   * 
    * @param model die Fassade hinter der die Tabelle ist die getestet werden soll.
    */
   public TabellenPruefer(Fassade model, int stufe) {
     this.model = model;
     this.stufe = stufe;
-    int anzAtom = model.gibAtomareAussage().size();
-    boolean[][] faelle = new boolean[(int) Math.pow(2, anzAtom)][anzAtom];
-    faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
-    noetigeFaelle = new ArrayList<boolean[]>();
-    for (int i = 0; i < faelle.length; i++) {
-      noetigeFaelle.add(faelle[i]);
-    }
-    nochNoetigeFaelle = noetigeFaelle;
+    anzAtom = model.gibAtomareAussage().size();
     vollstaendig = false;
-    fehlerhafteWaWe = new ArrayList<int[]>();
-    fehlerhafteFaelle = new ArrayList<Integer>();
-    for (int i = 1; i < (int) Math.pow(2, anzAtom) + 1; i++) {
-      fehlerhafteFaelle.add(i);
-    }
   }
 
   /**
@@ -45,43 +32,34 @@ public class TabellenPruefer {
    * vorher in der Zeile stand n�tig war. Je nachdem wir die Liste der noch
    * n�tigen F�lle aktualisiert. Je nachdem ob der Fall nun fehlerhaft ist oder
    * nicht wird auch die Liste der fehlerhaften F�lle aktuallisiert.
-
-   * @param zeile die Zeile in der die Zelle ge�ndert wurde
-   * @param spalte die Spalte in der die Zelle ge�ndert wurde
+   * 
    */
-  public void ueberpuefeFaelle(int zeile, int spalte) {
-    boolean[] akFall = model.gibZeileFall(zeile);
-    if (durchsucheFallListe(akFall) != -1) {
-      nochNoetigeFaelle.remove(durchsucheFallListe(akFall));
-      fehlerhafteFaelle.remove(zeile);
-    } else {
-      akFall[zeile] = !(akFall[zeile]);
-      if (durchsucheFallListe(akFall) != -1) {
-        fehlerhafteFaelle.add(zeile);
-        nochNoetigeFaelle.add(akFall);
-      }
-    }
-  }
-
-  private int durchsucheFallListe(boolean[] akFall) {
-    boolean gleich = false;
-    for (int i = 0; i < nochNoetigeFaelle.size(); i++) {
-      boolean[] listFall = nochNoetigeFaelle.get(i);
-      for (int j = 0; j < listFall.length; j++) {
-        if (listFall[j] == akFall[i]) {
-          gleich = true;
+  public boolean ueberpuefeFaelle() {
+    boolean[] akFall;
+    boolean[] vergleichsFall;
+    boolean gleich;
+    fehlerhafteFaelle = new ArrayList<Integer>();
+    for (int i = 1; i < Math.pow(2, anzAtom) + 1; i++) {
+      akFall = model.gibZeileFall(i);
+      for (int j = i + 1; j < Math.pow(2, anzAtom) + 1; j++) {
+        vergleichsFall = model.gibZeileFall(j);
+        gleich = true;
+        for (int k = 0; k < vergleichsFall.length; k++) {
+          if (!vergleichsFall[k] == akFall[k]) {
+            gleich = false;
+          }
+        }
+        if (gleich) {
+          fehlerhafteFaelle.add(j);
         }
       }
-      if (gleich) {
-        return i;
-      }
     }
-    return -1;
+    return fehlerhafteFaelle.isEmpty();
   }
 
   /**
    * �berpr�ft ob alle n�tigen Formeln vorhanden sind.
-
+   * 
    * @return sind alle n�tigen Formel vorhanden.
    */
   public boolean ueberpuefeFormeln() {
@@ -112,47 +90,47 @@ public class TabellenPruefer {
 
   /**
    * Gibt eine Liste von fehlerhaften Koordinaten aus.
-
-   * @param zeile  die zeile die überprüft wird.
-   * @param spalte die spalte die überprüft wird.
+   * 
    */
-  public void ueberpuefeWaWe(int zeile, int spalte) {
-    int i = enthaltenInFehlerhaft(zeile, spalte);
-    if (i != 1) {
-      fehlerhafteWaWe.remove(i);
-    } else {
-      Formel akFormel = model.gibFormel(spalte);
-      boolean[] akFall = model.gibZeileFall(zeile);
-      if (!akFormel.auswerten(akFall)) {
-        fehlerhafteWaWe.add(new int[] { zeile, spalte });
+  public void ueberpruefeWaWe() {
+    boolean[] akFall;
+    Formel akFormen;
+    fehlerhafteWaWe = new ArrayList<int[]>();
+    for (int zeile = 1; zeile < model.gibZeilenAnz(); zeile++) {
+      akFall = model.gibZeileFall(zeile);
+      for (int spalte = model.gibAtomareAussage().size(); spalte < model
+          .gibSpaltenAnz(); spalte++) {
+        akFormen = model.gibFormel(spalte);
+        if (akFormen.auswerten(akFall) != model.gibZelleWaWe(new int[] { zeile, spalte })) {
+          fehlerhafteWaWe.add(new int[] { zeile, spalte });
+        }
       }
     }
-  }
-
-  private int enthaltenInFehlerhaft(int zeile, int spalte) {
-    for (int i = 0; i < fehlerhafteWaWe.size(); i++) {
-      if (fehlerhafteWaWe.get(i)[0] == zeile && fehlerhafteWaWe.get(i)[1] == spalte) {
-        return i;
-      }
-    }
-    return -1;
   }
 
   /**
    * Gibt die Koordinaten einer fehlerhaften Zelle zur�ck. Abh�nig von der Stufe
    * wird entweder eine Koordinaten in den F�llen (1), eine Koordinate in den
    * Wahrheitswerden(3) oder null (2,4) zur�ck gegegben.
-
+   * 
    * @return die Koordinaten einer Fehlerhaften Zelle
    */
   public int[] gibFehlerhafteZelle() {
     int pos;
     if (stufe == 1) {
+      ueberpuefeFaelle();
+      if (fehlerhafteFaelle.isEmpty()) {
+        return null;
+      }
       pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteFaelle.size());
       int[] koordinaten = { fehlerhafteFaelle.get(pos), 0 };
       return koordinaten;
     }
-    if (stufe == 3 && fehlerhafteWaWe.size() != 0) {
+    if (stufe == 3) {
+      ueberpruefeWaWe();
+      if (fehlerhafteWaWe.isEmpty()) {
+        return null;
+      }
       pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteWaWe.size());
       return fehlerhafteWaWe.get(pos);
     }
@@ -161,12 +139,12 @@ public class TabellenPruefer {
 
   /**
    * Gibt aus ob fuelleTabelle erlaubt ist.
-
+   * 
    * @return ist fuelleTabelle erlaubt
    */
   public boolean tabelleFuellenErlaubt() {
     if (stufe == 1) {
-      return fehlerhafteFaelle.isEmpty();
+      return ueberpuefeFaelle();
     }
     if (stufe == 2 || stufe == 4) {
       return ueberpuefeFormeln();

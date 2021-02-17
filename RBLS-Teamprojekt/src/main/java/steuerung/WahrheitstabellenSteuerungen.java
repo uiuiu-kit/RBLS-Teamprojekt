@@ -10,7 +10,7 @@ public class WahrheitstabellenSteuerungen {
 
   /**
    * Konstruktor f�r die WahrheitstabellenSteuerungen.
-
+   * 
    * @param model die Fassade die von Befehlen angesprochen werden soll
    */
   public WahrheitstabellenSteuerungen(Fassade model) {
@@ -22,7 +22,7 @@ public class WahrheitstabellenSteuerungen {
   /**
    * L�st Befehl von der Pr�sentation auf und konstruiert das passenden
    * Befehls-Objekt und st��t damit dessen Ausf�hrung an.
-
+   * 
    * @param befehl der auszuf�hrende Befehl
    */
   public void befehl(String befehl) {
@@ -54,7 +54,7 @@ public class WahrheitstabellenSteuerungen {
         new FormelEingeben(model, Integer.parseInt(parameter[0]));
         break;
       case "FuelleTabelle":
-        if ((stufe == 1 || stufe == 2 || stufe == 4)) {
+        if ((stufe == 1 || stufe == 2 || stufe == 4) && tabellenPruefer.tabelleFuellenErlaubt()) {
           new FuelleTabelle(model);
         }
         break;
@@ -67,7 +67,6 @@ public class WahrheitstabellenSteuerungen {
       case "ZelleAendern":
         new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
             Integer.parseInt(parameter[1]));
-        ueberpruefeTabelle(Integer.parseInt(parameter[0]), Integer.parseInt(parameter[1]));
         break;
       default:
         break;
@@ -76,23 +75,5 @@ public class WahrheitstabellenSteuerungen {
 
   public int[] gibTip() {
     return tabellenPruefer.gibFehlerhafteZelle();
-  }
-
-  /**
-   * �berpr�ft ob der Inhalt der Tabelle korrekt ist.
-
-   * @return Korrektheit
-   */
-  private void ueberpruefeTabelle(int spalte, int zeile) {
-    if (stufe == 1) {
-      if (zeile < model.gibAtomareAussage().size()) {
-        tabellenPruefer.ueberpuefeFaelle(zeile, spalte);
-      }
-    }
-    if (stufe == 3) {
-      if (zeile > 0 && spalte > model.gibAtomareAussage().size()) {
-        tabellenPruefer.ueberpuefeWaWe(zeile, spalte);
-      }
-    }
   }
 }
