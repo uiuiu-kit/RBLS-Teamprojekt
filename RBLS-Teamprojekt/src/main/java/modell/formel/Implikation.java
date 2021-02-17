@@ -17,7 +17,7 @@ public class Implikation extends BiKonnektor {
   public Implikation(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
-    this.rep = "f";
+    this.rep = "\u2192";
   }
   
   @Override

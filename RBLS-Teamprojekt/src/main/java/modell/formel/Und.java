@@ -17,7 +17,7 @@ public class Und extends BiKonnektor {
   public Und(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
-    this.rep = "u";
+    this.rep = "\u2227";
   }
   
   @Override

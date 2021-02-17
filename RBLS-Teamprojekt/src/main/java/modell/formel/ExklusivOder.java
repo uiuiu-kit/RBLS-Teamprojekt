@@ -17,7 +17,7 @@ public class ExklusivOder extends BiKonnektor {
   public ExklusivOder(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
-    this.rep = "x";
+    this.rep = "\u2295";
   }
 
   @Override
