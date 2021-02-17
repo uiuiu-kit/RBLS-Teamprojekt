@@ -101,6 +101,7 @@ public class Hauptmenue extends javax.swing.JFrame {
     }
     if (stufe < 3) {
       stufe4.setEnabled(false);
+      freierModus.setEnabled(false);
     }
         
     GridBagConstraints c = new GridBagConstraints();
