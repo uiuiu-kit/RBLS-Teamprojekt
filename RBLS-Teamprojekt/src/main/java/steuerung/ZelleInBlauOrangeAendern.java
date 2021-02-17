@@ -8,7 +8,7 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
 
   /**
    * �ndert den Wahrheitswert in einer Wahrheitswert Zelle.
-
+   * 
    * @param model  die SteuerungFassade auf der der Befehl ausgef�hrt wird.
    * @param spalte die Spalte in der der Wert ge�ndert wird
    * @param zeile  die Zeile in der der Wert ge�ndert wird
