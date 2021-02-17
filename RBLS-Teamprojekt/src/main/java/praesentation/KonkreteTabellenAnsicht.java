@@ -2,6 +2,7 @@ package praesentation;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,9 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
 import modell.Fassade;
 import praesentation.tabelle.FarbModell;
 import praesentation.tabelle.ZellenStatus;
@@ -137,7 +141,16 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       }
     }
     // JTable//
-    tabelle = new JTable(inhalt, inhalt[0]);
+    tabelle = new JTable(inhalt, inhalt[0]) {
+      private static final long serialVersionUID = 1L;
+      public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+          Component component = super.prepareRenderer(renderer, row, column);
+          TableColumn spalte = getColumnModel().getColumn(column);
+          spalte.setPreferredWidth(Math.max(component.getPreferredSize().width 
+              + getIntercellSpacing().width, spalte.getPreferredWidth()));
+          return component;
+      }
+    };
     FarbModell tm = new FarbModell(inhalt, inhalt[0]);
     tabelle.setModel((FarbModell) tm);
     for (int j = 0; j < spaltenzahl; j++) {
@@ -161,6 +174,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         aktualisiere(new int[] { i, j });
       }
     }
+    tabelle.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
   }
 
   private void klickeZelle(int i, int j) {
