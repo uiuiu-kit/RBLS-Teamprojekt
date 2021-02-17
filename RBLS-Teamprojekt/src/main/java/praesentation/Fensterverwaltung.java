@@ -129,6 +129,8 @@ public class Fensterverwaltung {
   }
   
   private void wechseleFenster(JFrame fenster, String titel) {
+    fensterMass[0] = aktivesFenster.getSize().width;
+    fensterMass[1] = aktivesFenster.getSize().height;
     aktivesFenster.setVisible(false);
     aktivesFenster = fenster;
     aktivesFenster.setTitle(titel);
