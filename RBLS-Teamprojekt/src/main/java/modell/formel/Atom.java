@@ -21,7 +21,7 @@ public class Atom extends Formel {
    * @param nummer Position im Werte-Array.
    */
   public Atom(String aussage, int nummer) {
-    this.aussage = aussage;
+    this.aussage = aussage + "(" + nummer + ")";
     if (nummer == -1) {
       this.rep = "Formel einfügen";
     } else {
