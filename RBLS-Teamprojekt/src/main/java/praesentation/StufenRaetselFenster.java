@@ -6,6 +6,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -94,10 +97,11 @@ public class StufenRaetselFenster extends RaetselFenster {
     frageFeld.setEditable(false);
     frageFeld.setLineWrap(true);
     frageFeld.setWrapStyleWord(true);
+    frageFeld.setPreferredSize(new Dimension(1, (int) (frage.length() * 0.3)));
     
     JPanel frageFeldPanel = new JPanel();
-    frageFeldPanel.setLayout(new BoxLayout(frageFeldPanel, BoxLayout.X_AXIS));
-    frageFeldPanel.add(frageFeld);
+    frageFeldPanel.setLayout(new BorderLayout());
+    frageFeldPanel.add(frageFeld, BorderLayout.CENTER);
     JPanel frageRahmen = erzeugeRahmenPanel(frageFeldPanel, this.name);
     
     fragePanel.add(menuePanel, BorderLayout.WEST);
@@ -156,7 +160,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
     Border border3 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
     panel3.setBorder(border3);
-    panel3.add(panel2);
+    panel3.add(panel2, BorderLayout.CENTER);
     panel3.setBackground(Color.WHITE);
     
     return panel3;

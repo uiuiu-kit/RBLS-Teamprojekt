@@ -60,7 +60,7 @@ public class AntwortFeld {
     p.add(antwortWahl);
     p.add(textLabel);
 
-    pruefeKnopf = new Schaltflaeche("Pr�fen");
+    pruefeKnopf = new Schaltflaeche("Prüfen");
     pruefeKnopf.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         pruefeAntwort();
