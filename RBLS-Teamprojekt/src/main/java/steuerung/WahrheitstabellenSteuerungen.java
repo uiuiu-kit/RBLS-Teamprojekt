@@ -51,7 +51,9 @@ public class WahrheitstabellenSteuerungen {
         }
         break;
       case "FormelEingeben":
-        new FormelEingeben(model, Integer.parseInt(parameter[0]));
+        if (Integer.parseInt(parameter[0]) >= model.gibAtomareAussage().size()) {
+          new FormelEingeben(model, Integer.parseInt(parameter[0]));
+        }
         break;
       case "FuelleTabelle":
         if ((stufe == 1 || stufe == 2 || stufe == 4) && tabellenPruefer.tabelleFuellenErlaubt()) {
