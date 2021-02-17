@@ -1,5 +1,6 @@
 package praesentation;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +21,8 @@ public class Fensterverwaltung {
   private Hauptsteuerung strg;
   private JFrame aktivesFenster;
   private Fassade modell;
-  private int[] fensterMass = new int[]{1000, 820};
+  private int[] fensterMass = new int[]{1280, 720};
+  private int[] minimumMass = new int[]{1152, 648};
   ImageIcon img = new ImageIcon(getClass().getResource("/Icon/testIcon.png"));
 
   public Fensterverwaltung(Hauptsteuerung strg, Fassade fsd) {
@@ -43,6 +45,7 @@ public class Fensterverwaltung {
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
+    aktivesFenster.setMinimumSize(new Dimension(minimumMass[0], minimumMass[1]));
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
     aktivesFenster.setVisible(true);
@@ -130,6 +133,7 @@ public class Fensterverwaltung {
     aktivesFenster = fenster;
     aktivesFenster.setTitle(titel);
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
+    aktivesFenster.setMinimumSize(new Dimension(minimumMass[0], minimumMass[1]));
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);
     aktivesFenster.setIconImage(img.getImage());
