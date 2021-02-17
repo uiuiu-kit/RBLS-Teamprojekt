@@ -11,7 +11,7 @@ import modell.formel.Formel;
  * verwaltet und abgefragt. Die Zeilen- und Spaltenanzahl ist abhaengig vom
  * Raetsel. Sie enthaelt au�erdem Zellenobjekte vom speziellen Typ
  * Wahrheitswert- oder Formelzelle.
-
+ * 
  * @author janne
  *
  */
@@ -24,7 +24,7 @@ public class Tabelle {
   /**
    * Konstruktor fuer die Tabelle eines Raetels. Konstruiert anhand der
    * uebergebenen Parameter.
-
+   * 
    * @param atom Anzahl der Atomaren Aussagen.
    */
   public Tabelle(List<Atom> atom) {
@@ -49,7 +49,7 @@ public class Tabelle {
 
   /**
    * Gibt der Fassade den WW der angepingten Zelle zurueck.
-
+   * 
    * @param i Zellenposition
    * @return WW
    */
@@ -63,7 +63,7 @@ public class Tabelle {
   /**
    * Gibt die String-Repraesentation von Wahrheitswertzelle oder Formelzelle
    * wieder.
-
+   * 
    * @param i Array der Laenge 2, welches die Zelle definiert.
    * @return String-Repraesentation der ausgewaehlten Zelle.
    */
@@ -76,7 +76,7 @@ public class Tabelle {
 
   /**
    * Sucht das Zellenobjekt im 2-dimensionalen Listenfeld.
-
+   * 
    * @param i Array der Groe�e 2, gibt Zeile und Spalte der Zellenposition an.
    * @return Zellenobjekt.
    */
@@ -90,7 +90,7 @@ public class Tabelle {
   /**
    * Liefert der Fassade die gewaehlte aussagenlogische Formel der angegebenen
    * Zelle.
-
+   * 
    * @param i Position der Zelle
    * @return Formel der angegeben Zelle.
    */
@@ -127,7 +127,7 @@ public class Tabelle {
 
   /**
    * Erlaubt das gezielte Loeschen von Spalten.
-
+   * 
    * @param spalte zu loeschende Spalte.
    */
   public void spalteEntfernen(int spalte) {
@@ -139,7 +139,7 @@ public class Tabelle {
 
   /**
    * Gibt die Stringrepraesentation der genannten Zelle an.
-
+   * 
    * @param z Zelle
    * @return String
    */
@@ -152,7 +152,7 @@ public class Tabelle {
 
   /**
    * Ermittelt die Wahrheitswertbelegung einer kompletten Zeile.
-
+   * 
    * @param i gewuenschte Zeilennummer
    * @return Booleanarray mit Wahrheitswerten.
    */
@@ -169,7 +169,7 @@ public class Tabelle {
 
   /**
    * Gibt der Fassade die Formel der entsprechenden Zelle zurueck.
-
+   * 
    * @param s Spalte der Formelzelle.
    * @return Formel der Zelle
    */
@@ -179,12 +179,16 @@ public class Tabelle {
 
   /**
    * Gibt die Formel als Text wieder.
-
+   * 
    * @param s Spalte, in der die Formel zu finden ist.
    * @return String der Formel.
    */
   public String gibFormelText(int s) {
     int[] temp = { 0, s };
+    if (s < atomAnz) {
+      Atom a = (Atom) this.gibAussagenlogischeFormel(temp);
+      return a.getAussage();
+    }
     return this.gibAussagenlogischeFormel(temp).gibStringRep();
   }
 
