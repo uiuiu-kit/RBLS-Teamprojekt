@@ -16,7 +16,7 @@ import modell.Fassade;
 
  * @author Nick
  */
-public class Hauptmenue extends javax.swing.JFrame {
+public class Hauptmenue extends javax.swing.JPanel {
 
   /**
    * auto-generierte ID.
@@ -54,10 +54,9 @@ public class Hauptmenue extends javax.swing.JFrame {
     mitte.add(startFeld, java.awt.BorderLayout.SOUTH);
     JLabel starttext = new javax.swing.JLabel("Start", SwingConstants.CENTER);
     mitte.add(starttext, java.awt.BorderLayout.NORTH);
- 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    getContentPane().setLayout(new java.awt.GridBagLayout());
-    getContentPane().setBackground(Color.WHITE);
+
+    this.setLayout(new java.awt.GridBagLayout());
+    this.setBackground(Color.WHITE);
         
     //Stufenbuttons//
     stufe1.setText("Stufe 1");
@@ -108,7 +107,7 @@ public class Hauptmenue extends javax.swing.JFrame {
     c.weightx = 0.5;
     c.gridx = 3;
     c.gridy = 1;
-    getContentPane().add(mitte, c);
+    this.add(mitte, c);
         
     //weitere Buttons//
     freierModus.addActionListener(new ActionListener() {
@@ -126,12 +125,10 @@ public class Hauptmenue extends javax.swing.JFrame {
     c.gridy = 1;
     c.ipadx = 80;
     c.ipady = 60;
-    getContentPane().add(beenden, c);
+    this.add(beenden, c);
     c.gridx = 4;
     c.gridy = 1;
-    getContentPane().add(freierModus, c);
-        
-    pack();
+    this.add(freierModus, c);
   }
 
   /**

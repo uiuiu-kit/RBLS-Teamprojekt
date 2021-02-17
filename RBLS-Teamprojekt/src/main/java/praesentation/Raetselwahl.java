@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
  * @author Nick
  */
-public class Raetselwahl extends javax.swing.JFrame {
+public class Raetselwahl extends javax.swing.JPanel {
 
   /**
    * auto-generierte ID.
@@ -46,7 +46,6 @@ public class Raetselwahl extends javax.swing.JFrame {
    */
   private void init() {
     buttons = new Schaltflaeche[raetsel.size()];
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
     buttonPanel.setBackground(new Color(255, 102, 0));
@@ -68,8 +67,8 @@ public class Raetselwahl extends javax.swing.JFrame {
       buttonPanel.setBackground(new Color(255, 102, 0));
     }
     
-    getContentPane().setLayout(new BorderLayout());
-    getContentPane().add(buttonPanel, BorderLayout.CENTER);
+    this.setLayout(new BorderLayout());
+    this.add(buttonPanel, BorderLayout.CENTER);
     
     zurueck = new Schaltflaeche("ZUM MENÜ", 2);
     zurueck.addActionListener(new ActionListener() {
@@ -77,9 +76,7 @@ public class Raetselwahl extends javax.swing.JFrame {
         klickeZurueck();
       }
     });
-    getContentPane().add(zurueck, BorderLayout.WEST);
-    
-    pack();
+    this.add(zurueck, BorderLayout.WEST);
   }
 
   /**

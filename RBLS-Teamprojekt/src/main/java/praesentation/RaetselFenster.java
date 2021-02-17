@@ -1,6 +1,6 @@
 package praesentation;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * Vorlage fuer die Ansicht eines Raetselfensters.
@@ -9,7 +9,7 @@ import javax.swing.JFrame;
  */
 public abstract class RaetselFenster {
   
-  protected JFrame ansicht;
+  protected JPanel ansicht;
   protected Schaltflaeche menueKnopf;
   protected TabellenAnsicht tabelle;
   

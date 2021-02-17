@@ -103,9 +103,9 @@ public class FreiesRaetselFenster extends RaetselFenster {
     atomareAussagen.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     atomareAussagen.setVisible(true);
     
-    ansicht = new JFrame();
-    ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
-    ansicht.getContentPane().setBackground(Color.WHITE);
+    ansicht = new JPanel();
+    ansicht.setLayout(new BoxLayout(ansicht, BoxLayout.Y_AXIS));
+    ansicht.setBackground(Color.WHITE);
     
     //oberes Panel//
     JPanel oben = new JPanel();
@@ -136,8 +136,8 @@ public class FreiesRaetselFenster extends RaetselFenster {
     tabellenPanel.setBackground(Color.WHITE);
     
     //Ansicht zusammenf�gen//
-    ansicht.getContentPane().add(oben, 0);
-    ansicht.getContentPane().add(tabellenPanel, 1);
+    ansicht.add(oben, 0);
+    ansicht.add(tabellenPanel, 1);
   }
 
   private void initTabelle() {

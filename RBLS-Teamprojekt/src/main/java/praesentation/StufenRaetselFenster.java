@@ -59,9 +59,9 @@ public class StufenRaetselFenster extends RaetselFenster {
     this.name = modell.gibAktivenRaetselnamen();
     this.frage = modell.gibFragestellung();
     
-    ansicht = new JFrame();
-    ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
-    ansicht.getContentPane().setBackground(Color.WHITE);
+    ansicht = new JPanel();
+    ansicht.setLayout(new BoxLayout(ansicht, BoxLayout.Y_AXIS));
+    ansicht.setBackground(Color.WHITE);
     
     //FragePanel//
     JPanel fragePanel = new JPanel();
@@ -133,9 +133,9 @@ public class StufenRaetselFenster extends RaetselFenster {
     weiter.setVisible(false);
     
     //Ansicht zusammenf�gen//
-    ansicht.getContentPane().add(fragePanel, 0);
-    ansicht.getContentPane().add(tabellenPanel, 1);
-    ansicht.getContentPane().add(antwortPanel, 2);
+    ansicht.add(fragePanel, 0);
+    ansicht.add(tabellenPanel, 1);
+    ansicht.add(antwortPanel, 2);
   }
   
   private JPanel erzeugeRahmenPanel(JPanel innen, String titel) {

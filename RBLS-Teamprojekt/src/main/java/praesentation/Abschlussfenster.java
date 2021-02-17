@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 
  * @author Nick
  */
-public class Abschlussfenster extends javax.swing.JFrame {
+public class Abschlussfenster extends javax.swing.JPanel {
 
   /**
    * auto-generierte ID.
@@ -38,7 +38,7 @@ public class Abschlussfenster extends javax.swing.JFrame {
   public Abschlussfenster(Fensterverwaltung fw) {
     this.fw = fw;
 
-    naechstesRaetsel = new Schaltflaeche("nächsten Rätsel", 3);
+    naechstesRaetsel = new Schaltflaeche("nächstes Rätsel", 3);
     naechstesRaetsel.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeNaechstesRaetsel();
@@ -60,10 +60,10 @@ public class Abschlussfenster extends javax.swing.JFrame {
     textLabel = new JLabel(texte[new Random().nextInt(texte.length)], SwingConstants.CENTER);
     textLabel.setForeground(Color.WHITE);
     
-    getContentPane().setLayout(new java.awt.BorderLayout());
-    getContentPane().setBackground(new Color(255, 102, 0));
-    getContentPane().add(buttons, java.awt.BorderLayout.SOUTH);
-    getContentPane().add(textLabel, java.awt.BorderLayout.CENTER);
+    this.setLayout(new java.awt.BorderLayout());
+    this.setBackground(new Color(255, 102, 0));
+    this.add(buttons, java.awt.BorderLayout.SOUTH);
+    this.add(textLabel, java.awt.BorderLayout.CENTER);
   }
   
   /**

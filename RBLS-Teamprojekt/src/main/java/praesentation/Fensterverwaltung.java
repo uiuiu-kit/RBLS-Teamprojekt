@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import modell.Fassade;
 import steuerung.Hauptsteuerung;
@@ -42,7 +43,8 @@ public class Fensterverwaltung {
         new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.PLAIN, 18));
     UIManager.put("Table.font", new Font("Arial Unicode MS", Font.BOLD, 20));
 
-    aktivesFenster = new Hauptmenue(this);
+    aktivesFenster = new JFrame();
+    aktivesFenster.setContentPane(new Hauptmenue(this));
     aktivesFenster.setTitle("RBLS");
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
     aktivesFenster.setMinimumSize(new Dimension(minimumMass[0], minimumMass[1]));
@@ -128,18 +130,13 @@ public class Fensterverwaltung {
     oeffneAbschlussFenster();
   }
   
-  private void wechseleFenster(JFrame fenster, String titel) {
-    fensterMass[0] = aktivesFenster.getSize().width;
-    fensterMass[1] = aktivesFenster.getSize().height;
-    aktivesFenster.setVisible(false);
-    aktivesFenster = fenster;
+  private void wechseleFenster(JPanel fenster, String titel) {
+    aktivesFenster.getContentPane().removeAll();
+    fenster.setPreferredSize(new Dimension(fensterMass[0], fensterMass[1]));
+    aktivesFenster.setContentPane(fenster);
+    aktivesFenster.getContentPane().revalidate(); 
+    aktivesFenster.getContentPane().repaint();
     aktivesFenster.setTitle(titel);
-    aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
-    aktivesFenster.setMinimumSize(new Dimension(minimumMass[0], minimumMass[1]));
-    aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
-    aktivesFenster.setIconImage(img.getImage());
-    aktivesFenster.setVisible(true);
   }
   
 }
