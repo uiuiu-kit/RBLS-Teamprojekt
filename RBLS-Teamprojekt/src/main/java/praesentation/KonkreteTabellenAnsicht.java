@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-
 import modell.Fassade;
 import praesentation.tabelle.FarbModell;
 import praesentation.tabelle.ZellenStatus;

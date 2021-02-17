@@ -3,7 +3,7 @@ package praesentation;
 import javax.swing.JFrame;
 
 /**
- * Vorlage f�r die Ansicht eines Raetselfensters.
+ * Vorlage fuer die Ansicht eines Raetselfensters.
 
  * @author Nick
  */

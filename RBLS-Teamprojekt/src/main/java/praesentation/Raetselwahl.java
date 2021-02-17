@@ -11,7 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 /**
- * Grafische Ansicht des R�tselauswahlbildschirms einer Stufe.
+ * Grafische Ansicht des Raetselauswahlbildschirms einer Stufe.
 
  * @author Nick
  */

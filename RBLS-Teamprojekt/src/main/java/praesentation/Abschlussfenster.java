@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
- * Zeigt zwei Buttons an, durch die das Wechseln zum Hauptmen�
- * bzw. zu einem zuf�lligen ungel�sten R�tsel derselben Stufe
- * �ber die Fensterverwaltung angesto�en wird.
+ * Zeigt zwei Buttons an, durch die das Wechseln zum Hauptmenue
+ * bzw. zu einem zufaelligen ungel�sten Raetsel derselben Stufe
+ * ueber die Fensterverwaltung angestossen wird.
 
  * @author Nick
  */
@@ -27,8 +27,8 @@ public class Abschlussfenster extends javax.swing.JFrame {
   private Schaltflaeche menue;
   private JLabel textLabel;
   private String[] texte = new String[] {
-    "R�tsel gel�st!", "Geschafft!", 
-      "Du hast das R�tsel gel�st. Klasse.", "Richtig gel�st!"};
+    "Rätsel gelöst!", "Geschafft!", 
+      "Du hast das Rätsel gelöst. Klasse.", "Richtig gelöst!"};
 
   /**
    * Konstruktor.
@@ -38,13 +38,13 @@ public class Abschlussfenster extends javax.swing.JFrame {
   public Abschlussfenster(Fensterverwaltung fw) {
     this.fw = fw;
 
-    naechstesRaetsel = new Schaltflaeche("n�chstes R�tsel", 3);
+    naechstesRaetsel = new Schaltflaeche("nächsten Rätsel", 3);
     naechstesRaetsel.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeNaechstesRaetsel();
       }
     });
-    menue = new Schaltflaeche("zum Men�", 3);
+    menue = new Schaltflaeche("zum Menü", 3);
     menue.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         klickeMenue();

@@ -11,8 +11,8 @@ import modell.Fassade;
 import steuerung.Hauptsteuerung;
 import steuerung.WahrheitstabellenSteuerungen;
 
-/**Startet zu Beginn das Hauptmen�, wechselt die sichtbare Ansicht
- * und st��t das Beenden des Programms durch die Hauptsteuerung an.
+/**Startet zu Beginn das Hauptmenue, wechselt die sichtbare Ansicht
+ * und stoesst das Beenden des Programms durch die Hauptsteuerung an.
 
  * @author Nick
  */

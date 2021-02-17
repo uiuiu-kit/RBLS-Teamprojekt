@@ -49,9 +49,9 @@ public class FormelAnsicht {
       Arrays.asList(new Character[] {'u', 'o', 'n', 'f', /* 'a',*/ 'x', '(', ')'}));
   
   /**
-   * Erzeugt eine Ansicht f�r den Formeleditor als Fenster.
+   * Erzeugt eine Ansicht fuer den Formeleditor als Fenster.
 
-   * @param aussagen atomare Aussagen, die als Schaltfl�chen verf�gbar sein sollen
+   * @param aussagen atomare Aussagen, die als Schaltflaechen verfuegbar sein sollen
    * @param strg Formeleditor zur Kommunikation
    */
   public FormelAnsicht(String[] aussagen, FormelEditor strg) {

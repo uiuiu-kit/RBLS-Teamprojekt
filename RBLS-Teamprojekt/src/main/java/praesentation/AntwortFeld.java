@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 
 /**
  * Grafische Ansicht eines Antwortfeldes. Zeigt einen Antworttext und eine
- * Auswahl der Antwortm�glichkeiten durch eine JComboBox an und vergleicht beim
- * Klicken des Pr�fe-Buttons den ausgew�hlten Wert mit der tats�chlichen L�sung.
+ * Auswahl der Antwortmoeglichkeiten durch eine JComboBox an und vergleicht beim
+ * Klicken des Pruefe-Buttons den ausgewaehlten Wert mit der tatsaechlichen Loesung.
 
  * @author Nick
  */

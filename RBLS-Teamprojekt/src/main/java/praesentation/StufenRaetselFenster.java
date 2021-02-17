@@ -6,9 +6,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -19,15 +16,15 @@ import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
 /**
- * Grafische Ansicht eines R�tsels. Zeigt eine Wahrheitstabelle
- * an und st��t beim Klicken des Men�-Buttons den Wechsel der Ansicht zum
- * R�tselauswahlmen� an.
+ * Grafische Ansicht eines Raetsels. Zeigt eine Wahrheitstabelle
+ * an und stoesst beim Klicken des Menue-Buttons den Wechsel der Ansicht zum
+ * Raetselauswahlmenue an.
 
  * @author Nick
  */
 public class StufenRaetselFenster extends RaetselFenster {
 
-  private String name = "Raetsel #27";
+  private String name = "Rätsel #27";
   private String frage = "Lorem ipsum dolor sit amet, consetetur sadipscing "
       + "elitr, sed diam nonumy eirmod tempor"
       + " invidunt ut labore et dolore magna aliquyam "
@@ -175,7 +172,7 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
   
   public void schliesseRaetselAb() {
-    //TODO evtl Dialogfenster, falls Tabelle noch nicht vollst�ndig ausgef�llt ist
+    //TODO evtl Dialogfenster, falls Tabelle noch nicht vollstaendig ausgef�llt ist
     weiter.setVisible(true);
   }
 

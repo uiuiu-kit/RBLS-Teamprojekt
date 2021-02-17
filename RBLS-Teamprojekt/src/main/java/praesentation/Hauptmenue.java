@@ -10,9 +10,9 @@ import javax.swing.SwingConstants;
 import modell.Fassade;
 
 /**
- * Grafische Ansicht des Hauptmen�s.
- * St��t bei Mausklick eines Buttons das �ffnen des R�tselwahl-Bildschirms oder des freien Modus
- * bzw. das Beenden des Programms �ber die Fensterverwaltung an.
+ * Grafische Ansicht des Hauptmenues.
+ * Stoesst bei Mausklick eines Buttons das Oeffnen des Raetselwahl-Bildschirms oder des freien Modus
+ * bzw. das Beenden des Programms ueber die Fensterverwaltung an.
 
  * @author Nick
  */

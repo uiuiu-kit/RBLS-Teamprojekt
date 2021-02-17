@@ -26,7 +26,7 @@ import steuerung.WahrheitstabellenSteuerungen;
 
 /**
  * Grafische Ansicht des freien Modus. Zeigt eine
- * Wahrheitstabelle an und st��t beim Klicken des Men�-Buttons den Wechsel der
+ * Wahrheitstabelle an und stoesst beim Klicken des Men�-Buttons den Wechsel der
  * Ansicht zum Hauptmen� an.
 
  * @author Nick
@@ -42,11 +42,11 @@ public class FreiesRaetselFenster extends RaetselFenster {
   private Hauptsteuerung strg;
 
   /**
-   * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit n�tigen Buttons und Tabelle.
+   * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit noetigen Buttons und Tabelle.
 
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des Fensters
    * @param modell Praesentationsfassade
-   *     zum Setzen und Erhalten von Informationen �ber atomare Aussagen und Status
+   *     zum Setzen und Erhalten von Informationen ueber atomare Aussagen und Status
    */
   public FreiesRaetselFenster(Fensterverwaltung fensterverwaltung,
       Fassade modell, Hauptsteuerung strg) {
@@ -63,7 +63,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     aussagen = new JTextField[5];
     ((JComponent) atomareAussagen.getContentPane()).setBorder(
         BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    JLabel aussagenHinweis = new JLabel("W�hle die Namen f�r bis zu 5 atomare Aussagen:");
+    JLabel aussagenHinweis = new JLabel("Wähle die Namen für bis zu 5 atomare Aussagen:");
     aussagenHinweis.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.BOLD, 18));
     aussagenHinweis.setForeground(Color.WHITE);
     atomareAussagen.add(aussagenHinweis, 0);
@@ -112,7 +112,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     oben.setLayout(new BorderLayout());
     oben.setBackground(Color.WHITE);
     
-    menueKnopf = new Schaltflaeche("Men�", 2);
+    menueKnopf = new Schaltflaeche("Menü", 2);
     menueKnopf.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           geheZuMenue();
