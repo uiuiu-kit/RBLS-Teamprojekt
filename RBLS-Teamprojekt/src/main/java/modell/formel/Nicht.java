@@ -16,7 +16,7 @@ public class Nicht extends Konnektor {
    */
   public Nicht(Formel rechts) {
     this.rechts = rechts;
-    this.rep = "n";
+    this.rep = "\u00AC";
   }
   
   @Override

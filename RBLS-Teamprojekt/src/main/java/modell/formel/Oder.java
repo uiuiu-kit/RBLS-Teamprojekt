@@ -17,7 +17,7 @@ public class Oder extends BiKonnektor {
   public Oder(Formel links, Formel rechts) {
     this.rechts = rechts;
     this.links = links;
-    this.rep = "o";
+    this.rep = "\u2228";
   }
   
   @Override
