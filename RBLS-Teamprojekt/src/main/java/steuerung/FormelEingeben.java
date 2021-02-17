@@ -13,7 +13,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
 
   /**
    * Der Konstruktor, f�r die Befehl, der den Befehl auch direkt ausf�hrt.
-   * 
+
    * @param model  die Fassade auf die der Befehl zugreift.
    * @param spalte die Spalte in der die Formel ge�ndert werden soll.
    */
@@ -25,7 +25,7 @@ public class FormelEingeben extends WahrheitstabellenBefehl {
   }
 
   /**
-   * hohlt die alte Formel und die atomaren Aussagen von der Fasssade.
+   * Hohlt die alte Formel und die atomaren Aussagen von der Fasssade.
    */
   public void hohleDaten() {
     try {

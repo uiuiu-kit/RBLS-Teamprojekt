@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 /**
  * Grafische Ansicht des R�tselauswahlbildschirms einer Stufe.
+
  * @author Nick
  */
 public class Raetselwahl extends javax.swing.JFrame {
@@ -28,6 +29,7 @@ public class Raetselwahl extends javax.swing.JFrame {
   
   /**
    * Konstruktor.
+
    * @param fstr Fensterverwaltung zum Wechseln der Ansicht
    * @param liste Liste der anzuzeigenden Rätselnamen der Stufe
    * @param geloest Liste der Namen der gelösten Rätsel der Stufe
@@ -47,7 +49,7 @@ public class Raetselwahl extends javax.swing.JFrame {
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-    buttonPanel.setBackground(new Color(255,102,0));
+    buttonPanel.setBackground(new Color(255, 102, 0));
     buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     for (int j = 0; j < buttons.length; j++) {
       if (geloest.size() > 0 && geloest.contains(raetsel.get(j))) {
@@ -63,7 +65,7 @@ public class Raetselwahl extends javax.swing.JFrame {
       buttons[j].setMaximumSize(new Dimension(Integer.MAX_VALUE, 
           buttons[j].getMinimumSize().height * 2));
       buttonPanel.add(buttons[j], j);
-      buttonPanel.setBackground(new Color(255,102,0));
+      buttonPanel.setBackground(new Color(255, 102, 0));
     }
     
     getContentPane().setLayout(new BorderLayout());
@@ -81,7 +83,8 @@ public class Raetselwahl extends javax.swing.JFrame {
   }
 
   /**
-  * stoesst Starten eines Raetsels an.
+  * Stoesst Starten eines Raetsels an.
+
   * @param name Raetselname
   */
   private void waehleAus(String name) {

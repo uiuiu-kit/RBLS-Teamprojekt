@@ -19,6 +19,7 @@ import steuerung.FormelEditor;
 /**
  * Grafische Formelansicht zum Eingeben von Formeln als Pop-Up-Fenster.
  * Zeigt Buttons mit Zeichen und Buttons mit atomaren Aussagen an.
+
  * @author Nick
  */
 public class FormelAnsicht {
@@ -45,10 +46,11 @@ public class FormelAnsicht {
       Arrays.asList(new Schaltflaeche[] {und, oder, nicht, impliziert,
       /* aequivalent,*/ xor, klammerAuf, klammerZu}));
   private ArrayList<Character> symbole = new ArrayList<Character>(
-      Arrays.asList(new Character[] {'u', 'o', 'n', 'f',/* 'a',*/ 'x', '(', ')'}));
+      Arrays.asList(new Character[] {'u', 'o', 'n', 'f', /* 'a',*/ 'x', '(', ')'}));
   
   /**
    * Erzeugt eine Ansicht f�r den Formeleditor als Fenster.
+
    * @param aussagen atomare Aussagen, die als Schaltfl�chen verf�gbar sein sollen
    * @param strg Formeleditor zur Kommunikation
    */

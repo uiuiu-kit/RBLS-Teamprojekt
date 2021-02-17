@@ -2,14 +2,13 @@ package modell.raetsel;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import modell.formel.Atom;
 
 /**
  * Das Raetsel ist ein Objekt um die Daten der Raetseltextdatei dem Rest des
  * Programms zur Verfuegung zu stellen. Es wird daher vom Raetselinterpreten
  * erstellt und der Fassade uebergeben.
- * 
+
  * @author Flo
  *
  */
@@ -27,16 +26,19 @@ public class Raetsel {
   protected String name;
 
   /**
-   * @param name
-   * @param stufe
-   * @param atom
-   * @param raetselText
-   * @param antwortM�glichkeiten
-   * @param loesung
-   * @param antworttext
-   * @param formeln
+   * Konstruktor für ein Raetselobjekt.
+
+   * @param name Name
+   * @param stufe Stufe
+   * @param atom Atom
+   * @param raetselText Fragestellung
+   * @param antwortMoeglichkeiten Moegliche Antworten
+   * @param loesung richtige Loesung
+   * @param antworttext Antowrttext
+   * @param formeln Formeln
    */
-  public Raetsel(String name, int stufe, List<String> atom, String raetselText, String[] antwortMoeglichkeiten,
+  public Raetsel(String name, int stufe, List<String> atom,
+      String raetselText, String[] antwortMoeglichkeiten,
       int loesung, String antworttext, List<String> formeln) {
     this.spaltenAnz = atom.size();
     this.zeilenAnz = (int) Math.pow(2, atom.size());
@@ -72,7 +74,7 @@ public class Raetsel {
   /**
    * Wandelt die Liste der Atome in eine Liste der entsprechenden Namen der Atome
    * um und gibt diese zurueck.
-   * 
+
    * @return Liste der Atomnamen.
    */
   public List<String> gibAtomNamen() {
@@ -83,6 +85,11 @@ public class Raetsel {
     return temp;
   }
 
+  /**
+   * Gibt die atmomaren Aussagen des Raetsels zurueck.
+
+   * @return Die atomaren Aussagen als Liste.
+   */
   public List<String> gibAtomareAussage() {
     List<String> output = new ArrayList<String>();
     for (Atom temp : atom) {
@@ -106,7 +113,7 @@ public class Raetsel {
   /**
    * Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der
    * Formeln um und gibt diese zurueck.
-   * 
+
    * @return Liste der benotigten Formelnamen, die zur Loesung des Raetsels
    *         benoetigt werden.
    */

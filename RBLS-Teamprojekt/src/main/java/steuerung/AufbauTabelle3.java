@@ -8,9 +8,9 @@ public class AufbauTabelle3 extends AufbauTabelle {
   AufbauTabelle24 aufbauTabelle24;
 
   /**
-   * Kostruktor für AufbauTabelle3 der die Ausführung des Befehls anstößt.
-   * 
-   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   * Kostruktor fï¿½r AufbauTabelle3 der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+
+   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
    *              wird.
    * 
    */
@@ -22,7 +22,7 @@ public class AufbauTabelle3 extends AufbauTabelle {
 
   @Override
   public void hohleDaten() {
-    // keine Daten benötigt
+    // keine Daten benï¿½tigt
   }
 
   @Override

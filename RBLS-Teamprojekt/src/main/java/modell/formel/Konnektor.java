@@ -1,6 +1,7 @@
 package modell.formel;
 
 /**Abstrakte Unterklasse der Formel, von ihr erbt der NICHT-Konnektor und der BiKonnektor direkt.
+
  * @author Flo
  *
  */

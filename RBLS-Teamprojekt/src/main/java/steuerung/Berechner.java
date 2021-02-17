@@ -4,13 +4,13 @@ import modell.formel.Formel;
 
 public class Berechner {
   /**
-   * berechnet alle möglichen Fälle abhängig von der Anzahl der atomaren Aussagen.
-   * 
-   * @param anzAtom     Anzahl der Atome die wahr oder falsch sein können.
-   * @param faelle      Das Array in dem alle Fälle einzeln, als Array, gespeichert
+   * berechnet alle mï¿½glichen Fï¿½lle abhï¿½ngig von der Anzahl der atomaren Aussagen.
+
+   * @param anzAtom     Anzahl der Atome die wahr oder falsch sein kï¿½nnen.
+   * @param faelle      Das Array in dem alle Fï¿½lle einzeln, als Array, gespeichert
    *                    sind.
-   * @param aktuellePos Die aktuelle Position im Array das alle Fälle beinhaltet.
-   * @return die Liste der Fälle.
+   * @param aktuellePos Die aktuelle Position im Array das alle Fï¿½lle beinhaltet.
+   * @return die Liste der Fï¿½lle.
    */
   public static boolean[][] faelleBerechnen(int anzAtom, boolean[][] faelle, int aktuellePos) {
     int anzFall = (int) Math.pow(2, anzAtom);
@@ -30,8 +30,8 @@ public class Berechner {
   }
 
   /**
-   * Prüft zwei Formel auf äquivalenz.
-   * 
+   * Prï¿½ft zwei Formel auf ï¿½quivalenz.
+
    * @param formel1 erste Formel
    * @param formel2 zweite Formel
    * @return ob die Formeln gleich sind.

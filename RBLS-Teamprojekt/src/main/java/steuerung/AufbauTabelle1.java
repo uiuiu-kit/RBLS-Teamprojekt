@@ -10,9 +10,9 @@ public class AufbauTabelle1 extends AufbauTabelle {
   private List<String> noetigeFormelnS;
 
   /**
-   * Kostruktor für AufbauTabelle1 der die Ausführung des Befehls anstößt.
-   * 
-   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   * Kostruktor fï¿½r AufbauTabelle1 der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+
+   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
    *              wird.
    */
   public AufbauTabelle1(Fassade model) {

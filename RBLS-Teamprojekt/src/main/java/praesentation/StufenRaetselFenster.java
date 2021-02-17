@@ -19,6 +19,7 @@ import steuerung.WahrheitstabellenSteuerungen;
  * Grafische Ansicht eines R�tsels. Zeigt eine Wahrheitstabelle
  * an und st��t beim Klicken des Men�-Buttons den Wechsel der Ansicht zum
  * R�tselauswahlmen� an.
+
  * @author Nick
  */
 public class StufenRaetselFenster extends RaetselFenster {
@@ -46,6 +47,7 @@ public class StufenRaetselFenster extends RaetselFenster {
 
   /**
    * Erstellt die grafische Ansicht eines Stufenraetselfenster und initialisiert die Schaltflaechen.
+
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des aktiven Fensters
    * @param modell Praesentationsfassade zum Erhalten von Informationen des aktiven Raetsels
    */
@@ -94,7 +96,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     frageFeld.setWrapStyleWord(true);
     
     JPanel frageFeldPanel = new JPanel();
-    frageFeldPanel.setLayout(new BoxLayout(frageFeldPanel,BoxLayout.X_AXIS));
+    frageFeldPanel.setLayout(new BoxLayout(frageFeldPanel, BoxLayout.X_AXIS));
     frageFeldPanel.add(frageFeld);
     JPanel frageRahmen = erzeugeRahmenPanel(frageFeldPanel, this.name);
     
@@ -106,12 +108,12 @@ public class StufenRaetselFenster extends RaetselFenster {
     JPanel tabellenPanel = new JPanel();
     tabellenPanel = tabelle.gibAnsicht();
     tabellenPanel.setBackground(Color.WHITE);
-    tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
+    tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 1000));
     
     //AntwortfeldPanel//
     JPanel antwortPanel = new JPanel();
     antwortAnsicht = new AntwortFeld(modell.gibAntwortmoeglichkeiten(),
-        modell.gibAntwortText(),modell.gibLoesung(),this).gibAnsicht();
+        modell.gibAntwortText(), modell.gibLoesung(), this).gibAnsicht();
     
     JPanel antwortRahmen = erzeugeRahmenPanel(antwortAnsicht, "Lösung");
     antwortPanel.setLayout(new BorderLayout());
@@ -137,21 +139,21 @@ public class StufenRaetselFenster extends RaetselFenster {
   
   private JPanel erzeugeRahmenPanel(JPanel innen, String titel) {
     JPanel panel1 = new JPanel();
-    panel1.setLayout(new BoxLayout(panel1,BoxLayout.X_AXIS));
+    panel1.setLayout(new BoxLayout(panel1, BoxLayout.X_AXIS));
     Border border1 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
     panel1.setBorder(border1);
     panel1.add(innen);
     panel1.setBackground(Color.WHITE);
     
     JPanel panel2 = new JPanel();
-    panel2.setLayout(new BoxLayout(panel2,BoxLayout.X_AXIS));
-    Border border2 = BorderFactory.createEmptyBorder(1,1,1,1);
+    panel2.setLayout(new BoxLayout(panel2, BoxLayout.X_AXIS));
+    Border border2 = BorderFactory.createEmptyBorder(1, 1, 1, 1);
     border2 = BorderFactory.createTitledBorder(border2, titel);
     panel2.setBorder(border2);
     panel2.add(panel1);
-    panel2.setBackground(new Color(255,102,0));
+    panel2.setBackground(new Color(255, 102, 0));
     JPanel panel3 = new JPanel();
-    panel3.setLayout(new BoxLayout(panel3,BoxLayout.X_AXIS));
+    panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
     Border border3 = BorderFactory.createEmptyBorder(5, 5, 5, 5);
     panel3.setBorder(border3);
     panel3.add(panel2);

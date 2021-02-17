@@ -12,6 +12,7 @@ import steuerung.WahrheitstabellenSteuerungen;
 
 /**Startet zu Beginn das Hauptmen�, wechselt die sichtbare Ansicht
  * und st��t das Beenden des Programms durch die Hauptsteuerung an.
+
  * @author Nick
  */
 public class Fensterverwaltung {
@@ -32,12 +33,12 @@ public class Fensterverwaltung {
    */
   public void init() {
     UIManager.put("Button.font", 
-        new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,20));
+        new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.BOLD, 20));
     UIManager.put("Label.font", 
-        new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.BOLD,40));
+        new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.BOLD, 40));
     UIManager.put("TextArea.font", 
-        new javax.swing.plaf.FontUIResource("Arial Unicode MS",Font.PLAIN,18));
-    UIManager.put("Table.font", new Font("Arial Unicode MS",Font.BOLD,20));
+        new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.PLAIN, 18));
+    UIManager.put("Table.font", new Font("Arial Unicode MS", Font.BOLD, 20));
 
     aktivesFenster = new Hauptmenue(this);
     aktivesFenster.setTitle("RBLS");
@@ -57,6 +58,7 @@ public class Fensterverwaltung {
 
   /**
    * Wechselt zum Raetselwahlfenster.
+
    * @param stufe Stufe der Raetsel
    */
   public void oeffneRaetselwahl(int stufe) {
@@ -73,6 +75,7 @@ public class Fensterverwaltung {
 
   /**
    * Startet ein Raetsel.
+
    * @param name Raetselname bzw Name der Datei
    */
   public void starteRaetsel(String name) {

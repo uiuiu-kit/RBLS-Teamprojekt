@@ -5,6 +5,7 @@ import javax.swing.JTable;
 
 /**
  * Vorlage für die Ansicht einer Wahrheitstabelle.
+
  * @author Nick
  */
 public abstract class TabellenAnsicht {

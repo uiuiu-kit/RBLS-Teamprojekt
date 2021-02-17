@@ -9,9 +9,9 @@ import modell.formel.Formel;
  * Diese Klasse enthaelt alle Zellenobjekte und haelt diese in einer
  * 2-dimensionalen Liste. Die Zellen werden ueber die Tabelle angesprochen,
  * verwaltet und abgefragt. Die Zeilen- und Spaltenanzahl ist abhaengig vom
- * Raetsel. Sie enthaelt außerdem Zellenobjekte vom speziellen Typ
+ * Raetsel. Sie enthaelt auï¿½erdem Zellenobjekte vom speziellen Typ
  * Wahrheitswert- oder Formelzelle.
- * 
+
  * @author janne
  *
  */
@@ -24,7 +24,7 @@ public class Tabelle {
   /**
    * Konstruktor fuer die Tabelle eines Raetels. Konstruiert anhand der
    * uebergebenen Parameter.
-   * 
+
    * @param atom Anzahl der Atomaren Aussagen.
    */
   public Tabelle(List<Atom> atom) {
@@ -40,7 +40,7 @@ public class Tabelle {
   }
 
   public void setzeZelle(int[] z, boolean ww) {
-    gibWZ(z).setzeZelle(ww);
+    gibWaZe(z).setzeZelle(ww);
   }
 
   public void setzeFormel(Formel f, int spalte) {
@@ -49,13 +49,13 @@ public class Tabelle {
 
   /**
    * Gibt der Fassade den WW der angepingten Zelle zurueck.
-   * 
+
    * @param i Zellenposition
    * @return WW
    */
   public boolean gibZellenWert(int[] i) {
     if (i[0] > 0) {
-      return this.gibWZ(i).gibZustand();
+      return this.gibWaZe(i).gibZustand();
     }
     return false;
   }
@@ -63,7 +63,7 @@ public class Tabelle {
   /**
    * Gibt die String-Repraesentation von Wahrheitswertzelle oder Formelzelle
    * wieder.
-   * 
+
    * @param i Array der Laenge 2, welches die Zelle definiert.
    * @return String-Repraesentation der ausgewaehlten Zelle.
    */
@@ -71,16 +71,16 @@ public class Tabelle {
     if (i[0] == 0) {
       return this.gibFormelText(i[1]);
     }
-    return gibWZ(i).toString();
+    return gibWaZe(i).toString();
   }
 
   /**
    * Sucht das Zellenobjekt im 2-dimensionalen Listenfeld.
-   * 
-   * @param i Array der Groeße 2, gibt Zeile und Spalte der Zellenposition an.
+
+   * @param i Array der Groeï¿½e 2, gibt Zeile und Spalte der Zellenposition an.
    * @return Zellenobjekt.
    */
-  private Wahrheitswertzelle gibWZ(int[] i) {
+  private Wahrheitswertzelle gibWaZe(int[] i) {
     if (i[0] > 0) {
       return this.wwTabelle.get(i[1]).get(i[0] - 1);
     }
@@ -90,7 +90,7 @@ public class Tabelle {
   /**
    * Liefert der Fassade die gewaehlte aussagenlogische Formel der angegebenen
    * Zelle.
-   * 
+
    * @param i Position der Zelle
    * @return Formel der angegeben Zelle.
    */
@@ -111,7 +111,7 @@ public class Tabelle {
 
   /**
    * Erlaubt es der Fassade eine neue Spalte mit einer neuen Formel zur Tabelle
-   * hinzuzufügen.
+   * hinzuzufï¿½gen.
    * 
    */
   public void spalteHinzufuegen() {
@@ -127,7 +127,7 @@ public class Tabelle {
 
   /**
    * Erlaubt das gezielte Loeschen von Spalten.
-   * 
+
    * @param spalte zu loeschende Spalte.
    */
   public void spalteEntfernen(int spalte) {
@@ -139,20 +139,20 @@ public class Tabelle {
 
   /**
    * Gibt die Stringrepraesentation der genannten Zelle an.
-   * 
+
    * @param z Zelle
    * @return String
    */
   public String gibAtomareAussage(int[] z) {
     if (z[0] > 0) {
-      return this.gibWZ(z).toString();
+      return this.gibWaZe(z).toString();
     }
     return null;
   }
 
   /**
    * Ermittelt die Wahrheitswertbelegung einer kompletten Zeile.
-   * 
+
    * @param i gewuenschte Zeilennummer
    * @return Booleanarray mit Wahrheitswerten.
    */
@@ -161,7 +161,7 @@ public class Tabelle {
     if (i != 0) {
       for (int h = 0; h < this.atomAnz; h++) {
         int[] pos = { i, h };
-        out[h] = this.gibWZ(pos).gibZustand();
+        out[h] = this.gibWaZe(pos).gibZustand();
       }
     }
     return out;
@@ -169,7 +169,7 @@ public class Tabelle {
 
   /**
    * Gibt der Fassade die Formel der entsprechenden Zelle zurueck.
-   * 
+
    * @param s Spalte der Formelzelle.
    * @return Formel der Zelle
    */
@@ -179,7 +179,7 @@ public class Tabelle {
 
   /**
    * Gibt die Formel als Text wieder.
-   * 
+
    * @param s Spalte, in der die Formel zu finden ist.
    * @return String der Formel.
    */

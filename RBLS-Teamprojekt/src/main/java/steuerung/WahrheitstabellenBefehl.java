@@ -6,8 +6,8 @@ public abstract class WahrheitstabellenBefehl {
   protected Fassade model;
 
   /**
-   * Konstruktor für WahrheitstabellenBefehl.
-   * 
+   * Konstruktor fï¿½r WahrheitstabellenBefehl.
+
    * @param model die Fassde von der Daten geholt und bei der Daten gesetzt
    *              werden.
    */
@@ -16,12 +16,12 @@ public abstract class WahrheitstabellenBefehl {
   }
 
   /**
-   * hohlt alle Daten die für den Befehl benötigt werden, von der Fassade.
+   * hohlt alle Daten die fï¿½r den Befehl benï¿½tigt werden, von der Fassade.
    */
   public abstract void hohleDaten();
 
   /**
-   * Setzt in der Fassade alle Daten die der Befehl verändert.
+   * Setzt in der Fassade alle Daten die der Befehl verï¿½ndert.
    */
   public abstract void setzeDaten();
 }

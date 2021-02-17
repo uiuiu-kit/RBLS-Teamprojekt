@@ -6,9 +6,9 @@ public class AufbauTabelle24 extends AufbauTabelle {
   private int anzAtome;
 
   /**
-   * Kostruktor für AufbauTabelle24 der die Ausführung des Befehls anstößt.
-   * 
-   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   * Kostruktor fï¿½r AufbauTabelle24 der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+
+   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
    *              wird.
    */
   public AufbauTabelle24(Fassade model) {
@@ -34,7 +34,7 @@ public class AufbauTabelle24 extends AufbauTabelle {
       koordinaten[0] = i + 1;
       for (int j = 0; j < akFall.length; j++) {
         koordinaten[1] = j;
-        model.setzeZelleWW(koordinaten, akFall[j]);
+        model.setzeZelleWaWe(koordinaten, akFall[j]);
       }
     }
   }

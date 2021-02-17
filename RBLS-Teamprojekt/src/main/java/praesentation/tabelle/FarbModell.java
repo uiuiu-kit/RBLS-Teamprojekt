@@ -4,6 +4,7 @@ import javax.swing.table.DefaultTableModel;
 
 /** Unterklasse von DefaultTableModel, um einen Status von Zellen zu setzten, 
  * aus dem der Farbwert hervorgeht.
+
  * @author Nick
  */
 public class FarbModell extends DefaultTableModel {
@@ -15,6 +16,7 @@ public class FarbModell extends DefaultTableModel {
   
   /**
    * Erzeugt eine Tabelle mit dem angegebenem Inhalt.
+
    * @param inhalt Zweidimensionaler Array mit dem Tabelleninhalt als Strings
    * @param inhalt2 Array mit Inhalten der obersten Zeile
    */

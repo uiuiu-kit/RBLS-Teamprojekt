@@ -4,6 +4,7 @@ import java.awt.Color;
 
 /**
  * Design der Buttons ausgelagert in eine Unterklasse von JButton.
+
  * @author Nick
  */
 class Schaltflaeche extends javax.swing.JButton {
@@ -21,7 +22,7 @@ class Schaltflaeche extends javax.swing.JButton {
 
   public Schaltflaeche() {
     this.setBorderPainted(false);
-    this.setBackground(new Color(255,102,0));
+    this.setBackground(new Color(255, 102, 0));
     this.setForeground(Color.WHITE);
   }
 
@@ -31,7 +32,7 @@ class Schaltflaeche extends javax.swing.JButton {
   
   public Schaltflaeche(String text) {
     this.setBorderPainted(false);
-    this.setBackground(new Color(255,102,0));
+    this.setBackground(new Color(255, 102, 0));
     this.setForeground(Color.WHITE);
     this.setText(text);
   }
@@ -44,7 +45,7 @@ class Schaltflaeche extends javax.swing.JButton {
   private void setzeFarbDesign(int farbe) {
     switch (farbe) {
       case 1:
-        this.setBackground(new Color(255,102,0));
+        this.setBackground(new Color(255, 102, 0));
         this.setForeground(Color.WHITE);
         this.setBorderPainted(false);
         break;
@@ -55,14 +56,14 @@ class Schaltflaeche extends javax.swing.JButton {
         break;
       case 3:
         this.setBackground(Color.WHITE);
-        this.setForeground(new Color(255,102,0));
+        this.setForeground(new Color(255, 102, 0));
         break;
       case 4:
         this.setBackground(Color.WHITE);
         break;
       case 5:
         this.setBackground(Color.LIGHT_GRAY);
-        this.setForeground(new Color(255,102,0));
+        this.setForeground(new Color(255, 102, 0));
         break;
       case 6:
         this.setBackground(Color.LIGHT_GRAY);

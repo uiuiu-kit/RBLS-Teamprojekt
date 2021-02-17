@@ -28,6 +28,7 @@ import steuerung.WahrheitstabellenSteuerungen;
  * Grafische Ansicht des freien Modus. Zeigt eine
  * Wahrheitstabelle an und st��t beim Klicken des Men�-Buttons den Wechsel der
  * Ansicht zum Hauptmen� an.
+
  * @author Nick
  */
 public class FreiesRaetselFenster extends RaetselFenster {
@@ -42,6 +43,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
 
   /**
    * Erstellt die grafische Ansicht eines FreiesRaetselFenster mit n�tigen Buttons und Tabelle.
+
    * @param fensterverwaltung Fensterverwaltung zum Wechseln des Fensters
    * @param modell Praesentationsfassade
    *     zum Setzen und Erhalten von Informationen �ber atomare Aussagen und Status
@@ -62,12 +64,12 @@ public class FreiesRaetselFenster extends RaetselFenster {
     ((JComponent) atomareAussagen.getContentPane()).setBorder(
         BorderFactory.createEmptyBorder(10, 10, 10, 10));
     JLabel aussagenHinweis = new JLabel("W�hle die Namen f�r bis zu 5 atomare Aussagen:");
-    aussagenHinweis.setFont(new javax.swing.plaf.FontUIResource("Arial",Font.BOLD,18));
+    aussagenHinweis.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.BOLD, 18));
     aussagenHinweis.setForeground(Color.WHITE);
     atomareAussagen.add(aussagenHinweis, 0);
     for (int j = 0; j < aussagen.length; j++) {
       aussagen[j] = new JTextField("");
-      atomareAussagen.getContentPane().add(aussagen[j],j + 1);
+      atomareAussagen.getContentPane().add(aussagen[j], j + 1);
     }
     Schaltflaeche okButton = new Schaltflaeche("OK", Schaltflaeche.WEISS);
     okButton.addActionListener(new ActionListener() {
@@ -97,7 +99,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     atomareAussagen.setAlwaysOnTop(true);
     atomareAussagen.setModal(true);
     atomareAussagen.setModalityType(ModalityType.APPLICATION_MODAL);
-    atomareAussagen.getContentPane().setBackground(new Color(255,102,0));
+    atomareAussagen.getContentPane().setBackground(new Color(255, 102, 0));
     atomareAussagen.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     atomareAussagen.setVisible(true);
     
@@ -130,7 +132,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     JPanel tabellenPanel = new JPanel();
     tabellenPanel.setLayout(new BorderLayout());
     tabellenPanel.add(tabelle.gibAnsicht());
-    tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE,1000));
+    tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 1000));
     tabellenPanel.setBackground(Color.WHITE);
     
     //Ansicht zusammenf�gen//

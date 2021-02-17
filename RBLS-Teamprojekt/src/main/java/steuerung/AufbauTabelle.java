@@ -8,8 +8,8 @@ public abstract class AufbauTabelle extends WahrheitstabellenBefehl {
   protected List<String> atomareAussagen;
 
   /**
-   * AufbauTabelle ist der Konstruktor für den Befehle vom Typ AufbauTabelle.
-   * 
+   * AufbauTabelle ist der Konstruktor fï¿½r den Befehle vom Typ AufbauTabelle.
+
    * @param model die Fassde von der Daten geholt und bei der Daten gesetzt
    *              werden.
    */

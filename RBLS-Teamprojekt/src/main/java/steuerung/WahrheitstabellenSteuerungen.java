@@ -10,7 +10,7 @@ public class WahrheitstabellenSteuerungen {
 
   /**
    * Konstruktor f�r die WahrheitstabellenSteuerungen.
-   * 
+
    * @param model die Fassade die von Befehlen angesprochen werden soll
    */
   public WahrheitstabellenSteuerungen(Fassade model) {
@@ -20,9 +20,9 @@ public class WahrheitstabellenSteuerungen {
   }
 
   /**
-   * l�st Befehl von der Pr�sentation auf und konstruiert das passenden
+   * L�st Befehl von der Pr�sentation auf und konstruiert das passenden
    * Befehls-Objekt und st��t damit dessen Ausf�hrung an.
-   * 
+
    * @param befehl der auszuf�hrende Befehl
    */
   public void befehl(String befehl) {
@@ -80,7 +80,7 @@ public class WahrheitstabellenSteuerungen {
 
   /**
    * �berpr�ft ob der Inhalt der Tabelle korrekt ist.
-   * 
+
    * @return Korrektheit
    */
   private void ueberpruefeTabelle(int spalte, int zeile) {
@@ -91,7 +91,7 @@ public class WahrheitstabellenSteuerungen {
     }
     if (stufe == 3) {
       if (zeile > 0 && spalte > model.gibAtomareAussage().size()) {
-        tabellenPruefer.ueberpuefeWW(zeile, spalte);
+        tabellenPruefer.ueberpuefeWaWe(zeile, spalte);
       }
     }
   }

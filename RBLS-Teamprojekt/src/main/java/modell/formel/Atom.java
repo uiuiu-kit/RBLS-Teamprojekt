@@ -5,6 +5,7 @@ package modell.formel;
  * Es erbt direkt von der Formel, ist also kein Konnektor 
  * und stellt damit das Ende jeder auswerten()-Kette dar.
  * Es wird als Großbuchstabe in der Formel dargestellt.
+
  * @author Flo
  *
  */
@@ -15,6 +16,7 @@ public class Atom extends Formel {
   private int nummer;
     
   /** Konstruktor. Setzt nur seine Werte, die er uebergeben bekommt.
+
    * @param aussage Entspricht dem vollen Namen des Atoms (zB Herbert).
    * @param nummer Position im Werte-Array.
    */

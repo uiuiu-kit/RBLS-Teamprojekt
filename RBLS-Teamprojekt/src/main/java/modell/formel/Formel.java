@@ -1,6 +1,7 @@
 package modell.formel;
 
 /**Abstrakte Oberklasse der Formeln. Von ihr erbt das Atom und der Konnektor direkt.
+
  * @author Flo
  *
  */
@@ -12,6 +13,7 @@ public abstract class Formel {
    * Im Falle des Atoms ist dies der eigene Wahrheitswert. Ansonsten der Wahrheitswert des rechten
    * und, falls vorhanden, des linken Formelnachbarn logisch verknuepft. (Nachbar.auswerten())
    * Die Belegung der Atome wird mitgegeben.
+
    * @param werte Die Belegung der atomaren Aussagen in Form eines booleschen Arrays.
    * @return Das Ergebnis der Wahrheitswertberechnung.
    */

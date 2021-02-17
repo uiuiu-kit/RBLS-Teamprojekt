@@ -4,14 +4,14 @@ import modell.Fassade;
 
 public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
   private int[] zellenKoordinaten;
-  private boolean zelleWW;
+  private boolean zelleWaWe;
 
   /**
-   * Ändert den Wahrheitswert in einer Wahrheitswert Zelle.
-   * 
-   * @param model  die SteuerungFassade auf der der Befehl ausgeführt wird.
-   * @param spalte die Spalte in der der Wert geändert wird
-   * @param zeile  die Zeile in der der Wert geändert wird
+   * ï¿½ndert den Wahrheitswert in einer Wahrheitswert Zelle.
+
+   * @param model  die SteuerungFassade auf der der Befehl ausgefï¿½hrt wird.
+   * @param spalte die Spalte in der der Wert geï¿½ndert wird
+   * @param zeile  die Zeile in der der Wert geï¿½ndert wird
    */
   public ZelleInBlauOrangeAendern(Fassade model, int spalte, int zeile) {
     super(model);
@@ -24,11 +24,11 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
 
   @Override
   public void hohleDaten() {
-    zelleWW = model.gibZelleWW(zellenKoordinaten);
+    zelleWaWe = model.gibZelleWaWe(zellenKoordinaten);
   }
 
   @Override
   public void setzeDaten() {
-    model.setzeZelleWW(zellenKoordinaten, !zelleWW);
+    model.setzeZelleWaWe(zellenKoordinaten, !zelleWaWe);
   }
 }

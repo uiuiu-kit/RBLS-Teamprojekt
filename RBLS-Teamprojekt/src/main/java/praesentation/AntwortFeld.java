@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
  * Grafische Ansicht eines Antwortfeldes. Zeigt einen Antworttext und eine
  * Auswahl der Antwortm�glichkeiten durch eine JComboBox an und vergleicht beim
  * Klicken des Pr�fe-Buttons den ausgew�hlten Wert mit der tats�chlichen L�sung.
- * 
+
  * @author Nick
  */
 public class AntwortFeld {
@@ -30,7 +30,7 @@ public class AntwortFeld {
 
   /**
    * Konstruktor, erstellt ein Antwortfeld mit den angegebenen Inhalten.
-   * 
+
    * @param antworten Antwortmoeglichkeiten als Liste
    * @param text      Text des Antwortsatzes
    * @param loesung   richtige Antwortmoeglichkeit, soll in der Liste enthalten

@@ -7,7 +7,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
- * Unterklasse von DefaultTableCellRenderer zum Ändern der Farben einzelner Tabellenzellen.
+ * Unterklasse von DefaultTableCellRenderer zum ï¿½ndern der Farben einzelner Tabellenzellen.
+
  * @author Nick
  */
 public class FarbRenderer extends DefaultTableCellRenderer {

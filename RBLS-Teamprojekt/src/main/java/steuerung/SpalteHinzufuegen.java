@@ -8,9 +8,9 @@ public class SpalteHinzufuegen extends WahrheitstabellenBefehl {
   private int spaltenAnz;
 
   /**
-   * Kostruktor für SpalteEntfernen der die Ausführung des Befehls anstößt.
-   * 
-   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   * Kostruktor fï¿½r SpalteEntfernen der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+
+   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
    *              wird.
    * 
    */

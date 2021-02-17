@@ -10,9 +10,9 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
   private int anzAtomSpalten;
 
   /**
-   * Kostruktor für FuelleTabelle der die Ausführung des Befehls anstößt.
-   * 
-   * @param model die SteuerungFassade auf die bei der Ausführung zugegriffen
+   * Kostruktor fï¿½r FuelleTabelle der die Ausfï¿½hrung des Befehls anstï¿½ï¿½t.
+
+   * @param model die SteuerungFassade auf die bei der Ausfï¿½hrung zugegriffen
    *              wird.
    */
   public FuelleTabelle(Fassade model) {
@@ -40,7 +40,7 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
         akFall = model.gibZeileFall(zeile);
         koordinaten[0] = zeile;
         if (!akFormel.gibStringRep().equals("-1")) {
-          model.setzeZelleWW(koordinaten, akFormel.auswerten(akFall));
+          model.setzeZelleWaWe(koordinaten, akFormel.auswerten(akFall));
         }
       }
     }

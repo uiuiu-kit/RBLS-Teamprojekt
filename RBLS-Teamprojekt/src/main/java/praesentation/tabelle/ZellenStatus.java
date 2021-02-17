@@ -1,7 +1,8 @@
 package praesentation.tabelle;
 
 /**
- * Enum mit dem Status für Tabellenzellen, aus dem der Farbwert hervorgeht.
+ * Enum mit dem Status fï¿½r Tabellenzellen, aus dem der Farbwert hervorgeht.
+
  * @author Nick
  */
 public enum ZellenStatus { 

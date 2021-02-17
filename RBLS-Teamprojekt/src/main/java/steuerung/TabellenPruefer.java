@@ -9,7 +9,7 @@ import modell.formel.Formel;
 public class TabellenPruefer {
   private Fassade model;
   boolean vollstaendig;
-  private List<int[]> fehlerhafteWW;
+  private List<int[]> fehlerhafteWaWe;
   private List<Integer> fehlerhafteFaelle;
   private List<boolean[]> noetigeFaelle;
   private List<boolean[]> nochNoetigeFaelle;
@@ -18,7 +18,7 @@ public class TabellenPruefer {
   /**
    * Konstruktor des TabellenPruefers der die Startvoraussetzunge und die globalen
    * Variablen initialisiert und.
-   * 
+
    * @param model die Fassade hinter der die Tabelle ist die getestet werden soll.
    */
   public TabellenPruefer(Fassade model, int stufe) {
@@ -33,7 +33,7 @@ public class TabellenPruefer {
     }
     nochNoetigeFaelle = noetigeFaelle;
     vollstaendig = false;
-    fehlerhafteWW = new ArrayList<int[]>();
+    fehlerhafteWaWe = new ArrayList<int[]>();
     fehlerhafteFaelle = new ArrayList<Integer>();
     for (int i = 1; i < (int) Math.pow(2, anzAtom) + 1; i++) {
       fehlerhafteFaelle.add(i);
@@ -45,7 +45,7 @@ public class TabellenPruefer {
    * vorher in der Zeile stand n�tig war. Je nachdem wir die Liste der noch
    * n�tigen F�lle aktualisiert. Je nachdem ob der Fall nun fehlerhaft ist oder
    * nicht wird auch die Liste der fehlerhaften F�lle aktuallisiert.
-   * 
+
    * @param zeile die Zeile in der die Zelle ge�ndert wurde
    * @param spalte die Spalte in der die Zelle ge�ndert wurde
    */
@@ -81,7 +81,7 @@ public class TabellenPruefer {
 
   /**
    * �berpr�ft ob alle n�tigen Formeln vorhanden sind.
-   * 
+
    * @return sind alle n�tigen Formel vorhanden.
    */
   public boolean ueberpuefeFormeln() {
@@ -111,27 +111,27 @@ public class TabellenPruefer {
   }
 
   /**
-   * gibt eine Liste von fehlerhaften Koordinaten aus.
-   * 
+   * Gibt eine Liste von fehlerhaften Koordinaten aus.
+
    * @param zeile  die zeile die überprüft wird.
    * @param spalte die spalte die überprüft wird.
    */
-  public void ueberpuefeWW(int zeile, int spalte) {
+  public void ueberpuefeWaWe(int zeile, int spalte) {
     int i = enthaltenInFehlerhaft(zeile, spalte);
     if (i != 1) {
-      fehlerhafteWW.remove(i);
+      fehlerhafteWaWe.remove(i);
     } else {
       Formel akFormel = model.gibFormel(spalte);
       boolean[] akFall = model.gibZeileFall(zeile);
       if (!akFormel.auswerten(akFall)) {
-        fehlerhafteWW.add(new int[] { zeile, spalte });
+        fehlerhafteWaWe.add(new int[] { zeile, spalte });
       }
     }
   }
 
   private int enthaltenInFehlerhaft(int zeile, int spalte) {
-    for (int i = 0; i < fehlerhafteWW.size(); i++) {
-      if (fehlerhafteWW.get(i)[0] == zeile && fehlerhafteWW.get(i)[1] == spalte) {
+    for (int i = 0; i < fehlerhafteWaWe.size(); i++) {
+      if (fehlerhafteWaWe.get(i)[0] == zeile && fehlerhafteWaWe.get(i)[1] == spalte) {
         return i;
       }
     }
@@ -139,10 +139,10 @@ public class TabellenPruefer {
   }
 
   /**
-   * gib die Koordinaten einer fehlerhaften Zelle zur�ck. Abh�nig von der Stufe
+   * Gibt die Koordinaten einer fehlerhaften Zelle zur�ck. Abh�nig von der Stufe
    * wird entweder eine Koordinaten in den F�llen (1), eine Koordinate in den
    * Wahrheitswerden(3) oder null (2,4) zur�ck gegegben.
-   * 
+
    * @return die Koordinaten einer Fehlerhaften Zelle
    */
   public int[] gibFehlerhafteZelle() {
@@ -152,16 +152,16 @@ public class TabellenPruefer {
       int[] koordinaten = { fehlerhafteFaelle.get(pos), 0 };
       return koordinaten;
     }
-    if (stufe == 3 && fehlerhafteWW.size() != 0) {
-      pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteWW.size());
-      return fehlerhafteWW.get(pos);
+    if (stufe == 3 && fehlerhafteWaWe.size() != 0) {
+      pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteWaWe.size());
+      return fehlerhafteWaWe.get(pos);
     }
     return null;
   }
 
   /**
-   * gibt aus ob fuelleTabelle erlaubt ist.
-   * 
+   * Gibt aus ob fuelleTabelle erlaubt ist.
+
    * @return ist fuelleTabelle erlaubt
    */
   public boolean tabelleFuellenErlaubt() {

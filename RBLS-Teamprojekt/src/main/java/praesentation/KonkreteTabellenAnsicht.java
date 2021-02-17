@@ -20,7 +20,7 @@ import steuerung.WahrheitstabellenSteuerungen;
  * Grafische Ansicht einer Wahrheitstabelle. Über das Befehlsmuster werden der
  * Wahrheitstabellensteuerung Aktionen mitgeteilt. Außerdem wird die Ansicht
  * einer Zelle mit den Informationen der Modell-Fassade aktuell gehalten.
- * 
+
  * @author Nick
  */
 public class KonkreteTabellenAnsicht extends TabellenAnsicht {
@@ -49,7 +49,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   /**
    * Erstellt eine Wahrheitstabelle mit den Daten aus der Praesentationsfassade
    * und initialisiert die Schaltflaechen und die JTable.
-   * 
+
    * @param modell Praesentationsfassade mit den Daten
    * @param strg   Wahrheitstabellensteuerung fuer Weitergabe der Befehle
    */

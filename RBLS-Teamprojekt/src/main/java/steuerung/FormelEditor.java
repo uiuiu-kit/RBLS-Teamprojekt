@@ -9,8 +9,8 @@ public class FormelEditor {
   private String formel;
 
   /**
-   * Konstruktor für den FormelEditor.
-   * 
+   * Konstruktor fï¿½r den FormelEditor.
+
    * @param atomareAussagen die atomaren Aussagen die in den aussagenlogischen
    *                        Formel vorkommen kommen.
    */
@@ -20,11 +20,11 @@ public class FormelEditor {
   }
 
   /**
-   * Übergibt eine Formel zu der die FormelAnsicht, zur Bearbeitung, geöffnet
-   * wird. Sobald die Formel bestätigt oder abgeleht wurden wird die Formel zurück
+   * ï¿½bergibt eine Formel zu der die FormelAnsicht, zur Bearbeitung, geï¿½ffnet
+   * wird. Sobald die Formel bestï¿½tigt oder abgeleht wurden wird die Formel zurï¿½ck
    * gegeben.
-   * 
-   * @param formelAlt die Formel die bearbeitet werden soll und zurück gegeben
+
+   * @param formelAlt die Formel die bearbeitet werden soll und zurï¿½ck gegeben
    *                  wird falls abgebrochen wird.
    * @return die neue Formel.
    */
@@ -36,8 +36,8 @@ public class FormelEditor {
   }
 
   /**
-   * setzt ein weiteres Zeichen an das Ende der aktuellen Formel.
-   * 
+   * Setzt ein weiteres Zeichen an das Ende der aktuellen Formel.
+
    * @param zeichen das zu setzende Zeichen
    */
   public void setzeZeichen(char zeichen) {
@@ -54,14 +54,14 @@ public class FormelEditor {
   }
 
   /**
-   * setzt die Formel zurück.
+   * setzt die Formel zurï¿½ck.
    */
   public void brecheAb() {
     formel = formelAlt;
   }
 
   /**
-   * gibt zurück ob diese Formel gültig ist, das heißt, das keine Klammern mehr
+   * gibt zurï¿½ck ob diese Formel gï¿½ltig ist, das heiï¿½t, das keine Klammern mehr
    * offen ist und die Formel nicht mit einen Konnektor endet.
    */
   public boolean bestaetige() {
@@ -76,9 +76,9 @@ public class FormelEditor {
   }
 
   /**
-   * gibt zurück ob das nächste Zeichen erlaubt ist.
-   * 
-   * @param naechsterCh das nächste Zeichen
+   * Gibt zurï¿½ck ob das nï¿½chste Zeichen erlaubt ist.
+
+   * @param naechsterCh das nï¿½chste Zeichen
    * @return ob es erlaubt ist
    */
   public boolean zeichenErlaubt(char naechsterCh) {
@@ -118,8 +118,8 @@ public class FormelEditor {
   }
 
   /**
-   * gibt zurück ob es in der aktuelle Formel noch offene Klammern gibt.
-   * 
+   * Gibt zurï¿½ck ob es in der aktuelle Formel noch offene Klammern gibt.
+
    * @return ob es noch offene Klammern gibt
    */
   private boolean klammerOffen() {

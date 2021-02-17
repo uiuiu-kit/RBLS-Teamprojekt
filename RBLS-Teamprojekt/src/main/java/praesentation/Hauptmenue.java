@@ -13,6 +13,7 @@ import modell.Fassade;
  * Grafische Ansicht des Hauptmen�s.
  * St��t bei Mausklick eines Buttons das �ffnen des R�tselwahl-Bildschirms oder des freien Modus
  * bzw. das Beenden des Programms �ber die Fensterverwaltung an.
+
  * @author Nick
  */
 public class Hauptmenue extends javax.swing.JFrame {
@@ -133,7 +134,8 @@ public class Hauptmenue extends javax.swing.JFrame {
   }
 
   /**
-   * stoesst Oeffnen von Raetselwahl an.
+   * Stoesst Oeffnen von Raetselwahl an.
+
    * @param stufe Stufe der Raetsel
    */
   private void klickeStart(int stufe) {

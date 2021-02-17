@@ -15,7 +15,7 @@ public class FormelParser {
 
   /**
    * Baut eine Formel, die als String vorliegt, in die Formel-Baumstruktur um.
-   * 
+
    * @param formelS die gegebene Formel als String
    * @return Das Wurzelelement der Formel
    */
@@ -81,11 +81,11 @@ public class FormelParser {
   }
 
   /**
-   * Ersetzt Klammerausdrücke.
-   * 
-   * @param formelS Formel in der Klammerausdrücke jeweils durch k(Index) ersetzt
+   * Ersetzt Klammerausdrï¿½cke.
+
+   * @param formelS Formel in der Klammerausdrï¿½cke jeweils durch k(Index) ersetzt
    *                werden.
-   * @return Formel mit ersetzten Klammerausdrücke
+   * @return Formel mit ersetzten Klammerausdrï¿½cke
    */
   private static List<String> klammerAusdrueckeErsetzen(String formelS) {
     List<String> klammerAusdruecke = new ArrayList<String>();
@@ -112,11 +112,11 @@ public class FormelParser {
   }
 
   /**
-   * Stellt Klammerausdrücke wieder her.
-   * 
-   * @param formelS Formel in der k(Index) durch Klammerausdrücke zurück ersetzt
+   * Stellt Klammerausdrï¿½cke wieder her.
+
+   * @param formelS Formel in der k(Index) durch Klammerausdrï¿½cke zurï¿½ck ersetzt
    *                werden sollen.
-   * @return Formel mit Rückersetzungen.
+   * @return Formel mit Rï¿½ckersetzungen.
    */
   private static String klammerAusdrueckeWiederherstellen(String formelS,
       List<String> klammerAusdruecke) {
