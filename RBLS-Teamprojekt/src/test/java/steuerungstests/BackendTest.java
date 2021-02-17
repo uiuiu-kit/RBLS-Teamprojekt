@@ -66,9 +66,17 @@ public class BackendTest {
   }
 
   @Test
-  public void ZelleInBlauOrangeAendernTest() {
+  public void zelleInBlauOrangeAendernTest() {
     gibTabelle();
     wts.befehl("ZelleAendern(0,2)");
+    System.out.println("ZelleAendern(0,2)");
+    gibTabelle();
+  }
+
+  @Test
+  public void gibTipTest() {
+    gibTabelle();
+    wts.gibTip();
     System.out.println("ZelleAendern(0,2)");
     gibTabelle();
   }
