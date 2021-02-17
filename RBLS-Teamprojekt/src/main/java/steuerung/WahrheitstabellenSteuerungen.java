@@ -51,7 +51,8 @@ public class WahrheitstabellenSteuerungen {
         }
         break;
       case "FormelEingeben":
-        if (Integer.parseInt(parameter[0]) >= model.gibAtomareAussage().size()) {
+        if (Integer.parseInt(parameter[0]) >= model.gibAtomareAussage().size()
+            && (stufe == 2 || stufe == 4)) {
           new FormelEingeben(model, Integer.parseInt(parameter[0]));
         }
         break;
