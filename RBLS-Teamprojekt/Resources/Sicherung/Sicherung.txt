@@ -1,10 +1,2 @@
-<<<<<<< Updated upstream
 0
 ##
-=======
-2
-##
-Butterbierdiebe
-Regen
-Snapes Zauberstab
->>>>>>> Stashed changes
