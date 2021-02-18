@@ -13,6 +13,6 @@ Alexa, Siri, Kira
 ##
 2
 ##
-(1un2)o(n1u2), (n0u1)o(0un1)
+1un2on1u2, n0u1o0un1
 ##
 3
