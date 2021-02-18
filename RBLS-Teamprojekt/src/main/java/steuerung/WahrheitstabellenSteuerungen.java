@@ -68,11 +68,11 @@ public class WahrheitstabellenSteuerungen {
         new SpalteHinzufuegen(model);
         break;
       case "ZelleAendern":
-        if (stufe == 1 && Integer.parseInt(parameter[0]) < model.gibAtomareAussage().size()) {
+        if (stufe == 1 && Integer.parseInt(parameter[1]) < model.gibAtomareAussage().size()) {
           new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
               Integer.parseInt(parameter[1]));
         }
-        if (stufe == 3 && Integer.parseInt(parameter[0]) >= model.gibAtomareAussage().size()) {
+        if (stufe == 3 && Integer.parseInt(parameter[1]) >= model.gibAtomareAussage().size()) {
           new ZelleInBlauOrangeAendern(model, Integer.parseInt(parameter[0]),
               Integer.parseInt(parameter[1]));
         }
