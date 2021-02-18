@@ -7,7 +7,7 @@ Ihre vier Aussagen sind daher alle Wahr:
 (2) Ron und Fred waren es nicht gemeinsam.
 (3) Wenn Ron schuldig ist, dann auch Fred
 (4) Wenn es Fred war, dann auch George oder Ron.
-Wer war beteiligt?
+Wer war beteiligt? Erstelle dazu auch die passenden aussagenlogischen Formeln im Tabellenkopf.
 ##
 ist schuldig.
 ##

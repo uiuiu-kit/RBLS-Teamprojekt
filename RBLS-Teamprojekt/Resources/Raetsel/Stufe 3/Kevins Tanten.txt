@@ -5,7 +5,7 @@ Rosa und Trude haben sich zerstritten, weil Rosa auf Trudes Zwergpudel getreten 
 Sie werden sicher nicht beide kommen. Andererseits kommen Hedwig und Trude immer nur zusammen. 
 Falls Rosa aber kommt, dann kommt sicher auch Hedwig. Kevin weiß auch, 
 dass nicht alle drei Tanten fernbleiben werden. 
-Mit wem darf er rechnen? 
+Mit wem darf er rechnen? Verändere hierzu die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zellen.
 ##
 kommen zu Kevins Geburtstag.
 ##
