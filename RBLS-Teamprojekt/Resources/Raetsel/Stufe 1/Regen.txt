@@ -9,10 +9,10 @@ richtig
 ##
 Die Folgerung ist, Die Folgerung ist nicht
 ##
-p,q
+p, q
 ##
 1
 ##
-n0,n1
+n0, n1
 ##
 1

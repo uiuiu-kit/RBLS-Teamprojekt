@@ -95,7 +95,7 @@ public class RaetselinterpretTest {
     for (String temp: typen) {
       atome.add(temp);
     }
-    Raetsel test = testen.erstelleFR(atome);
+    Raetsel test = testen.erstelleFrRa(atome);
     
     assert (test != null);
   }

@@ -9,11 +9,11 @@ Dumbledore geht davon aus, dass jeder Schuldige lügt und jeder Unschuldige die 
 "Einer ist auf jeden Fall schuldig!". Zeige mit Hilfe einer Wahrheitstabelle, wen Dumbledore meint. 
 Wahr steht dabei dafür, dass die Personen die Wahrheit sagt, also nicht der Dieb ist, und Falsch dafür, dass die Person lügt und einer der Diebe ist.
 ##
-ist auf jeden Fall schuldig
+ist auf jeden Fall schuldig.
 ##
-Charles,Donald,Edgar
+Charles, Donald, Edgar
 ##
-Charles,Donald,Edgar
+Charles, Donald, Edgar
 ##
 2
 ##

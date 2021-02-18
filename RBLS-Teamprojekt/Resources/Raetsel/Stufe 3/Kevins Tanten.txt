@@ -7,14 +7,14 @@ Falls Rosa aber kommt, dann kommt sicher auch Hedwig. Kevin weiß auch,
 dass nicht alle drei Tanten fernbleiben werden. 
 Mit wem darf er rechnen? 
 ##
-kommen zu Kevins Geburtstag
+kommen zu Kevins Geburtstag.
 ##
-Hedwig & Rosa,Rosa,Rosa & Trude,Trude,Trude & Hedwig, Hedwig
+Hedwig & Rosa, Rosa, Rosa & Trude, Trude, Trude & Hedwig, Hedwig
 ##
 Hedwig, Rosa, Trude
 ##
 5
 ##
-n(1u2),0u2,1f0,n(n0un1un2)
+n(1u2), 0u2, 1f0, n(n0un1un2)
 ##
 3

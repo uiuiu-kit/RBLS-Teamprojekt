@@ -54,9 +54,9 @@ public class SteuerungsFassadeTest {
   public void zellenTest() {
     int[] pos = {2, 2};
     
-    testen.setzeZelleWW(pos, true);
+    testen.setzeZelleWaWe(pos, true);
     
-    assert (testen.gibZelleWW(pos));
+    assert (testen.gibZelleWaWe(pos));
   }
   
   @Test
@@ -104,7 +104,7 @@ public class SteuerungsFassadeTest {
   
   @Test
   public void sicherungTest() {
-    Memento m = testen.fuehreSicherungAus();
+    Memento m = testen.fuehreSicherungAus();;
     assertEquals("Raetseldummy", m.gibSicherung().gibRaetselname());
     assertTrue(1 == m.gibSicherung().gibStufe());
   }
@@ -113,11 +113,11 @@ public class SteuerungsFassadeTest {
   public void zeileFallTest() {
     int[] a = {1, 0};
     Boolean[] test = {true, false, false};
-    testen.setzeZelleWW(a, true);
+    testen.setzeZelleWaWe(a, true);
     
-    assertEquals(test[0],testen.gibZeileFall(1)[0]);
-    assertEquals(test[1],testen.gibZeileFall(1)[1]);
-    assertEquals(test[2],testen.gibZeileFall(1)[2]);
+    assertEquals(test[0], testen.gibZeileFall(1)[0]);
+    assertEquals(test[1], testen.gibZeileFall(1)[1]);
+    assertEquals(test[2], testen.gibZeileFall(1)[2]);
   }
   
   @Test
@@ -126,9 +126,9 @@ public class SteuerungsFassadeTest {
       String temp = "";
       for (int s = 0; s <= 2; s++) {
         int[] a = {z, s};
-        testen.setzeZelleWW(a, true);
-        temp = temp + " / " + testen.gibZelleWW(a);
-        testen.setzeZelleWW(a, false);
+        testen.setzeZelleWaWe(a, true);
+        temp = temp + " / " + testen.gibZelleWaWe(a);
+        testen.setzeZelleWaWe(a, false);
       }
       System.out.println(temp);
     } 
@@ -137,7 +137,7 @@ public class SteuerungsFassadeTest {
       String temp = "";
       for (int s = 0; s <= 2; s++) {
         int[] a = {z, s};
-        temp = temp + " / " + testen.gibZelleWW(a);
+        temp = temp + " / " + testen.gibZelleWaWe(a);
       }
       System.out.println(temp);
     } 
