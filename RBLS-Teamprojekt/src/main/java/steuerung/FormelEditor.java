@@ -10,7 +10,7 @@ public class FormelEditor {
 
   /**
    * Konstruktor f�r den FormelEditor.
-
+   * 
    * @param atomareAussagen die atomaren Aussagen die in den aussagenlogischen
    *                        Formel vorkommen kommen.
    */
@@ -23,7 +23,7 @@ public class FormelEditor {
    * �bergibt eine Formel zu der die FormelAnsicht, zur Bearbeitung, ge�ffnet
    * wird. Sobald die Formel best�tigt oder abgeleht wurden wird die Formel zur�ck
    * gegeben.
-
+   * 
    * @param formelAlt die Formel die bearbeitet werden soll und zur�ck gegeben
    *                  wird falls abgebrochen wird.
    * @return die neue Formel.
@@ -37,7 +37,7 @@ public class FormelEditor {
 
   /**
    * Setzt ein weiteres Zeichen an das Ende der aktuellen Formel.
-
+   * 
    * @param zeichen das zu setzende Zeichen
    */
   public void setzeZeichen(char zeichen) {
@@ -77,7 +77,7 @@ public class FormelEditor {
 
   /**
    * Gibt zur�ck ob das n�chste Zeichen erlaubt ist.
-
+   * 
    * @param naechsterCh das n�chste Zeichen
    * @return ob es erlaubt ist
    */
@@ -93,11 +93,12 @@ public class FormelEditor {
       case '3':
       case ')':
         return naechsterCh == 'o' || naechsterCh == 'u' || naechsterCh == 'x' || naechsterCh == 'f'
-            || klammerOffen() && naechsterCh == ')';
+            || naechsterCh == 'a' || klammerOffen() && naechsterCh == ')';
       case 'o':
       case 'u':
       case 'x':
       case 'f':
+      case 'a':
       case 'n':
       case '(':
         return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
@@ -119,7 +120,7 @@ public class FormelEditor {
 
   /**
    * Gibt zur�ck ob es in der aktuelle Formel noch offene Klammern gibt.
-
+   * 
    * @return ob es noch offene Klammern gibt
    */
   private boolean klammerOffen() {

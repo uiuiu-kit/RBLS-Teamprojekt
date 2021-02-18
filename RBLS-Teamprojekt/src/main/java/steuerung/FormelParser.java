@@ -3,6 +3,7 @@ package steuerung;
 import java.util.ArrayList;
 import java.util.List;
 import modell.Fassade;
+import modell.formel.Aequivalenz;
 import modell.formel.Atom;
 import modell.formel.ExklusivOder;
 import modell.formel.Formel;
@@ -11,11 +12,12 @@ import modell.formel.Nicht;
 import modell.formel.Oder;
 import modell.formel.Und;
 
+
 public class FormelParser {
 
   /**
    * Baut eine Formel, die als String vorliegt, in die Formel-Baumstruktur um.
-
+   * 
    * @param formelS die gegebene Formel als String
    * @return Das Wurzelelement der Formel
    */
@@ -35,43 +37,52 @@ public class FormelParser {
       formelF = new Atom(aussage, num);
     }
     String[] formleSplit;
-    formleSplit = formelS.split("f", 2);
+    formleSplit = formelS.split("a", 2);
     if (formleSplit.length > 1) {
       Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke),
           fassade);
       Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke),
           fassade);
-      formelF = new Implikation(links, rechts);
+      formelF = new Aequivalenz(links, rechts);
     } else {
-      formleSplit = formelS.split("o", 2);
+      formleSplit = formelS.split("f", 2);
       if (formleSplit.length > 1) {
         Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke),
             fassade);
         Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke),
             fassade);
-        formelF = new Oder(links, rechts);
+        formelF = new Implikation(links, rechts);
       } else {
-        formleSplit = formelS.split("x", 2);
+        formleSplit = formelS.split("o", 2);
         if (formleSplit.length > 1) {
           Formel links = pars(klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke),
               fassade);
           Formel rechts = pars(klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke),
               fassade);
-          formelF = new ExklusivOder(links, rechts);
+          formelF = new Oder(links, rechts);
         } else {
-          formleSplit = formelS.split("u", 2);
+          formleSplit = formelS.split("x", 2);
           if (formleSplit.length > 1) {
             Formel links = pars(
                 klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke), fassade);
             Formel rechts = pars(
                 klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke), fassade);
-            formelF = new Und(links, rechts);
+            formelF = new ExklusivOder(links, rechts);
           } else {
-            if (formelS.charAt(0) == 'n') {
+            formleSplit = formelS.split("u", 2);
+            if (formleSplit.length > 1) {
               Formel links = pars(
-                  klammerAusdrueckeWiederherstellen(formelS.substring(1), klammerAusdruecke),
-                  fassade);
-              formelF = new Nicht(links);
+                  klammerAusdrueckeWiederherstellen(formleSplit[0], klammerAusdruecke), fassade);
+              Formel rechts = pars(
+                  klammerAusdrueckeWiederherstellen(formleSplit[1], klammerAusdruecke), fassade);
+              formelF = new Und(links, rechts);
+            } else {
+              if (formelS.charAt(0) == 'n') {
+                Formel links = pars(
+                    klammerAusdrueckeWiederherstellen(formelS.substring(1), klammerAusdruecke),
+                    fassade);
+                formelF = new Nicht(links);
+              }
             }
           }
         }
@@ -82,7 +93,7 @@ public class FormelParser {
 
   /**
    * Ersetzt Klammerausdr�cke.
-
+   * 
    * @param formelS Formel in der Klammerausdr�cke jeweils durch k(Index) ersetzt
    *                werden.
    * @return Formel mit ersetzten Klammerausdr�cke
@@ -113,7 +124,7 @@ public class FormelParser {
 
   /**
    * Stellt Klammerausdr�cke wieder her.
-
+   * 
    * @param formelS Formel in der k(Index) durch Klammerausdr�cke zur�ck ersetzt
    *                werden sollen.
    * @return Formel mit R�ckersetzungen.

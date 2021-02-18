@@ -118,7 +118,7 @@ public class Raetselinterpret {
     String[] antwortM = lines[3].split(",");
     List<String> formeln = new ArrayList<String>();    
     for (String temp : lines[6].split(",")) {
-      formeln.add(temp);
+      formeln.add(killSpace(temp));
     }
     String[] name = lines[0].split(".txt");
     atome = this.exAtome(lines[4]);

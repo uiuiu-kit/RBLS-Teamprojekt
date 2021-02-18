@@ -75,7 +75,7 @@ public class TabellenPruefer {
     }
     for (int i = 0; i < noetigeFormelnF.size(); i++) {
       enthaelt = false;
-      j = anzAtom;
+      j = anzAtom - 1;
       while (!enthaelt && j < anzSpalten) {
         Formel vergleichsformel = model.gibFormel(j);
         enthaelt = Berechner.vergleicheFormel(noetigeFormelnF.get(i), vergleichsformel, anzAtom);
