@@ -1,0 +1,20 @@
+Wer trinkt Cola?
+##
+Alina, Birgit und Conny bestellen nach dem Kino Getränke, streng nach folgenden Regeln:
+(1) Wenn Alina eine Cola bestellt, dann tut Birgit das auch.
+(2) Birgit oder Conny bestellen sich eine Cola, aber nie gleichzeitig.
+(3) Alina oder Conny bestellen sich eine Cola.
+(4) Wenn Conny eine Cola bestellt, dann auch Alina.
+Ermittle mittels der Wahrheitstabelle, wer sich eine Cola bestellt!
+##
+hat/haben eine Cola bestellt.
+##
+Alina, Birgit, Conny, Alina & Birgit, Alina & Conny, Birgit & Conny, Alina & Birgit & Conny, niemand
+##
+Alina, Birgit, Conny
+##
+4
+##
+0f1, (1u(n2))o(n1u2), 0o2, 2f0
+##
+3
