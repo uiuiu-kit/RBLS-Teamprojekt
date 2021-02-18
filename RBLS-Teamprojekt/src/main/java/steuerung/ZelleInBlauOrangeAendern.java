@@ -13,7 +13,7 @@ public class ZelleInBlauOrangeAendern extends WahrheitstabellenBefehl {
    * @param spalte die Spalte in der der Wert ge�ndert wird
    * @param zeile  die Zeile in der der Wert ge�ndert wird
    */
-  public ZelleInBlauOrangeAendern(Fassade model, int spalte, int zeile) {
+  public ZelleInBlauOrangeAendern(Fassade model, int zeile, int spalte) {
     super(model);
     zellenKoordinaten = new int[2];
     zellenKoordinaten[0] = zeile;
