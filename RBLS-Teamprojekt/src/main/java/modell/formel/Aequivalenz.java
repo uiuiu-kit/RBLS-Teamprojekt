@@ -1,11 +1,11 @@
 package modell.formel;
 
 /**
- * Unterklasse des Bikonnektors. Impliziert logisch aus dem linken
- * Formelnachbarn den rechten Formelnachbarn. Seine String Repraesentation ist
- * "f".
+ * Unterklasse des Bikonnektors. Logisch Aequivalenz von dem linken
+ * Formelnachbarn dem rechten Formelnachbarn. Seine String Repraesentation ist
+ * "a".
  * 
- * @author Flo
+ * @author Jonathan
  *
  */
 public class Aequivalenz extends BiKonnektor {
