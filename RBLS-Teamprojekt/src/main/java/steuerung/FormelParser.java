@@ -10,6 +10,7 @@ import modell.formel.Implikation;
 import modell.formel.Nicht;
 import modell.formel.Oder;
 import modell.formel.Und;
+import modell.formel.Aequivalenz;
 
 public class FormelParser {
 
