@@ -76,6 +76,13 @@ public class FormelParserTest {
     assertEquals(true, formel.auswerten(fall));
     assertEquals("(n1)", formel.gibStringRep());
   }
+  
+  @Test
+  public void testAequivalenz() {
+    Formel formel = FormelParser.pars("1a1", sfMock);
+    assertEquals(true, formel.auswerten(fall));
+    assertEquals("(1a1)", formel.gibStringRep());
+  }
 
   @Test
   public void testKlammerMitKonnektor() {

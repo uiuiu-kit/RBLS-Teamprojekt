@@ -3,6 +3,7 @@ package steuerung;
 import java.util.ArrayList;
 import java.util.List;
 import modell.Fassade;
+import modell.formel.Aequivalenz;
 import modell.formel.Atom;
 import modell.formel.ExklusivOder;
 import modell.formel.Formel;
@@ -10,7 +11,7 @@ import modell.formel.Implikation;
 import modell.formel.Nicht;
 import modell.formel.Oder;
 import modell.formel.Und;
-import modell.formel.Aequivalenz;
+
 
 public class FormelParser {
 

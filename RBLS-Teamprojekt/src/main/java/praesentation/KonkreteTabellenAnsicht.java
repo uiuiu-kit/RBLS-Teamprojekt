@@ -186,7 +186,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       return;
     }
     if (i > 0 && j >= 0) {
-      strg.befehl("ZelleAendern(" + j + "," + i + ")");
+      strg.befehl("ZelleAendern(" + i + "," + j + ")");
       aktualisiere(new int[] { i, j });
     } else if (i == 0 && j >= 0) {
       klickeFormel(j);
