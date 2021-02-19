@@ -12,7 +12,6 @@ import modell.formel.Nicht;
 import modell.formel.Oder;
 import modell.formel.Und;
 
-
 public class FormelParser {
 
   /**
@@ -25,7 +24,7 @@ public class FormelParser {
     Formel formelF = null;
     List<String> klammerAusdruecke = new ArrayList<String>();
     if (formelS.length() > 1) {
-      if (formelS.charAt(0) == '(' && formelS.charAt(formelS.length() - 1) == ')') {
+      if (umfassendeKlammer(formelS)) {
         formelS = formelS.substring(1, formelS.length() - 1);
       }
     }
@@ -89,6 +88,13 @@ public class FormelParser {
       }
     }
     return formelF;
+  }
+
+  private static boolean umfassendeKlammer(String formelS) {
+    if (formelS.charAt(0) == '(' && formelS.charAt(formelS.length() - 1) == ')') {
+      return true;
+    }
+    return false;
   }
 
   /**
