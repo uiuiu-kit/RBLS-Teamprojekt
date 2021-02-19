@@ -152,7 +152,8 @@ public class FormelParser {
     int i = klammerAusdruecke.size() - 2;
     while (formelS.matches(".*k[0-9]*.*")) {
       formelS = formelS.replaceFirst("k[0-9]*", klammerAusdruecke.get(i));
-      i--;
+      klammerAusdruecke.remove(i);
+      i = klammerAusdruecke.size() - 2;
     }
     return formelS;
   }
