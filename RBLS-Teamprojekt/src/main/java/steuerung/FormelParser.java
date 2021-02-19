@@ -92,6 +92,18 @@ public class FormelParser {
 
   private static boolean umfassendeKlammer(String formelS) {
     if (formelS.charAt(0) == '(' && formelS.charAt(formelS.length() - 1) == ')') {
+      int offene = 0;
+      for (int i = 1; i < formelS.length() - 2; i++) {
+        if (formelS.charAt(i) == '(') {
+          offene = offene + 1;
+        }
+        if (formelS.charAt(i) == ')') {
+          offene = offene - 1;
+        }
+        if (offene == -1) {
+          return false;
+        }
+      }
       return true;
     }
     return false;
@@ -119,7 +131,7 @@ public class FormelParser {
         formelSn = formelS.substring(0, open) + formelSn;
       }
       if (close < formelS.length() - 1) {
-        formelSn = formelSn + formelS.substring(close, formelS.length() - 1);
+        formelSn = formelSn + formelS.substring(close + 1, formelS.length());
       }
       formelS = formelSn;
       i++;
