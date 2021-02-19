@@ -1,4 +1,4 @@
-Regen
+﻿Regen
 ##
 „Wenn es regnet, dann wird die Straße nass.“
 „Die Straße ist nicht nass!“
@@ -9,7 +9,7 @@ richtig
 ##
 Die Folgerung ist, Die Folgerung ist nicht
 ##
-p, q
+Es regnet, Die Straße ist nass
 ##
 1
 ##

@@ -229,8 +229,10 @@ public class FormelAnsicht {
     }
     if (formel.equals("")) {
       entferne.setEnabled(false);
+      bestaetige.setEnabled(false);
     } else {
       entferne.setEnabled(true);
+      bestaetige.setEnabled(true);
     }
   }
 

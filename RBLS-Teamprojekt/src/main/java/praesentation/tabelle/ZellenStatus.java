@@ -9,6 +9,7 @@ public enum ZellenStatus {
   standard, 
   wahr, 
   falsch, 
-  markiert, 
+  markiert_wahr,
+  markiert_falsch,
   tipp
 }

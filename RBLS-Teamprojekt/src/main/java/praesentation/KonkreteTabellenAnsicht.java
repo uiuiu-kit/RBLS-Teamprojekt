@@ -226,8 +226,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private void markiereZeile(int i) {
     markierteZeilen[i] = !markierteZeilen[i];
     for (int j = 0; j < spaltenzahl; j++) {
-      if (markierteZeilen[i]) {
-        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert);
+      if (markierteZeilen[i] && inhalt[i][j].equals("wahr")) {
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_wahr);
+      } else if (markierteZeilen[i] && inhalt[i][j].equals("falsch")) {
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_falsch);
       } else if (inhalt[i][j].equals("wahr")) {
         ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
       } else if (inhalt[i][j].equals("falsch")) {
@@ -287,13 +289,19 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     if (i > 0 && j >= 0) {
       if (inhalt[i][j].equals("true")) {
         inhalt[i][j] = "wahr";
-        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
+        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_wahr 
+            && ((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_falsch) {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
+        } else {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_wahr);
         }
       } else {
         inhalt[i][j] = "falsch";
-        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert) {
+        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_falsch
+            && ((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_wahr) {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
+        } else {
+          ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_falsch);
         }
       }
     }

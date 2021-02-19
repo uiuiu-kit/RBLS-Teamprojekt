@@ -41,8 +41,9 @@ public class RaetselwahlTest {
     raetsel.add("Platzhalterr�tsel 2");
     geloest.add("Platzhalterr�tsel 1");
     
-    JFrame aktivesFenster = new Raetselwahl(fv, raetsel, geloest);
-    aktivesFenster.setTitle("R�tselwahl");
+    JFrame aktivesFenster = new JFrame();
+    aktivesFenster.setContentPane(new Raetselwahl(fv, raetsel, geloest));
+    aktivesFenster.setTitle("Rätselwahl");
     aktivesFenster.setSize(1000, 620);
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocation(50, 50);

@@ -30,7 +30,9 @@ public class FarbRenderer extends DefaultTableCellRenderer {
       break;
       case falsch:l.setBackground(new Color(242, 133, 133));
       break;
-      case markiert:l.setBackground(Color.LIGHT_GRAY);
+      case markiert_wahr:l.setBackground(Color.GREEN.darker());
+      break;
+      case markiert_falsch:l.setBackground(Color.RED);
       break;
       case tipp:l.setBackground(Color.DARK_GRAY);
       break;
