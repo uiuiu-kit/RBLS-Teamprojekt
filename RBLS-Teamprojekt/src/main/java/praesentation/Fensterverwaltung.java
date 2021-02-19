@@ -68,7 +68,7 @@ public class Fensterverwaltung {
    */
   public void oeffneRaetselwahl(int stufe) {
     wechseleFenster(new Raetselwahl(this, modell.gibRaetselListe(stufe), 
-        modell.gibGeloesteRaetsel(stufe)), "Rätselwahl");
+        modell.gibGeloesteRaetsel(stufe), stufe), "Rätselwahl");
   }
 
   /**
