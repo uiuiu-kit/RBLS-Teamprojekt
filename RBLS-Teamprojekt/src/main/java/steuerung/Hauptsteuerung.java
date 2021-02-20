@@ -11,8 +11,8 @@ public class Hauptsteuerung {
   }
 
   /**
-   * initialisiert die Hauptsteuerung. Erstellt Kopfobjekte für Modell und
-   * Präsentation und stößt deren Initialisierung an.
+   * initialisiert die Hauptsteuerung. Erstellt Kopfobjekte fuer Modell und
+   * Praesentation und stoesst deren Initialisierung an.
    */
 
   public void init() {
@@ -23,7 +23,7 @@ public class Hauptsteuerung {
   }
 
   /**
-   * erstellt die WahrheitstabellenSteuerungen die für das Rätselfenster.
+   * erstellt die WahrheitstabellenSteuerungen die fuer das Raetselfenster.
    * 
    */
   public WahrheitstabellenSteuerungen raetselFensterInit() {
@@ -33,14 +33,14 @@ public class Hauptsteuerung {
   }
 
   /**
-   * beendet das Rätsel und setzt das Rätsel auf gelöst.
+   * beendet das Raetsel und setzt das Raetsel auf geloest.
    */
   public void raetselGeloest() {
     sf.fuehreSicherungAus();
   }
 
   /**
-   * stößt die Erstellung der Sicherungsdatei an und beendet das Programm.
+   * stoesst die Erstellung der Sicherungsdatei an und beendet das Programm.
    */
   public void beenden() {
     System.exit(0);
