@@ -1,11 +1,11 @@
 Auf der Tanzfläche
 ##
-Danny, Ella und Freia gehen zusammen in die Disco. Beim Tanzen haben sie ihre Prinzipien:
-(1) Wenn Danny tanz, dann tanzt auch Ella.
-(2) Danny oder Freia tanzen auf jeden Fall.
-(3) Wenn Freia tanzt, dann auch Danny.
-(4) Ella und Freia tanzen beide sehr gerne, aber nie gleichzeitig.
-Stelle diese vier Aussagen als aussagenlogische Formeln dar und ermittle anschließend, wer auf der Tanzfläche der Star ist.
+Danny, Ella und Freia gehen zusammen in die Disco. Beim Tanzen haben sie ihre Prinzipien: 
+(1) Wenn Danny tanz, dann tanzt auch Ella. 
+(2) Danny oder Freia tanzen auf jeden Fall. 
+(3) Wenn Freia tanzt, dann auch Danny. 
+(4) Ella und Freia tanzen beide sehr gerne, aber nie gleichzeitig. 
+Stelle diese vier Aussagen als aussagenlogische Formeln dar. Hierzu musst du wieder Spalten hinzufügen. Ermittle anschließend, wer auf der Tanzfläche der Star ist.
 ##
 tanzt/en.
 ##
