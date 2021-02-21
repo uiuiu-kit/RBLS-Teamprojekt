@@ -82,6 +82,18 @@ public class WahrheitstabellenSteuerungen {
     }
   }
 
+  /**
+   * gibt zurück ob die Tabelle gefüllt ist.
+   * 
+   * @return
+   */
+  public boolean gibTabelleVoll() {
+    if (tabellenPruefer.tabelleFuellenErlaubt() && gibTip() == null) {
+      return true;
+    }
+    return false;
+  }
+
   public int[] gibTip() {
     return tabellenPruefer.gibFehlerhafteZelle();
   }
