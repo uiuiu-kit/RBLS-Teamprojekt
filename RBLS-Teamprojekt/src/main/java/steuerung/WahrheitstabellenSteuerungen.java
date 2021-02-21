@@ -88,7 +88,8 @@ public class WahrheitstabellenSteuerungen {
    * @return
    */
   public boolean gibTabelleVoll() {
-    if (tabellenPruefer.tabelleFuellenErlaubt() && gibTip() == null) {
+    if ((tabellenPruefer.tabelleFuellenErlaubt() && stufe != 3)
+        || (stufe == 3 && gibTip() == null)) {
       return true;
     }
     return false;
