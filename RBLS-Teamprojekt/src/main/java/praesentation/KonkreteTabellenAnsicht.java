@@ -312,5 +312,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   public JPanel gibAnsicht() {
     return panel;
   }
+  
+  public boolean[] gibMarkierteZeilen() {
+    return markierteZeilen;
+  }
 
 }

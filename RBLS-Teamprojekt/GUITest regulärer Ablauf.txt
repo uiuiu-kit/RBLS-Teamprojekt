@@ -1,0 +1,121 @@
+GUITest "Regulärer Ablauf"
+
+/**
+ * Dieser GUI-Test soll einen "regulären" Ablauf zum Einsatz der Software testen. Dabei wird ausgehend von einer leeren Sicherungsdatei jeweils ein Rätsel pro Stufe
+ * gelöst und anschließend der Freie Modus gestartet und kurz ausprobiert. Nach Beenden des zweiten Rätsels wird das Programm beendet und danach wieder geöffnet.
+ * @author Nick
+ */
+
+@before Lösche die Datei '\Resources\Sicherung\Sicherung.txt', falls sie existiert
+
+1. Führe das Programm aus.
+     Erwartet: Das Hauptmenü wird angezeigt und die Schaltflächen der Stufen 2 bis 4 sowie die Schaltfläche 'Freier Modus' sind ausgegraut.
+
+2. Klicke auf die Schaltfläche 'Stufe 1'.
+     Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 1 wird angezeigt, sowie zwei weiße Schaltflächen mit den Namen der beiden Stufe-1-Rätsel.
+
+3. Klicke auf die Schaltfläche 'Butterbierdiebe'.
+     Erwartet: Ein Rätsel-Fenster mit dem zum Rätsel gehörenden Fragetext, einem Antworttext mit einer Combobox der Antwortmöglichkeiten und eine Wahrheitstabelle werden angezeigt.
+               Die oberste Zeile der Tabelle beinhaltet die drei Atomaren Aussagen und daneben drei Formeln, die die Aussagen aus dem Text repräsentieren.
+               Der Rest der Tabelle ist rot hinterlegt und mit "falsch" beschriftet.
+
+4. Klicke zuerst auf ein Tabellenfeld der rechten Hälfte der Tabelle, danach zweimal auf eines der linken Hälfte.
+     Erwartet: Beim ersten Klicken ändert sich nichts. Beim Klicken auf das andere Feld wechselt die Farbe zu Grün und der Text zu "wahr", dann wieder zurück.
+     
+5. Klicke auf 'Prüfen'. Wechsele zur nächsten Antwort der Combobox und drücke erneut auf 'Prüfen'.
+     Erwartet: Nichts soll passieren, da die Tabelle nicht ausgefüllt ist.
+
+6. Klicke auf 'Fülle Tabelle'.
+     Erwartet: Nichts soll passieren.
+     
+7. Decke in der linken Hälfte alle möglichen Fälle (in beliebiger Reihenfolge) ab. Klicke danach auf 'Fülle Tabelle'.
+     Erwartet: Es gibt nun jeweils eine Spalte mit Inhalt "w f f w f f", "f w w f w f" und "f f w f f w", wobei w für 'wahr' und f für 'falsch' steht.
+               In den restlichen Spalten soll die rechte Hälfte der Tabelle unverändert bleiben.
+
+8. Klicke auf 'Prüfen'. Wechsele zur nächsten Antwort der Combobox und drücke erneut auf 'Prüfen'.
+     Erwartet. Beim ersten Klicken geschieht nichts, beim zweiten Klicken ist die Combobox deaktiviert und eine Schaltfläche "Weiter" erscheint
+     
+9. Klicke auf 'Weiter'.
+     Erwartet: Das Rätsel-Abschlussfenster mit zwei Schaltflächen öffnet sich.
+
+10. Klicke auf 'zum Menü'.
+      Erwartet: Das Hauptmenü wird geöffnet und die Schaltfläche 'Stufe 2' ist nun nicht mehr ausgegraut.
+     
+11. Klicke auf die Schaltfläche 'Stufe 1'.
+      Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 1 wird angezeigt, und die Schaltfläche 'Butterbierdiebe' ist grau.
+     
+12. Klicke auf die Schaltfläche 'Menü' und anschließend auf die Schaltfläche 'Stufe 2'.
+      Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 2 wird angezeigt, sowie zwei weiße Schaltflächen mit den Namen der beiden Stufe-2-Rätsel.
+     
+13. Klicke auf die Schaltfläche 'Im Kino'.
+      Erwartet: Ein Rätsel-Fenster mit dem zum Rätsel gehörenden Fragetext, einem Antworttext mit einer Combobox der Antwortmöglichkeiten und eine Wahrheitstabelle werden angezeigt.
+               Die oberste Zeile der Tabelle beinhaltet die drei Atomaren Aussagen und und der Rest der Tabelle ist mit allen Möglichen Wahrheitsbelegungen dafür ausgefüllt.
+               
+14. Klicke auf die Schaltfläche '-' und danach auf eine der Spalten.
+      Erwartet: Nichts geschieht.
+     
+15. Klicke 5-mal auf die Schaltfläche '+', nach einmal auf '-' und auf die zweitletzte Spalte von links.
+      Erwartet: Fünf neue Spalten werden der Tabelle hinzugefügt und die Vorletzte davon wieder entfernt.
+     
+16. Klicke auf 'Formel eingeben' in einer der Spalten.
+      Erwartet: Ein Eingabefenster öffnet sich. Alle Schaltflächen bis auf die drei atomaren Aussagen, '(', 'nicht' und 'Abbruch' sind deaktiviert.
+     
+17. Gib die Formel (0 -> 2) ein und drücke auf 'Bestätigen'.
+      Erwartet: Während des Vorgangs sind alle Symbole deaktiviert, die zu einer ungültigen aussagenlogischen Formel führen würden.
+                Im oberen Teil des Fensters wird die bisher eingegebene Formel angezeigt.
+                Nach dem Klicken auf 'Bestätigen' ist die Formel in der Tabellenspalte eingetragen.
+  
+18. Wiederhole Schritt 16 und 17 fürdie anderen drei Spalten mit den Formeln (0 OR 1), (1 --> 0), (NOT (0 AND 1 AND 2)) und klicke auf 'Fülle Tabelle'.
+      Erwartet: Die Tabelle wird entsprechend der Wahrheitswerte der Formeln ausgefüllt. Nur in der 3. Tabellenzeile sind die vier rechten Spalten alle mit 'wahr' gefüllt.
+     
+19. Klicke auf 'Markieren' und danach zuerst auf die 0. Zeile, dann auf die 3. Zeile.
+      Erwartet: Bei der 0. Zeile geschieht nichts, aber in der 3. Zeile sind die Farben hervorgehoben.
+     
+20. Wähle in der Combobox 'Ralf & Thomas' aus und drücke auf 'Prüfen', dann auf 'Weiter' und im Abschlussfenster auf 'nächstes Rätsel'.
+      Erwartet: Das Rätselfenster zum zweiten Rätsel der zweiten Stufe wird angezeigt.
+     
+21. Klicke auf 'Menü', 'Zum Menü' und auf 'Beenden'.
+      Erwartet: Im Rätselauswahlbildschirm ist nur die erste Schaltfläche grau und beim Klicken auf 'Beenden' wird das Programm geschlossen.
+     
+22. Führe das Programm aus.
+      Erwartet: Das Hauptmenü wird angezeigt und die Schaltfläche der Stufe 4 sowie die Schaltfläche 'Freier Modus' ist ausgegraut.
+     
+23. Klicke auf die Schaltfläche 'Stufe 3', dann auf 'Kevins Tanten'.
+      Erwartet: Das dazugehörige Rätselfenster öffnet sich. Die einzige Schaltfläche neben der Tabelle ist die 'Markieren'-Schaltfläche.
+                Für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt und der Rest der Tabelle ist mit 'falsch' ausgefüllt.
+                In der obersten Zeile stehen Formeln.
+               
+24. Wähle in der Combobox die Antwort 'Hedwig & Trude' aus und klicke auf die Schaltfläche 'Prüfen'.
+      Erwartet: Nichts geschieht.
+    
+25. Klicke auf die Schaltfläche 'Tipp'.
+      Erwartet: Eine der falsch ausgefüllten Tabellenzellen wird grau hinterlegt.
+    
+26. Fülle die Tabelle gemäß der Wahrheitswerte der Formeln aus und klicke auf die Schaltfläche 'Prüfen'.
+      Erwartet: Das Rätsel-Abschlussfenster öffnet sich.
+    
+27. Klicke auf die Schaltfläche 'Zum Menü'.
+      Erwartet: Im Hauptmenü sind nun keine Schaltflächen mehr deaktiviert.
+    
+28. Klicke auf die Schaltfläche 'Stufe 4', dann auf 'Auf der Tanzfläche'.
+      Erwartet: Das dazugehörige Rätselfenster öffnet sich. Neben der Tabelle sind vier Schaltflächen zu sehen.
+               Für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt und die Tabelle hat drei Spalten.
+               
+29. Füge vier Spalten hinzu und ergänze sie mit den Formeln (0 --> 1), (2 --> 0), (2 XOR 1), (0 OR 2) und klicke auf 'Fülle Tabelle'.
+      Erwartet: Nichts geschieht.
+    
+30. Entferne die Spalte mit der Formel (2 XOR 1) und füge eine neue Spalte mit dem Inhalt (NOT (1 AND 2)) hinzu und klicke auf 'Fülle Tabelle'.
+      Erwartet: Die Wahrheitstabelle wird gemäß der aussagenlosgischen Formeln ausgefüllt.
+               
+31. Wähle in der Combobox 'Danny & Ella' aus, klicke auf 'Prüfen', auf 'Weiter' und dann auf 'Menü'.
+      Erwartet: Das Hauptmenü wird wieder angezeigt.
+      
+32. Klicke auf die Schaltfläche 'Freier Modus'.
+      Erwartet: Ein Dialogfenster mit fünf Eingabefeldern öffnet sich.
+      
+33. Gib jeweils in das erste, dritte und fünfte Eingabefeld 'A', 'BB', 'CCC' ein und klicke auf 'OK'.
+      Erwartet: Ein Fenster mit dem Titel 'Freier Modus' und einer Wahrheitstabelle öffnet sich. Neben der Tabelle sind vier Schaltflächen zu sehen.
+                Die drei Spalten beinhalten die zuvor eingegebenen Aussagen und für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt.
+      
+34. Klicke auf die Schaltfläche 'Zum Menü' und wiederhole die beiden vorherigen Schritte, ohne die Eigabefelder zu füllen.
+      Erwartet: Die Wahrheitstabelle sieht aus wie im vorherigen Schritt, allerdings haben die atomaren Aussagen die Namen 'A', 'B' und 'C'.
