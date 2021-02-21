@@ -316,5 +316,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   public boolean[] gibMarkierteZeilen() {
     return markierteZeilen;
   }
+  
+  public boolean istAusgefuellt() {
+    return strg.gibTabelleVoll();
+  }
 
 }
