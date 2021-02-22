@@ -1,12 +1,12 @@
-GUITest "Regulärer Ablauf"
+GUITest1 "Regulärer Ablauf"
 
 /**
  * Dieser GUI-Test soll einen "regulären" Ablauf zum Einsatz der Software testen. Dabei wird ausgehend von einer leeren Sicherungsdatei jeweils ein Rätsel pro Stufe
- * gelöst und anschließend der Freie Modus gestartet und kurz ausprobiert. Nach Beenden des zweiten Rätsels wird das Programm beendet und danach wieder geöffnet.
+ * gelöst und anschließend der Freie Modus gestartet und kurz ausprobiert. Nach Beenden des letzten Rätsels wird das Programm beendet und danach wieder geöffnet.
  * @author Nick
  */
 
-@before Lösche die Datei '\Resources\Sicherung\Sicherung.txt', falls sie existiert
+@before Lösche den Inhalt der Datei '\Resources\Sicherung\Sicherung.txt', falls er existiert und ersetze ihn durch '0'
 
 1. Führe das Programm aus.
      Erwartet: Das Hauptmenü wird angezeigt und die Schaltflächen der Stufen 2 bis 4 sowie die Schaltfläche 'Freier Modus' sind ausgegraut.
@@ -23,7 +23,7 @@ GUITest "Regulärer Ablauf"
      Erwartet: Beim ersten Klicken ändert sich nichts. Beim Klicken auf das andere Feld wechselt die Farbe zu Grün und der Text zu "wahr", dann wieder zurück.
      
 5. Klicke auf 'Prüfen'. Wechsele zur nächsten Antwort der Combobox und drücke erneut auf 'Prüfen'.
-     Erwartet: Nichts soll passieren, da die Tabelle nicht ausgefüllt ist.
+     Erwartet: Ein Hinweis soll erscheinen, da die Tabelle nicht ausgefüllt ist.
 
 6. Klicke auf 'Fülle Tabelle'.
      Erwartet: Nichts soll passieren.
@@ -32,7 +32,7 @@ GUITest "Regulärer Ablauf"
      Erwartet: Es gibt nun jeweils eine Spalte mit Inhalt "w f f w f f", "f w w f w f" und "f f w f f w", wobei w für 'wahr' und f für 'falsch' steht.
                In den restlichen Spalten soll die rechte Hälfte der Tabelle unverändert bleiben.
 
-8. Klicke auf 'Prüfen'. Wechsele zur nächsten Antwort der Combobox und drücke erneut auf 'Prüfen'.
+8. Klicke auf 'Prüfen'. Wechsele zur zweiten Antwort der Combobox und drücke erneut auf 'Prüfen'.
      Erwartet. Beim ersten Klicken geschieht nichts, beim zweiten Klicken ist die Combobox deaktiviert und eine Schaltfläche "Weiter" erscheint
      
 9. Klicke auf 'Weiter'.
@@ -44,7 +44,7 @@ GUITest "Regulärer Ablauf"
 11. Klicke auf die Schaltfläche 'Stufe 1'.
       Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 1 wird angezeigt, und die Schaltfläche 'Butterbierdiebe' ist grau.
      
-12. Klicke auf die Schaltfläche 'Menü' und anschließend auf die Schaltfläche 'Stufe 2'.
+12. Klicke auf die Schaltfläche 'Zum Menü' und anschließend auf die Schaltfläche 'Stufe 2'.
       Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 2 wird angezeigt, sowie zwei weiße Schaltflächen mit den Namen der beiden Stufe-2-Rätsel.
      
 13. Klicke auf die Schaltfläche 'Im Kino'.
@@ -57,7 +57,7 @@ GUITest "Regulärer Ablauf"
 15. Klicke 5-mal auf die Schaltfläche '+', nach einmal auf '-' und auf die zweitletzte Spalte von links.
       Erwartet: Fünf neue Spalten werden der Tabelle hinzugefügt und die Vorletzte davon wieder entfernt.
      
-16. Klicke auf 'Formel eingeben' in einer der Spalten.
+16. Klicke auf 'Formel einfügen' in einer der Spalten.
       Erwartet: Ein Eingabefenster öffnet sich. Alle Schaltflächen bis auf die drei atomaren Aussagen, '(', 'nicht' und 'Abbruch' sind deaktiviert.
      
 17. Gib die Formel (0 -> 2) ein und drücke auf 'Bestätigen'.
@@ -65,19 +65,19 @@ GUITest "Regulärer Ablauf"
                 Im oberen Teil des Fensters wird die bisher eingegebene Formel angezeigt.
                 Nach dem Klicken auf 'Bestätigen' ist die Formel in der Tabellenspalte eingetragen.
   
-18. Wiederhole Schritt 16 und 17 fürdie anderen drei Spalten mit den Formeln (0 OR 1), (1 --> 0), (NOT (0 AND 1 AND 2)) und klicke auf 'Fülle Tabelle'.
+18. Wiederhole Schritt 16 und 17 für die anderen drei Spalten mit den Formeln (0 OR 1), (1 --> 0), (NOT (0 AND 1 AND 2)) und klicke auf 'Fülle Tabelle'.
       Erwartet: Die Tabelle wird entsprechend der Wahrheitswerte der Formeln ausgefüllt. Nur in der 3. Tabellenzeile sind die vier rechten Spalten alle mit 'wahr' gefüllt.
      
-19. Klicke auf 'Markieren' und danach zuerst auf die 0. Zeile, dann auf die 3. Zeile.
+19. Klicke auf 'Markieren' und danach zuerst auf eine atomare Aussage in der 0. Zeile, dann auf die 3. Zeile.
       Erwartet: Bei der 0. Zeile geschieht nichts, aber in der 3. Zeile sind die Farben hervorgehoben.
      
 20. Wähle in der Combobox 'Ralf & Thomas' aus und drücke auf 'Prüfen', dann auf 'Weiter' und im Abschlussfenster auf 'nächstes Rätsel'.
       Erwartet: Das Rätselfenster zum zweiten Rätsel der zweiten Stufe wird angezeigt.
      
-21. Klicke auf 'Menü', 'Zum Menü' und auf 'Beenden'.
-      Erwartet: Im Rätselauswahlbildschirm ist nur die erste Schaltfläche grau und beim Klicken auf 'Beenden' wird das Programm geschlossen.
+21. Klicke auf 'Menü'.
+      Erwartet: Im Rätselauswahlbildschirm ist nur die erste Schaltfläche grau.
      
-22. Führe das Programm aus.
+22. Klicke auf 'Zum Menü'.
       Erwartet: Das Hauptmenü wird angezeigt und die Schaltfläche der Stufe 4 sowie die Schaltfläche 'Freier Modus' ist ausgegraut.
      
 23. Klicke auf die Schaltfläche 'Stufe 3', dann auf 'Kevins Tanten'.
@@ -85,7 +85,7 @@ GUITest "Regulärer Ablauf"
                 Für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt und der Rest der Tabelle ist mit 'falsch' ausgefüllt.
                 In der obersten Zeile stehen Formeln.
                
-24. Wähle in der Combobox die Antwort 'Hedwig & Trude' aus und klicke auf die Schaltfläche 'Prüfen'.
+24. Wähle in der Combobox die Antwort 'Trude & Hedwig' aus und klicke auf die Schaltfläche 'Prüfen'.
       Erwartet: Nichts geschieht.
     
 25. Klicke auf die Schaltfläche 'Tipp'.
@@ -107,7 +107,7 @@ GUITest "Regulärer Ablauf"
 30. Entferne die Spalte mit der Formel (2 XOR 1) und füge eine neue Spalte mit dem Inhalt (NOT (1 AND 2)) hinzu und klicke auf 'Fülle Tabelle'.
       Erwartet: Die Wahrheitstabelle wird gemäß der aussagenlosgischen Formeln ausgefüllt.
                
-31. Wähle in der Combobox 'Danny & Ella' aus, klicke auf 'Prüfen', auf 'Weiter' und dann auf 'Menü'.
+31. Wähle in der Combobox 'Danny & Ella' aus, klicke auf 'Prüfen', auf 'Weiter' und dann auf 'Zum Menü'.
       Erwartet: Das Hauptmenü wird wieder angezeigt.
       
 32. Klicke auf die Schaltfläche 'Freier Modus'.
@@ -117,5 +117,15 @@ GUITest "Regulärer Ablauf"
       Erwartet: Ein Fenster mit dem Titel 'Freier Modus' und einer Wahrheitstabelle öffnet sich. Neben der Tabelle sind vier Schaltflächen zu sehen.
                 Die drei Spalten beinhalten die zuvor eingegebenen Aussagen und für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt.
       
-34. Klicke auf die Schaltfläche 'Zum Menü' und wiederhole die beiden vorherigen Schritte, ohne die Eigabefelder zu füllen.
+34. Klicke auf die Schaltfläche 'Menü' und wiederhole die beiden vorherigen Schritte, ohne die Eingabefelder zu füllen.
       Erwartet: Die Wahrheitstabelle sieht aus wie im vorherigen Schritt, allerdings haben die atomaren Aussagen die Namen 'A', 'B' und 'C'.
+      
+35. Klicke auf 'Menü' und dann auf Beenden.
+      Erwartet: Das Programm wird geschlossen.
+
+36. Führe das Programm aus.
+      Erwartet: Das Hauptmenü sieht aus wie nach Schritt 27.
+      
+      
+Durchführung 22.02.21, Nick; af990ec: 
+      Schritt 5: Der Hinweis wird nur bei der richtigen Antwort angezeigt (Issue#36)
