@@ -13,7 +13,7 @@ public class BackendTest {
 
   /**
    * Baut die SteuerungFassade mit allen Komponenten auf und �bergiebt sie der
-   * WahrheitstabellenSteuerungen. Dabei sind Antwortm�glichkeit, L�sung und
+   * WahrheitstabellenSteuerungen. Dabei sind Antwortmoeglichkeit, L�sung und
    * R�tseltext nur Dummys da sie nicht ben�tigt werden in diesen Tests. Die
    * Stufe, die Formeln und die Atome k�nnen noch ge�ndert werden.
    */

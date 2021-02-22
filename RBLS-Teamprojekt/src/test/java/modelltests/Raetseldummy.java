@@ -36,7 +36,7 @@ public class Raetseldummy extends Raetsel {
 
   /**
    * Wandelt die Liste der Atome in eine Liste der entsprechenden Namen der Atome
-   * um und gibt diese zur�ck.
+   * um und gibt diese zurueck.
    * 
    * @return Liste der Atomnamen.
    */
@@ -70,9 +70,9 @@ public class Raetseldummy extends Raetsel {
 
   /**
    * Wandelt die Liste der Formeln in eine Liste der entsprechenden Namen der
-   * Formeln um und gibt diese zur�ck.
+   * Formeln um und gibt diese zurueck.
    * 
-   * @return Liste der benb�tigten Formelnamen, die zur L�sung des Raetsels
+   * @return Liste der benb�tigten Formelnamen, die zur Loesung des Raetsels
    *         ben�tigt werden.
    */
   public List<String> gibFormeln() {

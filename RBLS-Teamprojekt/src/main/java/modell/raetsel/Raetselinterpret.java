@@ -21,8 +21,8 @@ import java.util.StringJoiner;
  */
 public class Raetselinterpret {
 
-  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein R�tsel gefunden";
-  public static final String FREIES_RAETSEL_NAME = "Freies R�tsel";
+  public static final String ERROR_NO_FILE_FOUND = "Es wurde kein Raetsel gefunden";
+  public static final String FREIES_RAETSEL_NAME = "Freies Raetsel";
   public static final int NUMBER_OF_ROWS = 8;
   
   private String[] extrahiere(String input) {
@@ -138,7 +138,7 @@ public class Raetselinterpret {
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
 
-   * @param atomA Anzahl und Namen der verf�gbaren Atomaren Aussagen, die der Benutzer angeben kann.
+   * @param atomA Anzahl und Namen der verfuegbaren Atomaren Aussagen, die der Benutzer angeben kann.
    */
   public Raetsel erstelleFrRa(List<String> atomA) {
     return new Raetsel(
