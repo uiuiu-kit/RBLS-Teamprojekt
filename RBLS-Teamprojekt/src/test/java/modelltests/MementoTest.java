@@ -12,26 +12,50 @@ import modell.raetsel.Raetsel;
 
 public class MementoTest {
   
-  Fassade steuFaTest;
-  Memento testen;
+  Fassade FaTest;
+  Memento memTest;
   Raetsel raetselTest;
   
   @Before
   public void init() {
-    steuFaTest = new Fassade();
-    steuFaTest.erstelleTestUmgebung(new Testinterpret());
-    raetselTest = steuFaTest.gibRaetsel();
-    testen = new Memento(raetselTest);
+    FaTest = new Fassade();
+    FaTest.erstelleTestUmgebung(new Testinterpret());
+    //raetselTest = FaTest.gibRaetsel();
+    memTest = new Memento();
+  }
+  
+  @Test
+  public void gibStufensicherungTest() {
+    
+  }
+  
+  @Test
+  public void loescheTest() {
+    
   }
   
   @Test
   public void erstelleMementoDateiTest() {
-    assertTrue(true == testen.erstelleMementoDatei(1, "Raetseldummy"));
+    
   }
   
   @Test
-  public void mementoListeTest() {
+  public void istNeuTest() {
+    
+  }
+  
+  @Test
+  public void liesMementoDateiTest() {
+    
+  }
+  
+  @Test
+  public void extrahiereTest() {
     
   }
 
+  @Test
+  public void gibGeloesteRaetselTest() {
+    
+  }
 }

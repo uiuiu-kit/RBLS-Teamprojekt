@@ -91,7 +91,7 @@ public class Hauptmenue extends javax.swing.JPanel {
     });
     startFeld.add(stufe4);
     
-    int stufe = Fassade.gibSteuFa().gibAbgeschlosseneStufe();
+    int stufe = Fassade.gibFa().gibAbgeschlosseneStufe();
     if (stufe < 1) {
       stufe2.setEnabled(false);
     }

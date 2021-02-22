@@ -12,7 +12,7 @@ public class RaetselwahlTest {
   public void guiTest() {
     praesentation.Fensterverwaltung fv = 
         new praesentation.Fensterverwaltung(new Hauptsteuerung(), 
-            Fassade.gibSteuFa());
+            Fassade.gibFa());
     fv.init();
     List<String> raetsel = new ArrayList<String>();
     List<String> geloest = new ArrayList<String>();

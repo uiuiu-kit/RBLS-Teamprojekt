@@ -16,7 +16,7 @@ import modell.tabelle.Tabelle;
  */
 public class Fassade {
 
-  private static Fassade steuFa = null;
+  private static Fassade fa = null;
   private Raetselinterpret interpret;
   private Raetsel raetsel;
   private Tabelle tabelle;
@@ -28,11 +28,11 @@ public class Fassade {
 
    * @return Objekt der Klasse SteuerungFassade.
    */
-  public static Fassade gibSteuFa() {
-    if (steuFa == null) {
-      steuFa = new Fassade();
+  public static Fassade gibFa() {
+    if (fa == null) {
+      fa = new Fassade();
     }
-    return steuFa;
+    return fa;
   }
 
   private void aktualisiere() { // Präs aktuallisieren.
@@ -130,6 +130,7 @@ public class Fassade {
   /** Erstellt ein leeres Raetsel.
    * Wird von FreiesRaetselfenster aufgerufen.
    * benötigt die Namen der zu verwendenden Atome.
+
    * @param atome Namen der verwendeten Atome.
    */
   public void erstelleRaetsel(List<String> atome) {
@@ -234,15 +235,7 @@ public class Fassade {
     this.interpret = test;
     setzeRaetsel("Raetseldummy");
   }
-  /*
-  public Raetsel gibRaetsel() {
-    return raetsel;
-  }
 
-  public Tabelle gibTabelle() {
-    return tabelle;
-  }
-  */
   public List<String> gibGeloesteRaetsel(int stufe) {
     this.memento = new Memento();
     return memento.gibGeloesteRaetsel();
@@ -267,4 +260,5 @@ public class Fassade {
     this.aktualisiere();
     memento.erstelleMementoDatei(raetsel);
   }
+  
 }
