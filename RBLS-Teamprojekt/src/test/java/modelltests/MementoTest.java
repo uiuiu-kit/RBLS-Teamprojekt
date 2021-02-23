@@ -24,37 +24,37 @@ public class MementoTest {
     memTest = new Memento();
   }
   
-  @Test
+  //@Test
   public void gibStufensicherungTest() {
     
   }
   
-  @Test
+  //@Test
   public void loescheTest() {
     
   }
   
-  @Test
+  //@Test
   public void erstelleMementoDateiTest() {
     
   }
   
-  @Test
+  //@Test
   public void istNeuTest() {
     
   }
   
-  @Test
+  //@Test
   public void liesMementoDateiTest() {
     
   }
   
-  @Test
+  //@Test
   public void extrahiereTest() {
     
   }
 
-  @Test
+  //@Test
   public void gibGeloesteRaetselTest() {
     
   }

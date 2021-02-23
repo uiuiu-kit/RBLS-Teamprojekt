@@ -3,6 +3,9 @@ package modelltests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,10 +48,64 @@ public class FassadeTest {
   }
   
   @Test
+  public void gibRaetselStringTest() {
+    assertEquals(testen.gibRaetselString(), "Raetseldummy");
+  }
+  
+  @Test
+  public void gibRaetselListeTest() {
+    List<String> raetsel = new ArrayList<String>();
+    raetsel.add("Raetsel1");
+    raetsel.add("Raetsel2");
+    raetsel.add("Raetseldummy");
+    assertEquals(testen.gibRaetselListe(0), raetsel);
+  }
+  
+  @Test
+  public void gibAktivenRaetselnamenTest() {
+    assertEquals(testen.gibAktivenRaetselnamen(), "Raetseldummy");
+  }
+  
+  @Test
+  public void gibFragestellungTest() {
+    assertEquals(testen.gibFragestellung(), "Test");
+  }
+  
+  @Test
+  public void gibAntwortTextTest() {
+    assertEquals(testen.gibAntwortText(), "Text");
+  }
+  
+  @Test
+  public void gibAntwortmoeglichkeitenTest() {
+    assertTrue(testen.gibAntwortmoeglichkeiten().length == 3);
+    assertEquals(testen.gibAntwortmoeglichkeiten()[0], "A");
+    assertEquals(testen.gibAntwortmoeglichkeiten()[1], "B");
+    assertEquals(testen.gibAntwortmoeglichkeiten()[2], "C");
+  }
+  
+  @Test
+  public void gibLoesungTest() {
+    assertEquals(testen.gibLoesung(), "C");
+  }
+  
+  //@Test
+  public void erstelleRaetselTest() {
+    
+  }
+  
+  @Test
   public void gibNoetigeFormelTest() {
     Formel test = new Und(new Atom("A", 0), new Atom("B", 1)); 
     
     assertEquals(test.gibStringRep(), testen.gibNoetigeFormel().get(0));
+  }
+  
+  @Test
+  public void gibZelleTest() {
+    int[] pos = {2, 2};
+    testen.setzeZelleWaWe(pos, true);
+    assertEquals(testen.gibZelle(pos), "true");
   }
   
   @Test
@@ -58,6 +115,16 @@ public class FassadeTest {
     testen.setzeZelleWaWe(pos, true);
     
     assert (testen.gibZelleWaWe(pos));
+  }
+  
+  @Test
+  public void gibZeilenAnzTest() {
+    assertEquals(testen.gibZeilenAnz(), 9);
+  }
+  
+  @Test
+  public void gibSpaltenAnzTest() {
+    assertEquals(testen.gibSpaltenAnz(), 4);
   }
   
   @Test
@@ -94,17 +161,15 @@ public class FassadeTest {
   @Test
   public void formelTest() {
     Formel test = new Und(new Atom("A", 0), new Atom("B", 1));
-    
     assertEquals(test.gibStringRep(), testen.gibFormel(3).gibStringRep());
   }
   
   @Test
   public void gibStufeTest() {
-    //System.out.print(testen.gibStufe());
     assertEquals(2, testen.gibStufe());
   }
   
-  @Test
+  //@Test
   public void sicherungTest() {
     testen.fuehreSicherungAus();
   }
@@ -143,14 +208,14 @@ public class FassadeTest {
     } 
   }
   
-  @Test
+  //@Test
   public void gibGeloesteRaetselTest() {
     this.memento = new Memento();
     testen.fuehreSicherungAus();
     System.out.print(testen.gibGeloesteRaetsel(1));
   }
   
-  @Test
+  //@Test
   public void gibAbgeschlosseneStufeTest() {
     memento.loesche();
     testen.fuehreSicherungAus();
