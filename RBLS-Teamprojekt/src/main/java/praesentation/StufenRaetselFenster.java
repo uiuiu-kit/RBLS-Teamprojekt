@@ -173,19 +173,23 @@ public class StufenRaetselFenster extends RaetselFenster {
     fv.oeffneRaetselwahl(modell.gibStufe());
   }
   
-  public void schliesseRaetselAb() {
-    
-    if (((KonkreteTabellenAnsicht) tabelle).istAusgefuellt()) {
-      weiter.setVisible(true);
-    } else {
-      //TODO evtl Dialogfenster, falls Tabelle noch nicht vollstaendig ausgef�llt ist
+  public boolean pruefeTabelle() {
+    //TODO Dialogfenster gescheit zeichnen
+    if (!((KonkreteTabellenAnsicht) tabelle).istAusgefuellt()) {
       JDialog dialog = new JDialog();
       dialog.setContentPane(new JLabel("Tabelle nicht richtig ausgefüllt"));
       dialog.setSize(800, 300);
       dialog.setLocation(100, 100);
       dialog.setModal(true);
       dialog.setVisible(true);
+      return false;
+    } else {
+      return true;
     }
+  }
+  
+  public void schliesseRaetselAb() {
+    weiter.setVisible(true);
   }
 
 }

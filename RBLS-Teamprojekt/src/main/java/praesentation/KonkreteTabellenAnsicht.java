@@ -10,7 +10,10 @@ import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -39,6 +42,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private int zeilenzahl = 9;
   private int spaltenzahl = 5;
   private boolean[] markierteZeilen;
+  private int[] tipp;
 
   private enum Modus {
     standard, entfernen, markieren
@@ -120,7 +124,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     panel = new JPanel();
     panel.setLayout(new BorderLayout());
     panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    panel.add(tabellenRahmen, BorderLayout.CENTER);
+    panel.add(new JScrollPane(tabellenRahmen), BorderLayout.CENTER);
     panel.add(schaltflaechenPanel, BorderLayout.EAST);
     panel.setBackground(Color.WHITE);
     tabelle.setFillsViewportHeight(true);
@@ -177,12 +181,15 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   }
 
   private void klickeZelle(int i, int j) {
-    if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
-      entferneSpalte(j);
-      return;
-    }
     if (i > 0 && j >= 0 && modus == Modus.markieren) {
       markiereZeile(i);
+      return;
+    }
+   /** if (strg.gibTabelleVoll()) { 
+      return;     //TODO muss funktionieren
+    }*/
+    if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
+      entferneSpalte(j);
       return;
     }
     if (i > 0 && j >= 0) {
@@ -260,7 +267,11 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
    * markiert diese.
    */
   public void zeigeTippAn() {
-    int[] tipp = strg.gibTip();
+    int[] alterTipp = tipp;
+    if (!(alterTipp == null)) {
+      aktualisiere(alterTipp);
+    }
+    tipp = strg.gibTip();
     if (tipp == null) {
       return;
     }
@@ -275,6 +286,21 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       for (int j = 1; j < zeilenzahl; j++) {
         aktualisiere(new int[] { j, i });
       }
+    }
+    if (istAusgefuellt()) {
+      mehrSpalten.setEnabled(false);
+      wenigerSpalten.setEnabled(false);
+      ausfuellen.setEnabled(false);
+    } else {
+      //TODO Dialogfenster gescheit darstellen
+      JDialog fehler = new JDialog();
+      JLabel fehlermeldung = new JLabel("Die Tabelle ist noch fehlerhaft");
+      fehler.setContentPane(fehlermeldung);
+      fehler.setModal(true);
+      fehler.setSize(800, 400);
+      fehler.setLocation(200, 200);
+      fehler.setVisible(true);
+      zeigeTippAn();
     }
   }
 
@@ -304,6 +330,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_falsch);
         }
       }
+    }
+    if (i == 0 && j >= 0) {
+      ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.standard);
     }
     tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);

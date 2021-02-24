@@ -63,13 +63,24 @@ public class FreiesRaetselFenster extends RaetselFenster {
     aussagen = new JTextField[5];
     ((JComponent) atomareAussagen.getContentPane()).setBorder(
         BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    JLabel aussagenHinweis = new JLabel("Wähle die Namen für bis zu 5 atomare Aussagen:");
+
+    JLabel modusHinweis1 = new JLabel("Im freien Modus kannst du die Wahrheitstabelle "
+        + "ohne Rätsel mit eigenen Aussagen benutzen.");
+    modusHinweis1.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.BOLD, 18));
+    modusHinweis1.setForeground(Color.WHITE);
+    atomareAussagen.add(modusHinweis1, 0);
+    JLabel modusHinweis2 = new JLabel("Überflüssige Klammern werden hier automatisch entfernt. "
+        + "Wähle die Namen für bis zu 5 atomare Aussagen:");
+    modusHinweis2.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.BOLD, 18));
+    modusHinweis2.setForeground(Color.WHITE);
+    atomareAussagen.add(modusHinweis2, 1);
+    JLabel aussagenHinweis = new JLabel(" ");
     aussagenHinweis.setFont(new javax.swing.plaf.FontUIResource("Arial", Font.BOLD, 18));
     aussagenHinweis.setForeground(Color.WHITE);
-    atomareAussagen.add(aussagenHinweis, 0);
+    atomareAussagen.add(aussagenHinweis, 2);
     for (int j = 0; j < aussagen.length; j++) {
       aussagen[j] = new JTextField("");
-      atomareAussagen.getContentPane().add(aussagen[j], j + 1);
+      atomareAussagen.getContentPane().add(aussagen[j], j + 3);
     }
     Schaltflaeche okButton = new Schaltflaeche("OK", Schaltflaeche.WEISS);
     okButton.addActionListener(new ActionListener() {
@@ -93,7 +104,8 @@ public class FreiesRaetselFenster extends RaetselFenster {
       });
     atomareAussagen.add(okButton);
     atomareAussagen.setTitle("Atomare Aussagen");
-    atomareAussagen.setSize(600, 400);
+    atomareAussagen.setSize(600, 440);
+    atomareAussagen.setMinimumSize(new Dimension(1000, 480));
     atomareAussagen.setResizable(true);
     atomareAussagen.setLocation(50, 50);
     atomareAussagen.setAlwaysOnTop(true);

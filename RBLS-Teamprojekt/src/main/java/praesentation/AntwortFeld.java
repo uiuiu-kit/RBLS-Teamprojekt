@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -83,11 +84,20 @@ public class AntwortFeld {
   }
 
   private void pruefeAntwort() {
+    if (!fenster.pruefeTabelle()) {
+      return;
+    }
     if (antwortWahl.getSelectedItem().equals(loesung)) {
       fenster.schliesseRaetselAb();
       antwortWahl.setEnabled(false);
     } else {
-      // TODO evtl Dialogfenster
+      // TODO Dialogfenster richtig darstellen
+      JDialog dialog = new JDialog();
+      dialog.setContentPane(new JLabel("Falsche Antwort"));
+      dialog.setSize(800, 300);
+      dialog.setLocation(100, 100);
+      dialog.setModal(true);
+      dialog.setVisible(true);
     }
   }
 
