@@ -185,9 +185,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       markiereZeile(i);
       return;
     }
-   /** if (strg.gibTabelleVoll()) { 
-      return;     //TODO muss funktionieren
-    }*/
+    if (strg.gibTabelleVoll()) { 
+      return;     //TODO muss funktionieren!!
+    }
     if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
       entferneSpalte(j);
       return;
