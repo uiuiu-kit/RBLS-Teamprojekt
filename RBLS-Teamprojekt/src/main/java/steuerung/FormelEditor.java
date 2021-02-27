@@ -68,7 +68,7 @@ public class FormelEditor {
     if (formel.length() > 0) {
       char letzerCh = formel.charAt(formel.length() - 1);
       if (!klammerOffen() || (letzerCh == '0' || letzerCh == '1' || letzerCh == '2'
-          || letzerCh == '3' || letzerCh == ')')) {
+          || letzerCh == '3' || letzerCh == '4' || letzerCh == ')')) {
         return true;
       }
     }
@@ -84,13 +84,14 @@ public class FormelEditor {
   public boolean zeichenErlaubt(char naechsterCh) {
     if (formel.equals("")) {
       return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-          || naechsterCh == '2' || naechsterCh == '3';
+          || naechsterCh == '2' || naechsterCh == '3' || naechsterCh == '4';
     }
     switch (formel.charAt(formel.length() - 1)) {
       case '0':
       case '1':
       case '2':
       case '3':
+      case '4':
       case ')':
         return naechsterCh == 'o' || naechsterCh == 'u' || naechsterCh == 'x' || naechsterCh == 'f'
             || naechsterCh == 'a' || klammerOffen() && naechsterCh == ')';
@@ -102,10 +103,10 @@ public class FormelEditor {
       case 'n':
       case '(':
         return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-            || naechsterCh == '2' || naechsterCh == '3';
+            || naechsterCh == '2' || naechsterCh == '3' || naechsterCh == '4';
       default:
         return naechsterCh == '(' || naechsterCh == 'n' || naechsterCh == '0' || naechsterCh == '1'
-            || naechsterCh == '2' || naechsterCh == '3';
+            || naechsterCh == '2' || naechsterCh == '3' || naechsterCh == '4';
     }
 
   }
