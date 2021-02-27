@@ -8,6 +8,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import steuerung.FormelParser;
 import steuerung.WahrheitstabellenSteuerungen;
 
 public class BackendTest {
@@ -32,26 +34,22 @@ public class BackendTest {
   @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
-    assertEquals("012\n true true true\n false true true\n true false true\n "
-        + "false false true\n true true false\n false true false\n "
-        + "true false false\n false false false", gibTabelle());
+    assertEquals("012\n false false false\n false false true\n false true false\n "
+        + "false true true\n true false false\n true false true\n "
+        + "true true false\n true true true", gibTabelle());
   }
 
   @Test
-  public void formelEingebenTest() { // vorgefertigter Formel?
+  public void fuelleTabelleTest() {
+    wts.befehl("AufbauTabelle()");
     wts.befehl("SpalteHinzufuegen");
-    wts.befehl("FormelEingeben(3)");
-//    System.out.println("FormelEingeben");
-//    System.out.println(sf.gibFormelText(3));
-  }
-
-  @Test
-  public void fuelleTabelleTest() { // gleiches Problem wie in formelEingebenTest()
-    aufbauTabelle1Test();
-    formelEingebenTest();
+    sf.setzeFormel(FormelParser.pars("1", sf), sf.gibAtomareAussage().size());
     wts.befehl("FuelleTabelle");
-//    System.out.println("FuelleTabelle");
-//    System.out.println(gibTabelle());
+    assertEquals(
+        "0121\n false false false false\n false false true false\n false true false true\n "
+            + "false true true true\n true false false false\n true false true false\n "
+            + "true true false true\n true true true true",
+        gibTabelle());
   }
 
   @Test
