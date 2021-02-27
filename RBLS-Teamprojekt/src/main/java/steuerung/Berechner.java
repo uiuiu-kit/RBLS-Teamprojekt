@@ -15,13 +15,13 @@ public class Berechner {
   public static boolean[][] faelleBerechnen(int anzAtom, boolean[][] faelle, int aktuellePos) {
     int anzFall = (int) Math.pow(2, anzAtom);
     for (int i = aktuellePos; i < aktuellePos + anzFall / 2; i++) {
-      faelle[i][(anzAtom - 1)] = true;
+      faelle[i][(faelle[i].length - (anzAtom))] = false;
     }
     if (anzAtom > 1) {
       faelleBerechnen(anzAtom - 1, faelle, aktuellePos);
     }
     for (int i = aktuellePos + anzFall / 2; i < aktuellePos + anzFall; i++) {
-      faelle[i][(anzAtom - 1)] = false;
+      faelle[i][(faelle[i].length - (anzAtom))] = true;
     }
     if (anzAtom > 1) {
       faelleBerechnen(anzAtom - 1, faelle, aktuellePos + anzFall / 2);
