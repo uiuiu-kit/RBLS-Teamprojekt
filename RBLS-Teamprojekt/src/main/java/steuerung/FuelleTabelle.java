@@ -11,7 +11,7 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
 
   /**
    * Kostruktor f�r FuelleTabelle der die Ausf�hrung des Befehls anst��t.
-
+   * 
    * @param model die SteuerungFassade auf die bei der Ausf�hrung zugegriffen
    *              wird.
    */
@@ -39,8 +39,10 @@ public class FuelleTabelle extends WahrheitstabellenBefehl {
       for (int zeile = 1; zeile < zeilenAnz; zeile++) {
         akFall = model.gibZeileFall(zeile);
         koordinaten[0] = zeile;
-        if (!akFormel.gibStringRep().equals("Formel einfügen")) {
+        try {
           model.setzeZelleWaWe(koordinaten, akFormel.auswerten(akFall));
+        } catch (ArrayIndexOutOfBoundsException e) {
+          // tue nichts
         }
       }
     }
