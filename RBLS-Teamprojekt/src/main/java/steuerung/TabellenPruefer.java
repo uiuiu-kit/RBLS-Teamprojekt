@@ -8,11 +8,11 @@ import modell.formel.Formel;
 
 public class TabellenPruefer {
   private Fassade model;
-  boolean vollstaendig;
   private List<int[]> fehlerhafteWaWe;
   private List<Integer> fehlerhafteFaelle;
   private int anzAtom;
   private int stufe;
+  private boolean[] fehlerhafteFormeln;
 
   /**
    * Konstruktor des TabellenPruefers der die Startvoraussetzunge und die globalen
@@ -24,7 +24,6 @@ public class TabellenPruefer {
     this.model = model;
     this.stufe = stufe;
     anzAtom = model.gibAtomareAussage().size();
-    vollstaendig = false;
   }
 
   /**
@@ -63,7 +62,6 @@ public class TabellenPruefer {
    * @return sind alle n�tigen Formel vorhanden.
    */
   public boolean ueberpuefeFormeln() {
-    boolean vollstaendig = true;
     boolean enthaelt;
     int j;
     int anzAtom = model.gibAtomareAussage().size() + 1;
@@ -73,19 +71,33 @@ public class TabellenPruefer {
     for (int i = 0; i < noetigeFormelnS.size(); i++) {
       noetigeFormelnF.add(FormelParser.pars(noetigeFormelnS.get(i), model));
     }
+    fehlerhafteFormeln = new boolean[anzSpalten - (anzAtom - 1)];
+    for (int i = 0; i < fehlerhafteFormeln.length; i++) {
+      fehlerhafteFormeln[i] = true;
+    }
     for (int i = 0; i < noetigeFormelnF.size(); i++) {
       enthaelt = false;
       j = anzAtom - 1;
       while (!enthaelt && j < anzSpalten) {
         Formel vergleichsformel = model.gibFormel(j);
-        enthaelt = Berechner.vergleicheFormel(noetigeFormelnF.get(i), vergleichsformel, anzAtom);
+        if (Berechner.vergleicheFormel(noetigeFormelnF.get(i), vergleichsformel, anzAtom)) {
+          fehlerhafteFormeln[j - (anzAtom - 1)] = false;
+          enthaelt = true;
+          break;
+        }
         j++;
       }
       if (!enthaelt) {
         return false;
       }
     }
-    return vollstaendig;
+    boolean alleRichtig = true;
+    for (int i = 0; i < fehlerhafteFormeln.length; i++) {
+      if (fehlerhafteFormeln[i]) {
+        alleRichtig = false;
+      }
+    }
+    return alleRichtig;
   }
 
   /**
@@ -133,6 +145,15 @@ public class TabellenPruefer {
       }
       pos = ThreadLocalRandom.current().nextInt(0, fehlerhafteWaWe.size());
       return fehlerhafteWaWe.get(pos);
+    }
+    if (stufe == 2 || stufe == 4) {
+      ueberpuefeFormeln();
+      for (int i = 0; i < fehlerhafteFormeln.length; i++) {
+        if (fehlerhafteFormeln[i]) {
+          int[] koordinaten = { 0, i + (anzAtom) };
+          return koordinaten;
+        }
+      }
     }
     return null;
   }
