@@ -2,6 +2,9 @@ package steuerungstests;
 
 import modell.Fassade;
 import modelltests.Testinterpret;
+
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -29,24 +32,26 @@ public class BackendTest {
   @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
-    System.out.println("AufbauTabelle");
-    System.out.println(sf.gibAtomareAussage().size());
-    gibTabelle();
+    assertEquals("012\n true true true\n false true true\n true false true\n "
+        + "false false true\n true true false\n false true false\n "
+        + "true false false\n false false false", gibTabelle());
   }
 
   @Test
-  public void formelEingebenTest() {
+  public void formelEingebenTest() { // vorgefertigter Formel?
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("FormelEingeben(3)");
-    System.out.println("FormelEingeben");
-    System.out.println(sf.gibFormelText(3));
+//    System.out.println("FormelEingeben");
+//    System.out.println(sf.gibFormelText(3));
   }
 
   @Test
-  public void fuelleTabelleTest() {
+  public void fuelleTabelleTest() { // gleiches Problem wie in formelEingebenTest()
+    aufbauTabelle1Test();
+    formelEingebenTest();
     wts.befehl("FuelleTabelle");
-    System.out.println("FuelleTabelle");
-    gibTabelle();
+//    System.out.println("FuelleTabelle");
+//    System.out.println(gibTabelle());
   }
 
   @Test
@@ -54,34 +59,45 @@ public class BackendTest {
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteEntfernen(4)");
-    System.out.println("SpalteEntfernen");
-    gibTabelle();
+    assertEquals(
+        "012Formel einfügen\n false false false false\n false false false false\n"
+            + " false false false false\n false false false false\n false false false false\n"
+            + " false false false false\n false false false false\n false false false false",
+        gibTabelle());
   }
 
   @Test
   public void spalteHinzufuegenTest() {
     wts.befehl("SpalteHinzufuegen");
-    System.out.println("SpalteHinzufuegen");
-    gibTabelle();
+    assertEquals(
+        "012Formel einfügen\n false false false false\n false false false false\n"
+            + " false false false false\n false false false false\n false false false false\n"
+            + " false false false false\n false false false false\n false false false false",
+        gibTabelle());
   }
 
+  /**
+   * Da der Test auf Stufe 2 Ausgeführt wird ist es so korrekt das sich nichts
+   * ändert da auf Stufe zwei es keine Möglichkeit gibt das sich ein Wahrheitswert
+   * über ZelleAendern(x,y) ändert.
+   */
   @Test
   public void zelleInBlauOrangeAendernTest() {
     gibTabelle();
-    wts.befehl("ZelleAendern(0,2)");
-    System.out.println("ZelleAendern(0,2)");
-    gibTabelle();
+    wts.befehl("ZelleAendern(2,1)");
+    assertEquals("012\n false false false\n false false false\n"
+        + " false false false\n false false false\n false false false\n"
+        + " false false false\n false false false\n false false false", gibTabelle());
   }
 
   @Test
   public void gibTipTest() {
     gibTabelle();
     wts.gibTip();
-    System.out.println("ZelleAendern(0,2)");
     gibTabelle();
   }
 
-  private void gibTabelle() {
+  private String gibTabelle() {
     String output = "";
     int[] koordinate = new int[2];
     for (int i = 0; i < sf.gibSpaltenAnz(); i++) {
@@ -95,6 +111,6 @@ public class BackendTest {
         output = output + " " + sf.gibZelleWaWe(koordinate);
       }
     }
-    System.out.println(output);
+    return output;
   }
 }
