@@ -291,6 +291,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       aktiv = false;
     } else if (!modell.gibAktivenRaetselnamen().equals("Freies Raetsel")) {
       new FehlerDialog("Die Tabelle ist noch fehlerhaft");
+      zeigeTippAn();
     }
   }
 

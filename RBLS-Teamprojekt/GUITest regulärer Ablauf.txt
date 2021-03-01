@@ -6,7 +6,7 @@ GUITest1 "Regulärer Ablauf"
  * @author Nick
  */
 
-@before Lösche den Inhalt der Datei '\Resources\Sicherung\Sicherung.txt', falls er existiert und ersetze ihn durch '0'
+@before Lösche den Inhalt der Datei '\Resources\Sicherung\Sicherung.txt', falls er existiert und ersetze ihn durch '0 ##'
 
 1. Führe das Programm aus.
      Erwartet: Das Hauptmenü wird angezeigt und die Schaltflächen der Stufen 2 bis 4 sowie die Schaltfläche 'Freier Modus' sind ausgegraut.
@@ -68,8 +68,8 @@ GUITest1 "Regulärer Ablauf"
 18. Wiederhole Schritt 16 und 17 für die anderen drei Spalten mit den Formeln (0 OR 1), (1 --> 0), (NOT (0 AND 1 AND 2)) und klicke auf 'Fülle Tabelle'.
       Erwartet: Die Tabelle wird entsprechend der Wahrheitswerte der Formeln ausgefüllt. Nur in der 3. Tabellenzeile sind die vier rechten Spalten alle mit 'wahr' gefüllt.
      
-19. Klicke auf 'Markieren' und danach zuerst auf eine atomare Aussage in der 0. Zeile, dann auf die 3. Zeile.
-      Erwartet: Bei der 0. Zeile geschieht nichts, aber in der 3. Zeile sind die Farben hervorgehoben.
+19. Klicke auf 'Markieren' und danach zuerst auf eine atomare Aussage in der 0. Zeile, dann auf die 6. Zeile.
+      Erwartet: Bei der 0. Zeile geschieht nichts, aber in der 6. Zeile sind die Farben hervorgehoben.
      
 20. Wähle in der Combobox 'Ralf & Thomas' aus und drücke auf 'Prüfen', dann auf 'Weiter' und im Abschlussfenster auf 'nächstes Rätsel'.
       Erwartet: Das Rätselfenster zum zweiten Rätsel der zweiten Stufe wird angezeigt.
@@ -86,12 +86,12 @@ GUITest1 "Regulärer Ablauf"
                 In der obersten Zeile stehen Formeln.
                
 24. Wähle in der Combobox die Antwort 'Trude & Hedwig' aus und klicke auf die Schaltfläche 'Prüfen'.
-      Erwartet: Nichts geschieht.
+      Erwartet: Ein Hinweis wird angezeigt.
     
 25. Klicke auf die Schaltfläche 'Tipp'.
       Erwartet: Eine der falsch ausgefüllten Tabellenzellen wird grau hinterlegt.
     
-26. Fülle die Tabelle gemäß der Wahrheitswerte der Formeln aus und klicke auf die Schaltfläche 'Prüfen'.
+26. Fülle die Tabelle gemäß der Wahrheitswerte der Formeln aus und klicke auf die Schaltfläche 'Prüfen' und 'Weiter'.
       Erwartet: Das Rätsel-Abschlussfenster öffnet sich.
     
 27. Klicke auf die Schaltfläche 'Zum Menü'.
@@ -105,7 +105,7 @@ GUITest1 "Regulärer Ablauf"
       Erwartet: Nichts geschieht.
     
 30. Entferne die Spalte mit der Formel (2 XOR 1) und füge eine neue Spalte mit dem Inhalt (NOT (1 AND 2)) hinzu und klicke auf 'Fülle Tabelle'.
-      Erwartet: Die Wahrheitstabelle wird gemäß der aussagenlosgischen Formeln ausgefüllt.
+      Erwartet: Die Wahrheitstabelle wird gemäß der aussagenlogischen Formeln ausgefüllt.
                
 31. Wähle in der Combobox 'Danny & Ella' aus, klicke auf 'Prüfen', auf 'Weiter' und dann auf 'Zum Menü'.
       Erwartet: Das Hauptmenü wird wieder angezeigt.

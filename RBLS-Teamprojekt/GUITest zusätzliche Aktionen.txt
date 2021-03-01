@@ -51,7 +51,7 @@ Test 1: Teste das Wechseln zum 'nächsten Rätsel' beim letzten Rätsel einer St
       Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 1 wird angezeigt.
      
 11. Klicke auf die Schaltfläche 'Zum Menü' und anschließend auf die Schaltfläche 'Stufe 2'.
-      Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 2 wird angezeigt, sowie zwei weiße Schaltflächen mit den Namen der beiden Stufe-2-Rätsel.
+      Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 2 wird angezeigt, sowie zwei Schaltflächen mit den Namen der beiden Stufe-2-Rätsel.
      
      
      
@@ -139,7 +139,7 @@ Test 4: Teste die Formeleingabe und den freien Modus ausgiebig
 6. Klicke auf 'Markieren' und dann unter die Tabelle. Wiederhole dasselbe für '-'.
       Erwartet: Nichts geschieht.
       
-7. Klicke auf die Schaltfläche 'Menü', dann auf 'Zum Menü', dann auf 'Beenden'.
+7. Klicke auf die Schaltfläche 'Menü', dann auf 'Beenden'.
       Erwartet: Das Programm wird geschlossen.
       
 8. Führe das Programm aus.
@@ -147,4 +147,5 @@ Test 4: Teste die Formeleingabe und den freien Modus ausgiebig
       
       
 Durchführung 22.02.21, Nick; af990ec: 
-      Schritt 5: Der Hinweis wird nur bei der richtigen Antwort angezeigt (Issue#36)
+      Test 1, Schritt 7: Das falsche Feld wird als Tipp markiert (Issue#  )
+      Test 2, Schritt 4: Das Eingeben der ungültigen Formel sorgt für einen Fehler
