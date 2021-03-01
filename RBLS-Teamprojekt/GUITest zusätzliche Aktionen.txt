@@ -146,6 +146,6 @@ Test 4: Teste die Formeleingabe und den freien Modus ausgiebig
       Erwartet: Alle Schaltflächen im Hauptmenü sind weiterhin aktiv.
       
       
-Durchführung 22.02.21, Nick; af990ec: 
-      Test 1, Schritt 7: Das falsche Feld wird als Tipp markiert (Issue#  )
-      Test 2, Schritt 4: Das Eingeben der ungültigen Formel sorgt für einen Fehler
+Durchführung 01.03.21, Nick; cf300f1: 
+      Test 1, Schritt 7: Das falsche Feld wird als Tipp markiert (Issue#56)
+      Test 2, Schritt 4: Das Eingeben der ungültigen Formel sorgt für einen Fehler (Issue#57)

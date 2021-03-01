@@ -129,3 +129,6 @@ GUITest1 "Regulärer Ablauf"
       
 Durchführung 22.02.21, Nick; af990ec: 
       Schritt 5: Der Hinweis wird nur bei der richtigen Antwort angezeigt (Issue#36)
+
+Durchführung 01.03.21, Nick; cf300f1: 
+      Erfolg!
