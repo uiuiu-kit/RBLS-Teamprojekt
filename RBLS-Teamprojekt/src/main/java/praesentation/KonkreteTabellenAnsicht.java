@@ -10,12 +10,9 @@ import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.Border;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import modell.Fassade;
@@ -291,12 +288,12 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         aktualisiere(new int[] { j, i });
       }
     }
-    if (istAusgefuellt()) {
+    if (istAusgefuellt() && !modell.gibAktivenRaetselnamen().equals("Freies Raetsel")) {
       mehrSpalten.setEnabled(false);
       wenigerSpalten.setEnabled(false);
       ausfuellen.setEnabled(false);
       aktiv = false;
-    } else {
+    } else if (!modell.gibAktivenRaetselnamen().equals("Freies Raetsel")) {
       new FehlerDialog("Die Tabelle ist noch fehlerhaft");
     }
   }
