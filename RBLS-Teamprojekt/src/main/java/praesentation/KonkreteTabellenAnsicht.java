@@ -43,6 +43,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private int spaltenzahl = 5;
   private boolean[] markierteZeilen;
   private int[] tipp;
+  private boolean aktiv = true;
 
   private enum Modus {
     standard, entfernen, markieren
@@ -185,7 +186,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       markiereZeile(i);
       return;
     }
-    if (strg.gibTabelleVoll()) { 
+    if (!aktiv) { 
       return;     //TODO muss funktionieren!!
     }
     if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
@@ -291,6 +292,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       mehrSpalten.setEnabled(false);
       wenigerSpalten.setEnabled(false);
       ausfuellen.setEnabled(false);
+      aktiv = false;
     } else {
       //TODO Dialogfenster gescheit darstellen
       JDialog fehler = new JDialog();
