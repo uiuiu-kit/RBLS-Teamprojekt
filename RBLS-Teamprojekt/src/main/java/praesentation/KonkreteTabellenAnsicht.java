@@ -139,7 +139,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         inhalt[i][j] = modell.gibZelle(new int[] { i, j });
         if (i > 0 && inhalt[i][j].equals("true")) {
           inhalt[i][j] = "wahr";
-        } else if (i > 0 && inhalt[i][j].equals("false")) {
+        } else if (i > 0) {
           inhalt[i][j] = "falsch";
         }
       }
@@ -240,11 +240,8 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_falsch);
       } else if (inhalt[i][j].equals("wahr")) {
         ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
-      } else if (inhalt[i][j].equals("falsch")) {
-        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
       } else {
-        System.out.println(inhalt[i][j]);
-        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.standard);
+        ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
       }
       ((FarbModell) tabelle.getModel()).fireTableCellUpdated(i, j);
     }
@@ -255,10 +252,10 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     if (modus == Modus.standard) {
       modus = m;
       s.setBackground(Color.DARK_GRAY);
-      s.setForeground(Color.LIGHT_GRAY);
+      s.setForeground(new Color(186, 185, 219));
     } else if (modus == m) {
       modus = Modus.standard;
-      s.setBackground(Color.LIGHT_GRAY);
+      s.setBackground(new Color(186, 185, 219));
       s.setForeground(Color.DARK_GRAY);
     }
   }
@@ -276,7 +273,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     if (tipp == null) {
       return;
     }
-    assert tipp.length == 2;
     ((FarbModell) tabelle.getModel()).setzeStatus(tipp[0], tipp[1], ZellenStatus.tipp);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(tipp[0], tipp[1]);
   }
@@ -302,23 +298,20 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
    * Aktualisiert den Wert einer Zelle mit den Daten der Praesentationsfassade.
    */
   public void aktualisiere(int[] zelle) {
-    assert zelle.length == 2;
     int i = zelle[0];
     int j = zelle[1];
     inhalt[zelle[0]][zelle[1]] = modell.gibZelle(zelle);
     if (i > 0 && j >= 0) {
       if (inhalt[i][j].equals("true")) {
         inhalt[i][j] = "wahr";
-        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_wahr 
-            && ((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_falsch) {
+        if (!markierteZeilen[i]) {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.wahr);
         } else {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_wahr);
         }
       } else {
         inhalt[i][j] = "falsch";
-        if (((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_falsch
-            && ((FarbModell) tabelle.getModel()).gibStatus(i, j) != ZellenStatus.markiert_wahr) {
+        if (!markierteZeilen[i]) {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.falsch);
         } else {
           ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.markiert_falsch);
@@ -334,10 +327,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
 
   public JPanel gibAnsicht() {
     return panel;
-  }
-  
-  public boolean[] gibMarkierteZeilen() {
-    return markierteZeilen;
   }
   
   public boolean istAusgefuellt() {
