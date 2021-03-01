@@ -187,7 +187,7 @@ public class FormelAnsicht {
     ansicht.getContentPane().add(entfernePanel);
     ansicht.getContentPane().add(menuePanel);
 
-    ansicht.setTitle("Atomare Aussagen");
+    ansicht.setTitle("Formel-Editor");
     ansicht.setSize(breite, hoehe);
     ansicht.setResizable(false);
     ansicht.setLocationRelativeTo(null);
