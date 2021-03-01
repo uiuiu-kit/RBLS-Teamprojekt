@@ -8,9 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
@@ -174,14 +171,8 @@ public class StufenRaetselFenster extends RaetselFenster {
   }
   
   public boolean pruefeTabelle() {
-    //TODO Dialogfenster gescheit zeichnen
     if (!((KonkreteTabellenAnsicht) tabelle).istAusgefuellt()) {
-      JDialog dialog = new JDialog();
-      dialog.setContentPane(new JLabel("Tabelle nicht richtig ausgefüllt"));
-      dialog.setSize(800, 300);
-      dialog.setLocation(100, 100);
-      dialog.setModal(true);
-      dialog.setVisible(true);
+      new FehlerDialog("Die Tabelle ist noch nicht (richtig) ausgefüllt");
       return false;
     } else {
       return true;

@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.Border;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import modell.Fassade;
@@ -34,7 +35,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
   private WahrheitstabellenSteuerungen strg;
   private Fassade modell;
   private JTable tabelle;
-  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp Fülle<br />Tabelle</html>", 5);
+  private Schaltflaeche ausfuellen = new Schaltflaeche("<html>&nbsp Fülle<br />Tabelle</html>");
   private Schaltflaeche mehrSpalten = new Schaltflaeche("+", 6);
   private Schaltflaeche wenigerSpalten = new Schaltflaeche("-", 6);
   private Schaltflaeche zeileMarkieren = new Schaltflaeche("Markieren", 6);
@@ -115,24 +116,26 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       schaltflaechenPanel.add(ausfuellen);
     }
 
-    // Tabellenrahmen//
+    // Tabellenrahmen //
     tabellenRahmen.setLayout(new BorderLayout());
     tabellenRahmen.add(tabelle, BorderLayout.CENTER);
     tabellenRahmen.setBackground(Color.GRAY);
     tabellenRahmen.setBorder(BorderFactory.createEmptyBorder(1, 1, 0, 0));
+    JScrollPane scrollPane = new JScrollPane(tabellenRahmen);
+    scrollPane.setBorder(BorderFactory.createEmptyBorder());
 
-    // Panel//
+    // Panel //
     panel = new JPanel();
     panel.setLayout(new BorderLayout());
     panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    panel.add(new JScrollPane(tabellenRahmen), BorderLayout.CENTER);
+    panel.add(scrollPane, BorderLayout.CENTER);
     panel.add(schaltflaechenPanel, BorderLayout.EAST);
     panel.setBackground(Color.WHITE);
     tabelle.setFillsViewportHeight(true);
   }
 
   private void initTabelle() {
-    // Modelldaten//
+    // Modelldaten //
     inhalt = new String[zeilenzahl][spaltenzahl];
     for (int i = 0; i < inhalt.length; i++) {
       for (int j = 0; j < inhalt[0].length; j++) {
@@ -144,7 +147,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
       }
     }
-    // JTable//
+    // JTable //
     tabelle = new JTable(inhalt, inhalt[0]) {
       private static final long serialVersionUID = 1L;
       public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
@@ -187,7 +190,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       return;
     }
     if (!aktiv) { 
-      return;     //TODO muss funktionieren!!
+      return;
     }
     if (i >= 0 && j >= 0 && modus == Modus.entfernen) {
       entferneSpalte(j);
@@ -294,15 +297,7 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
       ausfuellen.setEnabled(false);
       aktiv = false;
     } else {
-      //TODO Dialogfenster gescheit darstellen
-      JDialog fehler = new JDialog();
-      JLabel fehlermeldung = new JLabel("Die Tabelle ist noch fehlerhaft");
-      fehler.setContentPane(fehlermeldung);
-      fehler.setModal(true);
-      fehler.setSize(800, 400);
-      fehler.setLocation(200, 200);
-      fehler.setVisible(true);
-      zeigeTippAn();
+      new FehlerDialog("Die Tabelle ist noch fehlerhaft");
     }
   }
 

@@ -30,6 +30,8 @@ public class FormelAnsicht {
   private Schaltflaeche bestaetige = new Schaltflaeche("Bestätige");
   private Schaltflaeche abbruch = new Schaltflaeche("Abbruch", 2);
   private Schaltflaeche entferne = new Schaltflaeche("Entferne", 3);
+  private int breite = 800;
+  private int hoehe = 400;
 
   private String formel = "";
 
@@ -174,7 +176,7 @@ public class FormelAnsicht {
     operatorPanel2.setBackground(Color.WHITE);
     entfernePanel.setBackground(Color.WHITE);
     menuePanel.setBackground(Color.WHITE);
-    formelPanel.setBackground(Color.LIGHT_GRAY);
+    formelPanel.setBackground(new Color(186, 185, 219));
     formelAnzeige.setBackground(Color.LIGHT_GRAY);
 
     ansicht = new JDialog();
@@ -187,12 +189,11 @@ public class FormelAnsicht {
     ansicht.getContentPane().add(menuePanel);
 
     ansicht.setTitle("Atomare Aussagen");
-    ansicht.setSize(800, 400);
-    ansicht.setResizable(true);
-    ansicht.setLocation(50, 50);
+    ansicht.setSize(breite, hoehe);
+    ansicht.setResizable(false);
+    ansicht.setLocationRelativeTo(null);
     ansicht.setAlwaysOnTop(true);
     ansicht.setModal(true);
-    ansicht.setModalityType(ModalityType.APPLICATION_MODAL);
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
     ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     pruefeErlaubteZeichen();
@@ -249,7 +250,7 @@ public class FormelAnsicht {
     if (strg.bestaetige()) {
       ansicht.dispose();
     } else {
-      // TODO evtl Dialogfenster, falls Antwort nicht korrekt ist
+      new FehlerDialog("Das ist keine gültige aussagenlogische Formel");
     }
   }
 

@@ -14,7 +14,6 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -107,7 +106,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     atomareAussagen.setSize(600, 440);
     atomareAussagen.setMinimumSize(new Dimension(1000, 480));
     atomareAussagen.setResizable(true);
-    atomareAussagen.setLocation(50, 50);
+    atomareAussagen.setLocationRelativeTo(null);
     atomareAussagen.setAlwaysOnTop(true);
     atomareAussagen.setModal(true);
     atomareAussagen.setModalityType(ModalityType.APPLICATION_MODAL);
@@ -147,7 +146,7 @@ public class FreiesRaetselFenster extends RaetselFenster {
     tabellenPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 1000));
     tabellenPanel.setBackground(Color.WHITE);
     
-    //Ansicht zusammenf�gen//
+    //Ansicht zusammenfuegen//
     ansicht.add(oben, 0);
     ansicht.add(tabellenPanel, 1);
   }

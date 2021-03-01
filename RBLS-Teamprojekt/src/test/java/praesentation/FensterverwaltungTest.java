@@ -10,7 +10,7 @@ public class FensterverwaltungTest {
         new praesentation.Fensterverwaltung(new Hauptsteuerung(), null);
     fv.init();
     try {
-      Thread.sleep(100000);
+      Thread.sleep(100);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

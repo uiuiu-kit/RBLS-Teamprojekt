@@ -29,7 +29,7 @@ public class RaetselwahlTest {
     aktivesFenster.setLocation(50, 50);
     aktivesFenster.setVisible(true);
     try {
-      Thread.sleep(100000);
+      Thread.sleep(100);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

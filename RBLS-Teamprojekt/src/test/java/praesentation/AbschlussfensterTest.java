@@ -11,7 +11,7 @@ public class AbschlussfensterTest {
     fv.init();
     fv.oeffneAbschlussFenster();
     try {
-      Thread.sleep(100000);
+      Thread.sleep(100);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

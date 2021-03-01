@@ -49,7 +49,7 @@ public class Fensterverwaltung {
     aktivesFenster.setSize(fensterMass[0], fensterMass[1]);
     aktivesFenster.setMinimumSize(new Dimension(minimumMass[0], minimumMass[1]));
     aktivesFenster.setResizable(true);
-    aktivesFenster.setLocation(50, 50);
+    aktivesFenster.setLocationRelativeTo(null);
     aktivesFenster.setVisible(true);
     aktivesFenster.setIconImage(img.getImage());
   }
