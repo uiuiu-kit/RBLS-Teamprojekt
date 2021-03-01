@@ -1,0 +1,18 @@
+Alt und jung
+##
+Alexa, Siri und Kira gehen in die gleiche Klasse. Die folgenden Aussagen sind wahr: 
+(1) Entweder Siri oder Kira ist die Älteste der drei Freundinnen. 
+(2) Entweder Alexa ist die Älteste oder Siri ist die Jüngste. 
+Wer ist die Jüngste? Wahr steht hierbei dafür, die Jüngste zu sein. Korrigiere hierzu die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zelle.
+##
+ist die Jüngste.
+##
+Alexa, Siri, Kira
+##
+Alexa, Siri, Kira
+##
+2
+##
+1un2on1u2, n0u1o0un1
+##
+3

@@ -1,0 +1,20 @@
+Gute Vorsätze
+##
+Frau Apfel sagt zu ihrem Sohn Robin: "Du chattest mit deinen Freunden oder du surfst den ganzen Tag nur im Internet. Lies doch mal wieder ein Buch." 
+Robin schaut von seinem Logik-Blog auf und antwortet: "Okay, ich verspreche dir für morgen, dass ich... 
+(1) entweder "surfe oder chatte" oder "nicht surfe oder nicht lese", 
+(2) entweder "chatte oder nicht lese" oder "lese oder nicht surfe", 
+(3) entweder "nicht chatte oder lese" oder "chatte oder surfe". 
+Kann Robin seine drei Versprechen halten? Stelle hierzu zuerst die benötigten aussagenlogischen Formeln auf. Hierzu musst du wieder Spalten hinzufügen.
+##
+,er kann seine Versprechen (nicht) halten.
+##
+ja, nein
+##
+chattet, surft, liest
+##
+1
+##
+(1o0)a(n1on2), (0on2)a(2on1), (n0o2)a(0o1)
+##
+4

@@ -1,11 +1,11 @@
 Wer trinkt Cola?
 ##
-Alina, Birgit und Conny bestellen nach dem Kino Getränke, streng nach folgenden Regeln:
-(1) Wenn Alina eine Cola bestellt, dann tut Birgit das auch.
-(2) Birgit oder Conny bestellen sich eine Cola, aber nie gleichzeitig.
-(3) Alina oder Conny bestellen sich eine Cola.
-(4) Wenn Conny eine Cola bestellt, dann auch Alina.
-Ermittle mittels der Wahrheitstabelle, wer sich eine Cola bestellt!
+Alina, Birgit und Conny bestellen nach dem Kino Getränke, streng nach folgenden Regeln: 
+(1) Wenn Alina eine Cola bestellt, dann tut Birgit das auch. 
+(2) Birgit oder Conny bestellen sich eine Cola, aber nie gleichzeitig. 
+(3) Alina oder Conny bestellen sich eine Cola. 
+(4) Wenn Conny eine Cola bestellt, dann auch Alina. 
+Ermittle mittels der Wahrheitstabelle, wer sich eine Cola bestellt! Verändere hierzu die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zellen.
 ##
 hat/haben eine Cola bestellt.
 ##
@@ -15,6 +15,6 @@ Alina, Birgit, Conny
 ##
 4
 ##
-0f1, (1u(n2))o(n1u2), 0o2, 2f0
+0f1, n(1a2), 0o2, 2f0
 ##
 3

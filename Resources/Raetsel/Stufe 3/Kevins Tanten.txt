@@ -1,20 +1,20 @@
 Kevins Tanten
 ##
-Kevin hat seine Tanten Hedwig, Rosa und Trude zu seinem 16. Geburtstag eingeladen.
+Kevin hat seine Tanten Hedwig, Rosa und Trude zu seinem 16. Geburtstag eingeladen. 
 Rosa und Trude haben sich zerstritten, weil Rosa auf Trudes Zwergpudel getreten ist. 
 Sie werden sicher nicht beide kommen. Andererseits kommen Hedwig und Trude immer nur zusammen. 
 Falls Rosa aber kommt, dann kommt sicher auch Hedwig. Kevin weiß auch, 
 dass nicht alle drei Tanten fernbleiben werden. 
-Mit wem darf er rechnen? 
+Mit wem darf er rechnen? Verändere hierzu die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zellen.
 ##
-kommen zu Kevins Geburtstag
+kommen zu Kevins Geburtstag.
 ##
-Hedwig & Rosa,Rosa,Rosa & Trude,Trude,Trude & Hedwig, Hedwig
+Hedwig & Rosa, Rosa, Rosa & Trude, Trude, Trude & Hedwig, Hedwig
 ##
 Hedwig, Rosa, Trude
 ##
 5
 ##
-n(1u2),0u2,1f0,n(n0un1un2)
+n(1u2), 0a2, 1f0, n(n0un1un2)
 ##
 3
