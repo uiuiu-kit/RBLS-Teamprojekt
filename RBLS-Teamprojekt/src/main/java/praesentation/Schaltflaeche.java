@@ -14,11 +14,12 @@ class Schaltflaeche extends javax.swing.JButton {
    */
   private static final long serialVersionUID = -6196848668908499618L;
   public static final int ORANGE = 1;
-  public static final int GRAU = 2;
+  public static final int BLAU = 2;
   public static final int WEISS = 3;
   public static final int WEISS_ALT = 4;
   public static final int GRAU_ALT = 5;
-  public static final int GRAU_ALT_2 = 6;
+  public static final int BLAU_ALT = 6;
+  public static final int BLAU_ALT_2 = 7;
 
   public Schaltflaeche() {
     this.setBorderPainted(false);
@@ -50,7 +51,7 @@ class Schaltflaeche extends javax.swing.JButton {
         this.setBorderPainted(false);
         break;
       case 2:
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(new Color(186, 185, 219));
         this.setForeground(Color.DARK_GRAY);
         this.setBorderPainted(false);
         break;
@@ -62,12 +63,16 @@ class Schaltflaeche extends javax.swing.JButton {
         this.setBackground(Color.WHITE);
         break;
       case 5:
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(new Color(186, 185, 219));
         this.setForeground(new Color(255, 102, 0));
         break;
       case 6:
-        this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(new Color(186, 185, 219));
         this.setForeground(Color.DARK_GRAY);
+        break;
+      case 7:
+        this.setBackground(new Color(186, 185, 219));
+        this.setForeground(new Color(255, 102, 0));
         break;
       default:
         this.setBackground(Color.WHITE);
