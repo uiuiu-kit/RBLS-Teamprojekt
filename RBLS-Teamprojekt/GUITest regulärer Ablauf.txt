@@ -26,14 +26,14 @@ GUITest1 "Regulärer Ablauf"
      Erwartet: Ein Hinweis soll erscheinen, da die Tabelle nicht ausgefüllt ist.
 
 6. Klicke auf 'Fülle Tabelle'.
-     Erwartet: Nichts soll passieren.
+     Erwartet: Ein Hinweis soll erscheinen.
      
 7. Decke in der linken Hälfte alle möglichen Fälle (in beliebiger Reihenfolge) ab. Klicke danach auf 'Fülle Tabelle'.
-     Erwartet: Es gibt nun jeweils eine Spalte mit Inhalt "w f f w f f", "f w w f w f" und "f f w f f w", wobei w für 'wahr' und f für 'falsch' steht.
-               In den restlichen Spalten soll die rechte Hälfte der Tabelle unverändert bleiben.
+     Erwartet: Es gibt nun jeweils eine Zeile mit Inhalt "w f f w f f", "f w w f w f" und "f f w f f w", wobei w für 'wahr' und f für 'falsch' steht.
+               In den restlichen Zeilen soll die rechte Hälfte der Tabelle unverändert bleiben.
 
 8. Klicke auf 'Prüfen'. Wechsele zur zweiten Antwort der Combobox und drücke erneut auf 'Prüfen'.
-     Erwartet. Beim ersten Klicken geschieht nichts, beim zweiten Klicken ist die Combobox deaktiviert und eine Schaltfläche "Weiter" erscheint
+     Erwartet. Beim ersten Klicken erscheint ein Hinweis, beim zweiten Klicken ist die Combobox deaktiviert und eine Schaltfläche "Weiter" erscheint
      
 9. Klicke auf 'Weiter'.
      Erwartet: Das Rätsel-Abschlussfenster mit zwei Schaltflächen öffnet sich.

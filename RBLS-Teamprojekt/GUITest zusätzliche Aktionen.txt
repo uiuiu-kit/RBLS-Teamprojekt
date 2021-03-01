@@ -1,0 +1,150 @@
+GUITest1 "Zusätzliche Aktionen"
+
+/**
+ * Dieser GUI-Test soll den "regulären" Ablauf zum Einsatz der Software erweitern. Dabei werden ausgehend von einer bereits verwendeten Sicherungsdatei weitere Rätsel
+ * getestet und anschließend der Freie Modus verwendet, um die Wahrheitstabelle möglichst vollständig zu testen und die Überdeckung ausgehend vom letzten Test zu erhöhen.
+ * @author Nick
+ */
+
+@before Setze den Inhalt der 'Sicherung.txt' auf:
+4
+##
+Butterbierdiebe
+Regen
+Im Kino
+Kevins Tanten
+Volleyball
+   
+Test 1: Teste das Wechseln zum 'nächsten Rätsel' beim letzten Rätsel einer Stufe
+
+1. Führe das Programm aus.
+     Erwartet: Das Hauptmenü wird angezeigt keine Schaltfläche ist ausgegraut.
+
+2. Klicke auf die Schaltfläche 'Stufe 1'.
+     Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 1 wird angezeigt, sowie zwei graue Schaltflächen mit den Namen der beiden Stufe-1-Rätsel.
+
+3. Klicke auf die Schaltfläche 'Butterbierdiebe'.
+     Erwartet: Ein Rätsel-Fenster mit dem zum Rätsel gehörenden Fragetext, einem Antworttext mit einer Combobox der Antwortmöglichkeiten und eine Wahrheitstabelle werden angezeigt.
+               Die oberste Zeile der Tabelle beinhaltet die drei Atomaren Aussagen und daneben drei Formeln, die die Aussagen aus dem Text repräsentieren.
+               Der Rest der Tabelle ist rot hinterlegt und mit "falsch" beschriftet.
+
+4. Klicke nacheinander auf alle Tabellenfelder der rechten Hälfte der Tabelle, danach auf alle der linken Hälfte. Klicke dann direkt unter die Tabelle.
+     Erwartet: Beim der rechten Hälfte und darunter ändert sich nichts. Beim Klicken auf der linken Seite Feld wechselt die Farbe zu Grün und der Text zu "wahr", dann wieder zurück.
+     
+5. Klicke auf 'Prüfen'. Wechsele zur nächsten Antwort der Combobox und drücke erneut auf 'Prüfen'.
+     Erwartet: Ein Hinweis soll erscheinen, da die Tabelle nicht ausgefüllt ist. Die beiden Hinweise sollen gleich sein.
+
+6. Klicke auf 'Fülle Tabelle'.
+     Erwartet: Ein Hinweis soll erscheinen und ein beliebiges Fehlerhaftes Feld wird markiert.
+     
+7. Decke in der linken Hälfte alle möglichen Fälle - bis auf einen - ab und klicke auf 'Fülle Tabelle'. Decke dann tatsächlich alle ab. Klicke danach wieder auf 'Fülle Tabelle'.
+     Erwartet: Ein Hinweis soll erscheinen das letzte fehlerhafte Feld wird markiert. Beim zweiten Klicken gibt es nun jeweils eine Zeile mit Inhalt "w f f w f f", "f w w f w f" und "f f w f f w", wobei w für 'wahr' und f für 'falsch' steht.
+               In den restlichen Zeilen soll die rechte Hälfte der Tabelle unverändert bleiben.
+
+8. Klicke auf eine Zelle in der linken Spalte. Klicke auf 'Prüfen'. Wechsele zur zweiten Antwort der Combobox und drücke erneut auf 'Prüfen'.
+     Erwartet: Beim Klicken in die Tabelle geschieht nichts. Beim ersten Klicken erscheint ein Hinweis, beim zweiten Klicken ist die Combobox deaktiviert und eine Schaltfläche "Weiter" erscheint
+     
+9. Klicke auf 'Weiter'.
+     Erwartet: Das Rätsel-Abschlussfenster mit zwei Schaltflächen öffnet sich.
+
+10. Klicke auf 'nächstes Rätsel'.
+      Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 1 wird angezeigt.
+     
+11. Klicke auf die Schaltfläche 'Zum Menü' und anschließend auf die Schaltfläche 'Stufe 2'.
+      Erwartet: Der Rätselauswahlbildschirm mit dem Hinweistext der Stufe 2 wird angezeigt, sowie zwei weiße Schaltflächen mit den Namen der beiden Stufe-2-Rätsel.
+     
+     
+     
+     
+Test 2: Teste das Hinzufügen und Entfernen von Spalten und Formeln ausgiebig
+
+1. Klicke auf die Schaltfläche 'Snapes Zauberstab'.
+    Erwartet: Ein Rätsel-Fenster mit dem zum Rätsel gehörenden Fragetext, einem Antworttext mit einer Combobox der Antwortmöglichkeiten und eine Wahrheitstabelle werden angezeigt.
+               Die oberste Zeile der Tabelle beinhaltet die drei Atomaren Aussagen und und der Rest der Tabelle ist mit allen Möglichen Wahrheitsbelegungen dafür ausgefüllt.
+     
+2. Klicke 10-mal auf die Schaltfläche '+', dann versuche von links nach rechts, alle Spalten nacheinander zu entfernen.
+      Erwartet: Nur neun neue Spalten werden der Tabelle hinzugefügt und nacheinander wieder entfernt. Die vorgegebenen Spalten bleiben bestehen.
+                Außerdem erscheint ein Schieberegler, solange die Spaltenanzahl zu hoch ist, um in das Fenster zu passen.
+     
+3. Klicke auf '+', dann auf 'Fülle Tabelle', dann dreimal auf '+'. Klicke auf 'Formel einfügen' in der vorletzten Spalte.
+      Erwartet: Beim Versuch, die Tabelle zu füllen, erscheint ein Hinweis und die hinzugefüge oberste Zelle wird als Tipp markiert.
+                Ein Eingabefenster öffnet sich. Alle Schaltflächen bis auf die drei atomaren Aussagen, '(', 'nicht' und 'Abbruch' sind deaktiviert.
+                
+4. Gib die Formel '1' ein und drücke auf 'Bestätigen'. Gib dann erneut die Formel '(0 -> 2' ein und drücke auf 'Bestätigen'.
+      Erwartet: Während des Vorgangs sind alle Symbole deaktiviert, die zu einer ungültigen aussagenlogischen Formel führen würden.
+                Im oberen Teil des Fensters wird die bisher eingegebene Formel angezeigt.
+                Nach dem Klicken auf 'Bestätigen' bei der zweiten Formel erscheint ein Hinweis.
+
+5. Klicke auf 'Abbruch'.
+      Erwartet: In der entsprechenden Spalte steht immer noch die Formel '1'.
+                
+6. Gib nacheinander die Formeln '0', '1', '0 -> 1' und '1 -> 0' ein klicke auf 'Fülle Tabelle'.
+      Erwartet: Die Tabelle wird entsprechend nicht ausgefüllt. Es erscheint ein Hinweis.
+     
+7. Klicke auf 'Markieren' und danach zuerst auf '+', dann auf '-', dann auf 'Makieren'. Wiederhole dasselbe mit '-' statt 'Markiere'.
+      Erwartet: Beim Klicken auf '+' wird eine Spalte hinzugefügt, aber beim Klicken auf '-' geschieht nichts und beim Klicken auf 'Markieren' wird der Modus zurückgesetzt und umgekehrt.
+     
+8. Klicke auf 'Menü'.
+      Erwartet: Im Rätselauswahlbildschirm ist nur die erste Schaltfläche grau.
+     
+9. Klicke auf 'Zum Menü'.
+      Erwartet: Das Hauptmenü wird angezeigt.
+              
+              
+              
+              
+Test 3: Teste die Tipp-Funktionalität ausgiebig
+               
+1. Klicke auf die Schaltfläche 'Stufe 3', dann auf 'Kevins Tanten'.
+      Erwartet: Das dazugehörige Rätselfenster öffnet sich. Die einzige Schaltfläche neben der Tabelle ist die 'Markieren'-Schaltfläche.
+                Für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt und der Rest der Tabelle ist mit 'falsch' ausgefüllt.
+                In der obersten Zeile stehen Formeln.               
+               
+2. Klicke 5-mal auf die Schaltfläche 'Tipp'.
+      Erwartet: Genau eine der falsch ausgefüllten Tabellenzellen wird jeweils gleichzeitig grau hinterlegt.
+      
+3. Markiere alle Zeilen und klicke 5-mal auf 'Tipp'.
+      Erwartet: Die markierten Zellen bleiben weiterhin markiert.
+    
+4. Fülle die Tabelle gemäß der Wahrheitswerte der Formeln - bis auf eine Zelle - aus und klicke zweimal auf die Schaltfläche 'Tipp'.
+    Fülle dann alles richtig aus und klicke nochmal auf die Schaltfläche.
+      Erwartet: Beim ersten Klicken wird die letzte fehlerhafte Zelle markiert, danach geschieht nichts mehr.
+    
+5. Klicke auf die Schaltfläche 'Menü', dann auf 'Zum Menü'.
+      Erwartet: Im Hauptmenü sind keine Schaltflächen deaktiviert.
+ 
+
+
+    
+Test 4: Teste die Formeleingabe und den freien Modus ausgiebig
+
+1. Klicke auf die Schaltfläche 'Freier Modus'.
+      Erwartet: Ein Dialogfenster mit fünf Eingabefeldern öffnet sich.
+      
+2. Fülle die Eingabefelder mit den Wörtern 'A', 'BB', 'CCC', 'DDDD', 'EEEEE' und klicke auf 'OK'.
+      Erwartet: Ein Fenster mit dem Titel 'Freier Modus' und einer Wahrheitstabelle mit einem Schieberegler öffnet sich. Neben der Tabelle sind vier Schaltflächen zu sehen.
+                Die fünf Spalten beinhalten die zuvor eingegebenen Aussagen und für die Wahrheitswerte der atomaren Aussagen sind alle Fälle in binäre Schreibweise abgedeckt.
+      
+3. Füge die maximale Anzahl an Spalten hinzu und befülle die Erste mit '0 AND 1 OR 2 XOR 3 -> 4 <-> NOT(0) XOR NOT(2 <-> 3 AND NOT(3 XOR 4))'.
+    Entferne dabei die letzten drei Zeichen und gib sie wieder ein. Klicke auf 'Fülle Tabelle'.
+      Erwartet: Die entsprechende Spalte wird gefüllt, der Rest bleibt gleich.
+      
+ 
+4. Befülle den Rest der Tabelle mit '0'. Klicke zweimal auf 'Fülle Tabelle'.
+      Erwartet: Die Tabelle wird entsprechend befüllt.
+      
+5. Markiere die ersten vier Zeilen. Ändere die Formel in der letzten Spalte ab zu '4' und klicke auf 'Fülle Tabelle'.
+      Erwartet: Die Tabelle wird sowohl textuell als auch farblich korrekt ausgefüllt.
+
+6. Klicke auf 'Markieren' und dann unter die Tabelle. Wiederhole dasselbe für '-'.
+      Erwartet: Nichts geschieht.
+      
+7. Klicke auf die Schaltfläche 'Menü', dann auf 'Zum Menü', dann auf 'Beenden'.
+      Erwartet: Das Programm wird geschlossen.
+      
+8. Führe das Programm aus.
+      Erwartet: Alle Schaltflächen im Hauptmenü sind weiterhin aktiv.
+      
+      
+Durchführung 22.02.21, Nick; af990ec: 
+      Schritt 5: Der Hinweis wird nur bei der richtigen Antwort angezeigt (Issue#36)

@@ -120,7 +120,6 @@ public class Fensterverwaltung {
   public void beende() {
     aktivesFenster.setVisible(false);
     strg.beenden();
-    System.exit(0);
   }
   
   /**
