@@ -67,7 +67,7 @@ public class FormelEditor {
   public boolean bestaetige() {
     if (formel.length() > 0) {
       char letzerCh = formel.charAt(formel.length() - 1);
-      if (!klammerOffen() || (letzerCh == '0' || letzerCh == '1' || letzerCh == '2'
+      if (!klammerOffen() && (letzerCh == '0' || letzerCh == '1' || letzerCh == '2'
           || letzerCh == '3' || letzerCh == '4' || letzerCh == ')')) {
         return true;
       }
