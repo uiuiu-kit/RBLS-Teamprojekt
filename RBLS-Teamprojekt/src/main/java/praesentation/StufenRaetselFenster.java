@@ -23,18 +23,8 @@ import steuerung.WahrheitstabellenSteuerungen;
  */
 public class StufenRaetselFenster extends RaetselFenster {
 
-  private String name = "Rätsel #27";
-  private String frage = "Lorem ipsum dolor sit amet, consetetur sadipscing "
-      + "elitr, sed diam nonumy eirmod tempor"
-      + " invidunt ut labore et dolore magna aliquyam "
-      + "erat, sed diam voluptua. At vero eos et accusam et"
-      + "justo duo dolores et ea rebum. Stet clita "
-      + "kasd gubergren, no sea takimata sanctus est Lore"
-      + "m ipsum dolor sit amet. Lorem ipsum dolor "
-      + "sit amet, consetetur sadipscing elitr, sed diam nonumy "
-      + "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
-      + "At vero eos et accusam et justo duo dolores et ea rebum. "
-      + "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ";
+  private String name = "[Platzhalterrätsel]";
+  private String frage = "[Platzhalterfragetext]";
   
   private JTextArea frageFeld;
   private JPanel antwortAnsicht;
@@ -170,6 +160,10 @@ public class StufenRaetselFenster extends RaetselFenster {
     fv.oeffneRaetselwahl(modell.gibStufe());
   }
   
+  /**
+   * Gibt an, ob die Wahrheitstabelle ausgefuellt wurde und oeffnet evtl ein Hinweisfenster.
+   * @return true falls Tabelle ausgefuellt, ansonsten false
+   */
   public boolean pruefeTabelle() {
     if (!((KonkreteTabellenAnsicht) tabelle).istAusgefuellt()) {
       new FehlerDialog("Die Tabelle ist noch nicht (richtig) ausgefüllt");

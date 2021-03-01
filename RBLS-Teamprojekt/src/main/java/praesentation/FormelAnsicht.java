@@ -1,7 +1,6 @@
 package praesentation;
 
 import java.awt.Color;
-import java.awt.Dialog.ModalityType;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
