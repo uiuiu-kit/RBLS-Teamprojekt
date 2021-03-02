@@ -9,7 +9,7 @@ Frau Salfeld liebt logische Spielereien und gibt mit Freude folgende Tipps:
 5) Wenn Bert kommt, dann kommen auch Chris und Herr Müller.
 Wer kommt abends zu Besuch? Stelle hierzu zuerst die benötigten aussagenlogischen Formeln auf. Hierzu musst du wieder Spalten hinzufügen.
 (Tipp: Es ist nicht nötig, alle 2^5 Kombinationen zu berücksichtigen, weshalb Anton & Chris bereits zusammengefasst wurden. Kommst du darauf,
-warum es nciht nötig ist?)
+warum es nicht nötig ist?)
 ##
 kommt/en zu Besuch.
 ##
