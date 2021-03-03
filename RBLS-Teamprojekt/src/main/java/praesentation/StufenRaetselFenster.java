@@ -81,6 +81,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     
     frageFeld = new JTextArea(frage);
     frageFeld.setEditable(false);
+    frageFeld.setHighlighter(null);
     frageFeld.setLineWrap(true);
     frageFeld.setWrapStyleWord(true);
     frageFeld.setPreferredSize(new Dimension(1, (int) (frage.length() * 0.3)));
@@ -121,7 +122,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     antwortPanel.add(weiter, BorderLayout.EAST);
     weiter.setVisible(false);
     
-    //Ansicht zusammenf�gen//
+    //Ansicht zusammenfuegen//
     ansicht.add(fragePanel, 0);
     ansicht.add(tabellenPanel, 1);
     ansicht.add(antwortPanel, 2);
