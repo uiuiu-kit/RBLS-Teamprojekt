@@ -28,6 +28,7 @@ public class Atom extends Formel {
       this.rep = "" + nummer;
     }
     this.nummer = nummer;
+    this.bindungsstaerke = 6;
   }
 
   public String getAussage() {

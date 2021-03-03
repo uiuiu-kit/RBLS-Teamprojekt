@@ -18,6 +18,7 @@ public class Oder extends BiKonnektor {
     this.rechts = rechts;
     this.links = links;
     this.rep = "\u2228";
+    this.bindungsstaerke = 2;
   }
   
   @Override

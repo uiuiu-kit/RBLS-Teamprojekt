@@ -17,6 +17,7 @@ public class Nicht extends Konnektor {
   public Nicht(Formel rechts) {
     this.rechts = rechts;
     this.rep = "\u00AC";
+    this.bindungsstaerke = 5;
   }
   
   @Override
@@ -26,7 +27,7 @@ public class Nicht extends Konnektor {
 
   @Override
   public String gibStringRep() {
-    return "(" + this.rep + this.rechts.gibStringRep() + ")";
+    return this.rep + this.rechts.gibStringRep();
   }
 
 }

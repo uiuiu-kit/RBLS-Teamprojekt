@@ -18,6 +18,7 @@ public class ExklusivOder extends BiKonnektor {
     this.rechts = rechts;
     this.links = links;
     this.rep = "\u2295";
+    this.bindungsstaerke = 3;
   }
 
   @Override

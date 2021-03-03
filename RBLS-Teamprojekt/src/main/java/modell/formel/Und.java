@@ -18,6 +18,7 @@ public class Und extends BiKonnektor {
     this.rechts = rechts;
     this.links = links;
     this.rep = "\u2227";
+    this.bindungsstaerke = 4;
   }
   
   @Override

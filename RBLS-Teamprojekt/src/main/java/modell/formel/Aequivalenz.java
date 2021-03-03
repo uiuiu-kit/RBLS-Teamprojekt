@@ -20,6 +20,7 @@ public class Aequivalenz extends BiKonnektor {
     this.rechts = rechts;
     this.links = links;
     this.rep = "\u2194";
+    this.bindungsstaerke = 0;
   }
 
   @Override

@@ -8,6 +8,7 @@ package modell.formel;
 public abstract class Formel {
     
   protected String rep;
+  protected int bindungsstaerke;
   
   /**Beim Auswerten wird ein Wahrheitswert ermittelt und zurueckgegeben. 
    * Im Falle des Atoms ist dies der eigene Wahrheitswert. Ansonsten der Wahrheitswert des rechten

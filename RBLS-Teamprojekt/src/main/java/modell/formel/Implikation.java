@@ -18,6 +18,7 @@ public class Implikation extends BiKonnektor {
     this.rechts = rechts;
     this.links = links;
     this.rep = "\u2192";
+    this.bindungsstaerke = 1;
   }
   
   @Override
