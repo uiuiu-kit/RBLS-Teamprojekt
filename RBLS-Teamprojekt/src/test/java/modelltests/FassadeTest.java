@@ -172,6 +172,7 @@ public class FassadeTest {
   //@Test
   public void sicherungTest() {
     testen.fuehreSicherungAus();
+    //TODO assert hinzufügen
   }
   
   @Test
@@ -210,6 +211,7 @@ public class FassadeTest {
   
   //@Test
   public void gibGeloesteRaetselTest() {
+    //TODO assert hinzufügen
     this.memento = new Memento();
     testen.fuehreSicherungAus();
     System.out.print(testen.gibGeloesteRaetsel(1));
