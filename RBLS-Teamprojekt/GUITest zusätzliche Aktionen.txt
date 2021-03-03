@@ -128,7 +128,6 @@ Test 4: Teste die Formeleingabe und den freien Modus ausgiebig
 3. Füge die maximale Anzahl an Spalten hinzu und befülle die Erste mit '0 AND 1 OR 2 XOR 3 -> 4 <-> NOT(0) XOR NOT(2 <-> 3 AND NOT(3 XOR 4))'.
     Entferne dabei die letzten drei Zeichen und gib sie wieder ein. Klicke auf 'Fülle Tabelle'.
       Erwartet: Die entsprechende Spalte wird gefüllt, der Rest bleibt gleich.
-      
  
 4. Befülle den Rest der Tabelle mit '0'. Klicke zweimal auf 'Fülle Tabelle'.
       Erwartet: Die Tabelle wird entsprechend befüllt.
