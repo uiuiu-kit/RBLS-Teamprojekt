@@ -7,6 +7,7 @@ package praesentation.tabelle;
  */
 public enum ZellenStatus { 
   standard, 
+  atomar, 
   wahr, 
   falsch, 
   markiert_wahr,

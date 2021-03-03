@@ -26,6 +26,8 @@ public class FarbRenderer extends DefaultTableCellRenderer {
     switch (fm.gibStatus(row, col)) {
       case standard:l.setBackground(Color.WHITE);
       break;
+      case atomar:l.setBackground(new Color(186, 185, 219));
+      break;
       case wahr:l.setBackground(new Color(133, 242, 184));
       break;
       case falsch:l.setBackground(new Color(242, 133, 133));

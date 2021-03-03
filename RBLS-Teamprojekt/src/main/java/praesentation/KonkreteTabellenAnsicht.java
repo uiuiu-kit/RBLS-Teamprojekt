@@ -207,7 +207,6 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
 
   private void klickeFormel(int spalte) {
     strg.befehl("FormelEingeben(" + spalte + ")");
-    ((FarbModell) tabelle.getModel()).setzeStatus(0, spalte, ZellenStatus.standard);
     ((FarbModell) tabelle.getModel()).fireTableCellUpdated(0, spalte);
     aktualisiere(new int[] { 0, spalte });
   }
@@ -319,7 +318,9 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
         }
       }
     }
-    if (i == 0 && j >= 0) {
+    if (i == 0 && j >= 0 && j < modell.gibAtomareAussage().size()) {
+      ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.atomar);
+    } else if (i == 0 && j >= 0) {
       ((FarbModell) tabelle.getModel()).setzeStatus(i, j, ZellenStatus.standard);
     }
     tabelle.getModel().setValueAt(inhalt[zelle[0]][zelle[1]], zelle[0], zelle[1]);
