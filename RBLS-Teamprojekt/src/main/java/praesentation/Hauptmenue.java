@@ -1,9 +1,14 @@
 package praesentation;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -105,8 +110,9 @@ public class Hauptmenue extends javax.swing.JPanel {
         
     GridBagConstraints c = new GridBagConstraints();
     c.weightx = 0.5;
+    c.weighty = 0.5;
     c.gridx = 3;
-    c.gridy = 1;
+    c.gridy = 2;
     this.add(mitte, c);
         
     //weitere Buttons//
@@ -120,15 +126,40 @@ public class Hauptmenue extends javax.swing.JPanel {
         klickeBeenden();
       }
     });
-    c.weightx = 0.5;
+    c.insets = new Insets(64, 50, 64, 50);
+    c.fill = java.awt.GridBagConstraints.BOTH;
     c.gridx = 0;
-    c.gridy = 1;
     c.ipadx = 80;
     c.ipady = 60;
     this.add(beenden, c);
     c.gridx = 4;
-    c.gridy = 1;
     this.add(freierModus, c);
+    
+    //Titel//
+    c.gridx = 3;
+    c.gridy = 1;
+    c.ipady = 2;
+    c.insets = new Insets(120, 50, 0, 50);
+    JLabel titel1 = new JLabel("RÄTSEL-BASIERTE", SwingConstants.CENTER);
+    JLabel titel2 = new JLabel("LOGIK-SOFTWARE", SwingConstants.CENTER);
+    JPanel titel = new JPanel();
+    titel.setLayout(new BoxLayout(titel, BoxLayout.Y_AXIS));
+    titel1.setAlignmentX(Component.CENTER_ALIGNMENT);
+    titel2.setAlignmentX(Component.CENTER_ALIGNMENT);
+    titel1.setFont(new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.BOLD, 48));
+    titel2.setFont(new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.BOLD, 48));
+    titel.add(titel1, 0);
+    titel.add(titel2, 1);
+    titel.setBackground(Color.WHITE);
+    this.add(titel, c);
+
+    JPanel leer = new JPanel();
+    leer.setLayout(new BoxLayout(leer, BoxLayout.Y_AXIS));
+    leer.setBackground(Color.WHITE);
+    c.gridy = 3;
+    c.ipady = 40;
+    this.add(leer, c);
+
   }
 
   /**
