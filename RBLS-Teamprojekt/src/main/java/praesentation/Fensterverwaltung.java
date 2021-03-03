@@ -23,9 +23,8 @@ public class Fensterverwaltung {
   private JFrame aktivesFenster;
   private Fassade modell;
   private int[] fensterMass = new int[]{1280, 720};
-  //private int[] minimumMass = new int[]{1152, 648};
   private int[] minimumMass = fensterMass;
-  ImageIcon img = new ImageIcon(getClass().getResource("/Icon/testIcon.png"));
+  ImageIcon img = new ImageIcon(getClass().getResource("/Icon/icon.png"));
 
   public Fensterverwaltung(Hauptsteuerung strg, Fassade fsd) {
     this.strg = strg;

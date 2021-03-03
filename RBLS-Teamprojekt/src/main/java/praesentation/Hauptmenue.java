@@ -125,7 +125,7 @@ public class Hauptmenue extends javax.swing.JPanel {
         klickeBeenden();
       }
     });
-    c.insets = new Insets(64, 50, 64, 50);
+    c.insets = new Insets(74, 50, 74, 50);
     c.fill = java.awt.GridBagConstraints.BOTH;
     c.gridx = 0;
     c.ipadx = 80;

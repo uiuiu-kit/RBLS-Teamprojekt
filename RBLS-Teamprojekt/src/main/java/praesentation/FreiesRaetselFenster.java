@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -112,6 +113,8 @@ public class FreiesRaetselFenster extends RaetselFenster {
     atomareAussagen.setModalityType(ModalityType.APPLICATION_MODAL);
     atomareAussagen.getContentPane().setBackground(new Color(255, 102, 0));
     atomareAussagen.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    ImageIcon img = new ImageIcon(getClass().getResource("/Icon/icon.png"));
+    atomareAussagen.setIconImage(img.getImage());
     atomareAussagen.setVisible(true);
     
     ansicht = new JPanel();
