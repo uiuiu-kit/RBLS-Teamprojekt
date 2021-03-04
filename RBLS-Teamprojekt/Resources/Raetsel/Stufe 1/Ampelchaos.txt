@@ -1,4 +1,4 @@
-﻿Sicher?
+﻿Ampelchaos
 ##
 Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen. Die eine führt gerade aus und an der Straße rechts 
 davon steuert eine Ampel die Linksabbieger. Die Fahrspuren kreuzen sich also und es kann zu Unfällen kommen.#

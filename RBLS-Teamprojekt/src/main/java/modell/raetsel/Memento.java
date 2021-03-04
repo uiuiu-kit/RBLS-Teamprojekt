@@ -122,7 +122,8 @@ public class Memento {
         writer.println("##");
         writer.close();
       } catch (IOException e) {
-        new praesentation.FehlerDialog("Fehler bei erstellen einer neuen Sicherungsdatei: " + file.toString());
+        new praesentation.FehlerDialog("Fehler bei erstellen einer neuen Sicherungsdatei: "
+            + file.toString());
       }
     }
     if (file.isFile() && file.canWrite() && file.canRead()) {
