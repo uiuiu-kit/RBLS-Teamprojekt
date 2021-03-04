@@ -1,4 +1,4 @@
-Müllers zu Gast
+﻿Müllers zu Gast
 ##
 Auf Frau Salfelds Bemerkung: "Für heute Abend habe ich Müllers eingeladen" entgegnet ihr Mann bestürzt: "Kommen alle fünf, also beide Eltern und die drei Söhne?" 
 Frau Salfeld liebt logische Spielereien und gibt mit Freude folgende Tipps:#
@@ -21,4 +21,4 @@ Herr Müller, Frau Müller, Anton/Chris, Bert
 ##
 0f1, 3o2, n(1a2), 3f(2u0)
 ##
-3
+4
