@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import modell.Fassade;
@@ -119,6 +120,18 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
     tabellenRahmen.setBackground(Color.GRAY);
     tabellenRahmen.setBorder(BorderFactory.createEmptyBorder(1, 1, 0, 0));
     JScrollPane scrollPane = new JScrollPane(tabellenRahmen);
+    scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+      protected void configureScrollBarColors() {
+        this.thumbColor = new Color(255, 102, 0);
+        this.trackColor = new Color(186, 185, 219);
+      }
+    });
+    scrollPane.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+      protected void configureScrollBarColors() {
+        this.thumbColor = new Color(255, 102, 0);
+        this.trackColor = new Color(186, 185, 219);
+      }
+    });
     scrollPane.setBorder(BorderFactory.createEmptyBorder());
 
     // Panel //
@@ -265,11 +278,12 @@ public class KonkreteTabellenAnsicht extends TabellenAnsicht {
    */
   public void zeigeTippAn() {
     int[] alterTipp = tipp;
-    if (!(alterTipp == null)) {
+    if (!(alterTipp == null) && alterTipp[1] < spaltenzahl) {
       aktualisiere(alterTipp);
     }
     tipp = strg.gibTip();
     if (tipp == null) {
+      new FehlerDialog("Es gibt keine fehlerhaften Tabellenfelder.");
       return;
     }
     ((FarbModell) tabelle.getModel()).setzeStatus(tipp[0], tipp[1], ZellenStatus.tipp);

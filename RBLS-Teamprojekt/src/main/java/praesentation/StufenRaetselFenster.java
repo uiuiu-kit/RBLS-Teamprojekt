@@ -13,7 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicScrollBarUI;
-
 import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
