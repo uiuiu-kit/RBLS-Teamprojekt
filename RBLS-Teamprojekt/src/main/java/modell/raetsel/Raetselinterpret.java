@@ -120,13 +120,13 @@ public class Raetselinterpret {
     for (String temp : lines[6].split(",")) {
       formeln.add(killSpace(temp));
     }
-    String[] name = lines[0].split(".txt");
+    //String[] name = lines[0].split(".txt");
     atome = this.exAtome(lines[4]);
     for (int i = 0; i < antwortM.length; i++) {
       antwortM[i] = killSpace(antwortM[i]);
     }
     return new Raetsel(
-        name[0],                    //spaltenAnz
+        input,                    //spaltenAnz
         Integer.parseInt(lines[7]), //stufe
         atome,                      //Atome
         lines[1],                   //Raetseltext
