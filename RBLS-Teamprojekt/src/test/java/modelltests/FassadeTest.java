@@ -38,7 +38,7 @@ public class FassadeTest {
  
   @Test
   public void gibAtomareAussageTest() {
-    String[] vergleich = {"0", "1", "2"};
+    String[] vergleich = {"A", "B", "C"};
     
     assert (testen.gibAtomareAussage() != null);
     
@@ -89,16 +89,12 @@ public class FassadeTest {
     assertEquals(testen.gibLoesung(), "C");
   }
   
-  //@Test
-  public void erstelleRaetselTest() {
-    
-  }
-  
   @Test
   public void gibNoetigeFormelTest() {
-    Formel test = new Und(new Atom("A", 0), new Atom("B", 1)); 
-    
-    assertEquals(test.gibStringRep(), testen.gibNoetigeFormel().get(0));
+    if (!testen.gibNoetigeFormel().isEmpty()) {
+      System.out.println(testen.gibNoetigeFormel().get(0));
+    }
+    assertTrue(testen.gibNoetigeFormel().isEmpty());
   }
   
   @Test
@@ -150,7 +146,7 @@ public class FassadeTest {
   
   @Test
   public void formelTextTest() {
-    String test = "(0u1)";
+    String test = "A" + "\u2227" + "B";
     
     assert (testen.gibFormelText(0) != null);
     
