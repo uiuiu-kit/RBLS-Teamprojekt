@@ -214,7 +214,7 @@ public class FassadeTest {
     //TODO assert hinzufügen
     this.memento = new Memento();
     testen.fuehreSicherungAus();
-    System.out.print(testen.gibGeloesteRaetsel(1));
+    assertTrue(!testen.gibGeloesteRaetsel(1).isEmpty());
   }
   
   //@Test

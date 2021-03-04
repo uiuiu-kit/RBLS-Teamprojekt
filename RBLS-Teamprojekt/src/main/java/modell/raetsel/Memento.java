@@ -1,11 +1,14 @@
 package modell.raetsel;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,12 +105,41 @@ public class Memento {
     }
     return output;
   }
+  
+  /** Überprüft, ob die Textdatei zur Sicherung der Informationen vorhanden ist 
+   * und erzeugt diese wenn nicht.
+
+   * @return  true, wenn die Datei nach ablauf der Methode existiert und auslesbar ist.
+   */
+  private boolean pruefeTextdatei() {
+    File file = new File("Resources/Sicherung/Sicherung.txt");
+    if (!file.exists()) {
+      String fileName = "Resources/Sicherung/Sicherung.txt";
+      String encoding = "UTF-8";
+      try {
+        PrintWriter writer = new PrintWriter(fileName, encoding);
+        writer.println("0");
+        writer.println("##");
+        writer.close();
+      } catch (IOException e) {
+        System.err.println("Error creating " + file.toString());
+      }
+    }
+    if (file.isFile() && file.canWrite() && file.canRead()) {
+      return true;
+    }
+    return false;
+  }
 
   /**
    * Liest die Memento-Textdatei und schreibt den Inhalt in eine String-Liste.
    * Erstellt außerdem eine Liste nur mit den Namen der bisher geloesten Raetsel.
    */
   private void liesMementoDatei() {
+    if (!pruefeTextdatei()) {
+      System.err.println("fehler bei Sicherungsdatei.txt. "
+          + "Datei ist nicht vorhanden und konnte nicht erstellt werden.");
+    }
     try {
       memento = extrahiere(Files.readAllLines(
           FileSystems.getDefault().getPath("Resources/Sicherung/Sicherung.txt"),
@@ -119,7 +151,6 @@ public class Memento {
       this.abschlussStufe = Integer.parseInt(memento.get(0));
     }
     memento.remove(0);
-    
   }
 
   private List<String> extrahiere(List<String> input) {
