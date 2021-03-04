@@ -44,7 +44,7 @@ public class Memento {
     try {
       fw = new FileWriter("Resources/Sicherung/Sicherung.txt");
     } catch (IOException e) {
-      System.err.println("Sicherung konnte nicht gelöscht werden.");
+      new praesentation.FehlerDialog("Sicherung konnte nicht gelöscht werden.");
     } finally {
       if (fw != null) {
         try {
@@ -83,7 +83,7 @@ public class Memento {
         fw.write(memento.get(i) + "\n"); //alle bisher geloesten Raetselnamen
       }
     } catch (IOException e) {
-      System.err.println("Sicherung konnte nicht erstellt werden.");
+      new praesentation.FehlerDialog("Sicherung konnte nicht erstellt werden.");
     } finally {
       if (fw != null) {
         try {
@@ -122,7 +122,7 @@ public class Memento {
         writer.println("##");
         writer.close();
       } catch (IOException e) {
-        System.err.println("Error creating " + file.toString());
+        new praesentation.FehlerDialog("Fehler bei erstellen einer neuen Sicherungsdatei: " + file.toString());
       }
     }
     if (file.isFile() && file.canWrite() && file.canRead()) {
@@ -137,7 +137,7 @@ public class Memento {
    */
   private void liesMementoDatei() {
     if (!pruefeTextdatei()) {
-      System.err.println("fehler bei Sicherungsdatei.txt. "
+      new praesentation.FehlerDialog("fehler bei Sicherungsdatei.txt. "
           + "Datei ist nicht vorhanden und konnte nicht erstellt werden.");
     }
     try {

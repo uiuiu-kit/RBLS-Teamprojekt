@@ -93,8 +93,9 @@ public class FassadeTest {
   public void gibNoetigeFormelTest() {
     if (!testen.gibNoetigeFormel().isEmpty()) {
       System.out.println(testen.gibNoetigeFormel().get(0));
+    } else {
+      assertTrue(testen.gibNoetigeFormel().isEmpty());
     }
-    assertTrue(testen.gibNoetigeFormel().isEmpty());
   }
   
   @Test

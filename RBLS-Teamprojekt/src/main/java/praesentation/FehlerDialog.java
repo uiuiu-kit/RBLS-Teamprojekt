@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
  * Oeffnet ein modales Dialogfenster mit Text und einer Schaltflaeche, um es wieder zu schliessen.
  * @author Nick
  */
-class FehlerDialog {
+public class FehlerDialog {
   private int hoehe = 200;
   private int breite = 600;
   
