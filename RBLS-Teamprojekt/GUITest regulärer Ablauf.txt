@@ -6,7 +6,7 @@ GUITest1 "Regulärer Ablauf"
  * @author Nick
  */
 
-@before Lösche den Inhalt der Datei '\Resources\Sicherung\Sicherung.txt', falls er existiert und ersetze ihn durch '0 ##'
+@before Lösche die Datei '\Resources\Sicherung\Sicherung.txt', falls die existiert.
 
 1. Führe das Programm aus.
      Erwartet: Das Hauptmenü wird angezeigt und die Schaltflächen der Stufen 2 bis 4 sowie die Schaltfläche 'Freier Modus' sind ausgegraut.
@@ -60,13 +60,13 @@ GUITest1 "Regulärer Ablauf"
 16. Klicke auf 'Formel einfügen' in einer der Spalten.
       Erwartet: Ein Eingabefenster öffnet sich. Alle Schaltflächen bis auf die drei atomaren Aussagen, '(', 'nicht' und 'Abbruch' sind deaktiviert.
      
-17. Gib die Formel (0 -> 2) ein und drücke auf 'Bestätigen'.
+17. Gib die Formel (A -> C) ein und drücke auf 'Bestätigen'.
       Erwartet: Während des Vorgangs sind alle Symbole deaktiviert, die zu einer ungültigen aussagenlogischen Formel führen würden.
                 Im oberen Teil des Fensters wird die bisher eingegebene Formel angezeigt.
                 Nach dem Klicken auf 'Bestätigen' ist die Formel in der Tabellenspalte eingetragen.
   
-18. Wiederhole Schritt 16 und 17 für die anderen drei Spalten mit den Formeln (0 OR 1), (1 --> 0), (NOT (0 AND 1 AND 2)) und klicke auf 'Fülle Tabelle'.
-      Erwartet: Die Tabelle wird entsprechend der Wahrheitswerte der Formeln ausgefüllt. Nur in der 3. Tabellenzeile sind die vier rechten Spalten alle mit 'wahr' gefüllt.
+18. Wiederhole Schritt 16 und 17 für die anderen drei Spalten mit den Formeln (A OR B), (B --> A), (NOT (A AND B AND C)) und klicke auf 'Fülle Tabelle'.
+      Erwartet: Die Tabelle wird entsprechend der Wahrheitswerte der Formeln ausgefüllt. Nur in einer Tabellenzeile sind die vier rechten Spalten alle mit 'wahr' gefüllt.
      
 19. Klicke auf 'Markieren' und danach zuerst auf eine atomare Aussage in der 0. Zeile, dann auf die 6. Zeile.
       Erwartet: Bei der 0. Zeile geschieht nichts, aber in der 6. Zeile sind die Farben hervorgehoben.
@@ -101,10 +101,10 @@ GUITest1 "Regulärer Ablauf"
       Erwartet: Das dazugehörige Rätselfenster öffnet sich. Neben der Tabelle sind vier Schaltflächen zu sehen.
                Für die Wahrheitswerte der atomaren Aussagen sind alle Fälle abgedeckt und die Tabelle hat drei Spalten.
                
-29. Füge vier Spalten hinzu und ergänze sie mit den Formeln (0 --> 1), (2 --> 0), (2 XOR 1), (0 OR 2) und klicke auf 'Fülle Tabelle'.
+29. Füge vier Spalten hinzu und ergänze sie mit den Formeln (A --> B), (C --> A), (C XOR B), (A OR C) und klicke auf 'Fülle Tabelle'.
       Erwartet: Nichts geschieht.
     
-30. Entferne die Spalte mit der Formel (2 XOR 1) und füge eine neue Spalte mit dem Inhalt (NOT (1 AND 2)) hinzu und klicke auf 'Fülle Tabelle'.
+30. Entferne die Spalte mit der Formel (C XOR B) und füge eine neue Spalte mit dem Inhalt (NOT (B AND C)) hinzu und klicke auf 'Fülle Tabelle'.
       Erwartet: Die Wahrheitstabelle wird gemäß der aussagenlogischen Formeln ausgefüllt.
                
 31. Wähle in der Combobox 'Danny & Ella' aus, klicke auf 'Prüfen', auf 'Weiter' und dann auf 'Zum Menü'.

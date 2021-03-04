@@ -10,7 +10,7 @@ GUITest1 "Zusätzliche Aktionen"
 4
 ##
 Butterbierdiebe
-Regen
+Sicher?
 Im Kino
 Kevins Tanten
 Volleyball
@@ -70,7 +70,7 @@ Test 2: Teste das Hinzufügen und Entfernen von Spalten und Formeln ausgiebig
       Erwartet: Beim Versuch, die Tabelle zu füllen, erscheint ein Hinweis und die hinzugefüge oberste Zelle wird als Tipp markiert.
                 Ein Eingabefenster öffnet sich. Alle Schaltflächen bis auf die drei atomaren Aussagen, '(', 'nicht' und 'Abbruch' sind deaktiviert.
                 
-4. Gib die Formel '1' ein und drücke auf 'Bestätigen'. Gib dann erneut die Formel '(0 -> 2' ein und drücke auf 'Bestätigen'.
+4. Gib die Formel '1' ein und drücke auf 'Bestätigen'. Gib dann erneut die Formel '(A -> C' ein und drücke auf 'Bestätigen'.
       Erwartet: Während des Vorgangs sind alle Symbole deaktiviert, die zu einer ungültigen aussagenlogischen Formel führen würden.
                 Im oberen Teil des Fensters wird die bisher eingegebene Formel angezeigt.
                 Nach dem Klicken auf 'Bestätigen' bei der zweiten Formel erscheint ein Hinweis.
@@ -78,8 +78,8 @@ Test 2: Teste das Hinzufügen und Entfernen von Spalten und Formeln ausgiebig
 5. Klicke auf 'Abbruch'.
       Erwartet: In der entsprechenden Spalte steht immer noch die Formel '1'.
                 
-6. Gib nacheinander die Formeln '0', '1', '0 -> 1' und '1 -> 0' ein klicke auf 'Fülle Tabelle'.
-      Erwartet: Die Tabelle wird entsprechend nicht ausgefüllt. Es erscheint ein Hinweis.
+6. Gib nacheinander die Formeln 'A', 'B', 'A -> B' und 'B -> A' ein klicke auf 'Fülle Tabelle'.
+      Erwartet: Die Tabelle wird nicht ausgefüllt. Es erscheint ein Hinweis.
      
 7. Klicke auf 'Markieren' und danach zuerst auf '+', dann auf '-', dann auf 'Makieren'. Wiederhole dasselbe mit '-' statt 'Markiere'.
       Erwartet: Beim Klicken auf '+' wird eine Spalte hinzugefügt, aber beim Klicken auf '-' geschieht nichts und beim Klicken auf 'Markieren' wird der Modus zurückgesetzt und umgekehrt.
@@ -125,14 +125,14 @@ Test 4: Teste die Formeleingabe und den freien Modus ausgiebig
       Erwartet: Ein Fenster mit dem Titel 'Freier Modus' und einer Wahrheitstabelle mit einem Schieberegler öffnet sich. Neben der Tabelle sind vier Schaltflächen zu sehen.
                 Die fünf Spalten beinhalten die zuvor eingegebenen Aussagen und für die Wahrheitswerte der atomaren Aussagen sind alle Fälle in binäre Schreibweise abgedeckt.
       
-3. Füge die maximale Anzahl an Spalten hinzu und befülle die Erste mit '0 AND 1 OR 2 XOR 3 -> 4 <-> NOT(0) XOR NOT(2 <-> 3 AND NOT(3 XOR 4))'.
+3. Füge die maximale Anzahl an Spalten hinzu und befülle die Erste mit 'A AND B OR C XOR D -> E <-> NOT(A) XOR NOT(C <-> D AND NOT(D XOR E))'.
     Entferne dabei die letzten drei Zeichen und gib sie wieder ein. Klicke auf 'Fülle Tabelle'.
       Erwartet: Die entsprechende Spalte wird gefüllt, der Rest bleibt gleich.
  
-4. Befülle den Rest der Tabelle mit '0'. Klicke zweimal auf 'Fülle Tabelle'.
+4. Befülle den Rest der Tabelle mit 'A'. Klicke zweimal auf 'Fülle Tabelle'.
       Erwartet: Die Tabelle wird entsprechend befüllt.
       
-5. Markiere die ersten vier Zeilen. Ändere die Formel in der letzten Spalte ab zu '4' und klicke auf 'Fülle Tabelle'.
+5. Markiere die ersten vier Zeilen. Ändere die Formel in der letzten Spalte ab zu 'E' und klicke auf 'Fülle Tabelle'.
       Erwartet: Die Tabelle wird sowohl textuell als auch farblich korrekt ausgefüllt.
 
 6. Klicke auf 'Markieren' und dann unter die Tabelle. Wiederhole dasselbe für '-'.
