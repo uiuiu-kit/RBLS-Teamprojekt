@@ -46,7 +46,7 @@ public class StufenRaetselFenster extends RaetselFenster {
     this.modell = modell;
     this.tabelle = new KonkreteTabellenAnsicht(modell, wstrg);
     this.name = modell.gibAktivenRaetselnamen();
-    this.frage = modell.gibFragestellung();
+    this.frage = modell.gibFragestellung().replaceAll("#", "\n");
     
     ansicht = new JPanel();
     ansicht.setLayout(new BoxLayout(ansicht, BoxLayout.Y_AXIS));

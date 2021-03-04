@@ -1,10 +1,10 @@
 Im Kino
 ##
-Ralf, Sabine und Thomas verabreden sich fürs Kino und halten sich an folgende Regeln: 
-(1) Wenn Ralf kommt, dann auch Thomas. 
-(2) Es kommt Ralf oder Sabine. 
-(3) Wenn Sabine kommt, dann kommt auch Ralf. 
-(4) Sie gehen nicht alle drei gemeinsam. 
+Ralf, Sabine und Thomas verabreden sich fürs Kino und halten sich an folgende Regeln:#
+(1) Wenn Ralf kommt, dann auch Thomas.#
+(2) Es kommt Ralf oder Sabine.#
+(3) Wenn Sabine kommt, dann kommt auch Ralf.#
+(4) Sie gehen nicht alle drei gemeinsam.#
  Ermittle die Kinogänger mit Hilfe der Wahrheitstabelle. Erstelle dazu auch die passenden aussagenlogischen Formeln im Tabellenkopf, indem du die Tabelle um neue Spalten erweiterst.
 ##
 geht/en ins Kino.

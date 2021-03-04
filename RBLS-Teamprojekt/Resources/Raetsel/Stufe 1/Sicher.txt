@@ -1,9 +1,8 @@
 ﻿Sicher?
 ##
-Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen. Die eine führt gerade aus
-und an der Straße rechts davon steuert eine Ampel die Linksabbieger. Die Fahrspuren kreuzen 
-sich also und es kann zu Unfällen kommen. 
-Wann ist die Kreuzung nicht vor Unfällen geschützt?
+Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen. Die eine führt gerade aus und an der Straße rechts 
+davon steuert eine Ampel die Linksabbieger. Die Fahrspuren kreuzen sich also und es kann zu Unfällen kommen.#
+Wann ist die Kreuzung nicht vor Unfällen geschützt?#
 Verändere hierzu die Wahrheitswertkombinationen unterhalb der Namen. Und gib die Lösung an.
 ##
 

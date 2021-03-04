@@ -1,13 +1,13 @@
 Müllers zu Gast
 ##
 Auf Frau Salfelds Bemerkung: "Für heute Abend habe ich Müllers eingeladen" entgegnet ihr Mann bestürzt: "Kommen alle fünf, also beide Eltern und die drei Söhne?" 
-Frau Salfeld liebt logische Spielereien und gibt mit Freude folgende Tipps:
-1) Wenn Herr Müller kommt, dann bringt er seine Frau mit.
-2) Es kommt mindestens einer der Söhne Bert und Chris.
-3) Entweder kommt Frau Müller oder ihr Sohn Anton.
-4) Anton und Chris kommen entweder beide oder aber beide nicht.
-5) Wenn Bert kommt, dann kommen auch Chris und Herr Müller.
-Wer kommt abends zu Besuch? Stelle hierzu zuerst die benötigten aussagenlogischen Formeln auf. Hierzu musst du wieder Spalten hinzufügen.
+Frau Salfeld liebt logische Spielereien und gibt mit Freude folgende Tipps:#
+1) Wenn Herr Müller kommt, dann bringt er seine Frau mit.#
+2) Es kommt mindestens einer der Söhne Bert und Chris.#
+3) Entweder kommt Frau Müller oder ihr Sohn Anton.#
+4) Anton und Chris kommen entweder beide oder aber beide nicht.#
+5) Wenn Bert kommt, dann kommen auch Chris und Herr Müller.#
+Wer kommt abends zu Besuch? #Stelle hierzu zuerst die benötigten aussagenlogischen Formeln auf. Hierzu musst du wieder Spalten hinzufügen.#
 (Tipp: Es ist nicht nötig, alle 2^5 Kombinationen zu berücksichtigen, weshalb Anton & Chris bereits zusammengefasst wurden. Kommst du darauf,
 warum es nicht nötig ist?)
 ##
