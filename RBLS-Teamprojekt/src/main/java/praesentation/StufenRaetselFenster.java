@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+
 import modell.Fassade;
 import steuerung.WahrheitstabellenSteuerungen;
 
@@ -84,12 +87,20 @@ public class StufenRaetselFenster extends RaetselFenster {
     frageFeld.setHighlighter(null);
     frageFeld.setLineWrap(true);
     frageFeld.setWrapStyleWord(true);
-    frageFeld.setPreferredSize(new Dimension(1, (int) (frage.length() * 0.3)));
     
     JPanel frageFeldPanel = new JPanel();
     frageFeldPanel.setLayout(new BorderLayout());
-    frageFeldPanel.add(frageFeld, BorderLayout.CENTER);
+    JScrollPane schiebeRegler = new JScrollPane(frageFeld);
+    schiebeRegler.setBorder(BorderFactory.createEmptyBorder());
+    schiebeRegler.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+      protected void configureScrollBarColors() {
+          this.thumbColor = new Color(255, 102, 0);
+          this.trackColor = new Color(186, 185, 219);
+      }
+    });
+    frageFeldPanel.add(schiebeRegler, BorderLayout.CENTER);
     JPanel frageRahmen = erzeugeRahmenPanel(frageFeldPanel, this.name);
+    frageRahmen.setPreferredSize(new Dimension(1, (int) (frage.length() * 0.8)));
     
     fragePanel.add(menuePanel, BorderLayout.WEST);
     fragePanel.add(frageRahmen, BorderLayout.CENTER);
