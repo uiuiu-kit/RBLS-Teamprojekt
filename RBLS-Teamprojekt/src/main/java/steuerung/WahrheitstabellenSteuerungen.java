@@ -7,6 +7,7 @@ public class WahrheitstabellenSteuerungen {
   private Fassade model;
   private TabellenPruefer tabellenPruefer;
   private int stufe;
+  private boolean tabelleVoll;
 
   /**
    * Konstruktor f�r die WahrheitstabellenSteuerungen.
@@ -17,6 +18,7 @@ public class WahrheitstabellenSteuerungen {
     this.model = model;
     this.stufe = model.gibStufe();
     tabellenPruefer = new TabellenPruefer(model, stufe);
+    tabelleVoll = false;
   }
 
   /**
@@ -59,6 +61,7 @@ public class WahrheitstabellenSteuerungen {
       case "FuelleTabelle":
         if ((stufe == 1 || stufe == 2 || stufe == 4) && tabellenPruefer.tabelleFuellenErlaubt()) {
           new FuelleTabelle(model);
+          tabelleVoll = true;
         }
         break;
       case "SpalteEntfernen":
@@ -88,11 +91,7 @@ public class WahrheitstabellenSteuerungen {
    * @return
    */
   public boolean gibTabelleVoll() {
-    if ((tabellenPruefer.tabelleFuellenErlaubt() && stufe != 3)
-        || (stufe == 3 && gibTip() == null)) {
-      return true;
-    }
-    return false;
+    return tabelleVoll;
   }
 
   public int[] gibTip() {
