@@ -29,7 +29,7 @@ public class Nicht extends Konnektor {
 
   @Override
   public String gibStringRep() {
-    if (bindungsstaerke < rechts.bindungsstaerke) {
+    if (bindungsstaerke > rechts.bindungsstaerke) {
       return this.rep + "(" + this.rechts.gibStringRep() + ")";
     }
     return this.rep + this.rechts.gibStringRep();
@@ -37,7 +37,7 @@ public class Nicht extends Konnektor {
 
   @Override
   public String gibParsable() {
-    if (bindungsstaerke < rechts.bindungsstaerke) {
+    if (bindungsstaerke > rechts.bindungsstaerke) {
       return this.zeichen + "(" + this.rechts.gibParsable() + ")";
     }
     return this.zeichen + this.rechts.gibParsable();
