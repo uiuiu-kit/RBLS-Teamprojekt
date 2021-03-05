@@ -7,6 +7,7 @@ public class FormelEditor {
   private List<String> atomareAussagen;
   private String formelAlt;
   private String formel;
+  private boolean betaetige;
 
   /**
    * Konstruktor f�r den FormelEditor.
@@ -16,6 +17,7 @@ public class FormelEditor {
    */
   public FormelEditor(List<String> atomareAussagen) {
     this.atomareAussagen = atomareAussagen;
+    betaetige = false;
   }
 
   /**
@@ -36,7 +38,11 @@ public class FormelEditor {
       formel = formelAlt;
     }
     new FormelAnsicht(listToArray(atomareAussagen), this, formelAltRep);
-    return this.formel;
+    if (betaetige) {
+      return this.formel;
+    } else {
+      return formelAlt;
+    }
   }
 
   /**
@@ -73,6 +79,7 @@ public class FormelEditor {
       char letzerCh = formel.charAt(formel.length() - 1);
       if (!klammerOffen() && (letzerCh == '0' || letzerCh == '1' || letzerCh == '2'
           || letzerCh == '3' || letzerCh == '4' || letzerCh == ')')) {
+        betaetige = true;
         return true;
       }
     }
