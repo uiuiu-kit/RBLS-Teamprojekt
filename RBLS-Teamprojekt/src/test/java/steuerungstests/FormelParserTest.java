@@ -111,6 +111,13 @@ public class FormelParserTest {
     assertEquals(false, formel.auswerten(fall));
     assertEquals("A\u2227(C\u2295(B\u2192B))", formel.gibStringRep());
   }
+  
+  @Test
+  public void testzweifachKlammern() {
+    Formel formel = FormelParser.pars("((1))", sfMock);
+    assertEquals(false, formel.auswerten(fall));
+    assertEquals("B", formel.gibStringRep());
+  }
 
   @Test
   public void testzweiunabhaenigeKlammern() {
