@@ -1,17 +1,18 @@
 package modell.formel;
 
-/** Der Nicht-Konnektor erbt direkt vom Konnektor und besitzt ein Formelobjekt als rechten Nachbarn.
- * Dessen Wahrheitswert negiert es beim Auswerten. 
- * Seine String-Repraesentation ist "n".
-
+/**
+ * Der Nicht-Konnektor erbt direkt vom Konnektor und besitzt ein Formelobjekt
+ * als rechten Nachbarn. Dessen Wahrheitswert negiert es beim Auswerten. Seine
+ * String-Repraesentation ist "n".
+ * 
  * @author Flo
  *
  */
 public class Nicht extends Konnektor {
-  
- 
-  /** Konstruktor. Setzt die rechte Formel.
 
+  /**
+   * Konstruktor. Setzt die rechte Formel.
+   * 
    * @param rechts Die rechte Formel.
    */
   public Nicht(Formel rechts) {
@@ -19,7 +20,7 @@ public class Nicht extends Konnektor {
     this.rep = "\u00AC";
     this.bindungsstaerke = 5;
   }
-  
+
   @Override
   public boolean auswerten(boolean[] werte) {
     return !(rechts.auswerten(werte));
@@ -27,6 +28,9 @@ public class Nicht extends Konnektor {
 
   @Override
   public String gibStringRep() {
+    if (bindungsstaerke < rechts.bindungsstaerke) {
+      return this.rep + "(" + this.rechts.gibStringRep() + ")";
+    }
     return this.rep + this.rechts.gibStringRep();
   }
 
