@@ -195,7 +195,7 @@ public class FormelAnsicht {
     ansicht.setAlwaysOnTop(true);
     ansicht.setModal(true);
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
-    ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    ansicht.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     pruefeErlaubteZeichen();
     ansicht.setVisible(true);
 
@@ -250,7 +250,7 @@ public class FormelAnsicht {
     if (strg.bestaetige()) {
       ansicht.dispose();
     } else {
-      new FehlerDialog("Das ist keine gültige aussagenlogische Formel");
+      new FehlerDialog("Das ist keine gültige aussagenlogische Formel", this.ansicht);
     }
   }
 
