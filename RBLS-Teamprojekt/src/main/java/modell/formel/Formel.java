@@ -23,4 +23,8 @@ public abstract class Formel {
   public String gibStringRep() {
     return null;
   }
+  
+  public String gibParsable() {
+    return null;
+  }
 }

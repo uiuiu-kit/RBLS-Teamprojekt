@@ -16,7 +16,6 @@ public class FormelEditor {
    */
   public FormelEditor(List<String> atomareAussagen) {
     this.atomareAussagen = atomareAussagen;
-    formel = "";
   }
 
   /**
@@ -28,10 +27,15 @@ public class FormelEditor {
    *                  wird falls abgebrochen wird.
    * @return die neue Formel.
    */
-  public String gibNeueFormel(String formelAlt) {
+  public String gibNeueFormel(String formelAlt, String formelAltRep) {
     this.formelAlt = formelAlt;
-    FormelAnsicht ansicht = new FormelAnsicht(listToArray(atomareAussagen), this);
-    ansicht.getFormel();
+    if (formelAlt.equals("-1")) {
+      formelAltRep = "";
+      formel = "";
+    } else {
+      formel = formelAlt;
+    }
+    new FormelAnsicht(listToArray(atomareAussagen), this, formelAltRep);
     return this.formel;
   }
 

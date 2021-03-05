@@ -19,6 +19,7 @@ public class Oder extends BiKonnektor {
     this.links = links;
     this.rep = "\u2228";
     this.bindungsstaerke = 2;
+    this.zeichen = "o";
   }
   
   @Override

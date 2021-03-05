@@ -19,6 +19,7 @@ public class Und extends BiKonnektor {
     this.links = links;
     this.rep = "\u2227";
     this.bindungsstaerke = 4;
+    this.zeichen = "u";
   }
   
   @Override

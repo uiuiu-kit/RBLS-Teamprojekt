@@ -56,8 +56,9 @@ public class FormelAnsicht {
    *                 sollen
    * @param strg     Formeleditor zur Kommunikation
    */
-  public FormelAnsicht(String[] aussagen, FormelEditor strg) {
+  public FormelAnsicht(String[] aussagen, FormelEditor strg, String formelAlt) {
     this.strg = strg;
+    this.formel = formelAlt;
     JPanel aussagenPanel = new JPanel();
     aussagenPanel.setLayout(new FlowLayout());
     atomareAussagen = new Schaltflaeche[aussagen.length];

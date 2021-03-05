@@ -192,4 +192,18 @@ public class Tabelle {
     return this.gibAussagenlogischeFormel(temp).gibStringRep();
   }
 
+  /**
+   * Gibt die Formel als Text wieder.
+   * 
+   * @param s Spalte, in der die Formel zu finden ist.
+   * @return String der Formel.
+   */
+  public String gibFormelParsabel(int s) {
+    int[] temp = { 0, s };
+    if (s < atomAnz) {
+      return null;
+    }
+    return this.gibAussagenlogischeFormel(temp).gibParsable();
+  }
+
 }

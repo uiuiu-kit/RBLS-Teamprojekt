@@ -21,6 +21,7 @@ public class Aequivalenz extends BiKonnektor {
     this.links = links;
     this.rep = "\u2194";
     this.bindungsstaerke = 0;
+    this.zeichen = "a";
   }
 
   @Override

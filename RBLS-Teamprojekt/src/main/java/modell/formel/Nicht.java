@@ -19,6 +19,7 @@ public class Nicht extends Konnektor {
     this.rechts = rechts;
     this.rep = "\u00AC";
     this.bindungsstaerke = 5;
+    this.zeichen = "n";
   }
 
   @Override
@@ -34,4 +35,11 @@ public class Nicht extends Konnektor {
     return this.rep + this.rechts.gibStringRep();
   }
 
+  @Override
+  public String gibParsable() {
+    if (bindungsstaerke < rechts.bindungsstaerke) {
+      return this.zeichen + "(" + this.rechts.gibParsable() + ")";
+    }
+    return this.zeichen + this.rechts.gibParsable();
+  }
 }

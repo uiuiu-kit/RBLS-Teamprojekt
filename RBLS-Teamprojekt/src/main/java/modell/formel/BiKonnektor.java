@@ -28,4 +28,21 @@ public abstract class BiKonnektor extends Konnektor {
     }
     return ausdruck;
   }
+
+  @Override
+  public String gibParsable() {
+    String ausdruck;
+    ausdruck = this.zeichen;
+    if (bindungsstaerke > links.bindungsstaerke) {
+      ausdruck = "(" + links.gibParsable() + ")" + ausdruck;
+    } else {
+      ausdruck = links.gibParsable() + ausdruck;
+    }
+    if (bindungsstaerke > rechts.bindungsstaerke) {
+      ausdruck = ausdruck + "(" + rechts.gibParsable() + ")";
+    } else {
+      ausdruck = ausdruck + rechts.gibParsable();
+    }
+    return ausdruck;
+  }
 }

@@ -19,6 +19,7 @@ public class Implikation extends BiKonnektor {
     this.links = links;
     this.rep = "\u2192";
     this.bindungsstaerke = 1;
+    this.zeichen = "f";
   }
   
   @Override

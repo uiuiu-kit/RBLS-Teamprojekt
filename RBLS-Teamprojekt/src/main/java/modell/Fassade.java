@@ -219,6 +219,11 @@ public class Fassade {
     this.aktualisiere();
     return tabelle.gibFormelText(spalte);
   }
+  
+  public String gibFormelParsabel(int spalte) {
+    this.aktualisiere();
+    return tabelle.gibFormelParsabel(spalte);
+  }
 
   public int gibStufe() {
     this.aktualisiere();

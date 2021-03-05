@@ -45,4 +45,9 @@ public class Atom extends Formel {
   public String gibStringRep() {
     return rep;
   }
+
+  @Override
+  public String gibParsable() {
+    return "" + nummer;
+  }
 }
