@@ -24,7 +24,7 @@ public class FormelParser {
     Formel formelF = null;
     List<String> klammerAusdruecke = new ArrayList<String>();
     if (formelS.length() > 1) {
-      if (umfassendeKlammer(formelS)) {
+      while (umfassendeKlammer(formelS)) {
         formelS = formelS.substring(1, formelS.length() - 1);
       }
     }
