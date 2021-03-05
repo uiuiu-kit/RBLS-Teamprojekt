@@ -19,6 +19,10 @@ public class FehlerDialog {
   private int hoehe = 200;
   private int breite = 600;
   
+  /**
+   * Erstellt und oeffnet ein Dialogfenster mit Text und einem Button zum Schliessen.
+   * @param text Der anzuzeigende Text
+   */
   public FehlerDialog(String text) {
     JDialog dialog = new JDialog();
     dialog.getContentPane().setLayout(new BorderLayout());
