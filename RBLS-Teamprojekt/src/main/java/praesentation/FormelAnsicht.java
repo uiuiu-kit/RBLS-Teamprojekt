@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -209,7 +211,12 @@ public class FormelAnsicht {
     ansicht.setAlwaysOnTop(true);
     ansicht.setModal(true);
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
-    ansicht.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    ansicht.addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        brecheAb();
+      }
+    });
     pruefeErlaubteZeichen();
     ansicht.setVisible(true);
 
