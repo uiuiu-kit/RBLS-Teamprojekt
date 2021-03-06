@@ -15,6 +15,6 @@ chattet, surft, liest
 ##
 1
 ##
-(1o0)a(n1on2), (0on2)a(2on1), (n0o2)a(0o1)
+(1o0)x(n1on2), (0on2)x(2on1), (n0o2)x(0o1)
 ##
 4
