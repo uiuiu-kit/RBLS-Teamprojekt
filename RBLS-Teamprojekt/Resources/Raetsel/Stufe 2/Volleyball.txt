@@ -3,7 +3,7 @@ Volleyball
 Die 7a stellt ein Volleyballteam fürs Schulturnier zusammen. Folgende atomare Aussagen werden betrachtet:#
 (h): Anja spielt im Team.#
 (s): Beate spielt im Team.#
-Füge wieder Spalten hinzu und trage die passenden aussagenlogischen Formeln in die oberste Tabellenzeile ein. Finde heraus, wer im Team spielt.# 
+Füge wieder Spalten hinzu und trage die passenden aussagenlogischen Formeln in die oberste Tabellenzeile ein. Finde heraus, wer im Team spielt.#
 (1) Wenn Anja im Team spielt, dann spielt Beate auch mit.#
 (2) Entweder spielen Anja und Beate beide mit oder es spielt keine von beiden mit.#
 (3) Weder Anja noch Beate spielen im Team.

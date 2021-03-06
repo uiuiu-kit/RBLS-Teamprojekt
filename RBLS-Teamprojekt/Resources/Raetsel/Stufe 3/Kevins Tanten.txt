@@ -14,6 +14,6 @@ Ada, Berte, Charlotte
 ##
 5
 ##
-n(1u2), 0a2, 1f0, n(n0un1un2)
+n(1u2), 0x2, 1f0, n(n0un1un2)
 ##
 3

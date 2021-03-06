@@ -3,7 +3,8 @@ Ampelchaos
 Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen. Die eine führt gerade aus (Ampel A) und an der Straße rechts 
 davon steuert eine Ampel die Linksabbieger (Ampel B). Die Fahrspuren kreuzen sich also und es kann zu Unfällen kommen.#
 Wann ist die Kreuzung nicht vor Unfällen geschützt?#
-Verändere hierzu die Wahrheitswertkombinationen unterhalb der Namen und gib die Lösung an.
+Verändere hierzu die Wahrheitswertkombinationen unterhalb der Namen und gib die Lösung an.#
+Wahr steht für eine grüne Ampel.
 ##
 
 ##

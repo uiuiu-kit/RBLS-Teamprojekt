@@ -5,7 +5,7 @@ Anton, Bella und Chris verabreden sich fürs Kino und halten sich an folgende Re
 (2) Es kommt Anton oder Bella.#
 (3) Wenn Bella kommt, dann kommt auch Anton.#
 (4) Sie gehen nicht alle drei gemeinsam.#
- Ermittle die Kinogänger mit Hilfe der Wahrheitstabelle. Erstelle dazu auch die passenden aussagenlogischen Formeln im Tabellenkopf, indem du die Tabelle um neue Spalten erweiterst.
+Ermittle die Kinogänger mit Hilfe der Wahrheitstabelle. Erstelle dazu auch die passenden aussagenlogischen Formeln im Tabellenkopf, indem du die Tabelle um neue Spalten erweiterst.
 ##
 geht/en ins Kino.
 ##
