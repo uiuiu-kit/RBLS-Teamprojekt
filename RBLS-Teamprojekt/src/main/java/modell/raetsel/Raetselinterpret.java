@@ -102,43 +102,55 @@ public class Raetselinterpret {
   public Raetsel liesRaetsel(String input) {
     String titel = input + ".txt";
     List<String> rows = null;
-    try {
-      rows = Files.readAllLines(
+    File file = findeRaetsel(titel);
+    if (file != null) {
+      try {
+        rows = Files.readAllLines(
           FileSystems.getDefault().getPath(findeRaetsel(titel).getAbsolutePath()), 
           StandardCharsets.UTF_8);
-    } catch (IOException e) {
-      e.printStackTrace();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      String text = "";
+      for (String temp : rows) {
+        text += temp;
+      }
+      String[] lines = extrahiere(text);
+      List<String> atome = null;
+      String[] antwortM = lines[3].split(",");
+      List<String> formeln = new ArrayList<String>();    
+      for (String temp : lines[6].split(",")) {
+        formeln.add(killSpace(temp));
+      }
+      //String[] name = lines[0].split(".txt");
+      atome = this.exAtome(lines[4]);
+      for (int i = 0; i < antwortM.length; i++) {
+        antwortM[i] = killSpace(antwortM[i]);
+      }
+      
+      return new Raetsel(
+          input,                    //spaltenAnz
+          Integer.parseInt(lines[7]), //stufe
+          atome,                      //Atome
+          lines[1],                   //Raetseltext
+          antwortM,                   //Antwortm�glichkeiten
+          Integer.parseInt(lines[5]), //Wievielte Antwort die L�sung ist
+          lines[2],                   //Antworttext
+          formeln);                   //Formelliste  
+    } else {
+      new praesentation.FehlerDialog("Raetsel konnte nicht gefunden werden. "
+          + "Starte Freies Raetsel"); 
+      List<String> notfall = new ArrayList<String>();
+      notfall.add("A");
+      notfall.add("B");
+      notfall.add("C");
+      return erstelleFrRa(notfall);
     }
-    String text = "";
-    for (String temp : rows) {
-      text += temp;
-    }
-    String[] lines = extrahiere(text);
-    List<String> atome = null;
-    String[] antwortM = lines[3].split(",");
-    List<String> formeln = new ArrayList<String>();    
-    for (String temp : lines[6].split(",")) {
-      formeln.add(killSpace(temp));
-    }
-    //String[] name = lines[0].split(".txt");
-    atome = this.exAtome(lines[4]);
-    for (int i = 0; i < antwortM.length; i++) {
-      antwortM[i] = killSpace(antwortM[i]);
-    }
-    return new Raetsel(
-        input,                    //spaltenAnz
-        Integer.parseInt(lines[7]), //stufe
-        atome,                      //Atome
-        lines[1],                   //Raetseltext
-        antwortM,                   //Antwortm�glichkeiten
-        Integer.parseInt(lines[5]), //Wievielte Antwort die L�sung ist
-        lines[2],                   //Antworttext
-        formeln);                   //Formelliste  
   }
   
   /** Hiermit wird ein Raetsel im freien Modus erstellt.
 
-   * @param atomA Anzahl und Namen der verfuegbaren Atomaren Aussagen, die der Benutzer angeben kann.
+   * @param atomA Anzahl und Namen der verfuegbaren Atomaren Aussagen, die Benutzer angeben kann.
    */
   public Raetsel erstelleFrRa(List<String> atomA) {
     return new Raetsel(
