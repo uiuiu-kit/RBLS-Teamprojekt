@@ -91,7 +91,7 @@ public class WahrheitstabellenSteuerungen {
    * @return
    */
   public boolean gibTabelleVoll() {
-    if(stufe == 3) {
+    if (stufe == 3) {
       return gibTip() == null;
     }
     return tabelleVoll;
