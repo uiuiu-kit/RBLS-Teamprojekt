@@ -1,18 +1,22 @@
 package praesentation;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import steuerung.FormelEditor;
 
 /**
@@ -181,7 +185,17 @@ public class FormelAnsicht {
 
     ansicht = new JDialog();
     ansicht.getContentPane().setLayout(new BoxLayout(ansicht.getContentPane(), BoxLayout.Y_AXIS));
-    ansicht.getContentPane().add(formelPanel);
+    JScrollPane formelRegler = new JScrollPane(formelPanel, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+        JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    formelRegler.setBorder(BorderFactory.createEmptyBorder());
+    formelRegler.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+      protected void configureScrollBarColors() {
+        this.thumbColor = new Color(255, 102, 0);
+        this.trackColor = new Color(186, 185, 219);
+      }
+    });
+    formelRegler.setPreferredSize(new Dimension(Integer.MAX_VALUE, 52));
+    ansicht.getContentPane().add(formelRegler);
     ansicht.getContentPane().add(aussagenPanel);
     ansicht.getContentPane().add(operatorPanel1);
     ansicht.getContentPane().add(operatorPanel2);
@@ -195,7 +209,7 @@ public class FormelAnsicht {
     ansicht.setAlwaysOnTop(true);
     ansicht.setModal(true);
     ansicht.getContentPane().setBackground(Color.LIGHT_GRAY);
-    ansicht.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+    ansicht.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     pruefeErlaubteZeichen();
     ansicht.setVisible(true);
 
@@ -250,7 +264,7 @@ public class FormelAnsicht {
     if (strg.bestaetige()) {
       ansicht.dispose();
     } else {
-      new FehlerDialog("Das ist keine gültige aussagenlogische Formel");
+      new FehlerDialog("Das ist keine gültige aussagenlogische Formel", this.ansicht);
     }
   }
 

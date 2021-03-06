@@ -18,13 +18,32 @@ import javax.swing.SwingConstants;
 public class FehlerDialog {
   private int hoehe = 200;
   private int breite = 600;
+  private JDialog dialog;
+  private String text;
   
   /**
    * Erstellt und oeffnet ein Dialogfenster mit Text und einem Button zum Schliessen.
    * @param text Der anzuzeigende Text
    */
   public FehlerDialog(String text) {
-    JDialog dialog = new JDialog();
+    dialog = new JDialog();
+    this.text = text;
+    zeigeDialog();
+  }
+  
+  /**
+   * Erstellt und oeffnet ein Dialogfenster mit Text und einem Button zum Schliessen 
+   * ueber einem vorhandenen Fenster.
+   * @param text Der anzuzeigende Text
+   * @param frame Hinteres Fenster
+   */
+  public FehlerDialog(String text, JDialog frame) {
+    dialog = new JDialog(frame);
+    this.text = text;
+    zeigeDialog();
+  }
+  
+  private void zeigeDialog() {
     dialog.getContentPane().setLayout(new BorderLayout());
     JLabel dialogtext = new JLabel(text, SwingConstants.CENTER);
     dialogtext.setFont(new javax.swing.plaf.FontUIResource("Arial Unicode MS", Font.BOLD, 20));
