@@ -1,7 +1,7 @@
 ﻿Auf der Tanzflaeche
 ##
 Anna, Bea und Carla gehen zusammen in die Disco. Beim Tanzen haben sie ihre Prinzipien:#
-(1) Wenn Anna tanzt, dann tanzt auch Bea.#
+(1) Wenn Anna tanz, dann tanzt auch Bea.#
 (2) Anna oder Carla tanzen auf jeden Fall.#
 (3) Wenn Carla tanzt, dann auch Anna.#
 (4) Bea und Carla tanzen beide sehr gerne, aber nie gleichzeitig.#
