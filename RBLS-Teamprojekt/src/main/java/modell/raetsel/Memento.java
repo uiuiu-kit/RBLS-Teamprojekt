@@ -122,8 +122,7 @@ public class Memento {
         writer.println("##");
         writer.close();
       } catch (IOException e) {
-        new praesentation.FehlerDialog("Fehler bei erstellen einer neuen Sicherungsdatei: "
-            + file.toString());
+        new praesentation.FehlerDialog("Fehler beim Erstellen. Ist der Ordner entpackt?");
       }
     }
     if (file.isFile() && file.canWrite() && file.canRead()) {
@@ -138,8 +137,7 @@ public class Memento {
    */
   private void liesMementoDatei() {
     if (!pruefeTextdatei()) {
-      new praesentation.FehlerDialog("fehler bei Sicherungsdatei.txt. "
-          + "Datei ist nicht vorhanden und konnte nicht erstellt werden.");
+      new praesentation.FehlerDialog("Die Sicherungsdatei ist nicht erstellbar.");
     }
     try {
       memento = extrahiere(Files.readAllLines(

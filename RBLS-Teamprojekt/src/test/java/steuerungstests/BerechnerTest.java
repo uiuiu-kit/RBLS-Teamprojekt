@@ -39,9 +39,9 @@ public class BerechnerTest {
   @Test
   public void berechnerTest2() {
     int anzAtom = 3;
-    boolean[][] expFaelle = { { true, true, true }, { false, true, true }, { true, false, true },
-        { false, false, true }, { true, true, false }, { false, true, false },
-        { true, false, false }, { false, false, false } };
+    boolean[][] expFaelle = { { false, false, false }, { false, false, true },
+        { false, true, false }, { false, true, true }, { true, false, false },
+        { true, false, true }, { true, true, false }, { true, true, true } };
     boolean[][] faelle = new boolean[8][3];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
     assertArrayEquals(expFaelle, faelle);
@@ -50,7 +50,7 @@ public class BerechnerTest {
   @Test
   public void berechnerTest1() {
     int anzAtom = 1;
-    boolean[][] expFaelle = { { true }, { false } };
+    boolean[][] expFaelle = { { false }, { true } };
     boolean[][] faelle = new boolean[2][1];
     faelle = Berechner.faelleBerechnen(anzAtom, faelle, 0);
     assertArrayEquals(expFaelle, faelle);
@@ -61,13 +61,13 @@ public class BerechnerTest {
     assertTrue(Berechner.vergleicheFormel(FormelParser.pars("0", sfMock),
         FormelParser.pars("0", sfMock), 1));
   }
-  
+
   @Test
   public void formelvergleicherTest2() {
     assertTrue(Berechner.vergleicheFormel(FormelParser.pars("0u1", sfMock),
         FormelParser.pars("0u1", sfMock), 2));
   }
-  
+
   @Test
   public void formelvergleicherTest3() {
     assertTrue(Berechner.vergleicheFormel(FormelParser.pars("0o1", sfMock),
@@ -79,5 +79,5 @@ public class BerechnerTest {
     assertFalse(Berechner.vergleicheFormel(FormelParser.pars("0o1", sfMock),
         FormelParser.pars("1u0", sfMock), 2));
   }
-  
+
 }

@@ -70,7 +70,7 @@ Test 2: Teste das Hinzufügen und Entfernen von Spalten und Formeln ausgiebig
       Erwartet: Beim Versuch, die Tabelle zu füllen, erscheint ein Hinweis und die hinzugefüge oberste Zelle wird als Tipp markiert.
                 Ein Eingabefenster öffnet sich. Alle Schaltflächen bis auf die drei atomaren Aussagen, '(', 'nicht' und 'Abbruch' sind deaktiviert.
                 
-4. Gib die Formel '1' ein und drücke auf 'Bestätigen'. Gib dann erneut die Formel '(A -> C' ein und drücke auf 'Bestätigen'.
+4. Gib die Formel 'A' ein und drücke auf 'Bestätigen'. Gib dann erneut die Formel '(A -> C' ein und drücke auf 'Bestätigen'.
       Erwartet: Während des Vorgangs sind alle Symbole deaktiviert, die zu einer ungültigen aussagenlogischen Formel führen würden.
                 Im oberen Teil des Fensters wird die bisher eingegebene Formel angezeigt.
                 Nach dem Klicken auf 'Bestätigen' bei der zweiten Formel erscheint ein Hinweis.

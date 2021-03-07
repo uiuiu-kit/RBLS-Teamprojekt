@@ -2,7 +2,15 @@
 RBLS Teamprojekt 2021 KIT
 
 
-Das Programm ist in dem .zip-File RBLS-Teamprojekt_V_(versionsnummer).zip diese Datei muss man sich downloaden und auf seinem PC an einem beliebigen Ort entpacken. Zum ausführen muss man die .jar starten. Weder die .jar noch der Resourcen-Ordner dürfen voneinander getrennt werden.
+Installation über die Kommandozeile:
+ >cd [Verzeichnis des Repositoriums]\RBLS-Teamprojekt
+ >mvn package -DskipTests=true
+ Im Verzeichnis \RBLS-Teamprojekt\target sollte sich nun eine .zip-Datei befinden.
+ Nach dem Extrahieren lässt sich die Jar-Datei öffnen, wobei keine Dateien aus dem Verzeichnis entfernt werden dürfen.
 
-Systemvorraussetzungen:
-Programm zum entpacken von .zip-Files, Java 8
+Alternativ: 
+ Im root-Verzeichnis des Repositoriums befindet sich eine .zip-Datei.
+ Nach dem Entpacken lässt sich die Jar-Datei öffnen, wobei keine Dateien aus dem Verzeichnis entfernt werden dürfen.
+
+Systemvoraussetzungen:
+Programm zum entpacken von .zip-Dateien, Java 8, Installation von Maven
