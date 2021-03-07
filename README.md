@@ -2,6 +2,8 @@
 RBLS Teamprojekt 2021 KIT
 
 
-Zur Erstellung eines Implementierungsartefakts muss bei der pom.xlm 'maven package' ausgeführt werden. In dem Target-Order, in dem sich nun die dadurch erstellte .jar-Datei befindet, muss nun noch der Ordner 'Resources' kopiert werden. Danach lässt sich die Anwendung mit einem Doppelklick starten.
+Das Programm ist in dem .zip-File RBLS-Teamprojekt_V_(versionsnummer).zip diese Datei muss man sich downloaden und auf seinem PC an einem beliebigen Ort entpacken. Zum ausführen muss man die .jar starten. Weder die .jar noch der Resourcen-Ordner dürfen voneinander getrennt werden.
 
-aktuelle Fehler: Tipp-Funktion führt noch zu Fehlern.
+Systemvorraussetzungen:
+Programm zum entpacken von .zip-Files
+Java 8
