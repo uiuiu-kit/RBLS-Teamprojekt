@@ -50,6 +50,7 @@ public class Fensterverwaltung {
     aktivesFenster.setMinimumSize(new Dimension(minimumMass[0], minimumMass[1]));
     aktivesFenster.setResizable(true);
     aktivesFenster.setLocationRelativeTo(null);
+    aktivesFenster.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     aktivesFenster.setVisible(true);
     aktivesFenster.setIconImage(img.getImage());
   }

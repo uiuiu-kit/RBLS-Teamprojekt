@@ -99,7 +99,13 @@ public class StufenRaetselFenster extends RaetselFenster {
     });
     frageFeldPanel.add(schiebeRegler, BorderLayout.CENTER);
     JPanel frageRahmen = erzeugeRahmenPanel(frageFeldPanel, this.name);
-    frageRahmen.setPreferredSize(new Dimension(1, (int) (frage.length() * 0.8)));
+    String leerzeilen = frage.trim();
+    if (! leerzeilen.isEmpty()) {
+      frageRahmen.setPreferredSize(new Dimension(1, 
+          (int) (frage.length() * 0.8 + leerzeilen.split("\n").length * 70)));
+    } else {
+      frageRahmen.setPreferredSize(new Dimension(1, (int) (frage.length() * 0.8)));
+    }
     
     fragePanel.add(menuePanel, BorderLayout.WEST);
     fragePanel.add(frageRahmen, BorderLayout.CENTER);
