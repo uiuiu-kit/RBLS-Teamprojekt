@@ -7,9 +7,9 @@ Robin schaut von seinem Logik-Blog auf und antwortet: "Okay, ich verspreche dir 
 (3) entweder "nicht chatte oder lese" oder "chatte oder surfe".#
 Kann Robin seine drei Versprechen halten? #Stelle hierzu zuerst die benötigten aussagenlogischen Formeln auf. Hierzu musst du wieder Spalten hinzufügen.
 ##
-,er kann seine Versprechen (nicht) halten.
+
 ##
-ja, nein
+Er kann sein Versprechen halten, Er bricht sein Versprechen
 ##
 chattet, surft, liest
 ##

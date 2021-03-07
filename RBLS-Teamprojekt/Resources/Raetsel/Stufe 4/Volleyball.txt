@@ -1,0 +1,21 @@
+Volleyball
+##
+Die 7a stellt ein Volleyballteam fürs Schulturnier zusammen.
+Füge wieder Spalten hinzu und trage die passenden aussagenlogischen Formeln in die oberste Tabellenzeile ein. Finde heraus, wer im Team spielt.#
+(1) Wenn Anja im Team spielt, dann spielt Beate auch mit.#
+(2) Clara macht das Gleiche wie Dori.#
+(3) Elli spielt nicht zusammen mit Clara.#
+(4) Wenn Elli nicht spielt, spielt Beate nicht mit.#
+(5) Anja und Dori wollen zusammen ins Team.
+##
+spielt/spielen im Team.
+##
+Anja und Dori, Anja & Beate & Dori, Anja & Beate, Clara und Dori, Keine
+##
+Anja, Beate, Clara, Dori, Elli
+##
+5
+##
+0f1,2a3,n4on2,n4fn1,0u3
+##
+4

@@ -1,7 +1,7 @@
 Kevins Tanten
 ##
 Kevin hat seine Tanten Ada, Berte und Charlotte zu seinem 16. Geburtstag eingeladen. 
-Berte und Charlotte haben sich zerstritten, weil Berte auf Trudes Zwergpudel getreten ist. 
+Berte und Charlotte haben sich zerstritten, weil Berte auf Charlotte Zwergpudel getreten ist. 
 Sie werden sicher nicht beide kommen. Andererseits kommen Ada und Charlotte immer nur zusammen. 
 Falls Berte aber kommt, dann kommt sicher auch Ada. Kevin weiß auch, dass nicht alle drei Tanten fernbleiben werden.#
 Mit wem darf er rechnen? #Verändere hierzu die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zellen.
