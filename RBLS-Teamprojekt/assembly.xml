@@ -10,7 +10,7 @@
         <fileSet>
             <directory>target</directory>
             <includes>
-                <include>RBLS-Teamprojekt-1.0.jar</include>
+                <include>RBLS-Teamprojekt-1.1.jar</include>
             </includes>
             <outputDirectory>/</outputDirectory>
         </fileSet>
