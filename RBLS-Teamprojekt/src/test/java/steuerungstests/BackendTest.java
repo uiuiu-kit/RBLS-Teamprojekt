@@ -34,7 +34,7 @@ public class BackendTest {
   @Test
   public void aufbauTabelle1Test() {
     wts.befehl("AufbauTabelle()");
-    assertEquals("012\n false false false\n false false true\n false true false\n "
+    assertEquals("ABC\n false false false\n false false true\n false true false\n "
         + "false true true\n true false false\n true false true\n "
         + "true true false\n true true true", gibTabelle());
   }
@@ -46,7 +46,7 @@ public class BackendTest {
     sf.setzeFormel(FormelParser.pars("1", sf), sf.gibAtomareAussage().size());
     wts.befehl("FuelleTabelle");
     assertEquals(
-        "0121\n false false false false\n false false true false\n false true false true\n "
+        "ABCB\n false false false false\n false false true false\n false true false true\n "
             + "false true true true\n true false false false\n true false true false\n "
             + "true true false true\n true true true true",
         gibTabelle());
@@ -58,7 +58,7 @@ public class BackendTest {
     wts.befehl("SpalteHinzufuegen");
     wts.befehl("SpalteEntfernen(4)");
     assertEquals(
-        "012Formel einfügen\n false false false false\n false false false false\n"
+        "ABCFormel einfügen\n false false false false\n false false false false\n"
             + " false false false false\n false false false false\n false false false false\n"
             + " false false false false\n false false false false\n false false false false",
         gibTabelle());
@@ -68,7 +68,7 @@ public class BackendTest {
   public void spalteHinzufuegenTest() {
     wts.befehl("SpalteHinzufuegen");
     assertEquals(
-        "012Formel einfügen\n false false false false\n false false false false\n"
+        "ABCFormel einfügen\n false false false false\n false false false false\n"
             + " false false false false\n false false false false\n false false false false\n"
             + " false false false false\n false false false false\n false false false false",
         gibTabelle());
@@ -83,7 +83,7 @@ public class BackendTest {
   public void zelleInBlauOrangeAendernTest() {
     gibTabelle();
     wts.befehl("ZelleAendern(2,1)");
-    assertEquals("012\n false false false\n false false false\n"
+    assertEquals("ABC\n false false false\n false false false\n"
         + " false false false\n false false false\n false false false\n"
         + " false false false\n false false false\n false false false", gibTabelle());
   }
