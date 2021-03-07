@@ -1,0 +1,22 @@
+Katzendrama
+##
+Die Katzen Mia, Felix und Daisy haben Hunger.#
+Leider sind alle drei sehr näschig und wollen nur das Essen, was der andere isst oder eben nicht isst.#
+Im folgenden ist das Futter "Katzentraum" grün/wahr.#
+rot/falsch steht für "FettesFell"-Futter.#
+(1) Wenn Mia "Katzentraum" bekommt, möchte Felix das auch.#
+(2) Daisy frisst nur "FettesFell"-Futter.#
+(3) Mia und Daisy fressen nie dasselbe Futter.#
+Was frisst Felix?
+##
+
+##
+Katzentraum,FettesFell
+##
+Mia, Felix, Daisy
+##
+1
+##
+0f1,n2,0x2
+##
+2
