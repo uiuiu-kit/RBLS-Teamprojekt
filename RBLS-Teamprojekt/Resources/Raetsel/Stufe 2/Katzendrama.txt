@@ -1,19 +1,24 @@
 Katzendrama
 ##
-Die Katzen Mia, Felix und Daisy haben Hunger.#
-Leider sind alle drei sehr näschig und wollen nur das Essen, was der andere isst oder eben nicht isst.#
-Im folgenden ist das Futter "Katzentraum" grün/wahr.#
-rot/falsch steht für "FettesFell"-Futter.#
-(1) Wenn Mia "Katzentraum" bekommt, möchte Felix das auch.#
-(2) Daisy frisst nur "FettesFell"-Futter.#
-(3) Mia und Daisy fressen nie dasselbe Futter.#
-Was frisst Felix?
+Die Katzen Ada, Bastet und Celly haben Hunger.#
+Leider sind alle drei sehr wählerisch und wollen nur das Essen, was der andere isst oder eben nicht isst.#
+ #
+(1) Wenn Ada "Katzentraum" bekommt, möchte Bastet das auch.#
+(2) Celly frisst nur "FettesFell"-Futter.#
+(3) Ada und Celly fressen nie dasselbe Futter.#
+ #
+Um darzustellen wer was frisst legen wir fest das:#
+wahr steht für "Katzentraum" #
+falsch steht für "FettesFell" #
+Das heißt wenn bei Ada in der dritten Zeile falsch steht heißt das, dass Ada in der dritten Zeile "FettesFell" futtert. Wenn in der ersten Zeile bei Bastet wahr steht heißt das das Bastet in dieser Zeile "Katzentraum"ist.#
+Nun müssen noch die Aussagen 1-3 wie auch schon im letzten Rätsel in aussagenlogische Formeln umgewandelt und in die Tabelle eingetragen werden.#
+Was frisst Bastet?
 ##
 
 ##
 Katzentraum,FettesFell
 ##
-Mia, Felix, Daisy
+Ada, Bastet, Celly
 ##
 1
 ##

@@ -1,10 +1,22 @@
 Ampelchaos
 ##
-Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen. Die eine führt gerade aus (Ampel A) und an der Straße rechts 
-davon steuert eine Ampel die Linksabbieger (Ampel B). Die Fahrspuren kreuzen sich also und es kann zu Unfällen kommen.#
-Wann ist die Kreuzung nicht vor Unfällen geschützt?#
-Verändere hierzu die Wahrheitswertkombinationen unterhalb der Namen und gib die Lösung an.#
-Wahr steht für eine grüne Ampel.
+Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen.#
+ #
+Aussage A: Die Ampel A ist grün.#
+Aussage B: Die Ampel B ist gürn.#
+ #
+Die Ampel können entwerder grün oder rot sein.#
+In unserer Tabelle bedeutet "wahr" das die Ample Grün ist.#
+"falsch" bedeutet das die Ampel rot ist.#
+ #
+Auf der linken Seite kannst du durch klicken auf "wahr" oder "falsch" ändern, ob in Aussage in dieser Spalte steht, in dieser Zeile wahr oder falsch sein soll. Dabei bedeutet "wahr" "falsch" zum Beispiel das die Ampel A grün ist und die Ampel B rot. #
+ #
+Stelle nun die Felder auf der linken Seite so ein das du alle Kombinatoionen für beide Ampel hast.#
+ #
+Wenn du auf "Fülle Tabelle" klickst berechnet das Programm ob die Ampel in dem Fall, also in der Zeile, sicher ist.#
+Das Ergebis steht in der rechten Spalte.#
+ #
+Nun gib bei der Lösung den Fall an bei dem die Kreuzung nicht sicher ist.#
 ##
 
 ##
