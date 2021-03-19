@@ -9,7 +9,7 @@ Anton, Bella und Chris verabreden sich fürs Kino und halten sich an folgende Re
  #
 Wandle die Aussagen 1-4 in aussagenlogische Formeln um. Diese aussagenlogischen Formeln müssen nun in die Tabelle eingefügt werden. Mit dem Plus auf der rechten Seite kann eine Spalte hinzugefügt werden. Wenn man auf "Formel einfügen" klickt kann man eine der aussagenlogischen Formeln hinzufügen. Falls man die Formel später nochmal verändern will kann man einfach wieder auf die Formel klicken.#
 Sobald alle 4 Regeln in aussagenlogische Formeln umgewandelt wurden, es also 4 neue Spalten mit aussagenlogische Formeln gibt, kann man auf "Fülle Tabelle" klicken. Wenn alle aussagenlogische Formeln richtig umgewandelt wurden füllt sich die Tabelle, sonst wird dir ein Tip gegeben wo du noch etwas ändern musst.#
-Lese nun ab in welchem Fall alle Regeln erfüllt sind und trage dann bei der Lösung ein wer ins Kino geht.#
+Lese nun ab in welchem Fall alle Regeln erfüllt sind und trage dann bei der Lösung ein wer ins Kino geht.
 ##
 geht/gehen ins Kino.
 ##

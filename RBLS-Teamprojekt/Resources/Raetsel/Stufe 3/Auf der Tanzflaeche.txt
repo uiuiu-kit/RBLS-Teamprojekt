@@ -1,11 +1,15 @@
 ﻿Auf der Tanzflaeche
 ##
 Anna, Bea und Carla gehen zusammen in die Disco. Beim Tanzen haben sie ihre Prinzipien:#
+ #
 (1) Wenn Anna tanzt, dann tanzt auch Bea.#
 (2) Anna oder Carla tanzen auf jeden Fall.#
 (3) Wenn Carla tanzt, dann auch Anna.#
 (4) Bea und Carla tanzen beide sehr gerne, aber nie gleichzeitig.#
-Verändere die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zellen. Und ermittle anschließend, wer auf der Tanzfläche der Star ist.
+ #
+Die Aussagen wurden schon in aussagenlogische Formeln umgewandelt. Die Aufgabe ist jetzt die Formeln auszuwerten. Dazu betrachte die Formel in dieser Spalte und die Belegung in dieser Zeile. Die Zellen werden wieder durch klicken verändert.#
+ #
+Ermittle anschließend, wer auf der Tanzfläche der Star ist.
 ##
 tanzt/en.
 ##

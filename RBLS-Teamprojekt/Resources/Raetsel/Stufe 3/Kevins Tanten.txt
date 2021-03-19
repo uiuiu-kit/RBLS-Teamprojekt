@@ -1,10 +1,15 @@
 Kevins Tanten
 ##
-Kevin hat seine Tanten Ada, Berte und Charlotte zu seinem 16. Geburtstag eingeladen. 
-Berte und Charlotte haben sich zerstritten, weil Berte auf Charlotte Zwergpudel getreten ist. 
-Sie werden sicher nicht beide kommen. Andererseits kommen Ada und Charlotte immer nur zusammen. 
-Falls Berte aber kommt, dann kommt sicher auch Ada. Kevin weiß auch, dass nicht alle drei Tanten fernbleiben werden.#
-Mit wem darf er rechnen? #Verändere hierzu die Wahrheitswerte unterhalb der aussagenlogischen Formeln durch klicken auf die Zellen.
+Kevin hat seine Tanten Ada, Berte und Charlotte zu seinem 16. Geburtstag eingeladen.#
+ #
+Berte und Charlotte haben sich zerstritten, weil Berte auf Charlotte Zwergpudel getreten ist. Sie werden sicher nicht beide kommen.#
+Andererseits kommen Ada und Charlotte immer nur zusammen.#
+Falls Berte aber kommt, dann kommt sicher auch Ada.#
+Kevin weiß auch, dass nicht alle drei Tanten fernbleiben werden.#
+ #
+Die Aussagen wurden schon in aussagenlogische Formeln umgewandelt. Die Aufgabe ist jetzt die Formeln auszuwerten. Dazu betrachte die Formel in dieser Spalte und die Belegung in dieser Zeile. Die Zellen werden wieder durch klicken verändert.#
+ #
+Mit wem darf er rechnen?
 ##
 kommen zu Kevins Geburtstag.
 ##

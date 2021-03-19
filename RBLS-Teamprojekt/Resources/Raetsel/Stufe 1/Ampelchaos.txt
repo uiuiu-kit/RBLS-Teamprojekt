@@ -17,6 +17,8 @@ Wenn du auf "Fülle Tabelle" klickst berechnet das Programm ob die Ampel in dem 
 Das Ergebis steht in der rechten Spalte.#
  #
 Nun gib bei der Lösung den Fall an bei dem die Kreuzung nicht sicher ist.#
+ #
+In der rechten oberen Ecke gibt es ein Tip-Feld. Der Tip zeigt in welcher Zeile Fall ist der weiter oben schonmal auftritt.
 ##
 
 ##
