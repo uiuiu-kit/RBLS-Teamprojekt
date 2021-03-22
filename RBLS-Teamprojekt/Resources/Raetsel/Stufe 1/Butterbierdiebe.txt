@@ -1,16 +1,16 @@
-Butterbierdiebe
+﻿Butterbierdiebe
 ##
 Der "Honigtopf" wurde ausgeraubt, sämtliche Butterbierfässer sind verschwunden. Die schwarzen Magier Adreon, Bert und Charles wurden in der Nähe gesichtet. 
 Beim Verhör geben sie folgende Aussagen zu Protokoll:#
  #
-Aussage Adreon (A): "Ich war es nicht, aber Bert und Charles haben eingebrochen."#
-Aussage Bert (B): "Ich bin unschuldig, Charles hat auch nichts damit zu tun, aber Adreon war es."#
-Aussage Charles (C): "Adreon und Bert haben das durchgezogen, ich habe nichts damit zu tun."#
+Aussage von Adreon (A): "Ich war es nicht, aber Bert und Charles haben eingebrochen."#
+Aussage von Bert (B): "Ich bin unschuldig, Charles hat auch nichts damit zu tun, aber Adreon war es."#
+Aussage von Charles (C): "Adreon und Bert haben das durchgezogen, ich habe nichts damit zu tun."#
  #
-Dumbledore geht davon aus, dass jeder Dieb lügt und jeder der kein Dieb ist die Wahrheit sagt und stellt nach sorgfältiger Untersuchung fest: 
-"Einer ist auf jeden Fall einer der Diebe!". #
+Dumbledore geht davon aus, dass jeder Dieb lügt und jeder, der kein Dieb ist, die Wahrheit sagt. Damit stellt er nach sorgfältiger Untersuchung fest: 
+"Einer der drei ist auf jeden Fall einer der Diebe!". #
 Zeige mit Hilfe einer Wahrheitstabelle, wen Dumbledore meint. Verändere hierzu die Wahrheitswertkombinationen unterhalb der Namen. 
-Wahr steht dabei dafür, dass die Person die Wahrheit sagt, also nicht der Dieb ist, und Falsch dafür, dass die Person lügt und einer der Diebe ist.
+"Wahr" steht dabei dafür, dass die Person die Wahrheit sagt, also nicht der Dieb ist, und "Falsch" dafür, dass die Person lügt und einer der Diebe ist.
 ##
 ist auf jeden Fall schuldig.
 ##

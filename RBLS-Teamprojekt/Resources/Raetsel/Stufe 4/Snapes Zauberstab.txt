@@ -1,4 +1,4 @@
-Snapes Zauberstab
+﻿Snapes Zauberstab
 ##
 Snapes Zauberstab wurde zerbrochen. Wütend stürmt er in die große Halle und zerrt Aaron, Bari und Cori in seine Hexenküche. Bevor er die drei Weasleys befragt, gibt er ihnen Verita-Serum, ein Wahrheitselixir. 
 Ihre vier Aussagen sind daher alle wahr:#
@@ -6,14 +6,16 @@ Ihre vier Aussagen sind daher alle wahr:#
 (2) Aaron und Bari waren es nicht gemeinsam.#
 (3) Wenn Aaron schuldig ist, dann auch Bari.#
 (4) Wenn es Bari war, dann auch Cori oder Aaron.#
-Wer war beteiligt? #Erstelle dazu auch die passenden aussagenlogischen Formeln im Tabellenkopf, indem du die Tabelle um neue Spalten erweiterst.#
-Hinweis: wahr steht hierbei für schuldig.
+ #
+Wer war beteiligt? #
+ #
+Erstelle dazu auch die passenden aussagenlogischen Formeln im Tabellenkopf, indem du die Tabelle mit neuen Spalten erweiterst.
 ##
 ist/sind schuldig.
 ##
 Aaron & Bari, Bari & Cori, Cori & Aaron, niemand
 ##
-Aaron, Bari, Cori
+Aaron ist schuldig, Bari war dabei, Cori hat es getan
 ##
 4
 ##

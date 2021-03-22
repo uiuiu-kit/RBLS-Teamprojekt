@@ -1,21 +1,20 @@
-Im Kino
+﻿Im Kino
 ##
 Anton, Bella und Chris verabreden sich fürs Kino und halten sich an folgende Regeln:#
- #
 (1) Wenn Anton kommt, dann auch Chris.#
 (2) Es kommt Anton oder Bella.#
 (3) Wenn Bella kommt, dann kommt auch Anton.#
 (4) Sie gehen nicht alle drei gemeinsam.#
  #
-Wandle die Aussagen 1-4 in aussagenlogische Formeln um. Diese aussagenlogischen Formeln müssen nun in die Tabelle eingefügt werden. Mit dem Plus auf der rechten Seite kann eine Spalte hinzugefügt werden. Wenn man auf "Formel einfügen" klickt kann man eine der aussagenlogischen Formeln hinzufügen. Falls man die Formel später nochmal verändern will kann man einfach wieder auf die Formel klicken.#
-Sobald alle 4 Regeln in aussagenlogische Formeln umgewandelt wurden, es also 4 neue Spalten mit aussagenlogische Formeln gibt, kann man auf "Fülle Tabelle" klicken. Wenn alle aussagenlogische Formeln richtig umgewandelt wurden füllt sich die Tabelle, sonst wird dir ein Tip gegeben wo du noch etwas ändern musst.#
-Lese nun ab in welchem Fall alle Regeln erfüllt sind und trage dann bei der Lösung ein wer ins Kino geht.
+Wandle die Aussagen 1-4 in aussagenlogische Formeln um. Diese Formeln müssen nun in die Tabelle eingefügt werden. Mit dem "+" auf der rechten Seite kann eine Spalte hinzugefügt werden. Wenn du dann auf "Formel einfügen" klickt, kannst du eine der aussagenlogischen Formeln hinzufügen. Falls du die Formel später wieder verändern willst, kannst du einfach wieder auf die Formel klicken.#
+Sobald alle 4 Regeln in aussagenlogische Formeln umgewandelt wurden, es also 4 neue Spalten mit aussagenlogische Formeln gibt, kannst du auf "Fülle Tabelle" klicken. Wenn alle aussagenlogische Formeln richtig umgewandelt wurden, füllt sich die Tabelle. Ansonsten wird dir ein Tipp gegeben, wo du noch etwas ändern musst.#
+Lese nun ab, in welchem Fall alle Regeln erfüllt sind und trage dann bei der Lösung ein, wer ins Kino geht.
 ##
 geht/gehen ins Kino.
 ##
 Anton, Chris, Bella, Anton & Chris, Anton & Bella, Chris & Bella, Anton & Chris & Bella, niemand
 ##
-Anton, Bella, Chris
+Anton kommt, Bella kommt, Chris kommt
 ##
 4
 ##

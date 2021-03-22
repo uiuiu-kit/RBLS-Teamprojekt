@@ -1,4 +1,4 @@
-Gute Vorsaetze
+﻿Gute Vorsaetze
 ##
 Frau Abbels sagt zu ihrem Sohn Robin: "Du chattest mit deinen Freunden oder du surfst den ganzen Tag nur im Internet. Lies doch mal wieder ein Buch." 
 Robin schaut von seinem Logik-Blog auf und antwortet: "Okay, ich verspreche dir für morgen, dass ich...#
@@ -11,7 +11,7 @@ Kann Robin seine drei Versprechen halten? #Stelle hierzu zuerst die benötigten 
 ##
 Er kann sein Versprechen halten, Er bricht sein Versprechen
 ##
-chattet, surft, liest
+Robin chattet, Robin surft, Robin liest
 ##
 1
 ##

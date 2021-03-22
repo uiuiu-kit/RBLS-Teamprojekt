@@ -1,30 +1,21 @@
-Ampelchaos
+﻿Ampelchaos
 ##
-Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen.#
+Stelle dir eine Kreuzung vor, an der zwei Ampeln stehen. Die Ampeln können entweder grün oder rot sein.#
  #
-Aussage A: Die Ampel A ist grün.#
-Aussage B: Die Ampel B ist gürn.#
+In der Tabelle kannst du auf der linken Seite durch Klicken auf "wahr" oder "falsch" ändern, ob die Aussage, die in dieser Spalte steht, wahr oder falsch sein soll. Dabei bedeutet z.B. die Zeile [wahr, falsch], dass die Ampel A grün ist und die Ampel B rot. #
  #
-Die Ampel können entwerder grün oder rot sein.#
-In unserer Tabelle bedeutet "wahr" das die Ample Grün ist.#
-"falsch" bedeutet das die Ampel rot ist.#
+Stelle nun die Felder auf der linken Seite der Tabelle so ein, dass du alle Kombinationen dafür abgedeckt hat.#
+Wenn du auf "Fülle Tabelle" klickst, berechnet das Programm, ob die Ampel in dem Fall, also in der Zeile, sicher ist.#
+Das Ergebnis steht in der rechten Spalte.#
  #
-Auf der linken Seite kannst du durch klicken auf "wahr" oder "falsch" ändern, ob in Aussage in dieser Spalte steht, in dieser Zeile wahr oder falsch sein soll. Dabei bedeutet "wahr" "falsch" zum Beispiel das die Ampel A grün ist und die Ampel B rot. #
- #
-Stelle nun die Felder auf der linken Seite so ein das du alle Kombinatoionen für beide Ampel hast.#
- #
-Wenn du auf "Fülle Tabelle" klickst berechnet das Programm ob die Ampel in dem Fall, also in der Zeile, sicher ist.#
-Das Ergebis steht in der rechten Spalte.#
- #
-Nun gib bei der Lösung den Fall an bei dem die Kreuzung nicht sicher ist.#
- #
-In der rechten oberen Ecke gibt es ein Tip-Feld. Der Tip zeigt in welcher Zeile Fall ist der weiter oben schonmal auftritt.
+Nun gib bei der Lösung den Fall an, bei dem die Kreuzung nicht sicher ist.#
+In der rechten oberen Ecke gibt es ein Tipp-Feld. Der Tipp zeigt dir, in welcher Zeile ein Fall ist, der noch mehrfach auftritt.
 ##
 
 ##
 Wenn beide rot sind., Wenn eine rot & eine grün ist., Wenn beide grün sind.
 ##
-Ampel A, Ampel B
+Ampel A ist grün, Ampel B ist grün
 ##
 3
 ##
